@@ -44,7 +44,16 @@
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {},
+            "splashscreen" : {
+                "androidStyle" : "default",
+                "android" : {
+                    "hdpi" : "static/timebankpic.9.png",
+                    "xxhdpi" : "static/timebankpic.9.png",
+                    "xhdpi" : "static/timebankpic.9.png"
+                },
+                "useOriginalMsgbox" : false
+            }
         }
     },
     /* SDK配置 */

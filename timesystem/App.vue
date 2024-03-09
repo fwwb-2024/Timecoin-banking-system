@@ -25,4 +25,8 @@
 		color: #333;
 		padding: 10px;
 	}
+	
+	.headerBackgroundColor {
+		background: linear-gradient(90deg,#ff0000,#ff4d4d,#ff8533,#ff944d,#ff944d,#ffb380);
+	}
 </style>
