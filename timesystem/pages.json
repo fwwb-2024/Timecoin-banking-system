@@ -10,7 +10,7 @@
 				}  
 		}},{
 		//我的任务注册
-		"path": "pages/mymisson/myMisson",
+		"path": "pages/mymission/myMission",
 		"style": {
 				"navigationBarTitleText": "我的任务",
 				"app-plus": {
@@ -82,11 +82,11 @@
 				}  
 		}},{
 		//任务详情注册
-		"path": "pages/missonDetail",
+		"path": "pages/missionDetail",
 		"style": {
 				"navigationBarTitleText": "任务详情",
 				"app-plus": {
-				  "titleNView": false //禁用原生导航栏  
+				  "titleNView": false //禁用原生导航栏
 				}  
 		}}
 	],
@@ -97,7 +97,8 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
-			"background": "#efeff4"
+			"background": "#efeff4",
+			"scrollIndicator":"none"
 		}
 	},
 	//底部菜单的配置
@@ -112,7 +113,7 @@
 			"selectedIconPath": "static/buttompicture/selectbuttompic1.png",
 			"text": "首页"
 		}, {
-			"pagePath": "pages/mymisson/myMisson",
+			"pagePath": "pages/mymission/myMission",
 			"iconPath": "static/buttompicture/buttompic2.png",
 			"selectedIconPath": "static/buttompicture/selectbuttompic2.png",
 			"text": "我的任务"

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
 			<view class="back-image" @click="back">
@@ -17,7 +18,7 @@
 			}
 		},
 		methods: {
-			//返回上一级
+			//返回上一级页面
 			back() {
 				uni.navigateBack({
 					delta:1
