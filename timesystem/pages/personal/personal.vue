@@ -46,7 +46,7 @@
 			</view>
 			
 			<!-- 切换身份 -->
-			<view class="function-part">
+			<view class="function-part" @click="changePosition">
 				<view>
 					<image src="../../static/uni.png"></image>
 				</view>
@@ -85,6 +85,18 @@
 				nowPersonlStatus:'志愿者',
 			}
 		},
+		created: function(){
+			try {
+				const value = uni.getStorageSync('position');
+				if (value) {
+					this.nowPersonlStatus = value;
+				}
+			} catch (e) {
+				uni.reLaunch({
+					url: '/pages/404'
+				});
+			}
+		},
 		methods: {
 			// 页面跳转
 			navTo(url){
@@ -92,6 +104,23 @@
 					url,
 				})
 			},
+			// 改变身份
+			changePosition(){
+				let temp = '志愿者';
+				if(this.nowPersonlStatus == '志愿者'){
+					temp = '发布者'
+				}
+				uni.setStorage({
+					key: 'position',
+					data: temp,
+					success: function () {
+						this.nowPersonlStatus = temp;
+						uni.reLaunch({
+						    url: '/pages/personal/personal'
+						})
+					}
+				});
+			}
 		},
 	}
 </script>
@@ -101,7 +130,6 @@
 		display: flex;
 		align-items: center;
 		width: 750rpx;
-		height: 120rpx;
 	}
 	.header-image {
 		order:0;

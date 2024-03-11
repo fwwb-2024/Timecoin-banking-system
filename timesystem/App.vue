@@ -1,6 +1,21 @@
 <script>
 	export default {
 		onLaunch: function() {
+			try {
+				const value = uni.getStorageSync('position');
+				if (!value) {
+					uni.setStorage({
+						key: 'position',
+						data: '需求者',
+						success: function () {
+						}
+					});
+				}
+			} catch (e) {
+				uni.reLaunch({
+					url: '/pages/404'
+				});
+			}
 		},
 		onShow: function() {
 		},
@@ -26,6 +41,7 @@
 		padding: 10px;
 	}
 	.headerBackgroundColor {
+		padding: 50rpx 0 20rpx 0;
 		background: linear-gradient(90deg,#ff0000,#ff4d4d,#ff8533,#ff944d,#ff944d,#ffb380);
 	}
 	.body {
