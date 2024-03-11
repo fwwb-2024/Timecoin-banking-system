@@ -6,8 +6,10 @@
 			<view class="back-image" @click="back">
 				<image src="/static/backpic.png"></image>
 			</view>
+			<view class="header-background-text">
+				<text>关于我们</text>
+			</view>
 		</view>
-		这是关于我们页面
 	</view>
 </template>
 
@@ -40,9 +42,19 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
+		margin-right: 175rpx;
 	}
 	.back-image image {
 		width: 50rpx;
 		height: 50rpx;
+	}
+	.header-background-text {
+		order: 1;
+		
+		display: flex;
+		justify-content: center;
+		flex-basis: 160rpx;
+		font-size: 38rpx;
+		color: white;
 	}
 </style>

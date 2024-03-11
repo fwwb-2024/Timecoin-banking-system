@@ -7,7 +7,7 @@
 		<!-- 任务悬赏 -->
 		<view class="mission-coins">
 			<view>
-				<image src="../static/uni.png"></image>
+				<image src="/static/coins.png"></image>
 			</view>
 			<view>
 				<text>{{missionData.timeCoins}}</text>
