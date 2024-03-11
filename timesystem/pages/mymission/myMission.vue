@@ -7,7 +7,8 @@
 				<!-- 未完成 -->
 				<view class="header-select-front" @click="function(){if(!headOption){headOption=!headOption}}">
 					<view>
-						<image src="../../static/uni.png"></image>
+						<image src="/static/myMission/selectpublishing.png" v-if="headOption"></image>
+						<image src="/static/myMission/publishing.png" v-if="!headOption"></image>
 					</view>
 					<view>
 						<text>未完成</text>
@@ -16,7 +17,8 @@
 				<!-- 历史记录 -->
 				<view class="header-select-after" @click="function(){if(headOption){headOption=!headOption}}">
 					<view>
-						<image src="../../static/uni.png"></image>
+						<image src="/static/myMission/selectpublishhistory.png" v-if="!headOption"></image>
+						<image src="/static/myMission/publishhistory.png" v-if="headOption"></image>
 					</view>
 					<view>
 						<text>历史记录</text>
@@ -30,7 +32,8 @@
 				<!-- 已发布 -->
 				<view class="header-select-front" @click="function(){if(!headOption){headOption=!headOption}}">
 					<view>
-						<image src="../../static/uni.png"></image>
+						<image src="/static/myMission/selectpublishing.png" v-if="headOption"></image>
+						<image src="/static/myMission/publishing.png" v-if="!headOption"></image>
 					</view>
 					<view>
 						<text>已发布</text>
@@ -39,7 +42,8 @@
 				<!-- 任务历史 -->
 				<view class="header-select-after" @click="function(){if(headOption){headOption=!headOption}}">
 					<view>
-						<image src="../../static/uni.png"></image>
+						<image src="/static/myMission/selectpublishhistory.png" v-if="!headOption"></image>
+						<image src="/static/myMission/publishhistory.png" v-if="headOption"></image>
 					</view>
 					<view>
 						<text>任务历史</text>

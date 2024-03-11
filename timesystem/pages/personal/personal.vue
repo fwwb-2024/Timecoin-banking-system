@@ -17,7 +17,7 @@
 			<!-- 账号信息 -->
 			<view class="function-part line" @click="navTo('/pages/personal/accountData')">
 				<view>
-					<image src="../../static/uni.png"></image>
+					<image src="/static/personal/accountData.png"></image>
 				</view>
 				<view>
 					<text>账号信息</text>
@@ -28,7 +28,7 @@
 			<!-- 时间币管理 -->
 			<view class="function-part line" @click="navTo('/pages/personal/timeCoinData')">
 				<view>
-					<image src="../../static/uni.png"></image>
+					<image src="/static/personal/timeCoinData.png"></image>
 				</view>
 				<view>
 					<text>时间币管理</text>
@@ -38,7 +38,7 @@
 			<!-- 家庭管理 -->
 			<view class="function-part line" @click="navTo('/pages/personal/familyList')">
 				<view>
-					<image src="../../static/uni.png"></image>
+					<image src="/static/personal/familyList.png"></image>
 				</view>
 				<view>
 					<text>家庭管理</text>
@@ -48,7 +48,7 @@
 			<!-- 切换身份 -->
 			<view class="function-part" @click="changePosition">
 				<view>
-					<image src="../../static/uni.png"></image>
+					<image src="/static/personal/changePosition.png"></image>
 				</view>
 				<view>
 					<text>切换身份</text>
@@ -63,7 +63,7 @@
 		<view class="about">
 			<view class="about-us" @click="navTo('/pages/personal/aboutUs')">
 				<view>
-					<image src="../../static/uni.png"></image>
+					<image src="/static/personal/aboutUs.png"></image>
 				</view>
 				<view>
 					<text>关于我们</text>
@@ -164,7 +164,7 @@
 		width: 700rpx;
 		background-color: white;
 		margin-top: 30rpx;
-		border-radius: 20px;
+		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		padding: 30rpx 0 30rpx 0;
 	}
@@ -207,7 +207,7 @@
 		width: 700rpx;
 		background-color: white;
 		margin-top: 30rpx;
-		border-radius: 20px;
+		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		padding: 20rpx 0 20rpx 0;
 	}
