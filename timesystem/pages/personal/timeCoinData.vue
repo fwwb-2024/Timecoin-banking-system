@@ -33,7 +33,6 @@
 		display: flex;
 		align-items: center;
 		width: 750rpx;
-		height: 120rpx;
 	}
 	.back-image {
 		order:0;
