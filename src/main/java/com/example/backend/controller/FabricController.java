@@ -19,8 +19,19 @@ public class FabricController {
     private FabricServiceImpl fabricService;
 
     @GetMapping("fabric/get01")
-    public void getUserTest(){
+    public String getUserTest(){
         Map<String, Object> userByID = fabricService.getUserByID("1");
-        System.out.println(userByID);
+        return userByID.toString();
+    }
+
+    @GetMapping("fabric/add01")
+    public void addUserTest(){
+        Map<String, Object> userByID = fabricService.getUserByID("4");
+        if (!userByID.isEmpty()){
+            System.out.println("error! 已经存在的账户！");
+            return;
+        }
+        String s = fabricService.AddUser("4", "sjp", 1000);
+        System.out.println(s);
     }
 }
