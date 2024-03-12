@@ -18,11 +18,11 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author : hutaosama
  * @date: 2024-03-12 - 03 - 12 - 11:35
- * @Description: com.example.backend.Service
+ * @Description: Service:fabric-java-sdk 实例工具包
  * @version: 1.0
  */
 @Component
-public class FabricServiceImpl {    //fabric-java-sdk 实例工具包
+public class FabricServiceImpl {
     @Resource
     private Contract contract;
 
@@ -72,6 +72,21 @@ public class FabricServiceImpl {    //fabric-java-sdk 实例工具包
             throw new RuntimeException(e);
         }
 
-
     }
+
+    /**
+     * 查询当前用户的账本历史信息
+     * @param userId String
+     * @return
+     */
+    public String getHistory(String userId) {
+        byte[] queryAResultBefore = new byte[0];
+        try {
+            queryAResultBefore = contract.evaluateTransaction("getHistory", userId);
+        } catch (ContractException e) {
+            throw new RuntimeException(e);
+        }
+        return new String(queryAResultBefore, StandardCharsets.UTF_8);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.Service.FabricServiceImpl;
+import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +34,10 @@ public class FabricController {
         }
         String s = fabricService.AddUser("4", "sjp", 1000);
         System.out.println(s);
+    }
+
+    @GetMapping("/getHistory")
+    public String getHistory(String userId) throws ContractException {
+        return fabricService.getHistory(userId);
     }
 }
