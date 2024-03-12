@@ -1,12 +1,10 @@
 package com.example.backend.mapper;
 
 import com.example.backend.entity.Familyusers;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+@Mapper
 public interface FamilyusersMapper {
 
     //添加家庭成员

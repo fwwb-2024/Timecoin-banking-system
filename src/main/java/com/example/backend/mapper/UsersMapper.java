@@ -1,12 +1,10 @@
 package com.example.backend.mapper;
 
 import com.example.backend.entity.Users;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+@Mapper
 public interface UsersMapper {
 
     //注册新用户(只有账号、密码、手机号)
