@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -51,11 +49,11 @@ public class FabricServiceImpl {
     }
 
     /**
-     * 添加账户信息(添加前查询，没有已有帐户报错)
+     * 添加账户信息(添加前查询，没有已有帐户报错,有一定延迟1-2s)
      * @param userId String
      * @param userName String
      * @param timeCoin int
-     * @return String 区块地址（不需要）
+     * @return String 区块地址（不需要），出错直接报错
      */
     public String AddUser(String userId,String userName,int timeCoin){
         try {
@@ -77,16 +75,54 @@ public class FabricServiceImpl {
     /**
      * 查询当前用户的账本历史信息
      * @param userId String
-     * @return
+     * @return 历史信息数组
      */
-    public String getHistory(String userId) {
+    public ArrayList getHistory(String userId) {
         byte[] queryAResultBefore = new byte[0];
         try {
             queryAResultBefore = contract.evaluateTransaction("getHistory", userId);
         } catch (ContractException e) {
             throw new RuntimeException(e);
         }
+        String history = new String(queryAResultBefore, StandardCharsets.UTF_8);
+        JSONObject jsonObject = JSON.parseObject(history);
+        ArrayList<Object> arrayList = new ArrayList<>();
+        Map map = (Map) JSON.parse(history);
+        Set<Map.Entry<String, String>> ent = map.entrySet();
+        for(Map.Entry<String, String> entry: ent){
+            String key = entry.getKey();
+            String value = entry.getValue();
+            arrayList.add(value);
+        }
+        return arrayList;
+    }
+
+    public String queryAll() throws ContractException {
+        byte[] queryAResultBefore = contract.evaluateTransaction("queryAll");
         return new String(queryAResultBefore, StandardCharsets.UTF_8);
     }
 
+    /**
+     *
+     * @param userIdA 转账人Id
+     * @param userIdB 收款人Id
+     * @param timeCoin 转账金额
+     * @return  交易区块地址（不作为前端使用）String,错误直接报错
+     */
+    public String transfer(String userIdA, String userIdB, int timeCoin) {
+        byte[] invokeResult = new byte[0];
+        try {
+            invokeResult = contract.createTransaction("transfer")
+                    .setEndorsingPeers(network.getChannel().getPeers(EnumSet.of(Peer.PeerRole.ENDORSING_PEER)))
+                    .submit(userIdA,userIdA, String.valueOf(timeCoin));
+        } catch (ContractException e) {
+            throw new RuntimeException(e);
+        } catch (TimeoutException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String txId = new String(invokeResult, StandardCharsets.UTF_8);
+        return txId;
+    }
 }
