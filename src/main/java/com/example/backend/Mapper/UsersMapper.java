@@ -1,9 +1,9 @@
-package com.example.backend.mapper;
+package com.example.backend.Mapper;
 
-import com.example.backend.entity.Users;
+import com.example.backend.Entity.Users;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+
 @Mapper
 public interface UsersMapper {
 

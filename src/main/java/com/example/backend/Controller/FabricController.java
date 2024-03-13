@@ -1,4 +1,4 @@
-package com.example.backend.controller;
+package com.example.backend.Controller;
 
 import com.example.backend.Service.FabricServiceImpl;
 import org.hyperledger.fabric.gateway.ContractException;

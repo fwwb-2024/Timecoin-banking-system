@@ -1,11 +1,10 @@
-package com.example.backend.controller;
+package com.example.backend.Controller;
 
 import com.example.backend.Util.TokenUtil;
-import com.example.backend.entity.Admins;
-import com.example.backend.mapper.AdminsMapper;
+import com.example.backend.Entity.Admins;
+import com.example.backend.Mapper.AdminsMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

@@ -1,6 +1,6 @@
-package com.example.backend.mapper;
+package com.example.backend.Mapper;
 
-import com.example.backend.entity.Tasks;
+import com.example.backend.Entity.Tasks;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;

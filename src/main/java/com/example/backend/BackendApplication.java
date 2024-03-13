@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.backend.mapper")
+//@EnableSwagger2
+@MapperScan("com.example.backend.Mapper")
 public class BackendApplication {
 
     public static void main(String[] args) {

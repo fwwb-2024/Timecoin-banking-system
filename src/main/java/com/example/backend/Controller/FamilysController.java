@@ -1,9 +1,9 @@
-package com.example.backend.controller;
+package com.example.backend.Controller;
 
 import com.example.backend.Util.TokenUtil;
-import com.example.backend.entity.Familys;
-import com.example.backend.entity.Users;
-import com.example.backend.mapper.FamilysMapper;
+import com.example.backend.Entity.Familys;
+import com.example.backend.Entity.Users;
+import com.example.backend.Mapper.FamilysMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
