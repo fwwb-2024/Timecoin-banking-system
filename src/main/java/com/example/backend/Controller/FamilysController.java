@@ -6,10 +6,7 @@ import com.example.backend.Entity.Users;
 import com.example.backend.Mapper.FamilysMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -20,6 +17,7 @@ import javax.annotation.Resource;
  * @version: 1.0
  */
 @RestController
+@RequestMapping
 public class FamilysController {
 
     @Resource

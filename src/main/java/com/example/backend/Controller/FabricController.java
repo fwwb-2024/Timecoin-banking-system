@@ -3,6 +3,7 @@ package com.example.backend.Controller;
 import com.example.backend.Service.FabricServiceImpl;
 import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import java.util.Map;
  * @version: 1.0
  */
 @RestController
+@RequestMapping
 public class FabricController {
     @Resource
     private FabricServiceImpl fabricService;

@@ -22,19 +22,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping
 
 public class UserController {
-
-    @Resource
-    AdminsMapper adminsMapper;
-    @Resource
-    FamilysMapper familysMapper;
-    @Resource
-    FamilyusersMapper familyusersMapper;
-    @Resource
-    LedgersMapper ledgersMapper;
-    @Resource
-    TaskhistorysMapper taskhistorysMapper;
-    @Resource
-    TasksMapper tasksMapper;
     @Resource
     UsersMapper usersMapper;
 

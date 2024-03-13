@@ -18,6 +18,7 @@ import java.util.List;
  * @version: 1.0
  */
 @RestController
+@RequestMapping
 public class FamilyusersController {
 
     @Resource

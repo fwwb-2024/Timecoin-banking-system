@@ -16,6 +16,7 @@ import javax.annotation.Resource;
  * @version: 1.0
  */
 @RestController
+@RequestMapping
 public class AdminController {
 
     @Resource
