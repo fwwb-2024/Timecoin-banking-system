@@ -38,7 +38,6 @@ public class FabricController {
         String s = fabricService.AddUser("4", "sjp", 1000);
         System.out.println(s);
     }
-
     @GetMapping("/getHistory")
     public String getHistory(String userId) throws ContractException {
         ArrayList history = fabricService.getHistory("1");
