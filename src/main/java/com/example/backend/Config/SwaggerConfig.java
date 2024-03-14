@@ -17,11 +17,11 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI swaggerOpenApi() {
         return new OpenAPI()
-                .info(new Info().title("XXX平台YYY微服务")
-                        .description("描述平台多牛逼")
+                .info(new Info().title("时间银行管理平台微服务")
+                        .description("时间银行管理系统")
                         .version("v1.0.0"))
                 .externalDocs(new ExternalDocumentation()
                         .description("设计文档")
-                        .url("https://juejin.cn/user/254742430749736/posts"));
+                        .url("https://docs.qq.com/aio/DTXFTcmxaUURaa1dH"));
     }
 }
