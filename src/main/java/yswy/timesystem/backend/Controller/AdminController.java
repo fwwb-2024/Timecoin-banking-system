@@ -1,5 +1,8 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Admins;
 import yswy.timesystem.backend.Mapper.AdminsMapper;
@@ -22,8 +25,15 @@ public class AdminController {
     @Resource
     private AdminsMapper adminsMapper;
 
+    /**
+     *
+     * @param admins 对象，管理员
+     * @param adminNameTwo 管理员用户名属性，即高级管理员或操作者
+     */
+    @Operation(summary = "管理员注册接口", description = "由高级管理员注册,token错就返回201，管理员用户名重复就是\"管理员已存在\"，正常返回新token")
+    @Parameter(name = "adminNameTwo", description = "高级管理员的用户名", example = "孙锦鹏")
     @PostMapping("/admin/register")//管理员注册接口，由高级管理员注册
-    public String registerAdmin(@RequestBody Admins admins, String adminNameTwo, HttpServletRequest request, HttpServletResponse responce) throws Exception {
+    public String registerAdmin(@RequestBody Admins admins,@RequestParam String adminNameTwo, HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -37,7 +47,8 @@ public class AdminController {
         return TokenUtil.tokenServiceOne(adminNameTwo);
     }
 
-    @PostMapping("/admin/login/byadminname")//管理员登录接口
+    @Operation(summary = "管理员登录接口", description = "返回\"该管理员不存在\"\"密码错误\"，新token（藏在admin对象里）")
+    @PostMapping("/admin/login/byAdminName")//管理员登录接口
     public Object loginByAdminName(@RequestBody Admins admins) throws Exception {
         int count=0;
         count=adminsMapper.selectAdminNameSame(admins.getAdminName());//检查是否有相同用户名
@@ -56,7 +67,8 @@ public class AdminController {
         return adminReturn;
     }
 
-    @GetMapping("/admin/admincenter/findadmindata")//管理员个人中心查看管理员数据，通过管理员名获得
+    @Operation(summary = "管理员个人中心查看管理员数据接口", description = "返回201，新token（藏在admin对象里）")
+    @GetMapping("/admin/adminCenter/findAdminData")//管理员个人中心查看管理员数据，通过管理员名获得
     public Object adminCenterFindAdminData(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -66,7 +78,8 @@ public class AdminController {
         return adminReturn;
     }
 
-    @PostMapping("/admin/admincenter/changeadmindata")//管理员修改个人信息，根据管理员id查找
+    @Operation(summary = "管理员修改个人信息接口", description = "返回201，\"用户已存在\"，新token")
+    @PostMapping("/admin/adminCenter/changeAdminData")//管理员修改个人信息，根据管理员id查找
     public String adminCenterChangeAdminData(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -81,7 +94,8 @@ public class AdminController {
         return TokenUtil.tokenServiceOne(admins.getAdminName());
     }
 
-    @PostMapping("/admin/admincenter/changeadminpassword")//管理员修改密码，根据id查找
+    @Operation(summary = "管理员修改密码接口", description = "返回201，新token")
+    @PostMapping("/admin/adminCenter/changeAdminPassword")//管理员修改密码，根据id查找
     public String adminCenterChangeAdminPassword(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -90,7 +104,8 @@ public class AdminController {
         return TokenUtil.tokenServiceOne(admins.getAdminName());
     }
 
-    @DeleteMapping("/admin/admincenter/deleteadmins")//注销管理员，根据被注销的管理员的id查找
+    @Operation(summary = "注销管理员接口", description = "返回201，新token")
+    @DeleteMapping("/admin/adminCenter/deleteAdmins")//注销管理员，根据被注销的管理员的id查找
     public void adminCenterDeleteAdmins(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);

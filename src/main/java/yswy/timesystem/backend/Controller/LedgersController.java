@@ -1,14 +1,12 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.*;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Ledgers;
 import yswy.timesystem.backend.Mapper.LedgersMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,8 +23,9 @@ public class LedgersController {
     @Resource
     private LedgersMapper ledgersMapper;
 
-    @GetMapping("/ledgers/usercenter/findledgers")//查看账单，用户id查找
-    public List<Ledgers> familyCenterFindUsers(@RequestBody Ledgers ledgers, int offSet, HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "查看账单接口", description = "返回201，一串ledgers对象")
+    @GetMapping("/ledgers/userCenter/findLedgers")//查看账单，用户id查找
+    public List<Ledgers> familyCenterFindUsers(@RequestBody Ledgers ledgers, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 

@@ -1,5 +1,6 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Familyusers;
 import yswy.timesystem.backend.Entity.Users;
@@ -24,8 +25,9 @@ public class FamilyusersController {
     @Resource
     private FamilyusersMapper familyusersMapper;
 
-    @PostMapping("/familyusers/familycenter/createfamilyuser")//添加家庭成员
-    public String registerFamilyuser(@RequestBody Familyusers familyusers, Users users, HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "添加家庭成员接口", description = "user是操作人，对象，返回201，新token")
+    @PostMapping("/familyusers/familyCenter/createFamilyuser")//添加家庭成员
+    public String registerFamilyuser(@RequestBody Familyusers familyusers,@RequestBody Users users, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -33,8 +35,9 @@ public class FamilyusersController {
         return  TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @DeleteMapping("/familyusers/familycenter/deletefamilyusers")//删除家庭成员
-    public String familyCenterDeleteFamilyusers(@RequestBody Familyusers familyusers,Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "删除家庭成员接口", description = "user是操作人，对象，返回201，新token")
+    @DeleteMapping("/familyusers/familyCenter/deleteFamilyusers")//删除家庭成员
+    public String familyCenterDeleteFamilyusers(@RequestBody Familyusers familyusers,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -42,7 +45,8 @@ public class FamilyusersController {
         return  TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @GetMapping("/familyusers/familycenter/findfamilys")//查看所在家庭
+    @Operation(summary = "查看所在家庭接口", description = "返回201，一串familyusers对象")
+    @GetMapping("/familyusers/familyCenter/findFamilys")//查看所在家庭
     public List<Familyusers> familyCenterFindFamilys(@RequestBody Familyusers familyusers, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -50,7 +54,8 @@ public class FamilyusersController {
         return familyusersMapper.selectFamilyusersByUserID(familyusers);
     }
 
-    @GetMapping("/familyusers/familycenter/findusers")//查看家庭所有成员
+    @Operation(summary = "查看家庭所有成员接口", description = "返回201，一串familyusers对象")
+    @GetMapping("/familyusers/familyCenter/findUsers")//查看家庭所有成员
     public List<Familyusers> familyCenterFindUsers(@RequestBody Familyusers familyusers,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);

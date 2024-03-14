@@ -1,15 +1,13 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.*;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Taskhistorys;
 import yswy.timesystem.backend.Entity.Users;
 import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,8 +24,9 @@ public class TaskhistoryController {
     @Resource
     private TaskhistorysMapper taskhistorysMapper;
 
-    @GetMapping("/taskhistory/taskcenter/findtaskhisory")//查看任务历史，用户id,查找
-    public List<Taskhistorys> taskCenterFindTaskHistory(@RequestBody Users users, int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+    @Operation(summary = "查看任务历史接口", description = "返回201，一串taskhistorys对象")
+    @GetMapping("/taskhistory/taskCenter/findTaskhisory")//查看任务历史，用户id,查找
+    public List<Taskhistorys> taskCenterFindTaskHistory(@RequestBody Users users, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 

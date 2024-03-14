@@ -1,5 +1,7 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Tasks;
 import yswy.timesystem.backend.Entity.Users;
@@ -17,14 +19,19 @@ import java.util.List;
  * @Description: com.example.backend.controller
  * @version: 1.0
  */
+
+
 @RestController
 @RequestMapping
 public class TasksController {
     @Resource
     private TasksMapper tasksMapper;
 
-    @GetMapping("/tasks/taskcenter/tasks")//查看任务列表
-    public List<Tasks> taskCenterTasks(@RequestBody int offSet, int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
+    @Operation(summary = "查看任务列表接口", description = "返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @GetMapping("/tasks/taskCenter/tasks")//查看任务列表
+    public List<Tasks> taskCenterTasks(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -57,8 +64,11 @@ public class TasksController {
         }
     }
 
-    @GetMapping("/tasks/taskcenter/tasksfortaskname")//搜索任务名，查看任务列表
-    public List<Tasks> taskCenterTasksForTaskName(@RequestBody Tasks tasks,int offSet,int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
+    @Operation(summary = "搜索任务名，查看任务列表接口", description = "搜索任务名，返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @GetMapping("/tasks/taskCenter/tasksForTaskName")//搜索任务名，查看任务列表
+    public List<Tasks> taskCenterTasksForTaskName(@RequestBody Tasks tasks,@RequestParam int offSet,@RequestParam int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -90,8 +100,11 @@ public class TasksController {
         }
     }
 
-    @GetMapping("/tasks/taskcenter/tasksfortaskemployer")//搜索雇主，查看任务列表
-    public List<Tasks> taskCenterTasks(@RequestBody Tasks tasks,int offSet,int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
+    @Operation(summary = "搜索任务名，查看任务列表接口", description = "搜索雇主，返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @GetMapping("/tasks/taskCenter/tasksForTaskEmployer")//搜索雇主，查看任务列表
+    public List<Tasks> taskCenterTasks(@RequestBody Tasks tasks,@RequestParam int offSet,@RequestParam int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -123,8 +136,9 @@ public class TasksController {
         }
     }
 
-    @PostMapping("/tasks/taskcenter/register")//新建任务
-    public String registerTask(@RequestBody Users users, Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+    @Operation(summary = "新建任务接口", description = "返回201，新token")
+    @PostMapping("/tasks/taskCenter/register")//新建任务
+    public String registerTask(@RequestBody Users users,@RequestBody Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -132,8 +146,9 @@ public class TasksController {
         return TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @PostMapping("/tasks/taskcenter/changetask")//修改任务,id查找
-    public String taskCenterChangeTask(@RequestBody Users users,Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    @Operation(summary = "修改任务接口", description = "返回201，新token")
+    @PostMapping("/tasks/taskCenter/changeTask")//修改任务,id查找
+    public String taskCenterChangeTask(@RequestBody Users users,@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -141,8 +156,9 @@ public class TasksController {
         return TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @DeleteMapping("/tasks/taskcenter/deletetasks")//删除任务,id查找
-    public String taskCenterDeleteTask(@RequestBody Users users,Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    @Operation(summary = "删除任务接口", description = "返回201，新token")
+    @DeleteMapping("/tasks/taskCenter/deleteTasks")//删除任务,id查找
+    public String taskCenterDeleteTask(@RequestBody Users users,@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -150,7 +166,8 @@ public class TasksController {
         return TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @GetMapping("/tasks/taskcenter/findtask")//查看任务详情
+    @Operation(summary = "查看任务详情接口", description = "返回201，新token（藏在task对象里）")
+    @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
     public Object taskCenterFindTask(@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);

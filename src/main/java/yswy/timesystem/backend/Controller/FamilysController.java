@@ -1,5 +1,6 @@
 package yswy.timesystem.backend.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Familys;
 import yswy.timesystem.backend.Entity.Users;
@@ -23,8 +24,9 @@ public class FamilysController {
     @Resource
     private FamilysMapper familysMapper;
 
-    @PostMapping("/family/familycenter/createfamily")//创建家庭
-    public String registerFamily(@RequestBody Familys familys, Users users, HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "创建家庭接口", description = "user是操作人，对象，返回201，新token")
+    @PostMapping("/family/familyCenter/createFamily")//创建家庭
+    public String registerFamily(@RequestBody Familys familys,@RequestBody Users users, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -32,8 +34,9 @@ public class FamilysController {
         return  TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @PostMapping("/family/familycenter/changefamilyname")//修改家庭名称，id查找
-    public String familyCenterChangeFamilyName(@RequestBody Familys familys,Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "修改家庭名称接口", description = "user是操作人，对象，返回201，新token")
+    @PostMapping("/family/familyCenter/changeFamilyName")//修改家庭名称，id查找
+    public String familyCenterChangeFamilyName(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -41,8 +44,9 @@ public class FamilysController {
         return  TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @PostMapping("/family/familycenter/changehouseholder")//修改家庭主人，id查找
-    public String familyCenterChangeHouseHolder(@RequestBody Familys familys,Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "修改家庭主人接口", description = "user是操作人，对象，返回201，新token")
+    @PostMapping("/family/familyCenter/changeHouseHolder")//修改家庭主人，id查找
+    public String familyCenterChangeHouseHolder(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
@@ -50,8 +54,9 @@ public class FamilysController {
         return  TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @DeleteMapping("/family/familycenter/deletefamilys")//删除家庭,根据id
-    public String familyCenterDeleteFamilys(@RequestBody Familys familys,Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "删除家庭接口", description = "user是操作人，对象，返回201，新token")
+    @DeleteMapping("/family/familyCenter/deleteFamilys")//删除家庭,根据id
+    public String familyCenterDeleteFamilys(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
