@@ -5,35 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae7640e3-7342-4e38-9742-e18adb27fc0c" name="更改" comment="更新Swagger内容">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Config/GatewayConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Config/GatewayConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/FabricController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/FabricController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/FamilysController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/FamilysController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/FamilyusersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/FamilyusersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/LedgersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/LedgersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/TaskhistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/TaskhistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/TasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Admins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Admins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Familys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Familys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Familyusers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Familyusers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Ledgers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Ledgers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Taskhistorys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Taskhistorys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Tasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Tasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Entity/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/AdminsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/AdminsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/FamilysMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/FamilysMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/FamilyusersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/FamilyusersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/LedgersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/LedgersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/TaskhistorysMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/TaskhistorysMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/TasksMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/TasksMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Mapper/UsersMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Mapper/UsersMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Service/FabricServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Service/FabricServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/backend/Util/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/yswy/timesystem/backend/Util/TokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/backend/BackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/yswy/timesystem/backend/BackendApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,37 +43,37 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2dGoe6lfnbqfW0EgozWfGZ6gSq7" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "D:/chain/backend/crypto-config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2045977",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/chain/Timecoin-banking-system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2045977&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\chain\backend\crypto-config" />
@@ -167,6 +145,7 @@
       <workItem from="1710211851426" duration="24000" />
       <workItem from="1710211879419" duration="24101000" />
       <workItem from="1710388069347" duration="627000" />
+      <workItem from="1710390048619" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="更改">
       <option name="closed" value="true" />
