@@ -7,7 +7,7 @@ public class Users {
     private Integer userID;
     private String userName;
     private String userPassword;
-    private Byte userPhoto;
+    private byte[] userPhoto;
     private Integer userStatus;
     private String userPhoneNumber;
     private String userEmail;

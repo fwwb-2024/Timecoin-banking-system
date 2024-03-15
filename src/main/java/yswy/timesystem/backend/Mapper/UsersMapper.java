@@ -17,6 +17,10 @@ public interface UsersMapper {
     @Transactional
     void deleteUsers(Users users);
 
+    @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserPhotoByID(Users users);
+
     //修改用户个人信息，不包括密码、时间币余额、用户状态反馈，根据用户id查找
     @Update("update `users` set `user_name` = #{userName},`user_photo` = #{userPhoto},`user_status` = #{userStatus},`user_phone_number` = #{userPhoneNumber},`user_email` = #{userEmail},`user_id_number` = #{userIDNumber},`user_id_name` = #{userIDName},`user_age` = #{userAge},`user_sex` = #{userSex} where `user_id` = #{userID};")
     @Transactional

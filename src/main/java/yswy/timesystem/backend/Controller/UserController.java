@@ -1,6 +1,9 @@
 package yswy.timesystem.backend.Controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 
 import yswy.timesystem.backend.Util.TokenUtil;
@@ -11,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 import yswy.timesystem.backend.Entity.Users;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping
@@ -108,7 +113,9 @@ public class UserController {
         Users userReturn=usersMapper.selectForUsersByUserName(users.getUserName());
 
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
-        return userReturn;
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(userReturn);
     }
 
     @Operation(summary = "用户个人中心，修改用户数据接口", description = "返回201，新token，\"用户已存在\"，\"电话号已被注册\"，\"身份证号已被注册\"")
@@ -135,6 +142,22 @@ public class UserController {
 
         usersMapper.updateUsersByID(users);
         return TokenUtil.tokenServiceOne(users.getUserName());
+    }
+
+    @PostMapping("/user/userCenter/changeUserPhoto")//修改用户头像
+    public void userCenterChangeUserPhoto(@RequestParam("userPhoto") MultipartFile photo){
+        byte[] photoBytes = new byte[0];
+        try {
+            photoBytes = photo.getBytes();
+        } catch (IOException e) {
+            // 处理读取文件时的异常
+            e.printStackTrace();
+        }
+        Users users=new Users();
+        int i=1;
+        users.setUserID(i);
+        users.setUserPhoto(photoBytes);
+        System.out.println("ok");
     }
 
     @Operation(summary = "用户修改密码接口", description = "返回201，新token")
