@@ -16,15 +16,15 @@ public interface FamilyusersMapper {
     //删除家庭成员，根据家庭id和被删除的用户id查找
     @Delete("delete from `familyusers` where `family_id` = #{familyId} and `user_id` = #{userID};")
     @Transactional
-    void deleteFamilyusers(Familyusers familyusers);
+    void deleteFamilyusers(int familyID,int userID);
 
     //查看本人在多少家庭中，根据用户id查找
-    @Select("select * from `familyusers` where `user_id` = #{userId};")
+    @Select("select `family_user_id` as familyUserID,`family_id` as familyID,`user_id` as userID,`user_name` as userName from `familyusers` where `user_id` = #{userId};")
     @Transactional
-    List<Familyusers> selectFamilyusersByUserID(Familyusers familyusers);
+    List<Familyusers> selectFamilyusersByUserID(int userID);
 
     //查看家庭中的所有成员,根据家庭id
-    @Select(("select * from `familyusers` where `family_id` = #{familyId};"))
+    @Select(("select `family_user_id` as familyUserID,`family_id` as familyID,`user_id` as userID,`user_name` as userName from `familyusers` where `family_id` = #{familyId};"))
     @Transactional
-    List<Familyusers> selectFamilyusersByFamilyID(Familyusers familyusers);
+    List<Familyusers> selectFamilyusersByFamilyID(int familyID);
 }

@@ -15,7 +15,7 @@ public interface AdminsMapper {
     //删除管理员，根据id
     @Delete("delete from `admins` where `admin_id` = #{adminId};")
     @Transactional
-    void deleteAdmins(Admins admins);
+    void deleteAdmins(int adminID);
 
     //修改管理员个人信息，不包括密码、权限，根据id查找
     @Update("update `admins` set `admin_name` = #{adminName} where `admin_id` = #{adminID};")
@@ -43,7 +43,7 @@ public interface AdminsMapper {
     int selectAdminNameAdminPasswordSame(String adminName,String adminPassword);
 
     //查找管理员个人信息,不包括密码,通过用户名
-    @Select("select `admin_id`,`admin_name`,`admin_previliege` from `admins` where `admin_name` = #{adminName};")
+    @Select("select `admin_id` as adminID,`admin_name` as adminName,`admin_previliege` as adminPreviliege from `admins` where `admin_name` = #{adminName};")
     @Transactional
     Admins selectForAdminsByAdminName(String adminName);
 }

@@ -15,7 +15,7 @@ public interface TasksMapper {
     //删除任务
     @Delete("delete from `tasks` where `task_id` = #{taskId};")
     @Transactional
-    void deleteTasksByTaskID(Tasks tasks);
+    void deleteTasksByTaskID(int taskID);
 
     //修改任务,id查找
     @Update("update `tasks` set `task_name`= #{taskName}, `task_employer`= # {taskEmployer}, `task_address`=#{taskAddress},`task_detail`=#{taskDetail},`task_brief`=#{taskBrief},`task_begin_time`=#{taskBeginTime},`task_end_time`=#{taskEndTime},`task_time_coin_bounty`=#{taskTimeCoinBounty} where `task_id` = #{taskID};")
@@ -23,173 +23,173 @@ public interface TasksMapper {
     void updateTasksByTaskID(Tasks tasks);
 
     //全局查找，根据任务id顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_id asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_id asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskIDAsc(int offSet);
 
     //全局查找，根据任务名顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_name asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_name asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskNameAsc(int offSet);
 
     //全局查找，根据任务名逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_name desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_name desc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskNameDesc(int offSet);
 
     //全局查找，根据雇主顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_employer asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_employer asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskEmployerAsc(int offSet);
 
     //全局查找，根据雇主逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_employer desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_employer desc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskEmployerDesc(int offSet);
 
     //全局查找，根据开始时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_begin_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_begin_time asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskBeginTimeAsc(int offSet);
 
     //全局查找，根据开始时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_begin_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_begin_time desc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskBeginTimeDesc(int offSet);
 
     //全局查找，根据结束时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_end_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_end_time asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskEndTimeAsc(int offSet);
 
     //全局查找，根据结束时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_end_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_end_time desc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskEndTimeDesc(int offSet);
 
     //全局查找，根据时间币悬赏顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_time_coin_bounty asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_time_coin_bounty asc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskTimeCoinBountyAsc(int offSet);
 
     //全局查找，根据时间币悬赏逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` order by task_time_coin_bounty desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` order by task_time_coin_bounty desc limit 10 offset #{offSet};")
     @Transactional
     List<Tasks> selectAbstractTasksByTaskTimeCoinBountyDesc(int offSet);
 
     //根据任务名查找，根据id顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_id asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_id asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskID(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskID(String taskName,int offSet);
 
     //根据任务名查找，根据任务名顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_name asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_name asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskName(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskName(String taskName,int offSet);
 
     //根据任务名查找，根据任务名逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_name desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_name desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameDescTaskName(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameDescTaskName(String taskName,int offSet);
 
     //根据任务名查找，根据雇主顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_employer asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_employer asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskEmployer(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskEmployer(String taskName,int offSet);
 
     //根据任务名查找，根据雇主逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_employer desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_employer desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameDescTaskEmployer(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameDescTaskEmployer(String taskName,int offSet);
 
     //根据任务名查找，根据开始时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_begin_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_begin_time asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskBeginTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskBeginTime(String taskName,int offSet);
 
     //根据任务名查找，根据开始时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_begin_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_begin_time desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameDescTaskBeginTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameDescTaskBeginTime(String taskName,int offSet);
 
     //根据任务名查找，根据结束时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_end_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_end_time asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskEndTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskEndTime(String taskName,int offSet);
 
     //根据任务名查找，根据结束时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_end_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_end_time desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameDescTaskEndTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameDescTaskEndTime(String taskName,int offSet);
 
     //根据任务名查找，根据时间币悬赏顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_time_coin_bounty asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_time_coin_bounty asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameAscTaskTimeCoinBounty(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameAscTaskTimeCoinBounty(String taskName,int offSet);
 
     //根据任务名查找，根据时间币悬赏逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_time_coin_bounty desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_name like concat('%', #{taskName}, '%') order by task_time_coin_bounty desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskNameDescTaskTimeCoinBounty(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskNameDescTaskTimeCoinBounty(String taskName,int offSet);
 
     //根据雇主查找，根据id顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_id asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_id asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskID(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskID(String taskEmployer,int offSet);
 
     //根据雇主查找，根据任务名顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_name asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_name asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskName(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskName(String taskEmployer,int offSet);
 
     //根据雇主查找，根据任务名逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_name desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_name desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskName(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskName(String taskEmployer,int offSet);
 
     //根据雇主查找，根据雇主顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_employer asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_employer asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskEmployer(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskEmployer(String taskEmployer,int offSet);
 
     //根据雇主查找，根据雇主逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_employer desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_employer desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskEmployer(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskEmployer(String taskEmployer,int offSet);
 
     //根据雇主查找，根据开始时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_begin_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_begin_time asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskBeginTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskBeginTime(String taskEmployer,int offSet);
 
     //根据雇主查找，根据开始时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_begin_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_begin_time desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskBeginTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskBeginTime(String taskEmployer,int offSet);
 
     //根据雇主查找，根据结束时间顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_end_time asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_end_time asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskEndTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskEndTime(String taskEmployer,int offSet);
 
     //根据雇主查找，根据结束时间逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_end_time desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_end_time desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskEndTime(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskEndTime(String taskEmployer,int offSet);
 
     //根据雇主查找，根据时间币悬赏顺序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_time_coin_bounty asc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_time_coin_bounty asc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskTimeCoinBounty(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerAscTaskTimeCoinBounty(String taskEmployer,int offSet);
 
     //根据雇主查找，根据时间币悬赏逆序排序,一次查10个，查第offSet后面的10个
-    @Select("select `task_id`,`task_name`,`task_employer`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`,`task_brief` from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_time_coin_bounty desc limit 10 offset #{offSet};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief from `tasks` where task_employer like concat('%', #{taskEmployer}, '%') order by task_time_coin_bounty desc limit 10 offset #{offSet};")
     @Transactional
-    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskTimeCoinBounty(Tasks tasks,int offSet);
+    List<Tasks> selectAbstractTasksByTaskEmployerDescTaskTimeCoinBounty(String taskEmployer,int offSet);
 
     //查看任务详情，id查找
-    @Select("select * from `tasks` where `task_id` = #{taskID};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_address` as taskAddress,`task_detail` as taskDetail,`task_brief` as taskBrief,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_visited_number` as taskVisitedNumber,`task_status` as taskStatus from `tasks` where `task_id` = #{taskID};")
     @Transactional
-    Tasks selectTasksByTaskID(Tasks tasks);
+    Tasks selectTasksByTaskID(int taskID);
 
 }

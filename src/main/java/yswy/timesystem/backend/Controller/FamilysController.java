@@ -1,6 +1,7 @@
 package yswy.timesystem.backend.Controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Familys;
 import yswy.timesystem.backend.Entity.Users;
@@ -24,44 +25,51 @@ public class FamilysController {
     @Resource
     private FamilysMapper familysMapper;
 
-    @Operation(summary = "创建家庭接口", description = "user是操作人，对象，返回201，新token")
+    @Operation(summary = "创建家庭接口", description = "，返回201，家庭id")
+    @Parameter(name = "houseHolder", description = "id", example = "123")
+    @Parameter(name = "familyName", description = "家庭名", example = "string")
     @PostMapping("/family/familyCenter/createFamily")//创建家庭
-    public String registerFamily(@RequestBody Familys familys,@RequestBody Users users, HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    public int registerFamily(@RequestBody Familys familys, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.insertRegister(familys);
-        return  TokenUtil.tokenServiceOne(users.getUserName());
+        return  familysMapper.selectFamilyIDByFamilyNameAndHouseHolder(familys);
     }
 
-    @Operation(summary = "修改家庭名称接口", description = "user是操作人，对象，返回201，新token")
+    @Operation(summary = "修改家庭名称接口", description = "，返回201，\"修改成功\"")
+    @Parameter(name = "familyID", description = "id", example = "123")
+    @Parameter(name = "familyName", description = "家庭名", example = "string")
     @PostMapping("/family/familyCenter/changeFamilyName")//修改家庭名称，id查找
-    public String familyCenterChangeFamilyName(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    public String familyCenterChangeFamilyName(@RequestBody Familys familys,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.updateFamilyNameByFamilyID(familys);
-        return  TokenUtil.tokenServiceOne(users.getUserName());
+        return  "修改成功";
     }
 
-    @Operation(summary = "修改家庭主人接口", description = "user是操作人，对象，返回201，新token")
+    @Operation(summary = "修改家庭主人接口", description = "，返回201，\"修改成功\"")
+    @Parameter(name = "familyID", description = "id", example = "123")
+    @Parameter(name = "houseHolder", description = "家庭主人", example = "123")
     @PostMapping("/family/familyCenter/changeHouseHolder")//修改家庭主人，id查找
-    public String familyCenterChangeHouseHolder(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    public String familyCenterChangeHouseHolder(@RequestBody Familys familys,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.updateHouseHolderByFamilyID(familys);
-        return  TokenUtil.tokenServiceOne(users.getUserName());
+        return  "修改成功";
     }
 
-    @Operation(summary = "删除家庭接口", description = "user是操作人，对象，返回201，新token")
-    @DeleteMapping("/family/familyCenter/deleteFamilys")//删除家庭,根据id
-    public String familyCenterDeleteFamilys(@RequestBody Familys familys,@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+    @Operation(summary = "删除家庭接口", description = "，返回201，\"删除成功\"")
+    @Parameter(name = "familyID", description = "id", example = "123")
+    @GetMapping("/family/familyCenter/deleteFamilys")//删除家庭,根据id
+    public String familyCenterDeleteFamilys(@RequestParam int familyID,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        familysMapper.deleteFamilys(familys);
-        return  TokenUtil.tokenServiceOne(users.getUserName());
+        familysMapper.deleteFamilys(familyID);
+        return  "删除成功";
     }
 
 }

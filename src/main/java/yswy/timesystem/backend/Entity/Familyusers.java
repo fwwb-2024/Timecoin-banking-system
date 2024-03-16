@@ -7,6 +7,5 @@ public class Familyusers {
     private Integer familyUserID;
     private Integer familyID;
     private Integer userID;
-
-
+    private String userName;
 }

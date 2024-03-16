@@ -16,7 +16,7 @@ public interface FamilysMapper {
     //删除家庭
     @Delete("delete from `familys` where `family_id` = #{familyId};")
     @Transactional
-    void deleteFamilys(Familys familys);
+    void deleteFamilys(int familyID);
 
     //修改家庭名称，id查找
     @Update("update `familys` set `family_name` = #{familyName} where `family_id` = #{familyID};")
@@ -28,4 +28,7 @@ public interface FamilysMapper {
     @Transactional
     void updateHouseHolderByFamilyID(Familys familys);
 
+    @Select("select family_id from `familys` where `family_name` = #{familyName} and `house_holder` = #{houseHolder};")
+    @Transactional
+    int selectFamilyIDByFamilyNameAndHouseHolder(Familys familys);
 }

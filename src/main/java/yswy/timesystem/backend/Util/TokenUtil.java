@@ -65,16 +65,24 @@ public class TokenUtil {
         Map<String, Object> tokenData = objectMapper.readValue(jsonTokenData, java.util.Map.class);
 
         // 检查token是否过期
-        long expirationTime = (Long) tokenData.get("exp");
+        Number expirationNumber = (Number) tokenData.get("exp"); // 获取Number类型的值
+        if (expirationNumber == null) {
+            // 处理exp不存在的情况
+            return false;
+        }
+        long expirationTime = expirationNumber.longValue(); // 安全地转换为long
         if (Instant.now().getEpochSecond() > expirationTime) {
             return false;
         }
-
         // 使用公钥验证签名
         Signature publicSignature = Signature.getInstance("SHA256withRSA");
         publicSignature.initVerify(publicKey);
         publicSignature.update(decodedTokenData);
-        return publicSignature.verify(decodedSignature);
+        boolean isVerified=publicSignature.verify(decodedSignature);
+        if (!isVerified) {
+            return true;
+        }
+        return false;
     }
 
 

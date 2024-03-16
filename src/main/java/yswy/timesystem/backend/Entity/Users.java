@@ -7,7 +7,7 @@ public class Users {
     private Integer userID;
     private String userName;
     private String userPassword;
-    private byte[] userPhoto;
+    private String userPhoto;
     private Integer userStatus;
     private String userPhoneNumber;
     private String userEmail;
@@ -18,4 +18,7 @@ public class Users {
     private String userStatusRemark;
     private String userSex;
     private String token;
+
+
 }
+

@@ -15,7 +15,7 @@ public interface UsersMapper {
     //注销用户，根据id
     @Delete("delete from `users` where `user_id` = #{userId}")
     @Transactional
-    void deleteUsers(Users users);
+    void deleteUsers(int userID);
 
     @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
     @Transactional
@@ -29,12 +29,22 @@ public interface UsersMapper {
     //修改用户密码，根据用户id查找
     @Update("update `users` set `user_password` = #{userPassword} where `user_id` = #{userID};")
     @Transactional
-    void updateUserPasswordByID(Users users);
+    void updateUserPasswordByID(int userID,String userPassword);
 
     //查找用户id，通过用户名查找
     @Select("select `user_id` from `users` where `user_name` = #{userName};")
     @Transactional
     int selectForUserIDByUserName(String userName);
+
+    //查找用户名，通过电话查找
+    @Select("select `user_name` from `users` where `user_phone_number` = #{userPhoneNumber};")
+    @Transactional
+    String selectForUserNameByUserPhoneNumber(String userPhoneNumber);
+
+    //查找用户名，通过身份证号查找
+    @Select("select `user_name` from `users` where `user_id_number` = #{userIDNumber};")
+    @Transactional
+    String selectForUserNameByUserIDNumber(String userIDNumber);
 
     //查找同一用户名的人数
     @Select("select count(*) from `users` where `user_name` = #{userName};")
@@ -54,7 +64,7 @@ public interface UsersMapper {
     //查找用户时间币余额，通过用户名查找
     @Select("select `user_time_coin` from `users` where `user_name` = #{userName};")
     @Transactional
-    Users selectForUserTimeCoinByUserName(String userName);
+    int selectForUserTimeCoinByUserName(String userName);
 
     //查找同一用户名、密码的人数
     @Select("select count(*) from `users` where `user_name` = #{userName} and `user_password` = #{userPassword};")
@@ -72,7 +82,7 @@ public interface UsersMapper {
     String selectForUserNameByUserIDNumberUserPasswordSame(String userIDNumber,String userPassword);
 
     //查找用户个人信息，不包含密码、时间币余额、用户状态反馈，根据用户名查找
-    @Select("select `user_id`,`user_name`,`user_photo`,`user_status`,`user_phone_number`,`user_email`,`user_id_number`,`user_id_name`,`user_age`,`user_sex` from `users` where `user_name` = #{userName};")
+    @Select("select `user_id` as userID,`user_name` as userName,`user_photo` as userPhoto,`user_status` as userStatus,`user_phone_number` as userPhoneNumber,`user_email` as userEmail,`user_id_number` as userIDNumber,`user_id_name` as userIDName,`user_age` as userAge,`user_sex` as userSex from `users` where `user_name` = #{userName};")
     @Transactional
     Users selectForUsersByUserName(String userName);
 
