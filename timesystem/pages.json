@@ -1,0 +1,135 @@
+{
+	//路由页面的配置
+	"pages": [{
+		//主页注册
+		"path": "pages/index/index",
+		"style": {
+				"navigationBarTitleText": "主页",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//我的任务注册
+		"path": "pages/mymission/myMission",
+		"style": {
+				"navigationBarTitleText": "我的任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//新增任务注册
+		"path": "pages/mymission/newMission",
+		"style": {
+				"navigationBarTitleText": "新增任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//个人中心注册
+		"path": "pages/personal/personal",
+		"style": {
+				"navigationBarTitleText": "个人中心",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//搜索注册
+		"path": "pages/index/search",
+		"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//关于我们注册
+		"path": "pages/personal/aboutUs",
+		"style": {
+				"navigationBarTitleText": "关于我们",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//账号信息注册
+		"path": "pages/personal/accountData",
+		"style": {
+				"navigationBarTitleText": "账号信息",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//家庭详情注册
+		"path": "pages/personal/familyDetail",
+		"style": {
+				"navigationBarTitleText": "家庭详情",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//家庭管理注册
+		"path": "pages/personal/familyList",
+		"style": {
+				"navigationBarTitleText": "家庭管理",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//时间币管理注册
+		"path": "pages/personal/timeCoinData",
+		"style": {
+				"navigationBarTitleText": "时间币管理",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//登录注册
+		"path": "pages/login",
+		"style": {
+				"navigationBarTitleText": "登录",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//任务详情注册
+		"path": "pages/missionDetail",
+		"style": {
+				"navigationBarTitleText": "任务详情",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏
+				}  
+		}}
+	],
+	//全局样式的配置
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "时间银行系统",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4",
+			"scrollIndicator":"none"
+		}
+	},
+	//底部菜单的配置
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#e16531",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/buttompicture/buttompic1.png",
+			"selectedIconPath": "static/buttompicture/selectbuttompic1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/mymission/myMission",
+			"iconPath": "static/buttompicture/buttompic2.png",
+			"selectedIconPath": "static/buttompicture/selectbuttompic2.png",
+			"text": "我的任务"
+		},{
+			"pagePath": "pages/personal/personal",
+			"iconPath": "static/buttompicture/buttompic3.png",
+			"selectedIconPath": "static/buttompicture/selectbuttompic3.png",
+			"text": "个人中心"
+		}]
+	}
+}
