@@ -6,7 +6,7 @@ import lombok.Data;
 public class Tasks {
     private Integer taskID;
     private String taskName;
-    private Integer taskEmployer;
+    private String taskEmployer;
     private String taskAddress;
     private String taskDetail;
     private String taskBrief;

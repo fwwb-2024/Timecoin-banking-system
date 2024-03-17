@@ -27,7 +27,118 @@ public class TasksController {
     @Resource
     private TasksMapper tasksMapper;
 
-    @Operation(summary = "查看任务列表接口", description = "返回201，一串tasks对象")
+    @Operation(summary = "管理员查看任务列表接口", description = "返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @GetMapping("/tasks/taskCenter/tasksAdmin")//查看任务列表
+    public List<Tasks> taskCenterTasksAdmin(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
+
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        switch (chooses) {
+            case 1:
+                return tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
+            case 2:
+                return tasksMapper.selectAbstractTasksByTaskNameAscAdmin(offSet);
+            case 3:
+                return tasksMapper.selectAbstractTasksByTaskNameDescAdmin(offSet);
+            case 4:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscAdmin(offSet);
+            case 5:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescAdmin(offSet);
+            case 6:
+                return tasksMapper.selectAbstractTasksByTaskBeginTimeAscAdmin(offSet);
+            case 7:
+                return tasksMapper.selectAbstractTasksByTaskBeginTimeDescAdmin(offSet);
+            case 8:
+                return tasksMapper.selectAbstractTasksByTaskEndTimeAscAdmin(offSet);
+            case 9:
+                return tasksMapper.selectAbstractTasksByTaskEndTimeDescAdmin(offSet);
+            case 10:
+                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAscAdmin(offSet);
+            case 11:
+                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDescAdmin(offSet);
+            default:
+                return tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
+        }
+    }
+
+    @Operation(summary = "管理员搜索任务名，查看任务列表接口", description = "搜索任务名，返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @Parameter(name = "taskName", description = "任务名", example = "string")
+    @GetMapping("/tasks/taskCenter/tasksForTaskNameAdmin")//搜索任务名，查看任务列表
+    public List<Tasks> taskCenterTasksForTaskNameAdmin(@RequestParam String taskName,@RequestParam int offSet,@RequestParam int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        switch (chooses) {
+            case 1:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
+            case 2:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskNameAdmin(taskName,offSet);
+            case 3:
+                return tasksMapper.selectAbstractTasksByTaskNameDescTaskNameAdmin(taskName,offSet);
+            case 4:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployerAdmin(taskName,offSet);
+            case 5:
+                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployerAdmin(taskName,offSet);
+            case 6:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTimeAdmin(taskName,offSet);
+            case 7:
+                return tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTimeAdmin(taskName,offSet);
+            case 8:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTimeAdmin(taskName,offSet);
+            case 9:
+                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTimeAdmin(taskName,offSet);
+            case 10:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBountyAdmin(taskName,offSet);
+            case 11:
+                return tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBountyAdmin(taskName,offSet);
+            default:
+                return tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
+        }
+    }
+
+    @Operation(summary = "管理员搜索任务名，查看任务列表接口", description = "搜索雇主，返回201，一串tasks对象")
+    @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @Parameter(name = "taskEmployer", description = "雇主", example = "string")
+    @GetMapping("/tasks/taskCenter/tasksForTaskEmployerAdmin")//搜索雇主，查看任务列表
+    public List<Tasks> taskCenterTasksAdmin(@RequestParam String taskEmployer,@RequestParam int offSet,@RequestParam int chooses,HttpServletRequest request,HttpServletResponse responce)throws Exception{
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        switch (chooses) {
+            case 1:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
+            case 2:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskNameAdmin(taskEmployer,offSet);
+            case 3:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskNameAdmin(taskEmployer,offSet);
+            case 4:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployerAdmin(taskEmployer,offSet);
+            case 5:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployerAdmin(taskEmployer,offSet);
+            case 6:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTimeAdmin(taskEmployer,offSet);
+            case 7:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTimeAdmin(taskEmployer,offSet);
+            case 8:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTimeAdmin(taskEmployer,offSet);
+            case 9:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTimeAdmin(taskEmployer,offSet);
+            case 10:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBountyAdmin(taskEmployer,offSet);
+            case 11:
+                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBountyAdmin(taskEmployer,offSet);
+            default:
+                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
+        }
+    }
+
+    @Operation(summary = "用户查看任务列表接口", description = "只看未完成，返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
     @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
     @GetMapping("/tasks/taskCenter/tasks")//查看任务列表
@@ -64,7 +175,7 @@ public class TasksController {
         }
     }
 
-    @Operation(summary = "搜索任务名，查看任务列表接口", description = "搜索任务名，返回201，一串tasks对象")
+    @Operation(summary = "用户搜索任务名，查看任务列表接口", description = "只看未完成搜索任务名，返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
     @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
     @Parameter(name = "taskName", description = "任务名", example = "string")
@@ -101,7 +212,7 @@ public class TasksController {
         }
     }
 
-    @Operation(summary = "搜索任务名，查看任务列表接口", description = "搜索雇主，返回201，一串tasks对象")
+    @Operation(summary = "用户搜索任务名，查看任务列表接口", description = "只看未完成，搜索雇主，返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
     @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
     @Parameter(name = "taskEmployer", description = "雇主", example = "string")

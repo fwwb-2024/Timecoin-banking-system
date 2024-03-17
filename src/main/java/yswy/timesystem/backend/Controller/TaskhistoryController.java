@@ -28,7 +28,7 @@ public class TaskhistoryController {
     @Operation(summary = "查看任务历史接口", description = "返回201，一串taskhistorys对象")
     @Parameter(name = "userID", description = "id", example = "123")
     @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
-    @GetMapping("/taskhistory/taskCenter/findTaskhisory")//查看任务历史，用户id,查找
+    @GetMapping("/taskhistory/taskCenter/findTaskhistory")//查看任务历史，用户id,查找
     public List<Taskhistorys> taskCenterFindTaskHistory(@RequestParam int userID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
