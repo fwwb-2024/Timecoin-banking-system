@@ -3,11 +3,11 @@
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 头像图片 -->
-			<view class="header-image" @click="navTo('/pages/login')">
+			<view class="header-image" @click="navTo('/pages/personal/accountData')">
 				<image :src="headerImage"></image>
 			</view>
 			<!-- 用户名 -->
-			<view class="head-text" @click="navTo('/pages/login')">
+			<view class="head-text" @click="navTo('/pages/personal/accountData')">
 				<text>{{username}}</text>
 			</view>
 		</view>
@@ -86,15 +86,14 @@
 			}
 		},
 		created: function(){
-			try {
-				const value = uni.getStorageSync('position');
-				if (value) {
-					this.nowPersonlStatus = value;
-				}
-			} catch (e) {
-				uni.reLaunch({
-					url: '/pages/404'
-				});
+			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
+				this.headerImage = res.data.userPhoto
+				this.username = res.data.userName
+			})
+			
+			 const value = uni.getStorageSync('position');
+			if (value) {
+				this.nowPersonlStatus = value;
 			}
 		},
 		methods: {

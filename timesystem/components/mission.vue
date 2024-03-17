@@ -19,7 +19,7 @@
 		</view>
 		<!-- 任务状态 -->
 		<view class="mission-status" v-show="missionData.statusShow">
-			<text>{{missionData.status}}</text>
+			<text>{{status}}</text>
 		</view>
 		<!-- 任务发布者信息 -->
 		<view class="mission-publisher">
@@ -42,8 +42,9 @@
 		props:['missionData'],
 		data() {
 			return {
-				//missionData内容说明
-				//
+				status:'',
+				// missionData内容说明
+				
 				// missionData: {
 				// 	title:'任务标题',
 				// 	introduction:'任务简介',
@@ -51,11 +52,23 @@
 				// 	publisher:{
 				// 		username:'发布者',
 				// 		headpicture:'头像',
-				//	}
+				// 	}
 				// 	endTime:'截止时间',
 				//  statusShow:true 是否显示任务状态
 				//  status:'任务状态'
 				// }
+			}
+		},
+		created:function(){
+			switch(this.missionData.status) {
+				case 1:this.status = '未审核';break;
+				case 2:this.status = '未完成';break;
+				case 3:this.status = '已接取';break;
+				case 4:this.status = '已处理';break;
+				case 5:this.status = '已完成';break;
+				case 6:this.status = '已完结';break;
+				case 7:this.status = '已取消';break;
+				default: break;
 			}
 		}
 	}

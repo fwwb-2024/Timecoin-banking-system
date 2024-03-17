@@ -27,7 +27,7 @@
 			</view>
 			
 			
-			<!-- 需求者 -->
+			<!-- 发布者 -->
 			<view class="header-select" v-show="!position">
 				<!-- 已发布 -->
 				<view class="header-select-front" @click="function(){if(!headOption){headOption=!headOption}}">
@@ -51,14 +51,14 @@
 				</view>
 			</view>
 		</view>
-		
+		<image @click="navTo('/pages/mymission/newMission')" src="@/static/add.png" style="position: fixed; width: 50rpx;height: 50rpx; left: 325rpx;top: 80rpx;" v-show="!position"></image>
 		<!-- 任务主体页面 -->
 		<!-- 志愿者 -->
 		<view v-show="position">
 			<!-- 任务列表 -->
 			<view v-if="headOption">
 				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-					<view class="mission-list-element">
+					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -67,7 +67,7 @@
 			<!-- 历史任务列表 -->
 			<view v-if="!headOption">
 				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-					<view class="mission-list-element">
+					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -80,7 +80,7 @@
 			<!-- 任务列表 -->
 			<view v-if="headOption">
 				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-					<view class="mission-list-element">
+					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -89,7 +89,7 @@
 			<!-- 历史任务列表 -->
 			<view v-if="!headOption">
 				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-					<view class="mission-list-element">
+					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -108,48 +108,9 @@
 				//顶部选项栏的显示，true为显示第一个
 				headOption:true,
 				// 渲染的任务列表数据
-				missionDataList:[
-					//传给任务组件的值
-					{
-						title:'任务标题',
-						introduction:'任务简介',
-						timeCoins:100,
-						publisher:{
-							username:'官方发布者',
-							headpicture:'/static/headpic.jpg',
-						},
-						endTime:'2024.3.20',
-						statusShow:true,
-						status:'未完成',
-					},
-				],
+				missionDataList:[],
 				// 渲染的历史任务列表数据
-				historyMissionDataList:[
-					//传给任务组件的值
-					{
-						title:'任务标题',
-						introduction:'任务简介',
-						timeCoins:100,
-						publisher:{
-							username:'官方发布者',
-							headpicture:'/static/headpic.jpg',
-						},
-						endTime:'2024.3.20',
-						statusShow:true,
-						status:'已完成',
-					},{
-						title:'任务标题',
-						introduction:'任务简介',
-						timeCoins:100,
-						publisher:{
-							username:'官方发布者',
-							headpicture:'/static/headpic.jpg',
-						},
-						endTime:'2024.3.20',
-						statusShow:true,
-						status:'已取消',
-					},
-				],
+				historyMissionDataList:[],
 			}
 		},
 		created: function() {
@@ -163,12 +124,148 @@
 					this.position = false
 				}
 			} catch (e) {
-				uni.reLaunch({
-					url: '/pages/404'
+				uni.showToast({
+					title: '登录已过期',
+					icon:'error',
+					duration: 1000
 				});
+				setTimeout(function() {
+				    uni.reLaunch({
+				    	url:'/pages/login'
+				    })
+				}, 1000);
 			}
+			
+			this.reload()
 		},
 		methods: {
+			reload() {
+				// 如果是发布者
+				if(!this.position) {
+					// 加载当前任务列表
+					this.$api.getTaskNow_2(uni.getStorageSync('userID'),0).then((res)=>{
+						console.log(res);
+						const length = res.data.length
+						let temp = {
+							taskID:null,
+							title:'',
+							introduction:'',
+							timeCoins:null,
+							publisher:{
+								username:'',
+								headpicture:'',
+							},
+							endTime:'',
+							statusShow:true,
+							status:'',
+						}
+						for(let i=0;i<length;i++) {
+							// temp.taskID = res.data[i].taskID
+							temp.taskID = res.data[i].taskID
+							temp.title = res.data[i].taskName
+							temp.introduction = res.data[i].taskBrief
+							temp.timeCoins = res.data[i].taskTimeCoinBounty
+							temp.publisher.username = res.data[i].taskEmployer
+							// publisher.headpicture = temp.
+							temp.endTime = res.data[i].taskEndTime
+							temp.status = res.data[i].taskStatus
+							this.missionDataList.push(temp)
+						}
+					})
+					// 加载历史任务列表
+					this.$api.getTaskHistory_2(uni.getStorageSync('userID'),0).then((res)=>{
+						const length = res.data.length
+						let temp = {
+							taskID:null,
+							title:'',
+							introduction:'',
+							timeCoins:null,
+							publisher:{
+								username:'',
+								headpicture:'',
+							},
+							endTime:'',
+							statusShow:true,
+							status:'',
+						}
+						for(let i=0;i<length;i++) {
+							// temp.taskID = res.data[i].taskID
+							temp.taskID = res.data[i].taskID
+							temp.title = res.data[i].taskName
+							temp.introduction = res.data[i].taskBrief
+							temp.timeCoins = res.data[i].taskTimeCoinBounty
+							temp.publisher.username = res.data[i].taskEmployer
+							// publisher.headpicture = temp.
+							temp.endTime = res.data[i].taskEndTime
+							temp.status = res.data[i].taskStatus
+							this.historyMissionDataList.push(temp)
+						}
+					})
+				}
+				// 如果是志愿者
+				else {
+					// 加载当前任务列表
+					this.$api.getTaskNow_1(uni.getStorageSync('userID'),0).then((res)=>{
+						const length = res.data.length
+						let temp = {
+							taskID:null,
+							title:'',
+							introduction:'',
+							timeCoins:null,
+							publisher:{
+								username:'',
+								headpicture:'',
+							},
+							endTime:'',
+							statusShow:true,
+							status:'',
+						}
+						for(let i=0;i<length;i++) {
+							// temp.taskID = res.data[i].taskID
+							temp.taskID = res.data[i].taskID
+							temp.title = res.data[i].taskName
+							temp.introduction = res.data[i].taskBrief
+							temp.timeCoins = res.data[i].taskTimeCoinBounty
+							temp.publisher.username = res.data[i].taskEmployer
+							// publisher.headpicture = temp.
+							temp.endTime = res.data[i].taskEndTime
+							temp.status = res.data[i].taskStatus
+							this.missionDataList.push(temp)
+						}
+					})
+					// 加载历史任务列表
+					this.$api.getTaskHistory_1(uni.getStorageSync('userID'),0).then((res)=>{
+						const length = res.data.length
+						let temp = {
+							title:'',
+							introduction:'',
+							timeCoins:null,
+							publisher:{
+								username:'',
+								headpicture:'',
+							},
+							endTime:'',
+							statusShow:true,
+							status:'',
+						}
+						for(let i=0;i<length;i++) {
+							temp.title = res.data[i].taskName
+							temp.introduction = res.data[i].taskBrief
+							temp.timeCoins = res.data[i].taskTimeCoinBounty
+							temp.publisher.username = res.data[i].taskEmployer
+							// publisher.headpicture = temp.
+							temp.endTime = res.data[i].taskEndTime
+							temp.status = res.data[i].taskStatus
+							this.historyMissionDataList.push(temp)
+						}
+					})
+				}
+			},
+			navTo(url) {
+				uni.navigateTo({
+					url,
+				})
+			}
 		},
 		components: {
 			mission,
@@ -210,7 +307,6 @@
 		font-size: 35rpx;
 		color: white;
 	}
-	
 	.mission-list {
 		background-color: white;
 	}

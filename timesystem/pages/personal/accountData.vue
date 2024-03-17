@@ -14,7 +14,7 @@
 		<!-- 账号详情 -->
 		<view class="accountdata">
 			<!-- 头像 -->
-			<view class="accountdata-headpic line">
+			<view class="accountdata-headpic line" @click="uploadHeadpic">
 				<view>
 					<text>头像</text>
 				</view>
@@ -28,16 +28,16 @@
 					<text>账号</text>
 				</view>
 				<view class="accountdata-account-after">
-					<text>用户</text>
+					<text>{{userName}}</text>
 				</view>
 			</view>
 			<!-- 地址 -->
 			<view class="accountdata-account line">
 				<view class="accountdata-account-front">
-					<text>地址</text>
+					<text>邮箱</text>
 				</view>
 				<view class="accountdata-address-after">
-					<text>河海大学佛城西路</text>
+					<text>{{userEmail}}</text>
 				</view>
 			</view>
 			<!-- 手机号 -->
@@ -46,7 +46,7 @@
 					<text>手机号</text>
 				</view>
 				<view class="accountdata-phonenumber-after">
-					<text>13195630111</text>
+					<text>{{phoneNumber}}</text>
 				</view>
 			</view>
 			<!-- 实名认证 -->
@@ -58,17 +58,31 @@
 					<text>已完成</text>
 				</view>
 			</view>
+			<!-- 切换账号 -->
+			<button style="width: 100%;" @click="navTo('/pages/login')">切换账号</button>
 		</view>
 	</view>
 </template>
 
 <script>
+import http from '../../api/request';
 	export default {
 		data() {
 			return {
 				// 头像图片
 				headerImage:'/static/headpic.jpg',
+				userName:'',
+				userEmail:'',
+				phoneNumber:'',
 			}
+		},
+		created:function(){
+			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
+				this.headerImage = res.data.userPhoto
+				this.userName = res.data.userName
+				this.userEmail = res.data.userEmail
+				this.phoneNumber = res.data.userPhoneNumber
+			})
 		},
 		methods: {
 			//返回上一级页面
@@ -76,7 +90,73 @@
 				uni.navigateBack({
 					delta:1
 				})
-			}
+			},
+			navTo(url){
+				uni.navigateTo({
+					url,
+				})
+			},
+			uploadHeadpic(){
+				// 选择图片并且上传
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original'],
+					sourceType: ['album','camera'], 
+					success: (chooseImageRes)=>{
+						const tempFilePaths = chooseImageRes.tempFilePaths[0];
+						this.headerImage = tempFilePaths
+						const file = new File([tempFilePaths], 'image.jpg');
+						// 上传头像图片
+						uni.uploadFile({
+						  url: 'http://10.195.28.44:9090/user/userCenter/changeUserPhoto', 
+						  filePath: tempFilePaths,
+						  name: 'file', 
+						  formData: {
+						    userID: uni.getStorageSync('userID'),
+						  },
+						  header: {
+							  'Authorization': uni.getStorageSync('token')
+						  },
+						  success: (uploadRes) => {
+							  // token正确则更新token
+							  if(uploadRes.statusCode == 200) {
+							  	if(uploadRes.data.token){
+							  		uni.setStorage({
+							  			key: 'token',
+							  			data: uploadRes.data.token,
+							  		});
+							  	}
+							  }
+							  // 否则重新登陆
+							  else if(uploadRes.statusCode == 201) {
+							  	uni.showToast({
+							  		title: '登录已过期',
+							  		icon:'error',
+							  		duration: 1000
+							  	});
+							  	setTimeout(function() {
+							  	    uni.reLaunch({
+							  	    	url:'/pages/login'
+							  	    })
+							  	}, 1000);
+							  }
+							  else {
+							  	uni.showToast({
+							  		title: '未登录',
+							  		icon:'error',
+							  		duration: 1000
+							  	});
+							  	setTimeout(function() {
+							  	    uni.reLaunch({
+							  	    	url:'/pages/login'
+							  	    })
+							  	}, 1000);
+							  }
+						  },
+						});
+					}
+				})
+			},
 		},
 	}
 </script>
@@ -175,7 +255,7 @@
 		text-overflow:ellipsis;
 		display:-webkit-box;
 		-webkit-box-orient:vertical;
-		-webkit-line-clamp:1;	//设置行数未2行
+		-webkit-line-clamp:1;	//设置行数1行
 	}
 	.accountdata-phonenumber-after {
 		display: flex;

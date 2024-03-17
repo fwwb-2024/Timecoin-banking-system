@@ -17,6 +17,14 @@
 				  "titleNView": false //禁用原生导航栏  
 				}  
 		}},{
+		//新增任务注册
+		"path": "pages/mymission/newMission",
+		"style": {
+				"navigationBarTitleText": "新增任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
 		//个人中心注册
 		"path": "pages/personal/personal",
 		"style": {
@@ -85,14 +93,6 @@
 		"path": "pages/missionDetail",
 		"style": {
 				"navigationBarTitleText": "任务详情",
-				"app-plus": {
-				  "titleNView": false //禁用原生导航栏
-				}  
-		}},{
-		//404页面注册
-		"path": "pages/404",
-		"style": {
-				"navigationBarTitleText": "网络错误",
 				"app-plus": {
 				  "titleNView": false //禁用原生导航栏
 				}  

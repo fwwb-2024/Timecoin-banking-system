@@ -7,7 +7,8 @@
 				<image src="/static/backpic.png"></image>
 			</view>
 			<view class="header-background-text">
-				<text>登录</text>
+				<text v-if="loginShow">登录</text>
+				<text v-if="!loginShow">注册</text>
 			</view>
 		</view>
 		<!-- 登录页面 -->
@@ -19,7 +20,7 @@
 						<text>账号：</text>
 					</view>
 					<view>
-						<input class="uni-input" focus type="text" focus placeholder="请输入账号" />
+						<input class="uni-input" focus type="text" focus placeholder="请输入账号" v-model="user.userName" />
 					</view>
 				</view>
 				
@@ -28,7 +29,7 @@
 						<text>密码：</text>
 					</view>
 					<view>
-						<input class="uni-input" type="text" placeholder="请输入密码" />
+						<input class="uni-input" password placeholder="请输入密码" v-model="user.userPassword"/>
 					</view>
 				</view>
 			</view>
@@ -58,7 +59,7 @@
 			</view>
 			<!-- 登录按钮 -->
 			<view class="button-login">
-				<button>登录</button>
+				<button @click="login">登录</button>
 			</view>
 			
 			<!-- 注册按钮 -->
@@ -151,6 +152,12 @@
 				
 				// 显示账号登录或手机登录,默认true账号登录
 				wayShow:true,
+				
+				// 用户信息
+				user:{
+					userName:'',
+					userPassword:''
+				}
 			}
 		},
 		methods: {
@@ -168,6 +175,67 @@
 			changeLoginWay() {
 				this.wayShow = !this.wayShow
 			},
+			
+			// 登录
+			login() {
+				if(this.wayShow) {
+					let temp = {
+						userName:this.user.userName,
+						userPassword:this.user.userPassword
+					}
+					this.$api.accountLogin(temp).then((res)=>{
+						if(res.data == '密码错误'){
+							this.user.userPassword = ''
+							uni.showToast({
+								title: '密码错误',
+								icon:'error',
+								duration: 1000
+							});
+						}
+						else if(res.data == '该用户不存在'){
+							this.user.userName = ''
+							this.user.userPassword = ''
+							uni.showToast({
+								title: '该用户不存在',
+								icon:'error',
+								duration: 1000
+							});
+						}
+						else if(res.statusCode == 200) {
+							uni.showToast({
+								title: '登录成功',
+								duration: 1000
+							});
+							uni.setStorage({
+								key: 'userID',
+								data: res.data.userID,
+							});
+							uni.setStorage({
+								key: 'userName',
+								data: res.data.userName,
+							});
+							setTimeout(function() {
+							    uni.reLaunch({
+							    	url:'/pages/index/index'
+							    })
+							}, 1000);
+						}
+						else {
+							uni.showToast({
+								title: '网络错误',
+								icon:'error',
+								duration: 1000
+							});
+						}
+					})
+				}
+				else if(!this.wayShow) {
+					let temp = {
+						userName:this.user.userName,
+						userPassword:this.user.userPassword
+					}
+				}
+			}
 		},
 	}
 </script>

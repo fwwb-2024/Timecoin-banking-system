@@ -40,8 +40,13 @@
 		data() {
 			return {
 				// 时间币余额
-				userTimeCoin:100,
+				userTimeCoin:null,
 			}
+		},
+		created: function(){
+			this.$api.getCoins(uni.getStorageSync('userName')).then((res)=>{
+				this.userTimeCoin = res.data.userTimeCoin
+			})
 		},
 		methods: {
 			//返回上一级页面

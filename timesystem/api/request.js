@@ -1,5 +1,5 @@
 const http = {
-	baseurl: "",
+	baseurl: "http://10.195.28.44:9090",
 	//请求方法
 	request(config) {
 		config = beforeRequest(config)
@@ -36,17 +36,73 @@ const http = {
 
 //请求拦截器
 const beforeRequest = (config) => {
-	console.log('这是请求拦截器')
+	// 添加token请求头
+	if(config.auth) {
+		const value = uni.getStorageSync('token');
+		if (value) {
+			config.header = {}
+			config.header['Authorization'] = value
+		}
+		else {
+			uni.showToast({
+				title: '未登录',
+				icon:'error',
+				duration: 1000
+			});
+			setTimeout(function() {
+			    uni.reLaunch({
+			    	url:'/pages/login'
+			    })
+			}, 1000);
+		}
+	}
 	return config
 }
 //响应拦截器
 const beforeResponse = (response) => {
-	console.log('这是响应拦截器')
+	// token正确则更新token
+	if(response.statusCode == 200) {
+		if(response.data.token){
+			uni.setStorage({
+				key: 'token',
+				data: response.data.token,
+			});
+		}
+	}
+	// 否则重新登陆
+	else if(response.statusCode == 201) {
+		uni.showToast({
+			title: '登录已过期',
+			icon:'error',
+			duration: 1000
+		});
+		setTimeout(function() {
+		    uni.reLaunch({
+		    	url:'/pages/login'
+		    })
+		}, 1000);
+	}
+	else {
+		uni.showToast({
+			title: '未登录',
+			icon:'error',
+			duration: 1000
+		});
+		setTimeout(function() {
+		    uni.reLaunch({
+		    	url:'/pages/login'
+		    })
+		}, 1000);
+	}
 	return response
 }
 //异常处理器
 const errorHandle = (err) => {
-	console.log('网络异常，请求失败',err)
+	uni.showToast({
+		title: '网络异常',
+		icon:'error',
+		duration: 1000
+	});
 }
 
 export default http

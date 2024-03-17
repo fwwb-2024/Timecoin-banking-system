@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="main">
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -10,7 +10,38 @@
 				<text>家庭详情</text>
 			</view>
 		</view>
-		这是家庭详情页面
+		
+		<!-- 家庭成员列表 -->
+		<view class="familyDetail">
+			<!-- 家庭名称 -->
+			<view class="familyDetail-familyname">
+				<text>{{familyName}}</text>
+				<image src="@/static/add.png"></image>
+			</view>
+			<view  class="familyDetail-familylist">
+				<!-- 家主姓名 -->
+				<view class="familyDetail-familylist-familyMaster">
+					<view class="familyDetail-familylist-familyMaster-text">
+						<text>{{familyMaster}}</text>
+					</view>
+					
+					<image src="@/static/familyMaster.png"></image>
+					<image src="@/static/delete.png"></image>
+				</view>
+				<!-- 其他成员 -->
+				<view class="familyDetail-familylist-element" v-for="(item,index) in familylist" :key="item.id">
+					<view class="familyDetail-familylist-element-text">
+						<text>{{item.userName}}</text>
+					</view>
+					<image src="@/static/delete.png"></image>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 退出家庭按钮 -->
+		<view>
+			<button class="exit-family">退出家庭</button>
+		</view>
 	</view>
 </template>
 
@@ -18,7 +49,24 @@
 	export default {
 		data() {
 			return {
+				familyID:null,
+				familylist:[],
+				familyName:'',
+				familyMaster:'',
 			}
+		},
+		onLoad(options) {
+			this.familyID = options.familyID
+			this.$api.getFamilyMember(this.familyID).then((res)=>{
+				this.familyName = res.data[0].familyName
+				this.familyMaster = res.data[0].houseHolderName
+				for(let i=0;i<res.data.length;i++){
+					if(this.familyMaster == res.data[i].userName) {
+						continue
+					}
+					this.familylist.push({userName:res.data[i].userName})
+				}
+			})
 		},
 		methods: {
 			//返回上一级页面
@@ -32,6 +80,11 @@
 </script>
 
 <style>
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	.header-background {
 		display: flex;
 		align-items: center;
@@ -57,5 +110,76 @@
 		flex-basis: 160rpx;
 		font-size: 38rpx;
 		color: white;
+	}
+	.familyDetail {
+		display: flex;
+		width: 700rpx;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 30rpx;
+		padding: 50rpx 0 20rpx 0;
+		background-color: white;
+		border-radius: 10px;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
+	}
+	.familyDetail-familyname {
+		display: flex;
+		width: 100%;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 40rpx;
+		font-size: 40rpx;
+	}
+	.familyDetail-familyname image {
+		width: 45rpx;
+		height: 45rpx;
+		margin-left: 20rpx;
+	}
+	.familyDetail-familylist {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-warp:warp;
+		padding-left: 100rpx;
+	}
+	.familyDetail-familylist-familyMaster {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 40rpx;
+	}
+	.familyDetail-familylist-familyMaster-text {
+		font-size: 40rpx;
+		width: 300rpx;
+		margin-right: 150rpx;
+	}
+	.familyDetail-familylist-familyMaster image {
+		width: 45rpx;
+		height: 45rpx;
+		margin-right: 50rpx;
+	}
+	.familyDetail-familylist-element {
+		display: flex;
+		width: 690rpx;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 40rpx;
+	}
+	.familyDetail-familylist-element-text {
+		width: 300rpx;
+		font-size: 40rpx;
+		margin-right: 245rpx;
+	}
+	.familyDetail-familylist-element image {
+		width: 45rpx;
+		height: 45rpx;
+	}
+	.exit-family{
+		width: 700rpx;
+		box-shadow: 1px 1px 10px rgb(200, 200, 200);
+		margin-top: 30rpx;
 	}
 </style>

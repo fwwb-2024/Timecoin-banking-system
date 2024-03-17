@@ -13,15 +13,17 @@
 		
 		<!-- 家庭管理 -->
 		<view class="familyList">
-			<view class="familyList-element" v-for="(item,index) in familyList" :key="item.id">
-				<view class="familyList-element-title">
-					<text>家庭名称:</text>
-				</view>
-				<view class="familyList-element-familyName">
-					<text>{{item.familyName}}</text>
-				</view>
-				<view class="familyList-element-image">
-					<image src="/static/imbackpic.png"></image>
+			<view v-for="(item,index) in familyList" :key="item.id">
+				<view class="familyList-element" @click="navTo('/pages/personal/familyDetail?familyID='+item.familyID)">
+					<view class="familyList-element-title">
+						<text>家庭名称:</text>
+					</view>
+					<view class="familyList-element-familyName">
+						<text>{{item.familyName}}</text>
+					</view>
+					<view class="familyList-element-image">
+						<image src="/static/imbackpic.png"></image>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -32,16 +34,27 @@
 	export default {
 		data() {
 			return {
-				familyList:[
-					{familyName:'家庭1'},{familyName:'家庭2'},{familyName:'家庭3'},
-				]
+				familyList:[],
 			}
+		},
+		created:function(){
+			this.$api.getFamilyList(uni.getStorageSync('userID')).then((res)=>{
+				for(let i=0;i<res.data.length;i++){
+					this.familyList.push({familyName:res.data[i].familyName,familyID:res.data[i].familyID})
+				}
+			})
 		},
 		methods: {
 			//返回上一级页面
 			back() {
 				uni.navigateBack({
 					delta:1
+				})
+			},
+			// 跳转
+			navTo(url){
+				uni.navigateTo({
+					url,
 				})
 			}
 		},
@@ -93,18 +106,27 @@
 	}
 	.familyList-element {
 		display: flex;
+		width: 690rpx;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		margin-bottom: 40rpx;
 	}
 	.familyList-element-title {
 		font-size: 40rpx;
-		margin-right: 100rpx;
+		width: 250rpx;
+		margin:0 20rpx 0 60rpx;
 	}
 	.familyList-element-familyName {
+		width: 400rpx;
 		font-size: 35rpx;
-		margin-right: 180rpx;
+		margin-right: 50rpx;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:1;	//设置行数1行
+		
 	}
 	.familyList-element-image {
 		margin-right: 0;
