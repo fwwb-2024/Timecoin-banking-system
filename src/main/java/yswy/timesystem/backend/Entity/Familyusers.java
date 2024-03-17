@@ -8,4 +8,7 @@ public class Familyusers {
     private Integer familyID;
     private Integer userID;
     private String userName;
+    private String familyName;
+    private Integer houseHolder;
+    private String houseHolderName;
 }

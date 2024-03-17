@@ -4,6 +4,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 
 import yswy.timesystem.backend.Util.TokenUtil;
@@ -14,6 +19,13 @@ import org.springframework.web.bind.annotation.*;
 import yswy.timesystem.backend.Entity.Users;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 @RequestMapping
@@ -23,6 +35,10 @@ public class UserController {
 
 
 //接口
+
+    private static String USER_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
+    private static String USER_PHOTO_STATIC_PATH="static\\userphoto\\";
+    private static String USER_STATIC="http://10.195.28.44:9090/";
 
     @Operation(summary = "注册接口", description = "返回\"用户已存在\"\"电话号已被注册\"\"注册成功\"")
     @Parameter(name = "userName", description = "账号", example = "string")
@@ -119,7 +135,7 @@ public class UserController {
         TokenUtil.tokenServiceTwo(request,responce);
 
         Users userReturn = usersMapper.selectForUsersByUserName(userName);
-
+        userReturn.setUserPhoto(USER_STATIC + userReturn.getUserPhoto());
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
         return userReturn;
     }
@@ -151,12 +167,62 @@ public class UserController {
         return TokenUtil.tokenServiceOne(users.getUserName());
     }
 
-    @GetMapping("/user/userCenter/changeUserPhoto")//修改用户头像
-    public void userCenterChangeUserPhoto(@RequestParam int photo){
 
 
-        System.out.println("ok");
+    @Operation(summary = "用户个人中心，上传或修改用户头像接口", description = "返回201，\"文件为空\"\"文件类型错误\"\"删除已存在的文件时出错\"\"文件上传或更新数据库失败\"userPhoto")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @Parameter(name = "file", description = "文件", example = "图片")
+    @PostMapping("/user/userCenter/changeUserPhoto")//上传或修改用户头像
+    public String userCenterChangeUserPhoto(@RequestParam MultipartFile file,@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        if (file.isEmpty()) {
+            return "文件为空";
+        }
+        // 检查文件类型
+        String contentType = file.getContentType();
+        if (!contentType.equals("image/jpeg") && !contentType.equals("image/png")) {
+            return "文件类型错误";
+        }
+
+        // 构造图片的文件名，使用userID作为文件名
+        String fileName = String.valueOf(userID);
+        // 构造完整的文件路径
+        Path filePath = Paths.get(USER_PHOTO_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1));
+
+        // 检查文件是否存在
+        if (Files.exists(filePath)) {
+            try {
+                // 删除已存在的文件
+                Files.delete(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "删除已存在的文件时出错";
+            }
+        }
+
+        // 创建目录（如果目录不存在）
+        File dir = new File(USER_PHOTO_PATH);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        try {
+            // 保存文件
+            file.transferTo(new File(USER_PHOTO_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1)));
+            // 构建数据库中的文件路径字符串
+            String userPhoto = USER_PHOTO_STATIC_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1);
+            userPhoto = userPhoto.replace('\\', '/');
+            // 更新数据库中的图片路径
+            usersMapper.updateTheUserPhotoByID(userID,userPhoto);
+            return USER_STATIC + userPhoto;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "文件上传或更新数据库失败";
+        }
     }
+
 
     @Operation(summary = "用户修改密码接口", description = "返回201，新token")
     @Parameter(name = "userID", description = "id", example = "123")

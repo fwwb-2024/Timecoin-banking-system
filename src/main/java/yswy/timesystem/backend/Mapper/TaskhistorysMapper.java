@@ -10,22 +10,22 @@ import java.util.List;
 public interface TaskhistorysMapper {
 
     //查看任务历史，用户id查找，选10个，在offset后面的10个
-    @Select("select `task_history_id` as taskHistoryID,`user_id` as userID,`task_id` as taskID,`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` where `user_id` = #{userID} limit 10 offset #{offSet};")
+    @Select("select th.`user_id` as userID,th.`task_id` as taskID,th.`task_employer_id` as taskEmployerID,t.`task_name` as taskName,t.`task_begin_time` as taskBeginTime,t.`task_end_time` as taskEndTime,t.`task_time_coin_bounty` as taskTimeCoinBounty,t.`task_brief` as taskBrief,th.`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` th join `tasks` t on th.`task_id`=t.`task_id` where `user_id` = #{userID} order by th.`task_history_id` desc limit 10 offset #{offSet};")
     @Transactional
     List<Taskhistorys> selectAllTaskHistoryByUserID(int userID, int offSet);
 
     //查看任务历史，雇主查找，选10个，在offset后面10个
-    @Select("select `task_history_id` as taskHistoryID,`user_id` as userID,`task_id` as taskID,`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` where `task_employer_id` = #{taskEmployerID} limit 10 offset #{offSet};")
+    @Select("select th.`user_id` as userID,th.`task_id` as taskID,th.`task_employer_id` as taskEmployerID,t.`task_name` as taskName,t.`task_begin_time` as taskBeginTime,t.`task_end_time` as taskEndTime,t.`task_time_coin_bounty` as taskTimeCoinBounty,t.`task_brief` as taskBrief,th.`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` th join `tasks` t on th.`task_id`=t.`task_id` where `task_employer_id` = #{taskEmployerID} order by th.`task_history_id` desc limit 10 offset #{offSet};")
     @Transactional
     List<Taskhistorys> selectAllTaskHistoryByTaskEmployerID(int taskEmployerID, int offSet);
 
     //查看当前任务，用户id查找，选10个，在offset后面的10个
-    @Select("select `task_history_id` as taskHistoryID,`user_id` as userID,`task_id` as taskID,`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` where `task_history_status` in (2,3,4,5) and `user_id` = #{userID} limit 10 offset #{offSet};")
+    @Select("select th.`user_id` as userID,th.`task_id` as taskID,th.`task_employer_id` as taskEmployerID,t.`task_name` as taskName,t.`task_begin_time` as taskBeginTime,t.`task_end_time` as taskEndTime,t.`task_time_coin_bounty` as taskTimeCoinBounty,t.`task_brief` as taskBrief,t.`task_status` as taskStatus from `taskhistorys` th join `tasks` t on th.`task_id`=t.`task_id` where t.`task_status` in (2,3,4,5) and th.`user_id` = #{userID} order by th.`task_history_id` desc limit 10 offset #{offSet};")
     @Transactional
     List<Taskhistorys> selectTaskHistoryByUserID(int userID, int offSet);
 
     //查看当前任务，雇主查找，选10个，在offset后面10个
-    @Select("select `task_history_id` as taskHistoryID,`user_id` as userID,`task_id` as taskID,`task_history_status` as taskHistoryStatus,`task_employer_id` as taskEmployerID from `taskhistorys` where `task_history_status` in (1,2,3,4,5) and `task_employer_id` = #{taskEmployerID} limit 10 offset #{offSet};")
+    @Select("select th.`user_id` as userID,th.`task_id` as taskID,th.`task_employer_id` as taskEmployerID,t.`task_name` as taskName,t.`task_begin_time` as taskBeginTime,t.`task_end_time` as taskEndTime,t.`task_time_coin_bounty` as taskTimeCoinBounty,t.`task_brief` as taskBrief,t.`task_status` as taskStatus from `taskhistorys` th join `tasks` t on th.`task_id`=t.`task_id` where t.`task_status` in (1,2,3,4,5) and th.`task_employer_id` = #{taskEmployerID} order by th.`task_history_id` desc limit 10 offset #{offSet};")
     @Transactional
     List<Taskhistorys> selectTaskHistoryByTaskEmployerID(int taskEmployerID, int offSet);
 }

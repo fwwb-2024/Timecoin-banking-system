@@ -28,6 +28,7 @@ public class FamilysController {
     @Operation(summary = "创建家庭接口", description = "，返回201，家庭id")
     @Parameter(name = "houseHolder", description = "id", example = "123")
     @Parameter(name = "familyName", description = "家庭名", example = "string")
+    @Parameter(name = "houseHolderName", description = "家主名", example = "string")
     @PostMapping("/family/familyCenter/createFamily")//创建家庭
     public int registerFamily(@RequestBody Familys familys, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
@@ -52,6 +53,7 @@ public class FamilysController {
     @Operation(summary = "修改家庭主人接口", description = "，返回201，\"修改成功\"")
     @Parameter(name = "familyID", description = "id", example = "123")
     @Parameter(name = "houseHolder", description = "家庭主人", example = "123")
+    @Parameter(name = "houseHolderName", description = "家主名", example = "string")
     @PostMapping("/family/familyCenter/changeHouseHolder")//修改家庭主人，id查找
     public String familyCenterChangeHouseHolder(@RequestBody Familys familys,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 

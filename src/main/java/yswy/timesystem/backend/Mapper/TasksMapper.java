@@ -18,9 +18,19 @@ public interface TasksMapper {
     void deleteTasksByTaskID(int taskID);
 
     //修改任务,id查找
-    @Update("update `tasks` set `task_name`= #{taskName}, `task_employer`= # {taskEmployer}, `task_address`=#{taskAddress},`task_detail`=#{taskDetail},`task_brief`=#{taskBrief},`task_begin_time`=#{taskBeginTime},`task_end_time`=#{taskEndTime},`task_time_coin_bounty`=#{taskTimeCoinBounty} where `task_id` = #{taskID};")
+    @Update("update `tasks` set `task_name`= #{taskName}, `task_employer`= #{taskEmployer}, `task_address`=#{taskAddress},`task_detail`=#{taskDetail},`task_brief`=#{taskBrief},`task_begin_time`=#{taskBeginTime},`task_end_time`=#{taskEndTime},`task_time_coin_bounty`=#{taskTimeCoinBounty} where `task_id` = #{taskID};")
     @Transactional
     void updateTasksByTaskID(Tasks tasks);
+
+    //修改任务状态,审核,id查找
+    @Update("update `tasks` set `task_status` = 2 where `task_id` = #{taskID};")
+    @Transactional
+    void updateTaskStatusTwoByTaskID(int taskID);
+
+    //修改任务状态,接取,id查找
+    @Update("update `tasks` set `task_status` = 3 where `task_id` = #{taskID};")
+    @Transactional
+    void updateTaskStatusThreeByTaskID(int taskID);
 
     //全局查找，根据任务id顺序排序,一次查10个，查第offSet后面的10个
     @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_brief` as taskBrief,`task_status` as taskStatus from `tasks` order by task_id asc limit 10 offset #{offSet};")
@@ -358,5 +368,7 @@ public interface TasksMapper {
     @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_address` as taskAddress,`task_detail` as taskDetail,`task_brief` as taskBrief,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_visited_number` as taskVisitedNumber,`task_status` as taskStatus from `tasks` where `task_id` = #{taskID};")
     @Transactional
     Tasks selectTasksByTaskID(int taskID);
+
+
 
 }

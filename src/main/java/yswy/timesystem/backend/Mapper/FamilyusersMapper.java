@@ -19,12 +19,12 @@ public interface FamilyusersMapper {
     void deleteFamilyusers(int familyID,int userID);
 
     //查看本人在多少家庭中，根据用户id查找
-    @Select("select `family_user_id` as familyUserID,`family_id` as familyID,`user_id` as userID,`user_name` as userName from `familyusers` where `user_id` = #{userId};")
+    @Select("select fu.`family_user_id` as familyUserID,fu.`family_id` as familyID,fu.`user_id` as userID,fu.`user_name` as userName,f.`family_name` as familyName from `familyusers` fu join `familys` f on fu.`family_id` = f.`family_id` where fu.`user_id` = #{userId};")
     @Transactional
     List<Familyusers> selectFamilyusersByUserID(int userID);
 
     //查看家庭中的所有成员,根据家庭id
-    @Select(("select `family_user_id` as familyUserID,`family_id` as familyID,`user_id` as userID,`user_name` as userName from `familyusers` where `family_id` = #{familyId};"))
+    @Select("select fu.`family_user_id` as familyUserID,fu.`family_id` as familyID,fu.`user_id` as userID,fu.`user_name` as userName,f.`family_name` as familyName,f.`house_holder_name` as houseHolderName from `familyusers` fu join `familys` f on fu.`family_id` = f.`family_id` where fu.`family_id` = #{familyId};")
     @Transactional
     List<Familyusers> selectFamilyusersByFamilyID(int familyID);
 }

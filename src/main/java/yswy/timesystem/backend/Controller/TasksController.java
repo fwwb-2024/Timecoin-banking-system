@@ -2,6 +2,7 @@ package yswy.timesystem.backend.Controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import org.springframework.web.multipart.MultipartFile;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Tasks;
 import yswy.timesystem.backend.Entity.Users;
@@ -11,7 +12,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author : hutaosama
@@ -26,6 +33,10 @@ import java.util.List;
 public class TasksController {
     @Resource
     private TasksMapper tasksMapper;
+
+    private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\taskimage\\";
+    private static String TASK_PHOTO_STATIC_PATH="static\\taskimage\\";
+    private static String TASK_STATIC="http://10.195.28.44:9090/";
 
     @Operation(summary = "管理员查看任务列表接口", description = "返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
@@ -261,7 +272,7 @@ public class TasksController {
     }
 
     @Operation(summary = "修改任务接口", description = "返回201，\"修改成功\"")
-    @Parameter(name = "task", description = "所有", example = "对象")
+    @Parameter(name = "task", description = "除任务状态", example = "对象")
     @PostMapping("/tasks/taskCenter/changeTask")//修改任务,id查找
     public String taskCenterChangeTask(@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
@@ -291,4 +302,72 @@ public class TasksController {
 
         return tasksMapper.selectTasksByTaskID(taskID);
     }
+
+    @Operation(summary = "审核任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "adminID", description = "id", example = "123")
+    @GetMapping("/tasks/taskCenter/checkTask")//审核任务
+    public String taskCenterCheckTask(@RequestParam int taskID,@RequestParam String adminName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusTwoByTaskID(taskID);
+        return TokenUtil.tokenServiceOne(adminName);
+    }
+
+    @Operation(summary = "接取任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @GetMapping("/tasks/taskCenter/accessTask")//接取任务
+    public String taskCenterAccessTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusThreeByTaskID(taskID);
+        return TokenUtil.tokenServiceOne(userName);
+    }
+
+    @Operation(summary = "插入图片接口", description = "返回201，\"文件为空\"\"文件类型错误\"\"文件上传失败\"文件路径")
+    @Parameter(name = "file", description = "文件", example = "图片")
+    @PostMapping("/tasks/taskCenter/uploadimage")//上传任务图片
+    public String taskCenterUploadImage(@RequestParam MultipartFile file,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        if (file.isEmpty()) {
+            return "文件为空";
+        }
+        // 检查文件类型
+        String contentType = file.getContentType();
+        if (!contentType.equals("image/jpeg") && !contentType.equals("image/png")) {
+            return "文件类型错误";
+        }
+
+        // 构造图片的文件名，使用taskID作为文件名的前缀
+        String fileNamePrefix= UUID.randomUUID().toString().substring(0,8).replaceAll("-","").toLowerCase();// 移除UUID中的连字符并转换为小写 ,取前八位字符
+        String fileName =fileNamePrefix;
+        // 构造完整的文件路径
+        //Path filePath = Paths.get(TASK_PHOTO_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1));
+
+        // 创建目录（如果目录不存在）
+        File dir = new File(TASK_PHOTO_PATH);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        try {
+            // 保存文件
+            file.transferTo(new File(TASK_PHOTO_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1)));
+            // 构建文件路径字符串
+            String taskPhoto = TASK_PHOTO_STATIC_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1);
+            taskPhoto = taskPhoto.replace('\\', '/');
+            System.out.println(TASK_STATIC + taskPhoto);
+            return TASK_STATIC + taskPhoto;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "文件上传失败";
+        }
+    }
+
+
 }

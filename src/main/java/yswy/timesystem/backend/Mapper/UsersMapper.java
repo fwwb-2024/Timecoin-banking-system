@@ -31,6 +31,11 @@ public interface UsersMapper {
     @Transactional
     void updateUserPasswordByID(int userID,String userPassword);
 
+    //上传或更新头像
+    @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
+    @Transactional
+    void updateTheUserPhotoByID(int userID,String userPhoto);
+
     //查找用户id，通过用户名查找
     @Select("select `user_id` from `users` where `user_name` = #{userName};")
     @Transactional
