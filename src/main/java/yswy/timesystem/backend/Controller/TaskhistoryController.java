@@ -25,14 +25,48 @@ public class TaskhistoryController {
     @Resource
     private TaskhistorysMapper taskhistorysMapper;
 
-    @Operation(summary = "查看任务历史接口", description = "返回201，一串taskhistorys对象")
+    @Operation(summary = "志愿者查看任务历史接口", description = "返回201，一串taskhistorys对象")
     @Parameter(name = "userID", description = "id", example = "123")
     @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
-    @GetMapping("/taskhistory/taskCenter/findTaskhistory")//查看任务历史，用户id,查找
-    public List<Taskhistorys> taskCenterFindTaskHistory(@RequestParam int userID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+    @GetMapping("/taskhistory/taskCenter/findAllTaskhistoryUser")//查看任务历史，用户id,查找
+    public List<Taskhistorys> taskCenterFindTaskHistoryUser(@RequestParam int userID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        return taskhistorysMapper.selectAllTaskHistoryByUserID(userID,offSet);
+    }
+
+    @Operation(summary = "雇主查看任务历史接口", description = "返回201，一串taskhistorys对象")
+    @Parameter(name = "taskEmployerID", description = "id", example = "123")
+    @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
+    @GetMapping("/taskhistory/taskCenter/findAllTaskhistoryTaskEmployer")//查看任务历史，用户id,查找
+    public List<Taskhistorys> taskCenterFindTaskHistoryTaskEmployer(@RequestParam int taskEmployerID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        return taskhistorysMapper.selectAllTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+    }
+
+    @Operation(summary = "志愿者查看当前任务接口", description = "返回201，一串taskhistorys对象")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
+    @GetMapping("/taskhistory/taskCenter/findTaskhistoryUser")//查看当前任务，用户id,查找
+    public List<Taskhistorys> taskCenterFindNowTaskHistoryUser(@RequestParam int userID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
         return taskhistorysMapper.selectTaskHistoryByUserID(userID,offSet);
     }
+
+    @Operation(summary = "雇主查看当前任务接口", description = "返回201，一串taskhistorys对象")
+    @Parameter(name = "taskEmployerID", description = "id", example = "123")
+    @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
+    @GetMapping("/taskhistory/taskCenter/findTaskhistoryTaskEmployer")//查看当前任务，用户id,查找
+    public List<Taskhistorys> taskCenterFindNowTaskHistoryTaskEmployer(@RequestParam int taskEmployerID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        return taskhistorysMapper.selectTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+    }
+
 }

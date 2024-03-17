@@ -8,5 +8,5 @@ public class Taskhistorys {
     private Integer userID;
     private Integer taskID;
     private Integer taskHistoryStatus;
-
+    private Integer taskEmployerID;
 }
