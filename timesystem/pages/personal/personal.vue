@@ -91,7 +91,7 @@
 				this.username = res.data.userName
 			})
 			
-			 const value = uni.getStorageSync('position');
+			const value = uni.getStorageSync('position');
 			if (value) {
 				this.nowPersonlStatus = value;
 			}

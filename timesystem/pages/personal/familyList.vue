@@ -26,7 +26,9 @@
 					</view>
 				</view>
 			</view>
+			
 		</view>
+		<button style="width: 90%; margin-top: 30rpx;box-shadow: 2px 4px 20px rgb(200, 200, 200);" @click="newFamily">新建家庭</button>
 	</view>
 </template>
 
@@ -35,9 +37,10 @@
 		data() {
 			return {
 				familyList:[],
+				reload:true
 			}
 		},
-		created:function(){
+		created:function (){
 			this.$api.getFamilyList(uni.getStorageSync('userID')).then((res)=>{
 				for(let i=0;i<res.data.length;i++){
 					this.familyList.push({familyName:res.data[i].familyName,familyID:res.data[i].familyID})
@@ -56,7 +59,40 @@
 				uni.navigateTo({
 					url,
 				})
-			}
+			},
+			// 新建家庭
+			newFamily(){
+				let that = this
+				uni.showModal({
+					title:'请输入家庭名称',
+					editable: true,
+					success: function (response) {
+						// 用户点击确定按钮
+					    if (response.confirm) {
+							let temp = {
+								houseHolder:uni.getStorageSync('userID'),
+								familyName:response.content,
+								houseHolderName:uni.getStorageSync('userName')
+							}
+							that.$api.newFamily(temp).then((res)=>{
+								if(res.data){
+									uni.showToast({
+										title:'创建家庭成功',
+										duration:1000
+									})
+								}
+								else{
+									uni.showToast({
+										title:'创建家庭失败',
+										icon:'error',
+										duration:1000
+									})
+								}
+							})
+					    }
+					}
+				})
+			},
 		},
 	}
 </script>

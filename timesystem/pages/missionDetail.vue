@@ -13,23 +13,24 @@
 		
 		<!--任务信息-->
 		<view class="detail-text">
-			<text>{{mission.taskName}}</text>
+			<text>任务标题：{{mission.taskName}}</text>
 		</view>
 		<view class="detail-text">
-			<text>{{mission.taskBrief}}</text>
+			<text>任务简介：{{mission.taskBrief}}</text>
 		</view>
 		<view class="detail-text">
+			<text>任务详情：</text>
 			<view v-html="mission.taskDetail"></view>
 		</view>
 		<view class="detail-text">
-			<text>{{mission.taskTimeCoinBounty}}</text>
+			<text>任务悬赏：{{mission.taskTimeCoinBounty}}</text>
 		</view>
-		<view class="detail-text">
-			<text>{{mission.taskStatus}}</text>
+		<view class="detail-text" v-show="statusShow">
+			<text>任务状态：{{mission.taskStatus}}</text>
 		</view>
 		
 		<!--接取任务按钮-->
-		<button class="detail-button" @click="">接取任务</button>
+		<button class="detail-button" v-show="!statusShow" @click="accessMission">接取任务</button>
 		
 	</view>
 </template>
@@ -48,7 +49,8 @@
 					taskAddress:'',
 					taskEndTime:'',
 					taskStatus:null,
-				}
+				},
+				statusShow:true,
 			}
 		},
 		onLoad(options) {
@@ -63,7 +65,7 @@
 				this.mission.taskEndTime = res.data.taskEndTime
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';break;
-					case 2:this.mission.taskStatus = '未完成';break;
+					case 2:this.statusShow = false;break;
 					case 3:this.mission.taskStatus = '已接取';break;
 					case 4:this.mission.taskStatus = '已处理';break;
 					case 5:this.mission.taskStatus = '已完成';break;
@@ -78,6 +80,28 @@
 					delta:1
 				})
 			},
+			accessMission(){
+				this.$api.accessTask(this.missionId,uni.getStorageSync('userID'),uni.getStorageSync('userName')).then((res)=>{
+					if(res.data == '接取成功'){
+					uni.showToast({
+							title:'接取成功',
+							duration:1000
+						})
+					}
+					else{
+						uni.showToast({
+							title:'接取失败',
+							icon:'error',
+							duration:1000
+						})
+						setTimeout(function() {
+							uni.navigateBack({
+								delta:1,
+							})
+						},1000)
+					}
+				})
+			}
 		}
 	}
 </script>
