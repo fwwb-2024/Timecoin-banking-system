@@ -16,31 +16,31 @@
 			<!-- 家庭名称 -->
 			<view class="familyDetail-familyname">
 				<text>{{familyName}}</text>
-				<image src="@/static/add.png"></image>
+				<image src="@/static/add.png" v-if="addview" @click="add"></image>
 			</view>
 			<view  class="familyDetail-familylist">
 				<!-- 家主姓名 -->
 				<view class="familyDetail-familylist-familyMaster">
 					<view class="familyDetail-familylist-familyMaster-text">
 						<text>{{familyMaster}}</text>
-					</view>
-					
+					</view>				
 					<image src="@/static/familyMaster.png"></image>
-					<image src="@/static/delete.png"></image>
 				</view>
 				<!-- 其他成员 -->
 				<view class="familyDetail-familylist-element" v-for="(item,index) in familylist" :key="item.id">
 					<view class="familyDetail-familylist-element-text">
 						<text>{{item.userName}}</text>
 					</view>
-					<image src="@/static/delete.png"></image>
+					<image v-if="addview" src="@/static/delete.png" @click="deleteMember(item.userID)"></image>
 				</view>
 			</view>
 		</view>
 		
 		<!-- 退出家庭按钮 -->
 		<view>
-			<button class="exit-family">退出家庭</button>
+			<button class="exit-family"  @click="exitFamily">退出家庭</button>
+			<button v-if="addview" class="exit-family" @click="changeMaster">修改家主</button>
+			<button v-if="addview" class="exit-family" @click="deleteFamily">解散家庭</button>
 		</view>
 	</view>
 </template>
@@ -53,6 +53,8 @@
 				familylist:[],
 				familyName:'',
 				familyMaster:'',
+				// 是否是家主
+				addview:false,
 			}
 		},
 		onLoad(options) {
@@ -60,11 +62,14 @@
 			this.$api.getFamilyMember(this.familyID).then((res)=>{
 				this.familyName = res.data[0].familyName
 				this.familyMaster = res.data[0].houseHolderName
+				if(this.familyMaster == uni.getStorageSync('userName')){
+					this.addview = true
+				}
 				for(let i=0;i<res.data.length;i++){
 					if(this.familyMaster == res.data[i].userName) {
 						continue
 					}
-					this.familylist.push({userName:res.data[i].userName})
+					this.familylist.push({userName:res.data[i].userName,userID:res.data[i].userID})
 				}
 			})
 		},
@@ -73,6 +78,142 @@
 			back() {
 				uni.navigateBack({
 					delta:1
+				})
+			},
+			// 增加成员
+			add(){
+				// 记录根节点
+				let that = this
+				uni.showModal({
+				    title: '输入新成员账号',
+					editable: true,
+				    success: function (response) {
+						// 用户点击确定按钮
+				        if (response.confirm) {
+							let temp = {
+								userName:response.content,
+								familyID:that.familyID
+							}
+							that.$api.addFamilyMember(temp).then((res)=>{
+								if(res.data == '添加成功'){
+									uni.showToast({
+										title:'添加成功',
+										duration:1000
+									})
+								}
+								else if(res.data == '该用户不存在'){
+									uni.showToast({
+										title:'该用户不存在',
+										icon:'error',
+										duration:1000
+									})
+								}
+								else {
+									uni.showToast({
+										title:'添加失败',
+										icon:'error',
+										duration:1000
+									})
+								}
+							})
+				        }
+				    }
+				});
+			},
+			// 删除成员
+			deleteMember(userID){
+				this.$api.deleteFamilyMember(this.familyID,userID).then((res)=>{
+					if(res.data == '删除成功'){
+						uni.showToast({
+							title:'删除成功',
+							duration:1000
+						})
+					}
+				})
+			},
+			// 转让家主
+			changeMaster(){
+				// 记录根节点
+				let that = this
+				let list=[]
+				for(let i=0;i<this.familylist.length;i++){
+					list.push(this.familylist[i].userName)
+				}
+				uni.showActionSheet({
+					title:'请选择的新家主',
+				    itemList: list,
+				    success: function (response) {
+						if (response.tapIndex > -1) {
+							// 用户点击了某个选项
+							let temp = {
+								familyID:that.familyID,
+								houseHolder:that.familylist[response.tapIndex].userID,
+								houseHolderName:that.familylist[response.tapIndex].userName
+							}
+							that.$api.changeFamilyMaster(temp).then((res)=>{
+								if(res.data == '修改成功'){
+									uni.showToast({
+										title:'修改成功',
+										duration:1000
+									})
+								}
+							})
+				        }
+				    }
+				});
+			},
+			// 退出家庭
+			exitFamily(){
+				if(uni.getStorageSync('userName') == this.familyMaster){
+					uni.showToast({
+						title:'请先转让家主',
+						icon:'error',
+						duration:1000
+					})
+				}
+				else {
+					this.$api.deleteFamilyMember(this.familyID,uni.getStorageSync('userID')).then((res)=>{
+						if(res.data == '删除成功'){
+							uni.showToast({
+								title:'退出成功',
+								duration:1000
+							})
+							setTimeout(function() {
+							    uni.navigateBack({
+							    	delta:1
+							    })
+							}, 1000);
+						}
+						else{
+							uni.showToast({
+								title:'退出失败',
+								icon:'error',
+								duration:1000
+							})
+						}
+					})
+				}
+			},
+			deleteFamily(){
+				this.$api.deleteFamily(this.familyID).then((res)=>{
+					if(res.data == '删除成功'){
+						uni.showToast({
+							title:'解散成功',
+							duration:1000
+						})
+						setTimeout(function() {
+						    uni.navigateBack({
+						    	delta:1
+						    })
+						}, 1000);
+					}
+					else {
+						uni.showToast({
+							title:'解散失败',
+							icon:'error',
+							duration:1000
+						})
+					}
 				})
 			}
 		},
@@ -153,7 +294,7 @@
 	.familyDetail-familylist-familyMaster-text {
 		font-size: 40rpx;
 		width: 300rpx;
-		margin-right: 150rpx;
+		margin-right: 240rpx;
 	}
 	.familyDetail-familylist-familyMaster image {
 		width: 45rpx;

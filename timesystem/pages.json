@@ -96,6 +96,30 @@
 				"app-plus": {
 				  "titleNView": false //禁用原生导航栏
 				}  
+		}},{
+		//当前任务注册
+		"path": "pages/mymission/nowmission",
+		"style": {
+				"navigationBarTitleText": "当前任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//历史任务注册
+		"path": "pages/mymission/historymission",
+		"style": {
+				"navigationBarTitleText": "历史任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
+		}},{
+		//修改任务注册
+		"path": "pages/mymission/changemission",
+		"style": {
+				"navigationBarTitleText": "修改任务",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏  
+				}  
 		}}
 	],
 	//全局样式的配置

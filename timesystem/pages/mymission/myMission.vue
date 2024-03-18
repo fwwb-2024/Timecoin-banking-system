@@ -51,23 +51,23 @@
 				</view>
 			</view>
 		</view>
-		<image @click="navTo('/pages/mymission/newMission')" src="@/static/add.png" style="position: fixed; width: 50rpx;height: 50rpx; left: 325rpx;top: 80rpx;" v-show="!position"></image>
+		<image @click="navTo('/pages/mymission/newMission')" src="@/static/add.png" style="position: absolute; width: 50rpx;height: 50rpx; left: 325rpx;top: 80rpx;" v-show="!position"></image>
 		<!-- 任务主体页面 -->
 		<!-- 志愿者 -->
 		<view v-show="position">
 			<!-- 任务列表 -->
 			<view v-if="headOption">
 				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/nowmission?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
 			</view>
-			
+
 			<!-- 历史任务列表 -->
 			<view v-if="!headOption">
 				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -80,7 +80,7 @@
 			<!-- 任务列表 -->
 			<view v-if="headOption">
 				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/changemission?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -89,7 +89,7 @@
 			<!-- 历史任务列表 -->
 			<view v-if="!headOption">
 				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-					<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
 						<mission :missionData="item"></mission>
 					</view>
 				</view>
@@ -144,61 +144,40 @@
 				if(!this.position) {
 					// 加载当前任务列表
 					this.$api.getTaskNow_2(uni.getStorageSync('userID'),0).then((res)=>{
-						console.log(res);
 						const length = res.data.length
-						let temp = {
-							taskID:null,
-							title:'',
-							introduction:'',
-							timeCoins:null,
-							publisher:{
-								username:'',
-								headpicture:'',
-							},
-							endTime:'',
-							statusShow:true,
-							status:'',
-						}
 						for(let i=0;i<length;i++) {
-							// temp.taskID = res.data[i].taskID
-							temp.taskID = res.data[i].taskID
-							temp.title = res.data[i].taskName
-							temp.introduction = res.data[i].taskBrief
-							temp.timeCoins = res.data[i].taskTimeCoinBounty
-							temp.publisher.username = res.data[i].taskEmployer
-							// publisher.headpicture = temp.
-							temp.endTime = res.data[i].taskEndTime
-							temp.status = res.data[i].taskStatus
-							this.missionDataList.push(temp)
+							this.missionDataList.push({
+								taskID: res.data[i].taskID,
+								title: res.data[i].taskName,
+								introduction: res.data[i].taskBrief,
+								timeCoins: res.data[i].taskTimeCoinBounty,
+								publisher:{
+									username: res.data[i].taskEmployerName,
+									headpicture: res.data[i].userPhoto,
+								},
+								endTime: res.data[i].taskEndTime,
+								status: res.data[i].taskStatus,
+								statusShow:true
+							})
 						}
 					})
 					// 加载历史任务列表
 					this.$api.getTaskHistory_2(uni.getStorageSync('userID'),0).then((res)=>{
 						const length = res.data.length
-						let temp = {
-							taskID:null,
-							title:'',
-							introduction:'',
-							timeCoins:null,
-							publisher:{
-								username:'',
-								headpicture:'',
-							},
-							endTime:'',
-							statusShow:true,
-							status:'',
-						}
 						for(let i=0;i<length;i++) {
-							// temp.taskID = res.data[i].taskID
-							temp.taskID = res.data[i].taskID
-							temp.title = res.data[i].taskName
-							temp.introduction = res.data[i].taskBrief
-							temp.timeCoins = res.data[i].taskTimeCoinBounty
-							temp.publisher.username = res.data[i].taskEmployer
-							// publisher.headpicture = temp.
-							temp.endTime = res.data[i].taskEndTime
-							temp.status = res.data[i].taskStatus
-							this.historyMissionDataList.push(temp)
+							this.historyMissionDataList.push({
+								taskID: res.data[i].taskID,
+								title: res.data[i].taskName,
+								introduction: res.data[i].taskBrief,
+								timeCoins: res.data[i].taskTimeCoinBounty,
+								publisher:{
+									username: res.data[i].taskEmployerName,
+									headpicture: res.data[i].userPhoto,
+								},
+								endTime: res.data[i].taskEndTime,
+								status: res.data[i].taskHistoryStatus,
+								statusShow:true
+							})
 						}
 					})
 				}
@@ -207,56 +186,39 @@
 					// 加载当前任务列表
 					this.$api.getTaskNow_1(uni.getStorageSync('userID'),0).then((res)=>{
 						const length = res.data.length
-						let temp = {
-							taskID:null,
-							title:'',
-							introduction:'',
-							timeCoins:null,
-							publisher:{
-								username:'',
-								headpicture:'',
-							},
-							endTime:'',
-							statusShow:true,
-							status:'',
-						}
 						for(let i=0;i<length;i++) {
-							// temp.taskID = res.data[i].taskID
-							temp.taskID = res.data[i].taskID
-							temp.title = res.data[i].taskName
-							temp.introduction = res.data[i].taskBrief
-							temp.timeCoins = res.data[i].taskTimeCoinBounty
-							temp.publisher.username = res.data[i].taskEmployer
-							// publisher.headpicture = temp.
-							temp.endTime = res.data[i].taskEndTime
-							temp.status = res.data[i].taskStatus
-							this.missionDataList.push(temp)
+							this.missionDataList.push({
+								taskID: res.data[i].taskID,
+								title: res.data[i].taskName,
+								introduction: res.data[i].taskBrief,
+								timeCoins: res.data[i].taskTimeCoinBounty,
+								publisher:{
+									username: res.data[i].taskEmployerName,
+									headpicture: res.data[i].userPhoto,
+								},
+								endTime: res.data[i].taskEndTime,
+								status: res.data[i].taskStatus,
+								statusShow:true
+							})
 						}
 					})
 					// 加载历史任务列表
 					this.$api.getTaskHistory_1(uni.getStorageSync('userID'),0).then((res)=>{
 						const length = res.data.length
-						let temp = {
-							title:'',
-							introduction:'',
-							timeCoins:null,
-							publisher:{
-								username:'',
-								headpicture:'',
-							},
-							endTime:'',
-							statusShow:true,
-							status:'',
-						}
 						for(let i=0;i<length;i++) {
-							temp.title = res.data[i].taskName
-							temp.introduction = res.data[i].taskBrief
-							temp.timeCoins = res.data[i].taskTimeCoinBounty
-							temp.publisher.username = res.data[i].taskEmployer
-							// publisher.headpicture = temp.
-							temp.endTime = res.data[i].taskEndTime
-							temp.status = res.data[i].taskStatus
-							this.historyMissionDataList.push(temp)
+							this.historyMissionDataList.push({
+								taskID: res.data[i].taskID,
+								title: res.data[i].taskName,
+								introduction: res.data[i].taskBrief,
+								timeCoins: res.data[i].taskTimeCoinBounty,
+								publisher:{
+									username: res.data[i].taskEmployerName,
+									headpicture: res.data[i].userPhoto,
+								},
+								endTime: res.data[i].taskEndTime,
+								status: res.data[i].taskHistoryStatus,
+								statusShow:true
+							})
 						}
 					})
 				}

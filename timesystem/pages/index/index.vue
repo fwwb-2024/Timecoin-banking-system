@@ -37,7 +37,7 @@
 		
 		<!--任务列表-->
 		<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-			<view class="mission-list-element" @click="navTo('/pages/missionDetail?'+item.taskID)">
+			<view class="mission-list-element" @click="navTo('/pages/missionDetail?id='+item.taskID)">
 				<mission :missionData="item"></mission>
 			</view>
 		</view>
@@ -65,30 +65,20 @@
 			
 			this.$api.getTasklist(0,1).then((res)=>{
 				const length = res.data.length
-				let temp = {
-					taskID:null,
-					title:'',
-					introduction:'',
-					timeCoins:null,
-					publisher:{
-						username:'',
-						headpicture:'',
-					},
-					endTime:'',
-					statusShow:true,
-					status:'',
-				}
 				for(let i=0;i<length;i++) {
-					// temp.taskID = res.data[i].taskID
-					temp.taskID = res.data[i].taskID
-					temp.title = res.data[i].taskName
-					temp.introduction = res.data[i].taskBrief
-					temp.timeCoins = res.data[i].taskTimeCoinBounty
-					temp.publisher.username = res.data[i].taskEmployer
-					// publisher.headpicture = temp.
-					temp.endTime = res.data[i].taskEndTime
-					temp.status = res.data[i].taskStatus
-					this.missionDataList.push(temp)
+					this.missionDataList.push({
+						taskID: res.data[i].taskID,
+						title: res.data[i].taskName,
+						introduction: res.data[i].taskBrief,
+						timeCoins: res.data[i].taskTimeCoinBounty,
+						publisher:{
+							username: res.data[i].taskEmployer,
+							headpicture: res.data[i].userPhoto,
+						},
+						endTime: res.data[i].taskEndTime,
+						status: res.data[i].taskStatus,
+						usShow:true
+					})
 				}
 			})
 		},
@@ -183,6 +173,7 @@
 	}
 	.mission-list {
 		background-color: white;
+		width: 750rpx;
 	}
 	.mission-list-element {
 		box-shadow: 1px 1px 1px rgb(200, 200, 200);

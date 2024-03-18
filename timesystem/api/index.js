@@ -32,23 +32,28 @@ export default {
 	changeUserPassword (data){
 	    return http.post('/user/userCenter/changeUserPassword',data,true)
 	},
-	// 注销用户
-	// deleteUser (data){
-	//     return http.delete('/user/userCenter/deleteUsers',data,true)
-	// },
 	
 	// 新建任务
 	postTask (data){
 	    return http.post('/tasks/taskCenter/register',data,true)
 	},
+	// 接取任务
+	accessTask (taskID,userID,userName){
+		return http.get('/tasks/taskCenter/accessTask',{taskID:taskID,userID:userID,userName:userName},true)
+	},
 	// 修改任务
 	changeTaskData (data){
 	    return http.post('/tasks/taskCenter/changeTask',data,true)
 	},
-	// 删除任务
-	// deleteTask (data){
-	//     return http.delete('/tasks/taskCenter/deleteTasks',data,true)
-	// }
+	// 完成任务
+	completeTask (taskID,userName){
+		return http.get('/tasks/taskCenter/userSuccessTask',{taskID:taskID,userName:userName},true)
+	},
+	// 取消任务
+	canelTask (taskID,userName){
+		return http.get('/tasks/taskCenter/userRefuseTask',{taskID:taskID,userName:userName},true)
+	},
+	
 	// 查看所有任务
 	getTasklist (offSet,chooses){
 	    return http.get('/tasks/taskCenter/tasks',{offSet:offSet,chooses:chooses},true)
@@ -83,11 +88,31 @@ export default {
 	},
 	
 	// 查看所在家庭
-	getFamilyList (userID) {
+	getFamilyList (userID){
 		return http.get('/familyusers/familyCenter/findFamilys',{userID:userID},true) 
 	},
 	// 查看家庭成员
-	getFamilyMember (familyID) {
+	getFamilyMember (familyID){
 		return http.get('/familyusers/familyCenter/findUsers',{familyID:familyID},true) 
+	},
+	// 增加家庭成员
+	addFamilyMember (data){
+		return http.post('/familyusers/familyCenter/createFamilyuser',data,true)
+	},
+	// 删除家庭成员
+	deleteFamilyMember (familyID,userID){
+		return http.get('/familyusers/familyCenter/deleteFamilyusers',{familyID:familyID,userID:userID},true)
+	},
+	// 更改家主
+	changeFamilyMaster (data){
+		return http.post('/family/familyCenter/changeHouseHolder',data,true)
+	},
+	// 解散家庭
+	deleteFamily (familyID){
+		return http.get('/family/familyCenter/deleteFamilys',{familyID:familyID},true)
+	},
+	// 新建家庭
+	newFamily (data){
+		return http.post('/family/familyCenter/createFamily',data,true)
 	}
 }

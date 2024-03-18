@@ -120,24 +120,24 @@
 					let temp = {
 						  taskName: this.title,
 						  taskEmployer: uni.getStorageSync('userName'),
+						  taskEmployerID: uni.getStorageSync('userID'),
 						  taskAddress: "暂无地址",
 						  taskDetail: this.detail,
 						  taskBrief: this.brief,
 						  taskBeginTime: this.startTime,
 						  taskEndTime: this.endTime,
 						  taskVisitedNumber: "0",
-						  taskTimeCoinBounty: this.coins
+						  taskTimeCoinBounty: this.coins,
 					}
 					this.$api.postTask(temp).then((res)=>{
-						console.log(res);
 						if(res.data == '新建成功') {
 							uni.showToast({
 								title: '发布成功',
 								duration: 1000
 							});
 							setTimeout(function() {
-							    uni.navigateBack({
-							    	delta:1
+							    uni.reLaunch({
+							    	url:'/pages/mymission/myMission'
 							    })
 							}, 1000);
 						}
@@ -237,7 +237,6 @@
 	}
 	#editerl {
 		width: 650rpx;
-		height: 400rpx;
 		border-radius: 15px;
 		border: 1px solid #cccccc;
 	}
