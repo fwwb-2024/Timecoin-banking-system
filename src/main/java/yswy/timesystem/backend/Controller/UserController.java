@@ -31,7 +31,7 @@ import java.nio.file.Paths;
 @RequestMapping
 public class UserController {
     @Resource
-    UsersMapper usersMapper;
+    private UsersMapper usersMapper;
 
 
 //接口
@@ -145,22 +145,37 @@ public class UserController {
     @PostMapping("/user/userCenter/changeUserData")//用户个人中心，修改用户数据，根据用户id查找
     public String userCenterChangeUserData(@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
-        count=usersMapper.selectUserNameSame(users.getUserName());//检查是否有相同用户名
-        if(count!=0){
-            return "用户已存在";
+        if(users.getUserName().equals(usersMapper.selectForUserNameByUserID(users.getUserID()))){
         }
-        count=3;
-        count=usersMapper.selectUserPhoneNumberSame(users.getUserPhoneNumber());//检查是否有相同电话号
-        if(count!=0){
-            return "电话号已被注册";
+        else{
+            count=usersMapper.selectUserNameSame(users.getUserName());//检查是否有相同用户名
+            if(count!=0){
+                return "用户已存在";
+            }
         }
-        count=3;
-        count=usersMapper.selectUserIDNumberSame(users.getUserIDNumber());//检查是否有相同身份证号
-        if(count!=0){
-            return "身份证号已被注册";
+        if(users.getUserPhoneNumber().equals(usersMapper.selectForUserPhoneNumberByUserID(users.getUserID()))){
+        }
+        else{
+            count=3;
+            count=usersMapper.selectUserPhoneNumberSame(users.getUserPhoneNumber());//检查是否有相同电话号
+            if(count!=0){
+                return "电话号已被注册";
+            }
+        }
+
+        if(users.getUserIDNumber()!=null){
+            if(users.getUserIDNumber().equals(usersMapper.selectForUserIDNumberByUserID(users.getUserID()))){
+            }
+            else{
+                count=3;
+                count=usersMapper.selectUserIDNumberSame(users.getUserIDNumber());//检查是否有相同身份证号
+                if(count!=0) {
+                    return "身份证号已被注册";
+                }
+            }
         }
 
         usersMapper.updateUsersByID(users);
@@ -175,10 +190,17 @@ public class UserController {
     @PostMapping("/user/userCenter/changeUserPhoto")//上传或修改用户头像
     public String userCenterChangeUserPhoto(@RequestParam MultipartFile file,@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        // 设置文件大小限制，例如1MB
+        long maxFileSize = 1024 * 1024; // 1MB in bytes
 
         if (file.isEmpty()) {
             return "文件为空";
+        }
+        // 检查文件大小
+        if (file.getSize() > maxFileSize) {
+            return "文件大小超过限制";
         }
         // 检查文件类型
         String contentType = file.getContentType();

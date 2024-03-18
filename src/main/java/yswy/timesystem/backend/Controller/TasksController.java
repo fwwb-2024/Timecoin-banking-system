@@ -3,6 +3,9 @@ package yswy.timesystem.backend.Controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.multipart.MultipartFile;
+import yswy.timesystem.backend.Entity.Taskhistorys;
+import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
+import yswy.timesystem.backend.Mapper.UsersMapper;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Tasks;
 import yswy.timesystem.backend.Entity.Users;
@@ -33,10 +36,16 @@ import java.util.UUID;
 public class TasksController {
     @Resource
     private TasksMapper tasksMapper;
+    @Resource
+    private TaskhistorysMapper taskhistorysMapper;
+    @Resource
+    private UsersMapper usersMapper;
 
     private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\taskimage\\";
     private static String TASK_PHOTO_STATIC_PATH="static\\taskimage\\";
     private static String TASK_STATIC="http://10.195.28.44:9090/";
+
+    private static String USER_STATIC="http://10.195.28.44:9090/";
 
     @Operation(summary = "管理员查看任务列表接口", description = "返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
@@ -44,35 +53,42 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/tasksAdmin")//查看任务列表
     public List<Tasks> taskCenterTasksAdmin(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
+        //TokenUtil.tokenServiceTwo(request,responce);
 
-        TokenUtil.tokenServiceTwo(request,responce);
-
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskNameAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscAdmin(offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskNameDescAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescAdmin(offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscAdmin(offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescAdmin(offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskBeginTimeAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeAscAdmin(offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskBeginTimeDescAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeDescAdmin(offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskEndTimeAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeAscAdmin(offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskEndTimeDescAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeDescAdmin(offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAscAdmin(offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDescAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDescAdmin(offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
     @Operation(summary = "管理员搜索任务名，查看任务列表接口", description = "搜索任务名，返回201，一串tasks对象")
@@ -84,32 +100,40 @@ public class TasksController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskNameAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskNameAdmin(taskName,offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskNameAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskNameAdmin(taskName,offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployerAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployerAdmin(taskName,offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployerAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployerAdmin(taskName,offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTimeAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTimeAdmin(taskName,offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTimeAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTimeAdmin(taskName,offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTimeAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTimeAdmin(taskName,offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTimeAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTimeAdmin(taskName,offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBountyAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBountyAdmin(taskName,offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBountyAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBountyAdmin(taskName,offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
     @Operation(summary = "管理员搜索任务名，查看任务列表接口", description = "搜索雇主，返回201，一串tasks对象")
@@ -121,32 +145,40 @@ public class TasksController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskNameAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskNameAdmin(taskEmployer,offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskNameAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskNameAdmin(taskEmployer,offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployerAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployerAdmin(taskEmployer,offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployerAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployerAdmin(taskEmployer,offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTimeAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTimeAdmin(taskEmployer,offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTimeAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTimeAdmin(taskEmployer,offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTimeAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTimeAdmin(taskEmployer,offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTimeAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTimeAdmin(taskEmployer,offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBountyAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBountyAdmin(taskEmployer,offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBountyAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBountyAdmin(taskEmployer,offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
     @Operation(summary = "用户查看任务列表接口", description = "只看未完成，返回201，一串tasks对象")
@@ -156,34 +188,42 @@ public class TasksController {
     public List<Tasks> taskCenterTasks(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskNameAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAsc(offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskNameDesc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDesc(offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAsc(offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDesc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDesc(offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskBeginTimeAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeAsc(offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskBeginTimeDesc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeDesc(offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskEndTimeAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeAsc(offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskEndTimeDesc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeDesc(offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAsc(offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDesc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDesc(offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
     @Operation(summary = "用户搜索任务名，查看任务列表接口", description = "只看未完成搜索任务名，返回201，一串tasks对象")
@@ -195,32 +235,40 @@ public class TasksController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskName(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskName(taskName,offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskName(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskName(taskName,offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployer(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployer(taskName,offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployer(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployer(taskName,offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTime(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTime(taskName,offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTime(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTime(taskName,offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTime(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTime(taskName,offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTime(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTime(taskName,offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBounty(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBounty(taskName,offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBounty(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBounty(taskName,offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
     @Operation(summary = "用户搜索任务名，查看任务列表接口", description = "只看未完成，搜索雇主，返回201，一串tasks对象")
@@ -232,64 +280,95 @@ public class TasksController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        List<Tasks> tasksList;
         switch (chooses) {
             case 1:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
             case 2:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskName(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskName(taskEmployer,offSet);
             case 3:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskName(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskName(taskEmployer,offSet);
             case 4:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployer(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployer(taskEmployer,offSet);
             case 5:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployer(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployer(taskEmployer,offSet);
             case 6:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTime(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTime(taskEmployer,offSet);
             case 7:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTime(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTime(taskEmployer,offSet);
             case 8:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTime(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTime(taskEmployer,offSet);
             case 9:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTime(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTime(taskEmployer,offSet);
             case 10:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBounty(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBounty(taskEmployer,offSet);
             case 11:
-                return tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBounty(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBounty(taskEmployer,offSet);
             default:
-                return tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
         }
+        // 遍历列表并更新每个Tasks对象的userPhoto字段
+        for (Tasks task : tasksList) {
+            if (task.getUserPhoto() != null && !task.getUserPhoto().isEmpty()) {
+                task.setUserPhoto(USER_STATIC + task.getUserPhoto());
+            }
+        }
+        return tasksList;
     }
 
-    @Operation(summary = "新建任务接口", description = "返回201，\"新建成功\"")
-    @Parameter(name = "task", description = "所有", example = "对象")
+    @Operation(summary = "新建任务接口", description = "返回201，\"新建成功\"\"余额不足\"")
+    @Parameter(name = "task", description = "taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID", example = "对象")
     @PostMapping("/tasks/taskCenter/register")//新建任务
     public String registerTask(@RequestBody Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerID());
+        int b=Integer.parseInt(tasks.getTaskTimeCoinBounty());
+        if(a < b){
+            return "余额不足";
+        }
         tasksMapper.insertRegister(tasks);
+        int taskID=tasksMapper.getMaxTaskId();
+        tasksMapper.insertRegisterTaskHistory(taskID,usersMapper.selectForUserIDByUserName(tasks.getTaskEmployer()));
+        a=a-b;
+        usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerID(),a);
         return "新建成功";
     }
 
-    @Operation(summary = "修改任务接口", description = "返回201，\"修改成功\"")
-    @Parameter(name = "task", description = "除任务状态", example = "对象")
+    @Operation(summary = "修改任务接口", description = "返回201，\"余额不足\"\"修改成功\"")
+    @Parameter(name = "task", description = "taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID", example = "对象")
     @PostMapping("/tasks/taskCenter/changeTask")//修改任务,id查找
     public String taskCenterChangeTask(@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
+        int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerID());
+        int b=tasksMapper.selectTaskTimeCoinBountyByTaskID(tasks.getTaskID());
+        int c=Integer.parseInt(tasks.getTaskTimeCoinBounty());
+        if(a+b < c){
+            return "余额不足";
+        }
         tasksMapper.updateTasksByTaskID(tasks);
+        a=a+b-c;
+        usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerID(),a);
         return "修改成功";
     }
 
     @Operation(summary = "删除任务接口", description = "返回201，\"删除成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "taskEmployerID", description = "id", example = "123")
+    @Parameter(name = "taskTimeCoinBounty", description = "mouney", example = "123")
     @GetMapping("/tasks/taskCenter/deleteTasks")//删除任务,id查找
-    public String taskCenterDeleteTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterDeleteTask(@RequestParam int taskID,@RequestParam int taskEmployerID,@RequestParam int taskTimeCoinBounty,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
+        int a=usersMapper.selectForUserTimeCoinByUserID(taskEmployerID);
+        int b=taskTimeCoinBounty;
+        a=a+b;
         tasksMapper.deleteTasksByTaskID(taskID);
+        usersMapper.updateUserTimeCoinByID(taskEmployerID,a);
         return "删除成功";
     }
 
@@ -298,33 +377,108 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
     public Object taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         return tasksMapper.selectTasksByTaskID(taskID);
     }
 
-    @Operation(summary = "审核任务接口", description = "返回201，新token")
+    @Operation(summary = "审核任务接口", description = "返回201，\"任务已被其他管理员审核通过\"新token")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "adminID", description = "id", example = "123")
     @GetMapping("/tasks/taskCenter/checkTask")//审核任务
     public String taskCenterCheckTask(@RequestParam int taskID,@RequestParam String adminName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
-        tasksMapper.updateTaskStatusTwoByTaskID(taskID);
-        return TokenUtil.tokenServiceOne(adminName);
+        int a=tasksMapper.selectTaskStatusByTaskID(taskID);
+        int b=tasksMapper.selectTaskHistorysStatusByTaskID(taskID);
+        if(a==1&&b==1){
+            tasksMapper.updateTaskStatusTwoByTaskID(taskID);
+            tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
+            return TokenUtil.tokenServiceOne(adminName);
+        }
+        else{
+            return "任务已被其他管理员审核通过";
+        }
     }
 
-    @Operation(summary = "接取任务接口", description = "返回201，新token")
+    @Operation(summary = "接取任务接口", description = "返回201，\"任务已被其他志愿者接取\"新token")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "userID", description = "id", example = "123")
+    @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/accessTask")//接取任务
-    public String taskCenterAccessTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterAccessTask(@RequestParam int taskID,@RequestParam int userID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
+        int a=tasksMapper.selectTaskStatusByTaskID(taskID);
+        int b=tasksMapper.selectTaskHistorysStatusByTaskID(taskID);
+        if(a==2&&b==2) {
+            tasksMapper.updateTaskStatusThreeByTaskID(taskID);
+            tasksMapper.updateTaskHistoryStatusThreeByTaskID(taskID);
+            tasksMapper.updateTaskStatusThreeUpdateUserIDByTaskID(taskID, userID);
+            return TokenUtil.tokenServiceOne(userName);
+        }
+        else {
+            return "任务已被其他志愿者接取";
+        }
+    }
 
-        tasksMapper.updateTaskStatusThreeByTaskID(taskID);
+    @Operation(summary = "志愿者完成任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "userName", description = "string", example = "string")
+    @GetMapping("/tasks/taskCenter/userSuccessTask")//志愿者完成任务
+    public String taskCenterUserSuccessTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusFourByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusFourByTaskID(taskID);
         return TokenUtil.tokenServiceOne(userName);
+    }
+
+    @Operation(summary = "志愿者取消任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "userName", description = "string", example = "string")
+    @GetMapping("/tasks/taskCenter/userRefuseTask")//志愿者取消任务
+    public String taskCenterUserRefuseTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusTwoByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
+        tasksMapper.updateTaskStatusTwoUpdateUserIDByTaskID(taskID);
+        return TokenUtil.tokenServiceOne(userName);
+    }
+
+    @Operation(summary = "雇主完成任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "taskEmployer", description = "string", example = "string")
+    @GetMapping("/tasks/taskCenter/taskEmployerSuccessTask")//雇主完成任务
+    public String taskCenterTaskEmployerSuccessTask(@RequestParam int taskID,@RequestParam String taskEmployer,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusFiveByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusFiveByTaskID(taskID);
+        return TokenUtil.tokenServiceOne(taskEmployer);
+    }
+
+    @Operation(summary = "管理员审核任务接口", description = "返回201，新token")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "adminName", description = "string", example = "string")
+    @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
+    public String taskCenterAdminSuccessTask(@RequestParam int taskID,@RequestParam String adminName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusSixByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusSixByTaskID(taskID);
+        int timeCoinBounty=tasksMapper.selectTaskTimeCoinBountyByTaskID(taskID);
+        int userID=taskhistorysMapper.selectUserIDByTaskID(taskID);
+        int a=usersMapper.selectForUserTimeCoinByUserID(userID);
+        a=a+timeCoinBounty;
+        usersMapper.updateUserTimeCoinByID(userID,a);
+        return TokenUtil.tokenServiceOne(adminName);
     }
 
     @Operation(summary = "插入图片接口", description = "返回201，\"文件为空\"\"文件类型错误\"\"文件上传失败\"文件路径")
@@ -332,10 +486,16 @@ public class TasksController {
     @PostMapping("/tasks/taskCenter/uploadimage")//上传任务图片
     public String taskCenterUploadImage(@RequestParam MultipartFile file,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
+        // 设置文件大小限制，例如1MB
+        long maxFileSize = 1024 * 1024; // 1MB in bytes
         if (file.isEmpty()) {
             return "文件为空";
+        }
+        // 检查文件大小
+        if (file.getSize() > maxFileSize) {
+            return "文件大小超过限制";
         }
         // 检查文件类型
         String contentType = file.getContentType();
@@ -361,7 +521,6 @@ public class TasksController {
             // 构建文件路径字符串
             String taskPhoto = TASK_PHOTO_STATIC_PATH + fileName + "." + contentType.substring(contentType.lastIndexOf("/") + 1);
             taskPhoto = taskPhoto.replace('\\', '/');
-            System.out.println(TASK_STATIC + taskPhoto);
             return TASK_STATIC + taskPhoto;
         } catch (IOException e) {
             e.printStackTrace();

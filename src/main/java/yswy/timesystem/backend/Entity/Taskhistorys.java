@@ -15,4 +15,6 @@ public class Taskhistorys {
     private String taskTimeCoinBounty;
     private String taskBrief;
     private Integer taskStatus;
+    private String taskEmployerName;
+    private String userPhoto;
 }

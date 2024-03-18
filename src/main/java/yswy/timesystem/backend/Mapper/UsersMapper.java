@@ -17,12 +17,13 @@ public interface UsersMapper {
     @Transactional
     void deleteUsers(int userID);
 
+    //上传或修改头像，根据id
     @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
     @Transactional
     void updateUserPhotoByID(Users users);
 
-    //修改用户个人信息，不包括密码、时间币余额、用户状态反馈，根据用户id查找
-    @Update("update `users` set `user_name` = #{userName},`user_photo` = #{userPhoto},`user_status` = #{userStatus},`user_phone_number` = #{userPhoneNumber},`user_email` = #{userEmail},`user_id_number` = #{userIDNumber},`user_id_name` = #{userIDName},`user_age` = #{userAge},`user_sex` = #{userSex} where `user_id` = #{userID};")
+    //修改用户个人信息，不包括密码、时间币余额、用户状态反馈、照片、状态，根据用户id查找
+    @Update("update `users` set `user_name` = #{userName},`user_phone_number` = #{userPhoneNumber},`user_email` = #{userEmail},`user_id_number` = #{userIDNumber},`user_id_name` = #{userIDName},`user_age` = #{userAge},`user_sex` = #{userSex} where `user_id` = #{userID};")
     @Transactional
     void updateUsersByID(Users users);
 
@@ -30,6 +31,11 @@ public interface UsersMapper {
     @Update("update `users` set `user_password` = #{userPassword} where `user_id` = #{userID};")
     @Transactional
     void updateUserPasswordByID(int userID,String userPassword);
+
+    //修改时间币，根据用户id查找
+    @Update("update `users` set `user_time_coin` = #{userTimeCoin} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserTimeCoinByID(int userID,int userTimeCoin);
 
     //上传或更新头像
     @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
@@ -41,6 +47,11 @@ public interface UsersMapper {
     @Transactional
     int selectForUserIDByUserName(String userName);
 
+    //查找用户名，通过id查找
+    @Select("select `user_name` from `users` where `user_id` = #{userID};")
+    @Transactional
+    String selectForUserNameByUserID(int userID);
+
     //查找用户名，通过电话查找
     @Select("select `user_name` from `users` where `user_phone_number` = #{userPhoneNumber};")
     @Transactional
@@ -50,6 +61,21 @@ public interface UsersMapper {
     @Select("select `user_name` from `users` where `user_id_number` = #{userIDNumber};")
     @Transactional
     String selectForUserNameByUserIDNumber(String userIDNumber);
+
+    //查找用户电话，通过id查找
+    @Select("select `user_phone_number` from `users` where `user_id` = #{userID};")
+    @Transactional
+    String selectForUserPhoneNumberByUserID(int userID);
+
+    //查找用户身份证号，通过id查找
+    @Select("select `user_id_number` from `users` where `user_id` = #{userID};")
+    @Transactional
+    String selectForUserIDNumberByUserID(int userID);
+
+    //查找用户时间币余额，通过用户id查找
+    @Select("select `user_time_coin` from `users` where `user_id` = #{userID};")
+    @Transactional
+    int selectForUserTimeCoinByUserID(int userID);
 
     //查找同一用户名的人数
     @Select("select count(*) from `users` where `user_name` = #{userName};")

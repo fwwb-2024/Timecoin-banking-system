@@ -25,6 +25,8 @@ public class TaskhistoryController {
     @Resource
     private TaskhistorysMapper taskhistorysMapper;
 
+    private static String USER_STATIC="http://10.195.28.44:9090/";
+
     @Operation(summary = "志愿者查看任务历史接口", description = "返回201，一串taskhistorys对象")
     @Parameter(name = "userID", description = "id", example = "123")
     @Parameter(name = "offSet", description = "第几页，0,10,20", example = "0")
@@ -33,7 +35,14 @@ public class TaskhistoryController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        return taskhistorysMapper.selectAllTaskHistoryByUserID(userID,offSet);
+        List<Taskhistorys> taskhistorysList =taskhistorysMapper.selectAllTaskHistoryByUserID(userID,offSet);
+        // 遍历列表并更新每个Taskhistorys对象的userPhoto字段
+        for (Taskhistorys taskhistory : taskhistorysList) {
+            if (taskhistory.getUserPhoto() != null && !taskhistory.getUserPhoto().isEmpty()) {
+                taskhistory.setUserPhoto(USER_STATIC + taskhistory.getUserPhoto());
+            }
+        }
+        return taskhistorysList;
     }
 
     @Operation(summary = "雇主查看任务历史接口", description = "返回201，一串taskhistorys对象")
@@ -44,7 +53,14 @@ public class TaskhistoryController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        return taskhistorysMapper.selectAllTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+        List<Taskhistorys> taskhistorysList =taskhistorysMapper.selectAllTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+        // 遍历列表并更新每个Taskhistorys对象的userPhoto字段
+        for (Taskhistorys taskhistory : taskhistorysList) {
+            if (taskhistory.getUserPhoto() != null && !taskhistory.getUserPhoto().isEmpty()) {
+                taskhistory.setUserPhoto(USER_STATIC + taskhistory.getUserPhoto());
+            }
+        }
+        return taskhistorysList;
     }
 
     @Operation(summary = "志愿者查看当前任务接口", description = "返回201，一串taskhistorys对象")
@@ -55,7 +71,14 @@ public class TaskhistoryController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        return taskhistorysMapper.selectTaskHistoryByUserID(userID,offSet);
+        List<Taskhistorys> taskhistorysList =taskhistorysMapper.selectTaskHistoryByUserID(userID,offSet);
+        // 遍历列表并更新每个Taskhistorys对象的userPhoto字段
+        for (Taskhistorys taskhistory : taskhistorysList) {
+            if (taskhistory.getUserPhoto() != null && !taskhistory.getUserPhoto().isEmpty()) {
+                taskhistory.setUserPhoto(USER_STATIC + taskhistory.getUserPhoto());
+            }
+        }
+        return taskhistorysList;
     }
 
     @Operation(summary = "雇主查看当前任务接口", description = "返回201，一串taskhistorys对象")
@@ -66,7 +89,14 @@ public class TaskhistoryController {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        return taskhistorysMapper.selectTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+        List<Taskhistorys> taskhistorysList =taskhistorysMapper.selectTaskHistoryByTaskEmployerID(taskEmployerID,offSet);
+        // 遍历列表并更新每个Taskhistorys对象的userPhoto字段
+        for (Taskhistorys taskhistory : taskhistorysList) {
+            if (taskhistory.getUserPhoto() != null && !taskhistory.getUserPhoto().isEmpty()) {
+                taskhistory.setUserPhoto(USER_STATIC + taskhistory.getUserPhoto());
+            }
+        }
+        return  taskhistorysList;
     }
 
 

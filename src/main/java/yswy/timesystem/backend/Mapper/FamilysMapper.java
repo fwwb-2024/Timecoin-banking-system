@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface FamilysMapper {
 
     //创建家庭
-    @Insert("insert into `familys` (`house_holder`,`family_name`,`house_holder_name`) values(#{houseHolder},#{familyName}#{houseHolderName});")
+    @Insert("insert into `familys` (`house_holder`,`family_name`,`house_holder_name`) values(#{houseHolder},#{familyName},#{houseHolderName});")
     @Transactional
     void insertRegister(Familys familys);
 
