@@ -28,15 +28,15 @@ public class AdminController {
     /**
      *
      * @param admins 对象，管理员
-     * @param adminNameTwo 管理员用户名属性，即高级管理员或操作者
+     *
      */
     @Operation(summary = "管理员注册接口", description = "由高级管理员注册,token错就返回201，\"注册成功\"\"管理员已存在\"")
-    @Parameter(name = "adminName", description = "用户名", example = "string")
-    @Parameter(name = "adminPassword", description = "密码", example = "string")
+    @Parameter(name = "adminName", description = "新用户名", example = "string")
+    @Parameter(name = "adminPassword", description = "新密码", example = "string")
     @PostMapping("/admin/register")//管理员注册接口，由高级管理员注册
-    public String registerAdmin(@RequestBody Admins admins,@RequestParam String adminNameTwo, HttpServletRequest request, HttpServletResponse responce) throws Exception {
+    public String registerAdmin(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
         count=adminsMapper.selectAdminNameSame(admins.getAdminName());//检查是否有相同用户名
@@ -72,14 +72,13 @@ public class AdminController {
 
     @Operation(summary = "管理员个人中心查看管理员数据接口", description = "返回201，id，账号，权限，新token（藏在admin对象里）")
     @Parameter(name = "adminName", description = "用户名", example = "string")
-    @Parameter(name = "adminID", description = "id", example = "123")
     @GetMapping("/admin/adminCenter/findAdminData")//管理员个人中心查看管理员数据，通过管理员名获得
-    public Object adminCenterFindAdminData(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+    public Object adminCenterFindAdminData(@RequestParam String adminName,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
-        Admins adminReturn=adminsMapper.selectForAdminsByAdminName(admins.getAdminName());
-        adminReturn.setToken(TokenUtil.tokenServiceOne(adminReturn.getAdminName()));
+        Admins adminReturn=adminsMapper.selectForAdminsByAdminName(adminName);
+        adminReturn.setToken(TokenUtil.tokenServiceOne(adminName));
         return adminReturn;
     }
 
@@ -89,37 +88,43 @@ public class AdminController {
     @PostMapping("/admin/adminCenter/changeAdminData")//管理员修改个人信息，根据管理员id查找
     public String adminCenterChangeAdminData(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
-        count=adminsMapper.selectAdminNameSame(admins.getAdminName());//检查是否有相同用户名
-        if(count!=0){
-            return "用户已存在";
+        if(admins.getAdminName().equals(adminsMapper.selectForAdminNameByAdminID(admins.getAdminID()))){
         }
+        else {
+            count=adminsMapper.selectAdminNameSame(admins.getAdminName());//检查是否有相同用户名
+            if(count!=0){
+                return "用户已存在";
+            }
+        }
+
 
         adminsMapper.updateAdminsByID(admins);
         return TokenUtil.tokenServiceOne(admins.getAdminName());
     }
 
     @Operation(summary = "管理员修改密码接口", description = "返回201，新token")
-    @Parameter(name = "adminName", description = "用户名", example = "string")
+    @Parameter(name = "adminPassword", description = "密码", example = "string")
     @Parameter(name = "adminID", description = "id", example = "123")
     @PostMapping("/admin/adminCenter/changeAdminPassword")//管理员修改密码，根据id查找
     public String adminCenterChangeAdminPassword(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         adminsMapper.updateAdminPasswordByID(admins);
         return TokenUtil.tokenServiceOne(admins.getAdminName());
     }
 
-    @Operation(summary = "注销管理员接口", description = "返回201，新token")
+    @Operation(summary = "注销管理员接口", description = "返回201，\"注销成功\"")
     @Parameter(name = "adminID", description = "id", example = "123")
     @GetMapping("/admin/adminCenter/deleteAdmins")//注销管理员，根据被注销的管理员的id查找
-    public void adminCenterDeleteAdmins(@RequestParam int adminID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+    public String adminCenterDeleteAdmins(@RequestParam int adminID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         adminsMapper.deleteAdmins(adminID);
+        return "注销成功";
     }
 }

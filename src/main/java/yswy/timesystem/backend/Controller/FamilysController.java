@@ -49,6 +49,7 @@ public class FamilysController {
         Familyusers familyusers=new Familyusers();
         familyusers.setUserName(usersMapper.selectForUserNameByUserID(familys.getHouseHolder()));
         familyusers.setFamilyID(familyID);
+        familyusers.setUserID(familys.getHouseHolder());
         familyusersMapper.insertRegister(familyusers);
 
         return  familyID;

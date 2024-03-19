@@ -32,6 +32,11 @@ public interface AdminsMapper {
     @Transactional
     int selectForAdminIDByAdminName(String adminName);
 
+    //查找管理员用户名,通过id
+    @Select("select `admin_name` from `admins` where `admin_id` = #{adminID};")
+    @Transactional
+    String selectForAdminNameByAdminID(int adminID);
+
     //查找同一用户名的人数
     @Select("select count(*) from `admins` where `admin_name` = #{adminName};")
     @Transactional

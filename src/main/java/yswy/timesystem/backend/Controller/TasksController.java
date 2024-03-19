@@ -382,7 +382,7 @@ public class TasksController {
         return tasksMapper.selectTasksByTaskID(taskID);
     }
 
-    @Operation(summary = "审核任务接口", description = "返回201，\"任务已被其他管理员审核通过\"新token")
+    @Operation(summary = "审核任务接口", description = "返回201，\"任务已被其他管理员审核通过\"\"审核成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "adminID", description = "id", example = "123")
     @GetMapping("/tasks/taskCenter/checkTask")//审核任务
@@ -395,14 +395,14 @@ public class TasksController {
         if(a==1&&b==1){
             tasksMapper.updateTaskStatusTwoByTaskID(taskID);
             tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
-            return TokenUtil.tokenServiceOne(adminName);
+            return "审核成功";
         }
         else{
             return "任务已被其他管理员审核通过";
         }
     }
 
-    @Operation(summary = "接取任务接口", description = "返回201，\"任务已被其他志愿者接取\"新token")
+    @Operation(summary = "接取任务接口", description = "返回201，\"任务已被其他志愿者接取\"\"接取成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "userID", description = "id", example = "123")
     @Parameter(name = "userName", description = "string", example = "string")
@@ -416,14 +416,14 @@ public class TasksController {
             tasksMapper.updateTaskStatusThreeByTaskID(taskID);
             tasksMapper.updateTaskHistoryStatusThreeByTaskID(taskID);
             tasksMapper.updateTaskStatusThreeUpdateUserIDByTaskID(taskID, userID);
-            return TokenUtil.tokenServiceOne(userName);
+            return "接取成功";
         }
         else {
             return "任务已被其他志愿者接取";
         }
     }
 
-    @Operation(summary = "志愿者完成任务接口", description = "返回201，新token")
+    @Operation(summary = "志愿者完成任务接口", description = "返回201，\"完成成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/userSuccessTask")//志愿者完成任务
@@ -433,10 +433,10 @@ public class TasksController {
 
         tasksMapper.updateTaskStatusFourByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFourByTaskID(taskID);
-        return TokenUtil.tokenServiceOne(userName);
+        return "完成成功";
     }
 
-    @Operation(summary = "志愿者取消任务接口", description = "返回201，新token")
+    @Operation(summary = "志愿者取消任务接口", description = "返回201，\"取消成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/userRefuseTask")//志愿者取消任务
@@ -447,10 +447,10 @@ public class TasksController {
         tasksMapper.updateTaskStatusTwoByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
         tasksMapper.updateTaskStatusTwoUpdateUserIDByTaskID(taskID);
-        return TokenUtil.tokenServiceOne(userName);
+        return "取消成功";
     }
 
-    @Operation(summary = "雇主完成任务接口", description = "返回201，新token")
+    @Operation(summary = "雇主完成任务接口", description = "返回201，\"完成成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "taskEmployer", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/taskEmployerSuccessTask")//雇主完成任务
@@ -460,10 +460,10 @@ public class TasksController {
 
         tasksMapper.updateTaskStatusFiveByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFiveByTaskID(taskID);
-        return TokenUtil.tokenServiceOne(taskEmployer);
+        return "完成成功";
     }
 
-    @Operation(summary = "管理员审核任务接口", description = "返回201，新token")
+    @Operation(summary = "管理员审核任务接口", description = "返回201，\"审核成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "adminName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
@@ -478,7 +478,7 @@ public class TasksController {
         int a=usersMapper.selectForUserTimeCoinByUserID(userID);
         a=a+timeCoinBounty;
         usersMapper.updateUserTimeCoinByID(userID,a);
-        return TokenUtil.tokenServiceOne(adminName);
+        return "审核成功";
     }
 
     @Operation(summary = "插入图片接口", description = "返回201，\"文件为空\"\"文件类型错误\"\"文件上传失败\"文件路径")

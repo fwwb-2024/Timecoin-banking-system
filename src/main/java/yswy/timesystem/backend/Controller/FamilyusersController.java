@@ -41,20 +41,21 @@ public class FamilyusersController {
         try{
             familyusers.setUserID(usersMapper.selectForUserIDByUserName(familyusers.getUserName()));
         }catch (Exception e){
+            //responce.setHeader("Authorization", "Bearer " + TokenUtil.tokenServiceOne(familyusers.getUserName())); // 设置响应头
             return "该用户不存在";
         }
 
         int count=3;
         count=familyusersMapper.selectFamilyIDUserIDSame(familyusers.getFamilyID(),familyusers.getUserID());
         if(count!=0){
+            //responce.setHeader("Authorization", "Bearer " + TokenUtil.tokenServiceOne(familyusers.getUserName())); // 设置响应头
             return "用户已在家庭中";
         }
         else{
-
+            //responce.setHeader("Authorization", "Bearer " + TokenUtil.tokenServiceOne(familyusers.getUserName())); // 设置响应头
             familyusersMapper.insertRegister(familyusers);
             return "添加成功";
         }
-
     }
 
     @Operation(summary = "删除家庭成员接口", description = "，返回201，\"删除成功\"")
