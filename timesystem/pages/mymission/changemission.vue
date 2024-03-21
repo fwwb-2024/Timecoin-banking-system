@@ -22,15 +22,35 @@
 		</view>
 		<view class="detail-text">
 			<text>任务详情：</text>
-			<editorl v-if="loading" :html="mission.taskDetail"></editorl>
+			<editorl v-if="loading" :html="mission.taskDetail" @content="getcontent"></editorl>
 		</view>
 		<view class="detail-text">
 			任务悬赏：
 			<input type="number" v-model="mission.taskTimeCoinBounty"></input>
 		</view>
+		<view class="mission-time">
+			<text>任务时间</text>
+			<view class="mission-time-time">
+				<view class="mission-time-starttime">
+					<picker mode="date" :value="mission.taskStartTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
+						<view class="uni-input">开始时间：{{mission.taskStartTime}}</view>
+					</picker>
+				</view>
+				<view class="mission-time-endtime">
+					<picker mode="date" :value="mission.taskEndTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
+						<view class="uni-input">截止时间：{{mission.taskEndTime}}</view>
+					</picker>
+				</view>
+				<!-- 显示审核失败原因 -->
+				<view  class="detail-text" v-show="remarkShow">
+					<view>审核失败原因：{{mission.taskStatusRemark}}</view>
+				</view>
+			</view>
+		</view>
 		<view class="detail-text">
 			<text>任务状态：{{mission.taskStatus}}</text>
 		</view>
+		
 		<view>
 			<button @click="changeTask">确认修改</button>
 		</view>
@@ -41,6 +61,9 @@
 	import editorl from "@/components/editor/index.vue"
 	export default {
 		data() {
+			const currentDate = this.getDate({
+			    format: true
+			})
 			return {
 				missionId:null,
 				mission:{
@@ -50,12 +73,15 @@
 					taskDetail:'',
 					taskTimeCoinBounty:null,
 					taskAddress:'',
-					taskStartTime:'',
-					taskEndTime:'',
+					taskStartTime:currentDate,
+					taskEndTime:currentDate,
 					taskStatus:null,
+					taskStatusRemark:null,
 				},
 				// 显示任务状态
 				statusShow:true,
+				// 显示审核不通过原因
+				remarkShow:false,
 				// 任务详情加载完毕
 				loading:false,
 			}
@@ -63,6 +89,7 @@
 		onLoad(options) {
 			this.missionId = options.id
 			this.$api.getTaskData(this.missionId).then((res)=>{
+				console.log(res);
 				this.mission.taskID = res.data.taskID
 				this.mission.taskName = res.data.taskName
 				this.mission.taskBrief = res.data.taskBrief
@@ -72,6 +99,10 @@
 				this.mission.taskAddress = res.data.taskAddress
 				this.mission.taskBeginTime = res.data.taskBeginTime
 				this.mission.taskEndTime = res.data.taskEndTime
+				if(res.data.taskStatusRemark !== null){
+					this.mission.taskStatusRemark = res.data.taskStatusRemark
+					this.remarkShow = true
+				}
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';break;
 					case 2:this.mission.taskStatus = '未完成';break;
@@ -79,6 +110,7 @@
 					case 4:this.mission.taskStatus = '已处理';break;
 					case 5:this.mission.taskStatus = '已完成';break;
 					case 6:this.mission.taskStatus = '已完结';break;
+					default:break;
 				}
 			})
 		},
@@ -89,6 +121,11 @@
 					delta:1
 				})
 			},
+			// 任务详情修改内容
+			getcontent(content) {
+				this.mission.taskDetail = content
+			},
+			// 修改任务内容
 			changeTask() {
 				let temp = {
 					taskID: this.mission.taskID,
@@ -100,7 +137,9 @@
 					taskBeginTime: this.mission.taskBeginTime,
 					taskEndTime: this.mission.taskEndTime,
 					taskEmployer:uni.getStorageSync('userName'),
-					taskEmployerID: uni.getStorageSync('userID')
+					taskEmployerID: uni.getStorageSync('userID'),
+					// 重置任务失败原因
+					taskStatusRemark: null
 				}
 				this.$api.changeTaskData(temp).then((res)=>{
 					if(res.data == '修改成功'){
@@ -123,6 +162,36 @@
 					}
 				})
 			},
+			// 与时间计算相关方法
+			bindStartDateChange (e) {
+			    this.mission.taskStartTime = e.detail.value;
+			},
+			bindEndDateChange (e) {
+			    this.mission.taskEndTime = e.detail.value;
+			},
+			getDate(type) {
+				const date = new Date();
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+								
+				if (type === 'start') {
+				    year = year - 60;
+				} else if (type === 'end') {
+				    year = year + 2;
+				}
+				month = month > 9 ? month : '0' + month;
+				day = day > 9 ? day : '0' + day;
+				return `${year}.${month}.${day}`;
+			},
+		},
+		computed: {
+		    startDate() {
+		        return this.getDate('start');
+		    },
+		    endDate() {
+		        return this.getDate('end');
+		    }
 		},
 		components:{
 			editorl,

@@ -9,7 +9,7 @@
         <span>时间银行管理系统</span>
       </div>
       <div  class="title-welcome">
-        <span>欢迎 {{userPosition}}</span>
+        <span>{{daytime}}好! {{adminName}}</span>
       </div>
     </div>
 <!--    菜单栏-->
@@ -17,12 +17,7 @@
       <div class="menu">
         <el-row>
           <el-col :span="12">
-            <el-menu class="el-menu-vertical-demo"
-                     background-color="#545c64"
-                     text-color="white"
-                     active-text-color="#ffd04b"
-                     default-active="/home/publishTaskAnalysis"
-                     router="true">
+            <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="white" active-text-color="#ffd04b" default-active="/home/publishTaskAnalysis" router="router">
               <el-submenu index="1">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
@@ -39,7 +34,21 @@
                 </div>
                 <el-menu-item index="/home/customerReview">用户资质审核</el-menu-item>
                 <el-menu-item index="/home/publishTaskReview">任务发布审核</el-menu-item>
-                <el-menu-item index="/home/taskS0ettlementReview">任务结算审核</el-menu-item>
+                <el-menu-item index="/home/taskCompleteReview">任务结算审核</el-menu-item>
+              </el-submenu>
+              <el-submenu index="3">
+                <div class="el-menu-title" slot="title">
+                  <i class="el-icon-menu"></i>
+                  <span>任免管理</span>
+                </div>
+                <el-menu-item index="/home/viewAdmin">查看管理员</el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <div class="el-menu-title" slot="title">
+                  <i class="el-icon-menu"></i>
+                  <span>个人中心</span>
+                </div>
+                <el-menu-item index="/home/personal">个人中心</el-menu-item>
               </el-submenu>
             </el-menu>
           </el-col>
@@ -50,7 +59,6 @@
         <router-view></router-view>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -59,7 +67,24 @@ export default {
   name: "home",
   data() {
     return {
-      userPosition:'超级管理员'
+      adminName:localStorage.adminName,
+      daytime:''
+    }
+  },
+  created() {
+    this.getTime()
+  },
+  methods:{
+    // 获取当前问候时间
+    getTime(){
+      let hours = new Date().getHours();
+      if (hours < 12) {
+        this.daytime = '上午';
+      } else if (hours < 18) {
+        this.daytime = '下午';
+      } else {
+        this.daytime = '晚上';
+      }
     }
   }
 }
@@ -83,6 +108,7 @@ export default {
   height: 10vh;
   border-bottom: 5px solid #42b983;
   background-color: #545c64;
+  user-select:none;
 }
 .title-img img{
   margin-left: 1vw;
@@ -95,6 +121,8 @@ export default {
   color: white;
 }
 .title-welcome {
+  position: absolute;
+  right: 20px;
   font-size: 15px;
   margin-left: 1vw;
   color: white;

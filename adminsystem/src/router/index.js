@@ -6,14 +6,17 @@ import publishTaskAnalysis from "@/views/analysis/publishTaskAnalysis";
 import webUserAnalysis from "@/views/analysis/webUserAnalysis";
 import customerReview from "@/views/review/customerReview";
 import publishTaskReview from "@/views/review/publishTaskReview";
-import taskS0ettlementReview from "@/views/review/taskS0ettlementReview";
+import taskCompleteReview from "@/views/review/taskCompleteReview";
+import viewAdmin from "@/views/register/viewAdmin";
+import personal from "@/views/personal/personal";
+import login from "@/views/login";
 
 Vue.use(VueRouter)
 
 const router=new VueRouter({
   //路由重定位到登录页面
   routes:  [
-    {path:'/',redirect:'home/completeTaskAnalysis'},
+    {path:'/',redirect:'/login'},
     {path:'/home', component:home,
     children:[
       {path:'/home/publishTaskAnalysis', component:publishTaskAnalysis,},
@@ -21,8 +24,11 @@ const router=new VueRouter({
       {path:'/home/webUserAnalysis', component:webUserAnalysis,},
       {path:'/home/customerReview', component:customerReview,},
       {path:'/home/publishTaskReview', component:publishTaskReview,},
-      {path:'/home/taskS0ettlementReview', component:taskS0ettlementReview,}
+      {path:'/home/taskCompleteReview', component:taskCompleteReview,},
+      {path:'/home/viewAdmin', component:viewAdmin,},
+      {path:'/home/personal', component:personal,},
     ]},//主页面
+    {path:'/login',component:login} //登录页面
   ]
 })
 
