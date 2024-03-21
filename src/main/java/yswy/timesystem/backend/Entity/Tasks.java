@@ -18,4 +18,7 @@ public class Tasks {
     private String taskStatusRemark;
     private Integer taskEmployerID;
     private String userPhoto;
+    private Integer counts;
+
 }
+

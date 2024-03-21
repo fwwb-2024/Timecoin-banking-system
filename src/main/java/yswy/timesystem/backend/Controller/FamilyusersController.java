@@ -36,7 +36,7 @@ public class FamilyusersController {
     @PostMapping("/familyusers/familyCenter/createFamilyuser")//添加家庭成员
     public String registerFamilyuser(@RequestBody Familyusers familyusers, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         try{
             familyusers.setUserID(usersMapper.selectForUserIDByUserName(familyusers.getUserName()));
@@ -64,7 +64,7 @@ public class FamilyusersController {
     @GetMapping("/familyusers/familyCenter/deleteFamilyusers")//删除家庭成员
     public String familyCenterDeleteFamilyusers(@RequestParam int familyID,@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         familyusersMapper.deleteFamilyusers(familyID,userID);
         return  "删除成功";
@@ -75,7 +75,7 @@ public class FamilyusersController {
     @GetMapping("/familyusers/familyCenter/findFamilys")//查看所在家庭
     public List<Familyusers> familyCenterFindFamilys(@RequestParam int userID, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         return familyusersMapper.selectFamilyusersByUserID(userID);
     }
@@ -85,7 +85,7 @@ public class FamilyusersController {
     @GetMapping("/familyusers/familyCenter/findUsers")//查看家庭所有成员
     public List<Familyusers> familyCenterFindUsers(@RequestParam int familyID,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         return familyusersMapper.selectFamilyusersByFamilyID(familyID);
     }

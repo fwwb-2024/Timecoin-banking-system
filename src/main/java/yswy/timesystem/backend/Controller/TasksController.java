@@ -3,12 +3,12 @@ package yswy.timesystem.backend.Controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.multipart.MultipartFile;
-import yswy.timesystem.backend.Entity.Taskhistorys;
+import yswy.timesystem.backend.Entity.Tasksmulti;
 import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
 import yswy.timesystem.backend.Mapper.UsersMapper;
+import yswy.timesystem.backend.Util.DailyTaskUtil;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Tasks;
-import yswy.timesystem.backend.Entity.Users;
 import yswy.timesystem.backend.Mapper.TasksMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,8 +39,8 @@ public class TasksController {
     @Resource
     private UsersMapper usersMapper;
 
-    private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\taskimage\\";
-    private static String TASK_PHOTO_STATIC_PATH="static\\taskimage\\";
+    private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
+    private static String TASK_PHOTO_STATIC_PATH="static\\userphoto\\";
     private static String TASK_STATIC="http://10.195.28.44:9090/";
 
     private static String USER_STATIC="http://10.195.28.44:9090/";
@@ -53,7 +51,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/tasksAdmin")//查看任务列表
     public List<Tasks> taskCenterTasksAdmin(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         List<Tasks> tasksList;
         switch (chooses) {
@@ -188,7 +186,7 @@ public class TasksController {
     public List<Tasks> taskCenterTasks(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         List<Tasks> tasksList;
         switch (chooses) {
@@ -341,7 +339,7 @@ public class TasksController {
     @PostMapping("/tasks/taskCenter/changeTask")//修改任务,id查找
     public String taskCenterChangeTask(@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerID());
         int b=tasksMapper.selectTaskTimeCoinBountyByTaskID(tasks.getTaskID());
@@ -377,18 +375,17 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
     public Object taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         return tasksMapper.selectTasksByTaskID(taskID);
     }
 
     @Operation(summary = "审核任务接口", description = "返回201，\"任务已被其他管理员审核通过\"\"审核成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @Parameter(name = "adminID", description = "id", example = "123")
     @GetMapping("/tasks/taskCenter/checkTask")//审核任务
-    public String taskCenterCheckTask(@RequestParam int taskID,@RequestParam String adminName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterCheckTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int a=tasksMapper.selectTaskStatusByTaskID(taskID);
         int b=tasksMapper.selectTaskHistorysStatusByTaskID(taskID);
@@ -402,14 +399,25 @@ public class TasksController {
         }
     }
 
+    @Operation(summary = "审核不通过任务接口", description = "返回201，\"批改完成\"")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @Parameter(name = "taskStatusRemark", description = "string", example = "string")
+    @GetMapping("/tasks/taskCenter/checkTaskNot")//审核不通过任务
+    public String taskCenterCheckTaskNot(@RequestParam int taskID,@RequestParam String taskStatusRemark,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusRemarkByTaskID(taskID,taskStatusRemark);
+        return  "批改完成";
+    }
+
     @Operation(summary = "接取任务接口", description = "返回201，\"任务已被其他志愿者接取\"\"接取成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
     @Parameter(name = "userID", description = "id", example = "123")
-    @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/accessTask")//接取任务
-    public String taskCenterAccessTask(@RequestParam int taskID,@RequestParam int userID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterAccessTask(@RequestParam int taskID,@RequestParam int userID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
         int a=tasksMapper.selectTaskStatusByTaskID(taskID);
         int b=tasksMapper.selectTaskHistorysStatusByTaskID(taskID);
         if(a==2&&b==2) {
@@ -425,11 +433,10 @@ public class TasksController {
 
     @Operation(summary = "志愿者完成任务接口", description = "返回201，\"完成成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/userSuccessTask")//志愿者完成任务
-    public String taskCenterUserSuccessTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterUserSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusFourByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFourByTaskID(taskID);
@@ -438,11 +445,10 @@ public class TasksController {
 
     @Operation(summary = "志愿者取消任务接口", description = "返回201，\"取消成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @Parameter(name = "userName", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/userRefuseTask")//志愿者取消任务
-    public String taskCenterUserRefuseTask(@RequestParam int taskID,@RequestParam String userName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterUserRefuseTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusTwoByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
@@ -452,24 +458,34 @@ public class TasksController {
 
     @Operation(summary = "雇主完成任务接口", description = "返回201，\"完成成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @Parameter(name = "taskEmployer", description = "string", example = "string")
     @GetMapping("/tasks/taskCenter/taskEmployerSuccessTask")//雇主完成任务
-    public String taskCenterTaskEmployerSuccessTask(@RequestParam int taskID,@RequestParam String taskEmployer,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public String taskCenterTaskEmployerSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusFiveByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFiveByTaskID(taskID);
         return "完成成功";
     }
 
-    @Operation(summary = "管理员审核任务接口", description = "返回201，\"审核成功\"")
+    @Operation(summary = "雇主不通过和管理员完结不通过任务接口", description = "返回201，\"批改成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @Parameter(name = "adminName", description = "string", example = "string")
-    @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
-    public String taskCenterAdminSuccessTask(@RequestParam int taskID,@RequestParam String adminName,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    @GetMapping("/tasks/taskCenter/successTaskNot")//志愿者完成任务
+    public String taskCenterSuccessTaskNot(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusThreeByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusThreeByTaskID(taskID);
+        return "批改成功";
+    }
+
+    @Operation(summary = "管理员审核任务完结接口", description = "返回201，\"审核成功\"")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
+    public String taskCenterAdminSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusSixByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusSixByTaskID(taskID);
@@ -486,7 +502,7 @@ public class TasksController {
     @PostMapping("/tasks/taskCenter/uploadimage")//上传任务图片
     public String taskCenterUploadImage(@RequestParam MultipartFile file,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         // 设置文件大小限制，例如1MB
         long maxFileSize = 1024 * 1024; // 1MB in bytes
@@ -528,5 +544,56 @@ public class TasksController {
         }
     }
 
+    @Operation(summary = "管理员查看任务发布总量接口", description = "返回201，根据季度月星期长度的数组")
+    @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
+    @GetMapping("/admin/taskCenter/findCreatedTask")//管理员审核任务
+    public List<Tasksmulti> taskCenterFindCreatedTask(@RequestParam int chooses)throws Exception {
 
+
+//        TokenUtil.tokenServiceTwo(request,responce);
+
+        if(chooses==1){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskCounts(7);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+            return result;
+        } else if (chooses==2) {
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskCounts(30);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,30);
+            return result;
+        }else if (chooses==3){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskCounts(90);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,90);
+            return result;
+        }
+
+        List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskCounts(7);
+        List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+        return result;
+    }
+
+    @Operation(summary = "管理员查看任务完成总量接口", description = "返回201，根据季度月星期长度的数组")
+    @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
+    @GetMapping("/admin/taskCenter/findSuccessedTask")//管理员审核任务
+    public List<Tasksmulti> taskCenterFindSuccessedTask(@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        if(chooses==1){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskSuccessCounts(7);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+            return result;
+        } else if (chooses==2) {
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskSuccessCounts(30);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,30);
+            return result;
+        }else if (chooses==3){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskSuccessCounts(90);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,90);
+            return result;
+        }
+
+        List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskSuccessCounts(7);
+        List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+        return result;
+    }
 }

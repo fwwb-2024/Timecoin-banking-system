@@ -41,7 +41,7 @@ public class FamilysController {
     @PostMapping("/family/familyCenter/createFamily")//创建家庭
     public int registerFamily(@RequestBody Familys familys, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.insertRegister(familys);
         int familyID=familysMapper.selectFamilyIDByFamilyNameAndHouseHolder(familys);
@@ -61,7 +61,7 @@ public class FamilysController {
     @PostMapping("/family/familyCenter/changeFamilyName")//修改家庭名称，id查找
     public String familyCenterChangeFamilyName(@RequestBody Familys familys,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.updateFamilyNameByFamilyID(familys);
         return  "修改成功";
@@ -74,7 +74,7 @@ public class FamilysController {
     @PostMapping("/family/familyCenter/changeHouseHolder")//修改家庭主人，id查找
     public String familyCenterChangeHouseHolder(@RequestBody Familys familys,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.updateHouseHolderByFamilyID(familys);
         return  "修改成功";
@@ -85,7 +85,7 @@ public class FamilysController {
     @GetMapping("/family/familyCenter/deleteFamilys")//删除家庭,根据id
     public String familyCenterDeleteFamilys(@RequestParam int familyID,HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         familysMapper.deleteFamilys(familyID);
         return  "删除成功";

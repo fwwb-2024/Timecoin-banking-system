@@ -145,7 +145,7 @@ public class UserController {
     @PostMapping("/user/userCenter/changeUserData")//用户个人中心，修改用户数据，根据用户id查找
     public String userCenterChangeUserData(@RequestBody Users users,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
         if(users.getUserName().equals(usersMapper.selectForUserNameByUserID(users.getUserID()))){
@@ -190,7 +190,7 @@ public class UserController {
     @PostMapping("/user/userCenter/changeUserPhoto")//上传或修改用户头像
     public String userCenterChangeUserPhoto(@RequestParam MultipartFile file,@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         // 设置文件大小限制，例如1MB
         long maxFileSize = 1024 * 1024; // 1MB in bytes

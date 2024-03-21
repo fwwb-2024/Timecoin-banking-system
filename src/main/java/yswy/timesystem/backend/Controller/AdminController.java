@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author : hutaosama
@@ -36,7 +37,7 @@ public class AdminController {
     @PostMapping("/admin/register")//管理员注册接口，由高级管理员注册
     public String registerAdmin(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
         count=adminsMapper.selectAdminNameSame(admins.getAdminName());//检查是否有相同用户名
@@ -75,7 +76,7 @@ public class AdminController {
     @GetMapping("/admin/adminCenter/findAdminData")//管理员个人中心查看管理员数据，通过管理员名获得
     public Object adminCenterFindAdminData(@RequestParam String adminName,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         Admins adminReturn=adminsMapper.selectForAdminsByAdminName(adminName);
         adminReturn.setToken(TokenUtil.tokenServiceOne(adminName));
@@ -88,7 +89,7 @@ public class AdminController {
     @PostMapping("/admin/adminCenter/changeAdminData")//管理员修改个人信息，根据管理员id查找
     public String adminCenterChangeAdminData(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int count=3;
         if(admins.getAdminName().equals(adminsMapper.selectForAdminNameByAdminID(admins.getAdminID()))){
@@ -105,16 +106,16 @@ public class AdminController {
         return TokenUtil.tokenServiceOne(admins.getAdminName());
     }
 
-    @Operation(summary = "管理员修改密码接口", description = "返回201，新token")
+    @Operation(summary = "管理员修改密码接口", description = "返回201，\"修改成功\"")
     @Parameter(name = "adminPassword", description = "密码", example = "string")
     @Parameter(name = "adminID", description = "id", example = "123")
     @PostMapping("/admin/adminCenter/changeAdminPassword")//管理员修改密码，根据id查找
     public String adminCenterChangeAdminPassword(@RequestBody Admins admins,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         adminsMapper.updateAdminPasswordByID(admins);
-        return TokenUtil.tokenServiceOne(admins.getAdminName());
+        return "修改成功";
     }
 
     @Operation(summary = "注销管理员接口", description = "返回201，\"注销成功\"")
@@ -122,9 +123,23 @@ public class AdminController {
     @GetMapping("/admin/adminCenter/deleteAdmins")//注销管理员，根据被注销的管理员的id查找
     public String adminCenterDeleteAdmins(@RequestParam int adminID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         adminsMapper.deleteAdmins(adminID);
         return "注销成功";
     }
+
+    @Operation(summary = "高级管理员查看所有低级管理员数据接口", description = "返回201，一串对象）")
+    @Parameter(name = "adminName", description = "高级管理员用户名", example = "string")
+    @GetMapping("/admin/adminCenter/findAllAdminData")//高级管理员个人中心查看低级管理员数据，通过管理员名获得
+    public List<Admins> adminCenterFindAllAdminData(@RequestParam String adminName, HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+
+        return adminsMapper.selectForAllAdminsByAdminPreviliege();
+    }
+
+
+
 }

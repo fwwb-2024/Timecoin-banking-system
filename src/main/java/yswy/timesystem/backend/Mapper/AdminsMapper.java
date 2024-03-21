@@ -4,6 +4,8 @@ import yswy.timesystem.backend.Entity.Admins;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Mapper
 public interface AdminsMapper {
 
@@ -51,4 +53,9 @@ public interface AdminsMapper {
     @Select("select `admin_id` as adminID,`admin_name` as adminName,`admin_previliege` as adminPreviliege from `admins` where `admin_name` = #{adminName};")
     @Transactional
     Admins selectForAdminsByAdminName(String adminName);
+
+    //查找所有低级管理员个人信息,不包括密码,通过用户名
+    @Select("select `admin_id` as adminID,`admin_name` as adminName,`admin_previliege` as adminPreviliege from `admins` where `admin_previliege` = 1;")
+    @Transactional
+    List<Admins> selectForAllAdminsByAdminPreviliege();
 }
