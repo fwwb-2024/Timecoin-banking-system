@@ -82,7 +82,6 @@
 			},
 			completeMission(){
 				this.$api.completeTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
-					console.log(res);
 					if(res.data == '完成成功'){
 					uni.showToast({
 							title:'完成任务成功',

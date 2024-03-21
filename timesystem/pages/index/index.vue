@@ -177,5 +177,6 @@
 	}
 	.mission-list-element {
 		box-shadow: 1px 1px 1px rgb(200, 200, 200);
+		margin-bottom: 2px;
 	}
 </style>
