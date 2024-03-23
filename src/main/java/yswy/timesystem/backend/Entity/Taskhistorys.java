@@ -12,9 +12,10 @@ public class Taskhistorys {
     private String taskName;
     private String taskBeginTime;
     private String taskEndTime;
-    private String taskTimeCoinBounty;
+    private Integer taskTimeCoinBounty;
     private String taskBrief;
     private Integer taskStatus;
     private String taskEmployerName;
     private String userPhoto;
+    private String taskStatusRemark;
 }
