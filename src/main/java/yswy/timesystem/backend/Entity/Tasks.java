@@ -14,6 +14,11 @@ public class Tasks {
     private String taskEndTime;
     private String taskVisitedNumber;
     private Integer taskStatus;
-    private String taskTimeCoinBounty;
+    private Integer taskTimeCoinBounty;
     private String taskStatusRemark;
+    private Integer taskEmployerID;
+    private String userPhoto;
+    private Integer counts;
+
 }
+

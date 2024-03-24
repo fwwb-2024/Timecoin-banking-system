@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface FamilysMapper {
 
     //创建家庭
-    @Insert("insert into `familys` (`house_holder`,`family_name`) values(#{houseHolder},#{familyName});")
+    @Insert("insert into `familys` (`house_holder`,`family_name`,`house_holder_name`) values(#{houseHolder},#{familyName},#{houseHolderName});")
     @Transactional
     void insertRegister(Familys familys);
 
@@ -24,7 +24,7 @@ public interface FamilysMapper {
     void updateFamilyNameByFamilyID(Familys familys);
 
     //修改一家之主，id查找
-    @Update("update `familys` set `house_holder` = #{houseHolder} where `family_id` = #{familyID};")
+    @Update("update `familys` set `house_holder` = #{houseHolder},`house_holder_name` = #{houseHolderName} where `family_id` = #{familyID};")
     @Transactional
     void updateHouseHolderByFamilyID(Familys familys);
 
