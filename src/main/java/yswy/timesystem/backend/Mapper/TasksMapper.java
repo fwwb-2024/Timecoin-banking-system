@@ -14,9 +14,7 @@ public interface TasksMapper {
     @Transactional
     void insertRegister(Tasks tasks);
 
-    //得到当前最大的taskid
-    @Select("SELECT MAX(task_id) AS maxTaskId FROM tasks")
-    int getMaxTaskId();
+
 
     //新建任务历史
     @Insert("insert into `taskhistorys` (`task_id`,`task_employer_id`) values(#{taskID},#{taskEmployerID});")
@@ -97,6 +95,10 @@ public interface TasksMapper {
     @Update("update `taskhistorys` set `task_history_status` = 6 where `task_id` = #{taskID};")
     @Transactional
     void updateTaskHistoryStatusSixByTaskID(int taskID);
+
+    //得到当前最大的taskid
+    @Select("SELECT MAX(task_id) AS maxTaskId FROM tasks")
+    int getMaxTaskId();
 
     //全局查找，根据任务id顺序排序,一次查10个，查第offSet后面的10个
     @Select("select t.`task_id` as taskID,t.`task_name` as taskName,t.`task_employer` as taskEmployer,t.`task_begin_time` as taskBeginTime,t.`task_end_time` as taskEndTime,t.`task_time_coin_bounty` as taskTimeCoinBounty,t.`task_brief` as taskBrief,t.`task_status` as taskStatus,u.`user_photo` as userPhoto from `tasks` t join `users` u on t.`task_employer` = u.`user_name` where `task_status` = #{taskStatus} order by task_id asc limit 10 offset #{offSet};")
@@ -448,6 +450,11 @@ public interface TasksMapper {
     @Select("select `task_time_coin_bounty` as taskTimeCoinBounty from `tasks` where `task_id` = #{taskID};")
     @Transactional
     int selectTaskTimeCoinBountyByTaskID(int taskID);
+
+    //查看任务雇主，id查找
+    @Select("select `task_employer` as taskEmployer from `tasks` where `task_id` = #{taskID};")
+    @Transactional
+    String selectTaskEmployerByTaskID(int taskID);
 
     @Select("select date(task_begin_time) as taskBeginTime, count(*) as counts " +
             "from tasks " +

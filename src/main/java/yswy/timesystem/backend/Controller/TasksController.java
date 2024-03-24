@@ -3,7 +3,9 @@ package yswy.timesystem.backend.Controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.multipart.MultipartFile;
+import yswy.timesystem.backend.Entity.Ledgers;
 import yswy.timesystem.backend.Entity.Tasksmulti;
+import yswy.timesystem.backend.Mapper.LedgersMapper;
 import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 import yswy.timesystem.backend.Util.DailyTaskUtil;
@@ -38,6 +40,8 @@ public class TasksController {
     private TaskhistorysMapper taskhistorysMapper;
     @Resource
     private UsersMapper usersMapper;
+    @Resource
+    private LedgersMapper ledgersMapper;
 
     private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
     private static String TASK_PHOTO_STATIC_PATH="static\\userphoto\\";
@@ -385,6 +389,7 @@ public class TasksController {
         a=a+b;
         tasksMapper.deleteTasksByTaskID(taskID);
         usersMapper.updateUserTimeCoinByID(taskEmployerID,a);
+        ledgersMapper.deleteLedgersByTaskID(taskID);
         return "删除成功";
     }
 
@@ -408,9 +413,15 @@ public class TasksController {
         int a=tasksMapper.selectTaskStatusByTaskID(taskID);
         int b=tasksMapper.selectTaskHistorysStatusByTaskID(taskID);
         if(a==1&&b==1){
-            tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
+
             tasksMapper.updateTaskStatusTwoByTaskID(taskID);
             tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
+            tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
+            Ledgers ledgers=new Ledgers();
+            ledgers.setTaskID(taskID);
+            ledgers.setUserID(usersMapper.selectForUserIDByUserName(tasksMapper.selectTaskEmployerByTaskID(taskID)));
+            ledgers.setLedgerTimeCoin(0-tasksMapper.selectTaskTimeCoinBountyByTaskID(taskID));
+            ledgersMapper.insertRegister(ledgers);
             return "审核成功";
         }
         else{
@@ -517,6 +528,11 @@ public class TasksController {
         int a=usersMapper.selectForUserTimeCoinByUserID(userID);
         a=a+timeCoinBounty;
         usersMapper.updateUserTimeCoinByID(userID,a);
+        Ledgers ledgers=new Ledgers();
+        ledgers.setTaskID(taskID);
+        ledgers.setUserID(userID);
+        ledgers.setLedgerTimeCoin(timeCoinBounty);
+        ledgersMapper.insertRegister(ledgers);
         return "审核成功";
     }
 
