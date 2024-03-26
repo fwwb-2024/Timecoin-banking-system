@@ -10,7 +10,7 @@ import java.util.List;
 public interface TasksMapper {
 
     //新建任务
-    @Insert("insert into `tasks` (`task_name`,`task_employer`,`task_address`,`task_detail`,`task_brief`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty`) values(#{taskName},#{taskEmployer},#{taskAddress},#{taskDetail},#{taskBrief},#{taskBeginTime},#{taskEndTime},#{taskTimeCoinBounty});")
+    @Insert("insert into `tasks` (`task_name`,`task_employer`,`task_address`,`task_detail`,`task_brief`,`task_begin_time`,`task_end_time`,`task_time_coin_bounty``task_lable`) values(#{taskName},#{taskEmployer},#{taskAddress},#{taskDetail},#{taskBrief},#{taskBeginTime},#{taskEndTime},#{taskTimeCoinBounty},#{taskLable});")
     @Transactional
     void insertRegister(Tasks tasks);
 
@@ -86,6 +86,16 @@ public interface TasksMapper {
     @Transactional
     void updateTaskHistoryStatusFiveByTaskID(int taskID);
 
+    //修改任务状态,用户开始工作,id查找
+    @Update("update `tasks` set `task_status` = 7 where `task_id` = #{taskID};")
+    @Transactional
+    void updateTaskStatusSevenByTaskID(int taskID);
+
+    //修改任务历史状态,用户开始工作,id查找
+    @Update("update `taskhistorys` set `task_history_status` = 7 where `task_id` = #{taskID};")
+    @Transactional
+    void updateTaskHistoryStatusSevenByTaskID(int taskID);
+
     //修改任务状态,管理员完结,id查找
     @Update("update `tasks` set `task_status` = 6 where `task_id` = #{taskID};")
     @Transactional
@@ -95,6 +105,11 @@ public interface TasksMapper {
     @Update("update `taskhistorys` set `task_history_status` = 6 where `task_id` = #{taskID};")
     @Transactional
     void updateTaskHistoryStatusSixByTaskID(int taskID);
+
+    //增加点击量,id查找
+    @Update("update `tasks` set `task_visited_number` = #{taskVisitedNumber} where `task_id` = #{taskID};")
+    @Transactional
+    void updateTaskVisitedNumberByTaskID(int taskID,int taskVisitedNumber);
 
     //得到当前最大的taskid
     @Select("SELECT MAX(task_id) AS maxTaskId FROM tasks")
@@ -432,7 +447,7 @@ public interface TasksMapper {
 
 
     //查看任务详情，id查找
-    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_address` as taskAddress,`task_detail` as taskDetail,`task_brief` as taskBrief,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_visited_number` as taskVisitedNumber,`task_status` as taskStatus,`task_status_remark` as taskStatusRemark from `tasks` where `task_id` = #{taskID};")
+    @Select("select `task_id` as taskID,`task_name` as taskName,`task_employer` as taskEmployer,`task_address` as taskAddress,`task_detail` as taskDetail,`task_brief` as taskBrief,`task_begin_time` as taskBeginTime,`task_end_time` as taskEndTime,`task_time_coin_bounty` as taskTimeCoinBounty,`task_visited_number` as taskVisitedNumber,`task_status` as taskStatus,`task_status_remark` as taskStatusRemark,`task_lable` as taskLable from `tasks` where `task_id` = #{taskID};")
     @Transactional
     Tasks selectTasksByTaskID(int taskID);
 

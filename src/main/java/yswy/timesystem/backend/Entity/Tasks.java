@@ -12,13 +12,13 @@ public class Tasks {
     private String taskBrief;
     private String taskBeginTime;
     private String taskEndTime;
-    private String taskVisitedNumber;
+    private Integer taskVisitedNumber;
     private Integer taskStatus;
     private Integer taskTimeCoinBounty;
     private String taskStatusRemark;
     private Integer taskEmployerID;
     private String userPhoto;
     private Integer counts;
-
+    private Integer taskLable;
 }
 

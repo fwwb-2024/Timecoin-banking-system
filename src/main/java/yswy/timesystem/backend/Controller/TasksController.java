@@ -396,11 +396,16 @@ public class TasksController {
     @Operation(summary = "查看任务详情接口", description = "返回201，task详情")
     @Parameter(name = "taskID", description = "id", example = "123")
     @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
-    public Object taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public Tasks taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        return tasksMapper.selectTasksByTaskID(taskID);
+
+        Tasks tasks=new Tasks();
+        tasks=tasksMapper.selectTasksByTaskID(taskID);
+        tasks.setTaskVisitedNumber(1+tasks.getTaskVisitedNumber());
+        tasksMapper.updateTaskVisitedNumberByTaskID(taskID,tasks.getTaskVisitedNumber());
+        return tasks;
     }
 
     @Operation(summary = "审核任务接口", description = "返回201，\"任务已被其他管理员审核通过\"\"审核成功\"")
@@ -459,6 +464,19 @@ public class TasksController {
         else {
             return "任务已被其他志愿者接取";
         }
+    }
+
+    @Operation(summary = "志愿者开始进行任务接口", description = "返回201，\"完成成功\"")
+    @Parameter(name = "taskID", description = "id", example = "123")
+    @GetMapping("/tasks/taskCenter/userBeginTask")//志愿者完成任务
+    public String taskCenterUserBeginTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
+        tasksMapper.updateTaskStatusSevenByTaskID(taskID);
+        tasksMapper.updateTaskHistoryStatusSevenByTaskID(taskID);
+        return "完成成功";
     }
 
     @Operation(summary = "志愿者完成任务接口", description = "返回201，\"完成成功\"")

@@ -18,4 +18,5 @@ public class Taskhistorys {
     private String taskEmployerName;
     private String userPhoto;
     private String taskStatusRemark;
+    private String taskLable;
 }
