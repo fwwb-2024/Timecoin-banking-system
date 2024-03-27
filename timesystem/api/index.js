@@ -33,6 +33,11 @@ export default {
 	    return http.post('/user/userCenter/changeUserPassword',data,true)
 	},
 	
+	
+	// 获取家庭成员余额
+	getFamilyCoinsData(familyID){
+		 return http.get('/familyusers/familyCenter/findUsersTimeCoin',{familyID:familyID},true)
+	},
 	// 新建任务
 	postTask (data){
 	    return http.post('/tasks/taskCenter/register',data,true)
@@ -52,6 +57,18 @@ export default {
 	// 取消任务
 	canelTask (taskID,userName){
 		return http.get('/tasks/taskCenter/userRefuseTask',{taskID:taskID,userName:userName},true)
+	},
+	// 删除任务
+	deleteTask (taskID,taskEmployerID,taskTimeCoinBounty){
+		return http.get('/tasks/taskCenter/deleteTasks',{taskID:taskID,taskEmployerID:taskEmployerID,taskTimeCoinBounty:taskTimeCoinBounty},true)
+	},
+	// 发布者同意完成任务
+	agreeTask(taskID) {
+		return http.get('/tasks/taskCenter/taskEmployerSuccessTask',{taskID:taskID},true)
+	},
+	// 发布者拒绝同意完成任务
+	refuseTask(taskID,taskStatusRemark) {
+		return http.get('/tasks/taskCenter/successTaskNot',{taskID:taskID,taskStatusRemark:taskStatusRemark},true)
 	},
 	
 	// 查看所有任务
@@ -114,5 +131,10 @@ export default {
 	// 新建家庭
 	newFamily (data){
 		return http.post('/family/familyCenter/createFamily',data,true)
-	}
+	},
+	
+	// 查看账单
+	getLedgers (userID,offSet){
+		return http.get('/ledgers/userCenter/findLedgers',{userID:userID,offSet:offSet},true)
+	},
 }

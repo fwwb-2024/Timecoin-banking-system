@@ -172,7 +172,6 @@
 				  userEmail: this.userEmail
 				}
 				this.$api.changeUserData(temp).then((res)=>{
-					console.log(res);
 					if(res.data == '用户已存在') {
 						uni.showToast({
 							title: '用户已存在',

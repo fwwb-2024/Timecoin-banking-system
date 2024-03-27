@@ -100,6 +100,11 @@
 										title:'添加成功',
 										duration:1000
 									})
+									setTimeout(function() {
+										uni.redirectTo({
+										    url: '/pages/personal/familyList'
+										})
+									},1000)
 								}
 								else if(res.data == '该用户不存在'){
 									uni.showToast({
@@ -128,6 +133,11 @@
 							title:'删除成功',
 							duration:1000
 						})
+						setTimeout(function() {
+							uni.redirectTo({
+							    url: '/pages/personal/familyList'
+							})
+						},1000)
 					}
 				})
 			},
@@ -157,6 +167,11 @@
 										duration:1000
 									})
 								}
+								setTimeout(function() {
+									uni.redirectTo({
+									    url: '/pages/personal/familyList'
+									})
+								},1000)
 							})
 				        }
 				    }
@@ -179,10 +194,10 @@
 								duration:1000
 							})
 							setTimeout(function() {
-							    uni.navigateBack({
-							    	delta:1
-							    })
-							}, 1000);
+								uni.redirectTo({
+								    url: '/pages/personal/familyList'
+								})
+							},1000)
 						}
 						else{
 							uni.showToast({
@@ -202,10 +217,10 @@
 							duration:1000
 						})
 						setTimeout(function() {
-						    uni.navigateBack({
-						    	delta:1
-						    })
-						}, 1000);
+							uni.redirectTo({
+							    url: '/pages/personal/familyList'
+							})
+						},1000)
 					}
 					else {
 						uni.showToast({

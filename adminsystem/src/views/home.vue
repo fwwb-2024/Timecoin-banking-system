@@ -39,11 +39,18 @@
               <el-submenu index="3">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
+                  <span>编辑资讯</span>
+                </div>
+                <el-menu-item index="/home/editor">编辑资讯</el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <div class="el-menu-title" slot="title">
+                  <i class="el-icon-menu"></i>
                   <span>任免管理</span>
                 </div>
                 <el-menu-item index="/home/viewAdmin">查看管理员</el-menu-item>
               </el-submenu>
-              <el-submenu index="4">
+              <el-submenu index="5">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>个人中心</span>

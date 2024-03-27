@@ -45,6 +45,16 @@
 				</view>
 			</view>
 			
+			<!-- 任务历史 -->
+			<view class="function-part line" @click="navTo('/pages/mymission/historyTask')">
+				<view>
+					<image src="/static/personal/familyList.png"></image>
+				</view>
+				<view>
+					<text>任务历史</text>
+				</view>
+			</view>
+			
 			<!-- 切换身份 -->
 			<view class="function-part" @click="changePosition">
 				<view>

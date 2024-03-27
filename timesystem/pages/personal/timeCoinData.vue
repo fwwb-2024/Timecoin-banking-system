@@ -24,10 +24,10 @@
 			</view>
 			<!-- 账单 -->
 			<view class="timeCoin-bill">
-				<view class="timeCoin-image">
+				<view class="timeCoin-image" @click="navTo">
 					<image src="/static/personal/bill.png"></image>
 				</view>
-				<view class="timeCoin-bill-text">
+				<view class="timeCoin-bill-text" @click="navTo">
 					<text>账单</text>
 				</view>
 			</view>
@@ -53,6 +53,12 @@
 			back() {
 				uni.navigateBack({
 					delta:1
+				})
+			},
+			// 跳转到账单
+			navTo() {
+				uni.navigateTo({
+					url:'/pages/personal/coinsLedgers',
 				})
 			}
 		},

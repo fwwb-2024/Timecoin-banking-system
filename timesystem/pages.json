@@ -1,21 +1,50 @@
 {
 	//路由页面的配置
 	"pages": [{
+		//首页资讯注册
+		"path": "pages/news/news",
+		"style": {
+				"navigationBarTitleText": "首页资讯",
+				"app-plus": {
+				  "titleNView": false, //禁用原生导航栏 
+				  "pullToRefresh":{
+				  	"color":"#e6e6e6",
+					"offset": "150px",
+					"height":"50px",
+					"range": "100px"
+				  }
+				},
+				"enablePullDownRefresh": true
+		}},{
 		//主页注册
 		"path": "pages/index/index",
 		"style": {
-				"navigationBarTitleText": "主页",
+				"navigationBarTitleText": "任务大厅",
 				"app-plus": {
-				  "titleNView": false //禁用原生导航栏  
-				}  
+				  "titleNView": false, //禁用原生导航栏 
+				  "pullToRefresh":{
+				  	"color":"#e6e6e6",
+					"offset": "320px",
+					"height":"50px",
+					"range": "100px"
+				  }
+				},
+				"enablePullDownRefresh": true
 		}},{
 		//我的任务注册
 		"path": "pages/mymission/myMission",
 		"style": {
 				"navigationBarTitleText": "我的任务",
 				"app-plus": {
-				  "titleNView": false //禁用原生导航栏  
-				}  
+				  "titleNView": false, //禁用原生导航栏
+				  "pullToRefresh":{
+				  	"color":"#e6e6e6",
+				  	"offset": "90px",
+				  	"height":"50px",
+				  	"range": "100px"
+				  }
+				},
+				 "enablePullDownRefresh": true
 		}},{
 		//新增任务注册
 		"path": "pages/mymission/newMission",
@@ -32,6 +61,21 @@
 				"app-plus": {
 				  "titleNView": false //禁用原生导航栏  
 				}  
+		}},{
+		//历史任务注册
+		"path": "pages/mymission/historyTask",
+		"style": {
+				"navigationBarTitleText": "历史任务",
+				"app-plus": {
+				  "titleNView": false, //禁用原生导航栏 
+				  "pullToRefresh":{
+				  		"color":"#e6e6e6",
+				  		"offset": "70px",
+				  		"height":"50px",
+				  		"range": "100px"
+				  }
+				},
+				"enablePullDownRefresh": true
 		}},{
 		//搜索注册
 		"path": "pages/index/search",
@@ -81,6 +125,21 @@
 				  "titleNView": false //禁用原生导航栏  
 				}  
 		}},{
+		//时间币账单注册
+		"path": "pages/personal/coinsLedgers",
+		"style": {
+				"navigationBarTitleText": "时间币账单",
+				"app-plus": {
+				  "titleNView": false, //禁用原生导航栏 
+				  "pullToRefresh":{
+				  	"color":"#e6e6e6",
+					"offset": "320px",
+					"height":"50px",
+					"range": "100px"
+				  }
+				},
+				"enablePullDownRefresh": true
+		}},{
 		//登录注册
 		"path": "pages/login",
 		"style": {
@@ -102,7 +161,7 @@
 		"style": {
 				"navigationBarTitleText": "当前任务",
 				"app-plus": {
-				  "titleNView": false //禁用原生导航栏  
+					"titleNView": false //禁用原生导航栏  
 				}  
 		}},{
 		//历史任务注册
@@ -110,8 +169,8 @@
 		"style": {
 				"navigationBarTitleText": "历史任务",
 				"app-plus": {
-				  "titleNView": false //禁用原生导航栏  
-				}  
+					"titleNView": false //禁用原生导航栏  
+				}
 		}},{
 		//修改任务注册
 		"path": "pages/mymission/changemission",
@@ -140,10 +199,15 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{
+			"pagePath": "pages/news/news",
+			"iconPath": "static/buttompicture/buttompic1.png",
+			"selectedIconPath": "static/buttompicture/selectbuttompic1.png",
+			"text": "首页资讯"
+		}, {
 			"pagePath": "pages/index/index",
 			"iconPath": "static/buttompicture/buttompic1.png",
 			"selectedIconPath": "static/buttompicture/selectbuttompic1.png",
-			"text": "首页"
+			"text": "任务大厅"
 		}, {
 			"pagePath": "pages/mymission/myMission",
 			"iconPath": "static/buttompicture/buttompic2.png",
