@@ -89,4 +89,14 @@ public class FamilyusersController {
 
         return familyusersMapper.selectFamilyusersByFamilyID(familyID);
     }
+
+    @Operation(summary = "查看家庭所有成员时间币余额接口", description = "返回201，一串familyusers对象")
+    @Parameter(name = "familyID", description = "id", example = "123")
+    @GetMapping("/familyusers/familyCenter/findUsersTimeCoin")//查看家庭所有成员
+    public List<Familyusers> familyCenterFindUsersTimeCoin(@RequestParam int familyID,HttpServletRequest request, HttpServletResponse responce) throws Exception{
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        return familyusersMapper.selectFamilyusersTimeCoinByFamilyID(familyID);
+    }
 }

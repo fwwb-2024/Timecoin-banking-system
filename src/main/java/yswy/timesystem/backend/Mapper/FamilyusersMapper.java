@@ -28,6 +28,11 @@ public interface FamilyusersMapper {
     @Transactional
     List<Familyusers> selectFamilyusersByFamilyID(int familyID);
 
+    //查看家庭中的所有成员的钱,根据家庭id
+    @Select("select fu.`family_user_id` as familyUserID,fu.`family_id` as familyID,fu.`user_id` as userID,fu.`user_name` as userName,f.`family_name` as familyName,f.`house_holder_name` as houseHolderName,u.`user_time_coin` as userTimeCoin from `familyusers` fu join `familys` f on fu.`family_id` = f.`family_id` join `users` u on fu.`user_id` =u.`user_id` where fu.`family_id` = #{familyId};")
+    @Transactional
+    List<Familyusers> selectFamilyusersTimeCoinByFamilyID(int familyID);
+
     //查找同一家庭下、相同userid的人数
     @Select("select count(*) from `familyusers` where `family_id` = #{familyID} and `user_id` = #{userID};")
     @Transactional

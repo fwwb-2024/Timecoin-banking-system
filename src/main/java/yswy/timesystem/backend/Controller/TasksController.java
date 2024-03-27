@@ -8,6 +8,7 @@ import yswy.timesystem.backend.Entity.Tasksmulti;
 import yswy.timesystem.backend.Mapper.LedgersMapper;
 import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
 import yswy.timesystem.backend.Mapper.UsersMapper;
+import yswy.timesystem.backend.Service.FabricServiceImpl;
 import yswy.timesystem.backend.Util.DailyTaskUtil;
 import yswy.timesystem.backend.Util.TokenUtil;
 import yswy.timesystem.backend.Entity.Tasks;
@@ -43,6 +44,9 @@ public class TasksController {
     @Resource
     private LedgersMapper ledgersMapper;
 
+    @Resource
+    private FabricServiceImpl fabricService;
+
     private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
     private static String TASK_PHOTO_STATIC_PATH="static\\userphoto\\";
     private static String TASK_STATIC="http://10.195.28.44:9090/";
@@ -67,28 +71,46 @@ public class TasksController {
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet,taskStatus);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscAdmin(offSet,taskStatus);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescAdmin(offSet,taskStatus);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscAdmin(offSet,taskStatus);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescAdmin(offSet,taskStatus);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeAscAdmin(offSet,taskStatus);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeDescAdmin(offSet,taskStatus);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeAscAdmin(offSet,taskStatus);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeDescAdmin(offSet,taskStatus);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAscAdmin(offSet,taskStatus);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDescAdmin(offSet,taskStatus);
+                break;
+            case 12:
+                tasksList = tasksMapper.selectAbstractTasksByTaskVisitedNumberAscAdmin(offSet,taskStatus);
+                break;
+            case 13:
+                tasksList = tasksMapper.selectAbstractTasksByTaskVisitedNumberDescAdmin(offSet,taskStatus);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskIDAscAdmin(offSet,taskStatus);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -118,28 +140,46 @@ public class TasksController {
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet,taskStatus);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskNameAdmin(taskName,offSet,taskStatus);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskNameAdmin(taskName,offSet,taskStatus);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployerAdmin(taskName,offSet,taskStatus);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployerAdmin(taskName,offSet,taskStatus);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTimeAdmin(taskName,offSet,taskStatus);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTimeAdmin(taskName,offSet,taskStatus);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTimeAdmin(taskName,offSet,taskStatus);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTimeAdmin(taskName,offSet,taskStatus);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBountyAdmin(taskName,offSet,taskStatus);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBountyAdmin(taskName,offSet,taskStatus);
+                break;
+            case 12:
+                tasksList=tasksMapper.selectAbstractTasksByTaskNameAscTaskVisitedNumberAdmin(taskName,offSet,taskStatus);
+                break;
+            case 13:
+                tasksList=tasksMapper.selectAbstractTasksByTaskNameDescTaskVisitedNumberAdmin(taskName,offSet,taskStatus);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskIDAdmin(taskName,offSet,taskStatus);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -169,28 +209,46 @@ public class TasksController {
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskNameAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskNameAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployerAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployerAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTimeAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTimeAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTimeAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTimeAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBountyAdmin(taskEmployer,offSet,taskStatus);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBountyAdmin(taskEmployer,offSet,taskStatus);
+                break;
+            case 12:
+                tasksList=tasksMapper.selectAbstractTasksByTaskEmployerAscTaskVisitedNumberAdmin(taskEmployer,offSet,taskStatus);
+                break;
+            case 13:
+                tasksList=tasksMapper.selectAbstractTasksByTaskEmployerDescTaskVisitedNumberAdmin(taskEmployer,offSet,taskStatus);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskIDAdmin(taskEmployer,offSet,taskStatus);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -208,34 +266,52 @@ public class TasksController {
     public List<Tasks> taskCenterTasks(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         List<Tasks> tasksList;
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAsc(offSet);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDesc(offSet);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAsc(offSet);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDesc(offSet);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeAsc(offSet);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskBeginTimeDesc(offSet);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeAsc(offSet);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEndTimeDesc(offSet);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyAsc(offSet);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskTimeCoinBountyDesc(offSet);
+                break;
+            case 12:
+                tasksList = tasksMapper.selectAbstractTasksByTaskVisitedNumberAsc(offSet);
+                break;
+            case 13:
+                tasksList = tasksMapper.selectAbstractTasksByTaskVisitedNumberDesc(offSet);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskIDAsc(offSet);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -259,28 +335,46 @@ public class TasksController {
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskName(taskName,offSet);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskName(taskName,offSet);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEmployer(taskName,offSet);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEmployer(taskName,offSet);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskBeginTime(taskName,offSet);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskBeginTime(taskName,offSet);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskEndTime(taskName,offSet);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskEndTime(taskName,offSet);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskTimeCoinBounty(taskName,offSet);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskTimeCoinBounty(taskName,offSet);
+                break;
+            case 12:
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskVisitedNumber(taskName,offSet);
+                break;
+            case 13:
+                tasksList = tasksMapper.selectAbstractTasksByTaskNameDescTaskVisitedNumber(taskName,offSet);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskNameAscTaskID(taskName,offSet);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -304,28 +398,46 @@ public class TasksController {
         switch (chooses) {
             case 1:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
+                break;
             case 2:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskName(taskEmployer,offSet);
+                break;
             case 3:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskName(taskEmployer,offSet);
+                break;
             case 4:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEmployer(taskEmployer,offSet);
+                break;
             case 5:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEmployer(taskEmployer,offSet);
+                break;
             case 6:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskBeginTime(taskEmployer,offSet);
+                break;
             case 7:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskBeginTime(taskEmployer,offSet);
+                break;
             case 8:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskEndTime(taskEmployer,offSet);
+                break;
             case 9:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskEndTime(taskEmployer,offSet);
+                break;
             case 10:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskTimeCoinBounty(taskEmployer,offSet);
+                break;
             case 11:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskTimeCoinBounty(taskEmployer,offSet);
+                break;
+            case 12:
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskVisitedNumber(taskEmployer,offSet);
+                break;
+            case 13:
+                tasksList = tasksMapper.selectAbstractTasksByTaskEmployerDescTaskVisitedNumber(taskEmployer,offSet);
+                break;
             default:
                 tasksList = tasksMapper.selectAbstractTasksByTaskEmployerAscTaskID(taskEmployer,offSet);
+                break;
         }
         // 遍历列表并更新每个Tasks对象的userPhoto字段
         for (Tasks task : tasksList) {
@@ -337,27 +449,32 @@ public class TasksController {
     }
 
     @Operation(summary = "新建任务接口", description = "返回201，\"新建成功\"\"余额不足\"")
-    @Parameter(name = "task", description = "taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID", example = "对象")
+    @Parameter(name = "task", description = "taskEmployerFamilyUserID taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID tasklable taskPhoto数组", example = "对象")
     @PostMapping("/tasks/taskCenter/register")//新建任务
     public String registerTask(@RequestBody Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerID());
+        int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerFamilyUserID());
         int b=tasks.getTaskTimeCoinBounty();
         if(a < b){
             return "余额不足";
         }
+
+        if(tasks.getTaskPhoto()==null)
+        {}
+        else
+            tasks.setTaskPhotoPath(String.join(" ",tasks.getTaskPhoto()));
         tasksMapper.insertRegister(tasks);
         int taskID=tasksMapper.getMaxTaskId();
         tasksMapper.insertRegisterTaskHistory(taskID,usersMapper.selectForUserIDByUserName(tasks.getTaskEmployer()));
         a=a-b;
-        usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerID(),a);
+        usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerFamilyUserID(),a);
         return "新建成功";
     }
 
     @Operation(summary = "修改任务接口", description = "返回201，\"余额不足\"\"修改成功\"")
-    @Parameter(name = "task", description = "taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID", example = "对象")
+    @Parameter(name = "task", description = "taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID taskLable taskPhoto数组", example = "对象")
     @PostMapping("/tasks/taskCenter/changeTask")//修改任务,id查找
     public String taskCenterChangeTask(@RequestBody Tasks tasks,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
@@ -369,7 +486,11 @@ public class TasksController {
         if(a+b < c){
             return "余额不足";
         }
+        if(tasks.getTaskPhoto()==null){}
+        else
+            tasks.setTaskPhotoPath(String.join(" ",tasks.getTaskPhoto()));
         tasksMapper.updateTasksByTaskID(tasks);
+
         a=a+b-c;
         usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerID(),a);
         return "修改成功";
@@ -396,15 +517,19 @@ public class TasksController {
     @Operation(summary = "查看任务详情接口", description = "返回201，task详情")
     @Parameter(name = "taskID", description = "id", example = "123")
     @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
-    public Tasks taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    public Object taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
 
         Tasks tasks=new Tasks();
         tasks=tasksMapper.selectTasksByTaskID(taskID);
         tasks.setTaskVisitedNumber(1+tasks.getTaskVisitedNumber());
         tasksMapper.updateTaskVisitedNumberByTaskID(taskID,tasks.getTaskVisitedNumber());
+        if(tasks.getTaskPhotoPath()==null)
+        {}
+        else
+            tasks.setTaskPhoto(tasks.getTaskPhotoPath().split("\\s+"));
         return tasks;
     }
 
@@ -511,7 +636,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/taskEmployerSuccessTask")//雇主完成任务
     public String taskCenterTaskEmployerSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusFiveByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFiveByTaskID(taskID);
@@ -537,7 +662,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
     public String taskCenterAdminSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusSixByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusSixByTaskID(taskID);
@@ -551,6 +676,7 @@ public class TasksController {
         ledgers.setUserID(userID);
         ledgers.setLedgerTimeCoin(timeCoinBounty);
         ledgersMapper.insertRegister(ledgers);
+        String s=fabricService.transfer(String.valueOf(usersMapper.selectForUserIDByUserName(tasksMapper.selectTaskEmployerByTaskID(taskID))),String.valueOf(userID),timeCoinBounty);
         return "审核成功";
     }
 

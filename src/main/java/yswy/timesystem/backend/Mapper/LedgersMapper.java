@@ -20,7 +20,7 @@ public interface LedgersMapper {
     void deleteLedgersByTaskID(int taskID);
 
     //查看账单，根据用户id查找
-    @Select("select `ledger_id` as ledgerID,`user_id` as userID,`task_id` as taskID,`ledger_time_coin` as ledgerTimeCoin from `ledgers` where `user_id` = #{userID} limit 10 offset #{offSet};")
+    @Select("select l.`ledger_id` as ledgerID,l.`user_id` as userID,l.`task_id` as taskID,l.`ledger_time_coin` as ledgerTimeCoin,t.`task_name` as taskName,t.`task_brief` as taskBrief from `ledgers` l join `tasks` t on l.`task_id`=t.`task_id` where `user_id` = #{userID} limit 10 offset #{offSet};")
     @Transactional
     List<Ledgers> selectLedgersByUserID(int userID, int offSet);
 }

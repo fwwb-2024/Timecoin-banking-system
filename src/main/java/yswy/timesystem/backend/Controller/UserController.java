@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 
+import yswy.timesystem.backend.Service.FabricServiceImpl;
 import yswy.timesystem.backend.Util.TokenUtil;
 
 
@@ -26,12 +27,16 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 @RestController
 @RequestMapping
 public class UserController {
     @Resource
     private UsersMapper usersMapper;
+
+    @Resource
+    private FabricServiceImpl fabricService;
 
 
 //接口
@@ -58,6 +63,9 @@ public class UserController {
         }
 
         usersMapper.insertRegister(users);
+        int userID=usersMapper.selectForUserIDByUserName(users.getUserName());//此处代码应该在审核成正常用户后
+        String s=fabricService.AddUser(String.valueOf(userID),users.getUserName(),500);
+        usersMapper.updateUserTimeCoinByID(userID,500);//
         return "注册成功";
     }
 
@@ -269,6 +277,12 @@ public class UserController {
         Users userReturn=new Users();
         userReturn.setUserTimeCoin(usersMapper.selectForUserTimeCoinByUserName(userName));
         userReturn.setUserName(userName);
+
+        //Map<String,Object> fabricUser=fabricService.getUserByID(userReturn.getUserID().toString());
+        //int timeCoinFabric=(Integer) fabricUser.get("timeCoin");
+        //userReturn.setUserTimeCoin(timeCoinFabric);
+        //usersMapper.updateUserTimeCoinByID(userReturn.getUserID(),timeCoinFabric);
+
 
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
         return userReturn;

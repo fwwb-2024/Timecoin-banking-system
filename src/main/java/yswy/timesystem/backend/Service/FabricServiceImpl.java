@@ -49,7 +49,7 @@ public class FabricServiceImpl {
     }
 
     /**
-     * 添加账户信息(添加前查询，没有已有帐户报错,有一定延迟1-2s)
+     * 添加账户信息(添加前查询，没有已有帐户报错,有一定延迟1-2s),如果有，则覆盖。
      * @param userId String
      * @param userName String
      * @param timeCoin int
@@ -114,7 +114,7 @@ public class FabricServiceImpl {
         try {
             invokeResult = contract.createTransaction("transfer")
                     .setEndorsingPeers(network.getChannel().getPeers(EnumSet.of(Peer.PeerRole.ENDORSING_PEER)))
-                    .submit(userIdA,userIdA, String.valueOf(timeCoin));
+                    .submit(userIdA,userIdB, String.valueOf(timeCoin));
         } catch (ContractException e) {
             throw new RuntimeException(e);
         } catch (TimeoutException e) {
