@@ -80,6 +80,7 @@
 					delta:1
 				})
 			},
+			// 接取任务
 			accessMission(){
 				this.$api.accessTask(this.missionId,uni.getStorageSync('userID'),uni.getStorageSync('userName')).then((res)=>{
 					if(res.data == '接取成功'){
@@ -95,9 +96,7 @@
 							duration:1000
 						})
 						setTimeout(function() {
-							uni.navigateBack({
-								delta:1,
-							})
+							uni.reLaunch({url: '/pages/index/index'});
 						},1000)
 					}
 				})

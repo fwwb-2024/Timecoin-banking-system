@@ -10,6 +10,7 @@ import taskCompleteReview from "@/views/review/taskCompleteReview";
 import viewAdmin from "@/views/register/viewAdmin";
 import personal from "@/views/personal/personal";
 import login from "@/views/login";
+import editor from "@/views/editor/editor";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,7 @@ const router=new VueRouter({
       {path:'/home/taskCompleteReview', component:taskCompleteReview,},
       {path:'/home/viewAdmin', component:viewAdmin,},
       {path:'/home/personal', component:personal,},
+      {path:'/home/editor', component:editor,},
     ]},//主页面
     {path:'/login',component:login} //登录页面
   ]

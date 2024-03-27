@@ -1,43 +1,47 @@
 <template>
-	<view class="mission">
-		<!-- 任务标题 -->
-		<view class="mission-title">
-			<text>{{missionData.title}}</text>
-		</view>
-		<!-- 任务悬赏 -->
-		<view class="mission-coins">
-			<view>
-				<image src="/static/coins.png"></image>
+	<view>
+		<!-- 消息提示 -->
+		<view class="red-dot" v-if="missionData.dotShow"></view>
+		<view class="mission">
+			<!-- 任务标题 -->
+			<view class="mission-title">
+				<text>{{missionData.title}}</text>
 			</view>
-			<view>
-				<text>{{missionData.timeCoins}}</text>
+			<!-- 任务悬赏 -->
+			<view class="mission-coins">
+				<view>
+					<image src="/static/coins.png"></image>
+				</view>
+				<view>
+					<text>{{missionData.timeCoins}}</text>
+				</view>
 			</view>
-		</view>
-		<!-- 任务简介 -->
-		<view class="mission-introduction">
-			<text>{{missionData.introduction}}</text>
-		</view>
-		<!-- 任务状态 -->
-		<view class="mission-status" v-show="missionData.statusShow">
-			<text>{{status}}</text>
-		</view>
-		<!-- 任务发布者信息 -->
-		<view class="mission-publisher">
-			<view class="mission-publisher-headpicture">
-				<image :src="missionData.publisher.headpicture"></image>
+			<!-- 任务简介 -->
+			<view class="mission-introduction">
+				<text>{{missionData.introduction}}</text>
 			</view>
-			<view class="mission-publisher-username">
-				<text>{{missionData.publisher.username}}</text>
+			<!-- 任务状态 -->
+			<view class="mission-status" v-show="missionData.statusShow">
+				<text>{{status}}</text>
 			</view>
-		</view >
-		<!-- 任务接取截止日期 -->
-		<view class="mission-endtime">
-			<text>截至{{missionData.endTime}}</text>
+			<!-- 任务发布者信息 -->
+			<view class="mission-publisher">
+				<view class="mission-publisher-headpicture">
+					<image :src="missionData.publisher.headpicture"></image>
+				</view>
+				<view class="mission-publisher-username">
+					<text>{{missionData.publisher.username}}</text>
+				</view>
+			</view >
+			<!-- 任务接取截止日期 -->
+			<view class="mission-endtime">
+				<text>截至{{missionData.endTime}}</text>
+			</view>
 		</view>
 	</view>
 </template>
 
-<script>
+<script scope>
 	export default {
 		props:['missionData'],
 		data() {
@@ -56,6 +60,7 @@
 				// 	endTime:'截止时间',
 				//  statusShow:true 是否显示任务状态
 				//  status:'任务状态'
+				//  dotShow:false,
 				// }
 			}
 		},
@@ -74,7 +79,7 @@
 	}
 </script>
 
-<style scoped>
+<style>
 	.mission {
 		display:flex;
 		justify-content: flex-start;
@@ -162,4 +167,12 @@
 		font-size: 25rpx;
 		color: gray;
 	}
+	.red-dot {
+		position: absolute;
+		right: 0;
+	    width: 10px; /* 小红点的大小 */
+	    height: 10px; /* 小红点的大小 */
+	    background-color: red; /* 小红点的颜色 */
+	    border-radius: 50%; /* 使小红点变成圆形 */
+	  }
 </style>

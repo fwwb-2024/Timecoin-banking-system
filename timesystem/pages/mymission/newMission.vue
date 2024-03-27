@@ -14,6 +14,10 @@
 		<!-- 编辑内容 -->
 		<view class="mission">
 			<view class="mission-title">
+				<text>任务类别</text>
+				<text @click="changeLable">{{taskLable}}</text>
+			</view>
+			<view class="mission-title">
 				<text>任务标题</text>
 				<input type="text" v-model="title"></input>
 			</view>
@@ -23,7 +27,7 @@
 			</view>
 			<view class="mission-detail">
 				<text>任务详情</text>
-				<editerl id="editerl" @content="getcontent"></editerl>
+				<textarea v-model="detail"></textarea>
 			</view>
 			<view class="mission-time">
 				<text>任务时间</text>
@@ -44,28 +48,99 @@
 				<text>任务悬赏</text>
 				<input type="number" v-model="coins"></input>
 			</view>
+			<!-- 上传图片 -->
+			<view class="upPic">
+				<view class="upPic-title">
+					<text>上传图片</text>
+				</view>
+				<view v-for="(item,index) in taskPhoto">
+					<image id="deletepic" @click="deletePic(index)" src="/static/deletepic.png"></image>
+					<view class="upPic-list-element">
+						<image :src="item"></image>
+					</view>
+				</view>
+				<view class="upPic-add" @click="upPic">
+					<image src="/static/addpic.png"></image>
+				</view>
+			</view>
 			<view>
 				<button class="postMission" @click="postMission">发布</button>
 			</view>
 		</view>
+		
+		<!-- 支付弹出层 -->
+		<uni-popup ref="popup" type="bottom" border-radius="10px 10px 0 0">
+			<view class="pay">
+				<text>请选择你的支付方式</text>
+				<text>本人支付</text>
+				<view class="pay-element">
+					<button @click="choosePayer(ownpay.userID)">姓名：{{ownpay.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					余额为：{{ownpay.coins}}</button>
+				</view>
+				
+				<text v-if="familyShow">请选择家庭进行支付</text>
+				<view v-if="familyShow" class="pay-element" v-for="(item,index) in familylist" :key="item.id">
+					<button @click="chooseFamily(item.familyID)">家庭名：{{item.name}}</button>
+				</view>
+				
+				<text v-if="!familyShow">家庭成员支付</text>
+				<view v-if="(!familyShow) && (item.familyID == familyIDshow)" class="pay-element" v-for="(item,index) in paylist" :key="item.id">
+					<button @click="choosePayer(item.userID)">姓名：{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					余额为：{{item.coins}}</button>
+				</view>
+			</view>
+			
+		</uni-popup>
 	</view>
 </template>
 
 <script>
-	import editerl from "@/components/editor/index.vue"
 	export default {
 		data() {
 			const currentDate = this.getDate({
 			    format: true
 			})
 			return {
+				taskLable:'跑腿',
 				title:'',
 				brief:'',
 				detail:'',
 				startTime:currentDate,
 				endTime:currentDate,
 				coins:0,
+				taskPhoto:[],
+				
+				// 本人支付信息
+				ownpay:{},
+				// 支付人列表
+				paylist:[],
+				// 支付家庭列表
+				familylist:[],
+				
+				// 是否显示家庭选择
+				familyShow:true,
+				// 显示哪个家庭成员
+				familyIDshow:null,
 			}
+		},
+		created() {
+			this.$api.getCoins(uni.getStorageSync('userName')).then((res)=>{
+				this.ownpay.name=uni.getStorageSync('userName')
+				this.ownpay.userID=uni.getStorageSync('userID')
+				this.ownpay.coins=res.data.userTimeCoin
+			})
+			
+			// 查看家庭
+			this.$api.getFamilyList(uni.getStorageSync('userID')).then((res)=>{
+				for(let i=0;i<res.data.length;i++){
+					this.familylist.push({name:res.data[i].familyName,familyID:res.data[i].familyID})
+					this.$api.getFamilyCoinsData(res.data[i].familyID).then((response)=>{
+						for(let j=0;j<response.data.length;j++){
+							this.paylist.push({familyID:res.data[i].familyID,name:response.data[j].userName,coins:response.data[j].userTimeCoin,userID:response.data[j].userID})
+						}
+					})
+				}
+			})
 		},
 		methods:{
 			//返回上一级页面
@@ -74,16 +149,12 @@
 					delta:1
 				})
 			},
-			// 从子组件获取富文本数据
-			getcontent(content){
-				this.detail = content;
-			},
 			// 与时间计算相关方法
 			bindStartDateChange (e) {
-			    this.startTime = e.detail.value;
+			    this.startTime = e.detail.value.replace('-', '.').replace('-', '.');
 			},
 			bindEndDateChange (e) {
-			    this.endTime = e.detail.value;
+			    this.endTime = e.detail.value.replace('-', '.').replace('-', '.');
 			},
 			getDate(type) {
 				const date = new Date();
@@ -92,42 +163,97 @@
 				let day = date.getDate();
 								
 				if (type === 'start') {
-				    year = year - 60;
+				    year = year - 10;
 				} else if (type === 'end') {
-				    year = year + 2;
+				    year = year + 20;
 				}
 				month = month > 9 ? month : '0' + month;
 				day = day > 9 ? day : '0' + day;
 				return `${year}.${month}.${day}`;
 			},
-			// 发布任务
-			postMission() {
-				if(this.title == '') {
-					uni.showToast({
-						title: '请输入标题',
-						icon:'error',
-						duration: 1000
-					});
-				}
-				else if(this.coins == 0) {
-					uni.showToast({
-						title: '请设置悬赏',
-						icon:'error',
-						duration: 1000
-					});
-				}
-				else {
+			// 更改图片类别
+			changeLable(){
+				let temp = ['跑腿','带货','打理','陪伴','线上','其他']
+				let that = this
+				uni.showActionSheet({
+					title:'请选择任务类别',
+				    itemList:temp,
+				    success: function (response) {
+						if (response.tapIndex > -1) {
+							that.taskLable = temp[response.tapIndex]
+				        }
+				    },
+				});
+			},
+			// 上传图片
+			upPic(){
+				let that = this
+				// 选择图片并且上传
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original'],
+					sourceType: ['album','camera'], 
+					success: (chooseImageRes)=>{
+						// 如果图片过大
+						if(chooseImageRes.tempFiles[0].size > 1048576){
+							uni.showToast({
+								title: '图片大于1M!',
+								icon:'error',
+								duration: 1000
+							});
+						}
+						else {
+							// 上传图片
+							uni.uploadFile({
+							  url: 'http://10.195.28.44:9090/tasks/taskCenter/uploadimage', 
+							  filePath: chooseImageRes.tempFilePaths[0],
+							  name: 'file', 
+							  header: {
+								  'Authorization': uni.getStorageSync('token')
+							  },
+							  success: (uploadRes) => {
+								  that.taskPhoto.push(uploadRes.data)
+							  },
+							});
+						}
+					}
+				})
+			},
+			// 删除图片
+			deletePic(index){
+				this.taskPhoto.splice(index,1)
+			},
+			// 选择支付家庭
+			chooseFamily(familyID){
+				this.familyIDshow = familyID
+				this.familyShow = false
+			},
+			// 选择支付者并且支付
+			choosePayer(userID){
+				if(userID){
+					let taskLable = 1
+					switch(this.taskLable){
+						case '跑腿':taskLable = 2;break;
+						case '带货':taskLable = 3;break;
+						case '打理':taskLable = 4;break;
+						case '陪伴':taskLable = 5;break;
+						case '线上':taskLable = 6;break;
+						case '其他':taskLable = 1;break;
+					}
 					let temp = {
-						  taskName: this.title,
-						  taskEmployer: uni.getStorageSync('userName'),
-						  taskEmployerID: uni.getStorageSync('userID'),
-						  taskAddress: "暂无地址",
-						  taskDetail: this.detail,
-						  taskBrief: this.brief,
-						  taskBeginTime: this.startTime,
-						  taskEndTime: this.endTime,
-						  taskVisitedNumber: "0",
-						  taskTimeCoinBounty: this.coins,
+							taskLable: taskLable,
+							taskName: this.title,
+							taskEmployer: uni.getStorageSync('userName'),
+							taskEmployerID: uni.getStorageSync('userID'),
+							taskAddress: "暂无地址",
+							taskDetail: this.detail,
+							taskBrief: this.brief,
+							taskBeginTime: this.startTime,
+							taskEndTime: this.endTime,
+							taskVisitedNumber: "0",
+							taskTimeCoinBounty: this.coins,
+							taskPhoto: this.taskPhoto,
+							taskEmployerFamilyUserID:userID
 					}
 					this.$api.postTask(temp).then((res)=>{
 						if(res.data == '新建成功') {
@@ -150,7 +276,27 @@
 						}
 					})
 				}
-			}
+			},
+			// 发布任务
+			postMission() {
+				if(this.title == '') {
+					uni.showToast({
+						title: '请输入标题',
+						icon:'error',
+						duration: 1000
+					});
+				}
+				else if(this.coins == 0) {
+					uni.showToast({
+						title: '请设置悬赏',
+						icon:'error',
+						duration: 1000
+					});
+				}
+				else {
+					this.$refs.popup.open('buttom')
+				}
+			},
 		},
 		computed: {
 		    startDate() {
@@ -160,9 +306,6 @@
 		        return this.getDate('end');
 		    }
 		},
-		components:{
-			editerl,
-		}
 	}
 </script>
 
@@ -227,7 +370,7 @@
 	}
 	.mission-brief textarea {
 		width: 650rpx;
-		height: 150rpx;
+		height: 120rpx;
 		border-radius: 15px;
 		border: 1px solid #cccccc;
 	}
@@ -235,8 +378,9 @@
 		margin-top: 20rpx;
 		width: 650rpx;
 	}
-	#editerl {
+	.mission-detail textarea {
 		width: 650rpx;
+		height: 150rpx;
 		border-radius: 15px;
 		border: 1px solid #cccccc;
 	}
@@ -275,5 +419,58 @@
 		width: 650rpx;
 		background-color: orange;
 		margin-top: 20rpx;
+	}
+	.upPic {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin-top: 50rpx;
+		padding-left: 40rpx;
+	}
+	.upPic-title {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		margin-left: 10rpx;
+	}
+	#deletepic {
+		width: 30rpx;
+		height: 30rpx;
+		position: relative;
+		left: 180rpx;
+		top: 20rpx;
+		z-index: 2;
+	}
+	.upPic-list-element {
+		margin-right: 20rpx;
+	}
+	.upPic-list-element image {
+		width: 200rpx;
+		height: 200rpx;
+	}
+	.upPic-add {
+		width: 200rpx;
+		height: 200rpx;
+		margin-top: 40rpx;
+	}
+	.upPic-add image{
+		width: 200rpx;
+		height: 200rpx;
+	}
+	
+	/* 支付弹出层样式 */
+	.pay {
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.pay-element {
+		width: 100%;
+	}
+	.pay-element button {
+		background-color: #fff;
 	}
 </style>

@@ -29,6 +29,10 @@
 			<text>任务状态：{{mission.taskStatus}}</text>
 		</view>
 		
+		<!-- 显示审核失败原因 -->
+		<view  class="detail-text" v-show="remarkShow">
+			<view>审核失败原因：{{mission.taskStatusRemark}}</view>
+		</view>
 		<!--完成任务按钮-->
 		<button class="detail-button"@click="completeMission">完成任务</button>
 		<!--取消任务按钮-->
@@ -50,7 +54,9 @@
 					taskAddress:'',
 					taskEndTime:'',
 					taskStatus:null,
+					taskStatusRemark:null,
 				},
+				remarkShow:false,
 			}
 		},
 		onLoad(options) {
@@ -63,6 +69,10 @@
 				this.mission.taskTimeCoinBounty = res.data.taskTimeCoinBounty
 				this.mission.taskAddress = res.data.taskAddress
 				this.mission.taskEndTime = res.data.taskEndTime
+				if(res.data.taskStatusRemark !== null){
+					this.mission.taskStatusRemark = res.data.taskStatusRemark
+					this.remarkShow = true
+				}
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';break;
 					case 2:this.mission.taskStatus = '未完成';break;
@@ -80,6 +90,7 @@
 					delta:1
 				})
 			},
+			// 完成任务
 			completeMission(){
 				this.$api.completeTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
 					if(res.data == '完成成功'){
@@ -88,9 +99,7 @@
 							duration:1000
 						})
 						setTimeout(function() {
-							uni.navigateBack({
-								delta:1,
-							})
+							uni.reLaunch({url: '/pages/mymission/myMission'});
 						},1000)
 					}
 					else{
@@ -102,6 +111,7 @@
 					}
 				})
 			},
+			// 取消任务
 			canelMission(){
 				this.$api.canelTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
 					if(res.data == '取消成功'){
@@ -110,9 +120,7 @@
 							duration:1000
 						})
 						setTimeout(function() {
-							uni.navigateBack({
-								delta:1,
-							})
+							uni.reLaunch({url: '/pages/mymission/myMission'});
 						},1000)
 					}
 					else{

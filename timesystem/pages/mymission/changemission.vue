@@ -12,22 +12,31 @@
 		</view>
 		
 		<!--任务信息-->
+		<view class="mission-title">
+			<text>任务类别</text>
+			<text @click="changeLable">{{mission.taskLable}}</text>
+		</view>
+		
 		<view class="detail-text">
 			任务标题：
 			<input v-model="mission.taskName"></input>
 		</view>
+		
 		<view class="detail-text">
 			任务简介：
 			<input v-model="mission.taskBrief"></input>
 		</view>
+		
 		<view class="detail-text">
 			<text>任务详情：</text>
 			<editorl v-if="loading" :html="mission.taskDetail" @content="getcontent"></editorl>
 		</view>
+		
 		<view class="detail-text">
 			任务悬赏：
 			<input type="number" v-model="mission.taskTimeCoinBounty"></input>
 		</view>
+		
 		<view class="mission-time">
 			<text>任务时间</text>
 			<view class="mission-time-time">
@@ -41,18 +50,41 @@
 						<view class="uni-input">截止时间：{{mission.taskEndTime}}</view>
 					</picker>
 				</view>
-				<!-- 显示审核失败原因 -->
-				<view  class="detail-text" v-show="remarkShow">
-					<view>审核失败原因：{{mission.taskStatusRemark}}</view>
-				</view>
+				
 			</view>
 		</view>
+		
+		<!-- 图片附件 -->
+		<view class="upPic">
+			<view v-for="(item,index) in mission.taskPhoto">
+				<image id="deletepic" @click="deletePic(index)" src="../../static/add.png"></image>
+				<view class="upPic-list-element">
+					<image :src="item"></image>
+				</view>
+			</view>
+			<view class="upPic-add" @click="upPic">
+				<image src="../../static/add.png"></image>
+			</view>
+		</view>
+		
+		<!-- 显示审核失败原因 -->
+		<view  class="detail-text" v-show="remarkShow">
+			<view>审核失败原因：{{mission.taskStatusRemark}}</view>
+		</view>
+		
 		<view class="detail-text">
 			<text>任务状态：{{mission.taskStatus}}</text>
 		</view>
 		
 		<view>
 			<button @click="changeTask">确认修改</button>
+		</view>
+		<view>
+			<button @click="deleteTask">删除任务</button>
+		</view>
+		<view v-if="confirmShow">
+			<button @click="agreeTask">确认任务完成</button>
+			<button @click="refuseTask">拒绝任务完成</button>
 		</view>
 	</view>
 </template>
@@ -68,6 +100,7 @@
 				missionId:null,
 				mission:{
 					taskID:null,
+					taskLable:'',
 					taskName:'',
 					taskBrief:'',
 					taskDetail:'',
@@ -77,6 +110,7 @@
 					taskEndTime:currentDate,
 					taskStatus:null,
 					taskStatusRemark:null,
+					taskPhoto:[],
 				},
 				// 显示任务状态
 				statusShow:true,
@@ -84,12 +118,22 @@
 				remarkShow:false,
 				// 任务详情加载完毕
 				loading:false,
+				// 显示确认完成任务按钮
+				confirmShow:false,
 			}
 		},
 		onLoad(options) {
 			this.missionId = options.id
 			this.$api.getTaskData(this.missionId).then((res)=>{
-				console.log(res);
+				switch(res.data.taskLable){
+					case 1:this.mission.taskLable = '其他';break;
+					case 2:this.mission.taskLable = '跑腿';break;
+					case 3:this.mission.taskLable = '带货';break;
+					case 4:this.mission.taskLable = '打理';break;
+					case 5:this.mission.taskLable = '陪伴';break;
+					case 6:this.mission.taskLable = '线上';break;
+					default:break;
+				}
 				this.mission.taskID = res.data.taskID
 				this.mission.taskName = res.data.taskName
 				this.mission.taskBrief = res.data.taskBrief
@@ -103,11 +147,12 @@
 					this.mission.taskStatusRemark = res.data.taskStatusRemark
 					this.remarkShow = true
 				}
+				this.mission.taskPhoto = res.data.taskPhoto
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';break;
 					case 2:this.mission.taskStatus = '未完成';break;
 					case 3:this.mission.taskStatus = '已接取';break;
-					case 4:this.mission.taskStatus = '已处理';break;
+					case 4:this.mission.taskStatus = '已处理';this.confirmShow=true;break;
 					case 5:this.mission.taskStatus = '已完成';break;
 					case 6:this.mission.taskStatus = '已完结';break;
 					default:break;
@@ -125,10 +170,72 @@
 			getcontent(content) {
 				this.mission.taskDetail = content
 			},
+			// 更改图片类别
+			changeLable(){
+				let temp = ['跑腿','带货','打理','陪伴','线上','其他']
+				let that = this
+				uni.showActionSheet({
+					title:'请选择任务类别',
+				    itemList:temp,
+				    success: function (response) {
+						if (response.tapIndex > -1) {
+							that.mission.taskLable = temp[response.tapIndex]
+				        }
+				    },
+				});
+			},
+			// 上传图片
+			upPic(){
+				let that = this
+				// 选择图片并且上传
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original'],
+					sourceType: ['album','camera'], 
+					success: (chooseImageRes)=>{
+						// 如果图片过大
+						if(chooseImageRes.tempFiles[0].size > 1048576){
+							uni.showToast({
+								title: '图片大于1M!',
+								icon:'error',
+								duration: 1000
+							});
+						}
+						else {
+							// 上传图片
+							uni.uploadFile({
+							  url: 'http://10.195.28.44:9090/tasks/taskCenter/uploadimage', 
+							  filePath: chooseImageRes.tempFilePaths[0],
+							  name: 'file', 
+							  header: {
+								  'Authorization': uni.getStorageSync('token')
+							  },
+							  success: (uploadRes) => {
+								  that.mission.taskPhoto.push(uploadRes.data)
+							  },
+							});
+						}
+					}
+				})
+			},
+			// 删除图片
+			deletePic(index){
+				this.mission.taskPhoto.splice(index,1)
+			},
 			// 修改任务内容
 			changeTask() {
+				let taskLable = 1
+				switch(this.mission.taskLable){
+					case '跑腿':taskLable = 2;break;
+					case '带货':taskLable = 3;break;
+					case '打理':taskLable = 4;break;
+					case '陪伴':taskLable = 5;break;
+					case '线上':taskLable = 6;break;
+					case '其他':taskLable = 1;break;
+				}
 				let temp = {
 					taskID: this.mission.taskID,
+					taskLable: taskLable,
 					taskName: this.mission.taskName,
 					taskBrief: this.mission.taskBrief,
 					taskDetail: this.mission.taskDetail,
@@ -138,8 +245,7 @@
 					taskEndTime: this.mission.taskEndTime,
 					taskEmployer:uni.getStorageSync('userName'),
 					taskEmployerID: uni.getStorageSync('userID'),
-					// 重置任务失败原因
-					taskStatusRemark: null
+					taskPhoto: this.mission.taskPhoto,
 				}
 				this.$api.changeTaskData(temp).then((res)=>{
 					if(res.data == '修改成功'){
@@ -147,6 +253,9 @@
 							title:'修改成功',
 							duration:1000
 						})
+						setTimeout(function() {
+							uni.reLaunch({url: '/pages/mymission/myMission'});
+						},1000)
 					}
 					else{
 						uni.showToast({
@@ -154,12 +263,91 @@
 							icon:'error',
 							duration:1000
 						})
-						setTimeout(function() {
-							uni.navigateBack({
-								delta:1,
+					}
+				})
+			},
+			// 删除任务
+			deleteTask(){
+				if(this.mission.taskStatus == '已接取' || this.mission.taskStatus == '已处理' || this.mission.taskStatus == '已完成'){
+					uni.showToast({
+						title:'不能删除已被接取的任务',
+						icon:'error',
+						duration:1000
+					})
+				}
+				else{
+					this.$api.deleteTask(this.mission.taskID,uni.getStorageSync('userID'),this.mission.taskTimeCoinBounty).then((res)=>{
+						if(res.data == '删除成功'){
+							uni.showToast({
+								title:'删除成功',
+								icon:'success',
+								duration:1000
 							})
+							setTimeout(function() {
+								uni.reLaunch({url: '/pages/mymission/myMission'});
+							},1000)
+						}
+						else{
+							uni.showToast({
+								title:'删除失败',
+								icon:'error',
+								duration:1000
+							})
+						}
+					})
+				}
+			},
+			// 确认同意任务
+			agreeTask(){
+				this.$api.agreeTask(this.mission.taskID).then((res)=>{
+					if(res.data == '完成成功'){
+						uni.showToast({
+							title:'确认成功',
+							icon:'success',
+							duration:1000
+						})
+						setTimeout(function() {
+							uni.reLaunch({url: '/pages/mymission/myMission'});
 						},1000)
 					}
+					else {
+						uni.showToast({
+							title:'确认失败',
+							icon:'error',
+							duration:1000
+						})
+					}
+				})
+			},
+			// 拒绝同意任务
+			refuseTask(){
+				// 记录根节点
+				let that = this
+				uni.showModal({
+				    title: '输入不同意原因',
+					editable: true,
+				    success: function (response) {
+						let tempRamark = '发布者不同意完成，原因为：'+ response.content
+						that.$api.refuseTask(that.mission.taskID,tempRamark).then((res)=>{
+							if(res.data == '批改成功'){
+								uni.showToast({
+									title:'拒绝成功',
+									icon:'success',
+									duration:1000
+								})
+								setTimeout(function() {
+									uni.reLaunch({url: '/pages/mymission/myMission'});
+								},1000)
+							}
+							else {
+								uni.showToast({
+									title:'拒绝失败',
+									icon:'error',
+									duration:1000
+								})
+							}
+						})
+					},
 				})
 			},
 			// 与时间计算相关方法
@@ -252,5 +440,36 @@
 		font-size: 38rpx;
 		line-height: 38rpx;
 	}
-
+	.upPic {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin-top: 50rpx;
+		padding-left: 40rpx;
+	}
+	#deletepic {
+		width: 30rpx;
+		height: 30rpx;
+		position: relative;
+		left: 180rpx;
+		top: 20rpx;
+	}
+	.upPic-list-element {
+		margin-right: 20rpx;
+	}
+	.upPic-list-element image {
+		width: 200rpx;
+		height: 200rpx;
+	}
+	.upPic-add {
+		width: 200rpx;
+		height: 200rpx;
+		margin-top: 40rpx;
+	}
+	.upPic-add image{
+		width: 200rpx;
+		height: 200rpx;
+	}
 </style>

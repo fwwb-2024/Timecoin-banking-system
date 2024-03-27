@@ -50,8 +50,8 @@
 		methods: {
 			//返回上一级页面
 			back() {
-				uni.navigateBack({
-					delta:1
+				uni.reLaunch({
+					url:'/pages/personal/personal'
 				})
 			},
 			// 跳转
@@ -80,6 +80,11 @@
 										title:'创建家庭成功',
 										duration:1000
 									})
+									setTimeout(function() {
+										uni.reLaunch({
+											url:'/pages/personal/familyList'
+										})
+									},1000)
 								}
 								else{
 									uni.showToast({

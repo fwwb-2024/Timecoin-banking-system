@@ -45,6 +45,14 @@ export const passRemark =(taskID)=>{
 export const noPassRemark =(taskID,taskStatusRemark)=>{
     return http.get('/tasks/taskCenter/checkTaskNot',{params:{taskID:taskID,taskStatusRemark:taskStatusRemark}})
 }
+// 管理员审核已完成任务
+export const completeRemark =(taskID)=>{
+    return http.get('/tasks/taskCenter/adminSuccessTask',{params:{taskID:taskID}})
+}
+// 管理员审核不通过已完成任务
+export const noCompleteRemark =(taskID,taskStatusRemark)=>{
+    return http.get('/tasks/taskCenter/successTaskNot',{params:{taskID:taskID,taskStatusRemark:taskStatusRemark}})
+}
 
 // 查看任务发布总量
 export const getCreateTask =(chooses)=>{

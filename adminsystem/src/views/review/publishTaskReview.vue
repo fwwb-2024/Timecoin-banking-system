@@ -80,7 +80,7 @@ export default {
           taskName:res.data[i].taskName,
           taskBrief:res.data[i].taskBrief,
           taskEmployer:res.data[i].taskEmployer,
-          taskTimeCoinBounty:res.data[i].taskTimeCoinBounty
+          taskTimeCoinBounty:res.data[i].taskTimeCoinBounty,
         })
       }
     })
@@ -118,8 +118,9 @@ export default {
     },
     // 审核不通过
     noRemarkPass(){
-      noPassRemark(this.task.taskID,this.task.taskStatusRemark).then((res)=>{
-        if(res.data == '批改完成'){
+      let tempRamark = '管理员审核不通过，原因为：'+ this.task.taskStatusRemark
+      noPassRemark(this.task.taskID,tempRamark).then((res)=>{
+        if(res.data == '批改成功'){
           alert('审核不通过成功')
         }
         else {
