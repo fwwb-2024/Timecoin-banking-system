@@ -45,7 +45,7 @@ public class UserController {
     private static String USER_PHOTO_STATIC_PATH="static\\userphoto\\";
     private static String USER_STATIC="http://10.195.28.44:9090/";
 
-    @Operation(summary = "注册接口", description = "返回\"用户已存在\"\"电话号已被注册\"\"注册成功\"")
+    @Operation(summary = "用户注册接口", description = "返回\"用户已存在\"\"电话号已被注册\"\"注册成功\"")
     @Parameter(name = "userName", description = "账号", example = "string")
     @Parameter(name = "userPassword", description = "密码", example = "string")
     @Parameter(name = "userPhoneNumber", description = "手机号", example = "string")
@@ -69,7 +69,7 @@ public class UserController {
         return "注册成功";
     }
 
-    @Operation(summary = "账号密码登录接口", description = "返回用户id，账号名，新token（藏在user对象里），\"该用户不存在\"，\"密码错误\"")
+    @Operation(summary = "用户账号密码登录接口", description = "返回用户id，账号名，新token（藏在user对象里），\"该用户不存在\"，\"密码错误\"")
     @Parameter(name = "userName", description = "账号", example = "string")
     @Parameter(name = "userPassword", description = "密码", example = "string")
     @PostMapping("/user/login/byUserName")//账号密码登录
@@ -91,7 +91,7 @@ public class UserController {
         return userReturn;
     }
 
-    @Operation(summary = "手机号密码登录接口", description = "返回，账号，用户id，新token（藏在user对象里），\"该电话号码未注册\"，\"密码错误\"")
+    @Operation(summary = "用户手机号密码登录接口", description = "返回，账号，用户id，新token（藏在user对象里），\"该电话号码未注册\"，\"密码错误\"")
     @Parameter(name = "userPassword", description = "密码", example = "string")
     @Parameter(name = "userPhoneNumber", description = "手机号", example = "string")
     @PostMapping("/user/login/byUserPhoneNumber")//手机号密码登录
@@ -113,7 +113,7 @@ public class UserController {
         return userReturn;
     }
 
-    @Operation(summary = "身份证号密码登录接口", description = "返回，账号，id，新token（藏在user对象里），\"该身份证号未注册\"，\"密码错误\"")
+    @Operation(summary = "用户身份证号密码登录接口", description = "返回，账号，id，新token（藏在user对象里），\"该身份证号未注册\"，\"密码错误\"")
     @Parameter(name = "userPassword", description = "密码", example = "string")
     @Parameter(name = "userIDNumber", description = "身份证号", example = "string")
     @PostMapping("/user/login/byUserIDNumber")//身份证号密码登录

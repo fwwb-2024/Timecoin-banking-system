@@ -591,9 +591,9 @@ public class TasksController {
         }
     }
 
-    @Operation(summary = "志愿者开始进行任务接口", description = "返回201，\"完成成功\"")
+    @Operation(summary = "志愿者开始进行任务接口", description = "返回201，\"进行成功\"")
     @Parameter(name = "taskID", description = "id", example = "123")
-    @GetMapping("/tasks/taskCenter/userBeginTask")//志愿者完成任务
+    @GetMapping("/tasks/taskCenter/userBeginTask")//志愿者进行任务
     public String taskCenterUserBeginTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
@@ -601,7 +601,7 @@ public class TasksController {
         tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
         tasksMapper.updateTaskStatusSevenByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusSevenByTaskID(taskID);
-        return "完成成功";
+        return "进行成功";
     }
 
     @Operation(summary = "志愿者完成任务接口", description = "返回201，\"完成成功\"")
