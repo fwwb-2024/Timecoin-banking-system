@@ -45,6 +45,7 @@
 				ledgers:[],
 				// 显示最后一个元素
 				endShow:false,
+				pages:0,
 			}
 		},
 		created() {
@@ -52,7 +53,7 @@
 		},
 		methods:{
 			reload(){
-				this.$api.getLedgers(uni.getStorageSync('userID'),0).then((res)=>{
+				this.$api.getLedgers(uni.getStorageSync('userID'),this.pages).then((res)=>{
 					for(let i=0;i<res.data.length;i++){
 						this.ledgers.push({taskName:res.data[i].taskName,taskBrief:res.data[i].taskBrief,ledgerTimeCoin:res.data[i].ledgerTimeCoin})
 					}
@@ -64,7 +65,24 @@
 				uni.navigateBack({
 					delta:1
 				})
-			}
+			},
+			// 页面下拉事件
+			onPullDownRefresh(){
+				uni.redirectTo({url:'/pages/personal/coinsLedgers'})
+			},
+			// 页面上拉到顶事件
+			onReachBottom(){
+				this.pages+=10
+				this.reload()
+				if(this.ledgers.length <= this.pages) {
+					this.pages-=10
+					uni.showToast({
+						title:'已经没有了~',
+						icon: "none",
+						duration:1000
+					})
+				}
+			},
 		}
 	}
 </script>
@@ -105,7 +123,7 @@
 		width: 620rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
-		margin-top: 30rpx;
+		margin-top: 170rpx;
 		background-color: white;
 		padding: 40rpx 40rpx 10rpx 40rpx;
 		margin-bottom: 30rpx;

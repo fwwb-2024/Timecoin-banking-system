@@ -12,24 +12,27 @@
 			</view>
 		</view>
 		
-		<!-- 任务主体页面 -->
-		<!-- 志愿者 -->
-		<view v-show="position">
-			<!-- 历史任务列表 -->
-			<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-				<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
-					<mission :missionData="item"></mission>
+		
+		<view class="body">
+			<!-- 任务主体页面 -->
+			<!-- 志愿者 -->
+			<view v-show="position">
+				<!-- 历史任务列表 -->
+				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
+						<mission :missionData="item"></mission>
+					</view>
 				</view>
 			</view>
-		</view>
-		
-		
-		<!-- 发布者 -->
-		<view v-show="!position">
-			<!-- 历史任务列表 -->
-			<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
-				<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
-					<mission :missionData="item"></mission>
+			
+			
+			<!-- 发布者 -->
+			<view v-show="!position">
+				<!-- 历史任务列表 -->
+				<view class="mission-list" v-for="(item,index) in historyMissionDataList" :key="item.id">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/historymission?id='+item.taskID)">
+						<mission :missionData="item"></mission>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -182,10 +185,16 @@
 		font-size: 38rpx;
 		color: white;
 	}
-	.mission-list {
-		background-color: white;
+	
+	.body {
+		margin-top: 160rpx;
 	}
 	.mission-list-element {
-		box-shadow: 1px 1px 1px rgb(200, 200, 200);
+		padding-top: 10rpx;
+		width: 700rpx;
+		background-color: white;
+		margin-top: 30rpx;
+		border-radius: 10px;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}
 </style>

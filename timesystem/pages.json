@@ -9,12 +9,20 @@
 				  "titleNView": false, //禁用原生导航栏 
 				  "pullToRefresh":{
 				  	"color":"#e6e6e6",
-					"offset": "150px",
+					"offset": "100px",
 					"height":"50px",
 					"range": "100px"
 				  }
 				},
 				"enablePullDownRefresh": true
+		}},{
+		//资讯详情注册
+		"path": "pages/news/newsDetail",
+		"style": {
+				"navigationBarTitleText": "首页资讯",
+				"app-plus": {
+				  "titleNView": false //禁用原生导航栏 
+				}
 		}},{
 		//主页注册
 		"path": "pages/index/index",
@@ -133,7 +141,7 @@
 				  "titleNView": false, //禁用原生导航栏 
 				  "pullToRefresh":{
 				  	"color":"#e6e6e6",
-					"offset": "320px",
+					"offset": "90px",
 					"height":"50px",
 					"range": "100px"
 				  }
@@ -200,8 +208,8 @@
 		"backgroundColor": "#ffffff",
 		"list": [{
 			"pagePath": "pages/news/news",
-			"iconPath": "static/buttompicture/buttompic1.png",
-			"selectedIconPath": "static/buttompicture/selectbuttompic1.png",
+			"iconPath": "static/buttompicture/news.png",
+			"selectedIconPath": "static/buttompicture/selectnews.png",
 			"text": "首页资讯"
 		}, {
 			"pagePath": "pages/index/index",

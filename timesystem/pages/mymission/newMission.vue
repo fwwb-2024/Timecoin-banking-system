@@ -11,26 +11,27 @@
 			</view>
 		</view>
 		
+		<view class="body"></view>
 		<!-- 编辑内容 -->
 		<view class="mission">
 			<view class="mission-title">
-				<text>任务类别</text>
+				<text class="detail-title">类别:</text>
 				<text @click="changeLable">{{taskLable}}</text>
 			</view>
 			<view class="mission-title">
-				<text>任务标题</text>
+				<text class="detail-title">标题:</text>
 				<input type="text" v-model="title"></input>
 			</view>
 			<view class="mission-brief">
-				<text>任务简介</text>
+				<text class="detail-title">简介:</text>
 				<textarea v-model="brief"></textarea>
 			</view>
 			<view class="mission-detail">
-				<text>任务详情</text>
+				<text class="detail-title">详情:</text>
 				<textarea v-model="detail"></textarea>
 			</view>
 			<view class="mission-time">
-				<text>任务时间</text>
+				<text class="detail-title">时间:</text>
 				<view class="mission-time-time">
 					<view class="mission-time-starttime">
 						<picker mode="date" :value="startTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
@@ -45,8 +46,8 @@
 				</view>
 			</view>
 			<view class="mission-timeCoins">
-				<text>任务悬赏</text>
-				<input type="number" v-model="coins"></input>
+				<text class="detail-title">悬赏</text>
+				<input type="number" placeholder="0" v-model="coins"></input>
 			</view>
 			<!-- 上传图片 -->
 			<view class="upPic">
@@ -69,7 +70,7 @@
 		</view>
 		
 		<!-- 支付弹出层 -->
-		<uni-popup ref="popup" type="bottom" border-radius="10px 10px 0 0">
+		<uni-popup ref="popup" type="bottom" border-radius="15px 15px 0 0" @maskClick="popClose">
 			<view class="pay">
 				<text>请选择你的支付方式</text>
 				<text>本人支付</text>
@@ -89,7 +90,6 @@
 					余额为：{{item.coins}}</button>
 				</view>
 			</view>
-			
 		</uni-popup>
 	</view>
 </template>
@@ -107,7 +107,7 @@
 				detail:'',
 				startTime:currentDate,
 				endTime:currentDate,
-				coins:0,
+				coins:null,
 				taskPhoto:[],
 				
 				// 本人支付信息
@@ -130,12 +130,17 @@
 				this.ownpay.coins=res.data.userTimeCoin
 			})
 			
+			let name = uni.getStorageSync('userName')
 			// 查看家庭
 			this.$api.getFamilyList(uni.getStorageSync('userID')).then((res)=>{
 				for(let i=0;i<res.data.length;i++){
 					this.familylist.push({name:res.data[i].familyName,familyID:res.data[i].familyID})
+					// 导入家庭成员
 					this.$api.getFamilyCoinsData(res.data[i].familyID).then((response)=>{
 						for(let j=0;j<response.data.length;j++){
+							if(response.data[j].userName == name){
+								continue
+							}
 							this.paylist.push({familyID:res.data[i].familyID,name:response.data[j].userName,coins:response.data[j].userTimeCoin,userID:response.data[j].userID})
 						}
 					})
@@ -162,14 +167,26 @@
 				let month = date.getMonth() + 1;
 				let day = date.getDate();
 								
-				if (type === 'start') {
-				    year = year - 10;
-				} else if (type === 'end') {
+				month = month > 9 ? month : '0' + month;
+				day = day > 9 ? day : '0' + day;
+				return `${year}.${month}.${day}`;
+			},
+			// 时间限制
+			getLimtDate(type) {
+				const date = new Date();
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+				
+				if(type == 'start') {
+				    year = year - 20;
+				}			
+				else if (type == 'end') {
 				    year = year + 20;
 				}
 				month = month > 9 ? month : '0' + month;
 				day = day > 9 ? day : '0' + day;
-				return `${year}.${month}.${day}`;
+				return `${year}-${month}-${day}`;
 			},
 			// 更改图片类别
 			changeLable(){
@@ -277,6 +294,10 @@
 					})
 				}
 			},
+			//弹出层关闭
+			popClose(){
+				this.familyShow = true
+			},
 			// 发布任务
 			postMission() {
 				if(this.title == '') {
@@ -286,7 +307,7 @@
 						duration: 1000
 					});
 				}
-				else if(this.coins == 0) {
+				else if(this.coins == 0 || this.coins == null) {
 					uni.showToast({
 						title: '请设置悬赏',
 						icon:'error',
@@ -300,10 +321,10 @@
 		},
 		computed: {
 		    startDate() {
-		        return this.getDate('start');
+		        return this.getLimtDate('start');
 		    },
 		    endDate() {
-		        return this.getDate('end');
+		        return this.getLimtDate('end');
 		    }
 		},
 	}
@@ -345,6 +366,10 @@
 		font-size: 38rpx;
 		color: white;
 	}
+	
+	.body {
+		margin-top: 150rpx;
+	}
 	.mission {
 		display: flex;
 		flex-direction: column;
@@ -362,7 +387,7 @@
 	.mission-title input {
 		height: 80rpx;
 		border-radius: 15px;
-		border: 1px solid #cccccc;
+		border: 1px solid #e6e6e6;
 	}
 	.mission-brief {
 		margin-top: 20rpx;
@@ -372,7 +397,7 @@
 		width: 650rpx;
 		height: 120rpx;
 		border-radius: 15px;
-		border: 1px solid #cccccc;
+		border: 1px solid #e6e6e6;
 	}
 	.mission-detail {
 		margin-top: 20rpx;
@@ -382,7 +407,7 @@
 		width: 650rpx;
 		height: 150rpx;
 		border-radius: 15px;
-		border: 1px solid #cccccc;
+		border: 1px solid #e6e6e6;
 	}
 	.mission-time {
 		width: 650rpx;
@@ -413,12 +438,13 @@
 	.mission-timeCoins input {
 		height: 80rpx;
 		border-radius: 15px;
-		border: 1px solid #cccccc;
+		border: 1px solid #e6e6e6;
 	}
 	.postMission {
 		width: 650rpx;
 		background-color: orange;
 		margin-top: 20rpx;
+		color: white;
 	}
 	.upPic {
 		width: 100%;

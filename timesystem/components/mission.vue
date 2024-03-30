@@ -72,7 +72,7 @@
 				case 4:this.status = '已处理';break;
 				case 5:this.status = '已完成';break;
 				case 6:this.status = '已完结';break;
-				case 7:this.status = '已取消';break;
+				case 7:this.status = '进行中';break;
 				default: break;
 			}
 		}
@@ -169,7 +169,7 @@
 	}
 	.red-dot {
 		position: absolute;
-		right: 0;
+		right: 17px;
 	    width: 10px; /* 小红点的大小 */
 	    height: 10px; /* 小红点的大小 */
 	    background-color: red; /* 小红点的颜色 */

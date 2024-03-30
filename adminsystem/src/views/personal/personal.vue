@@ -18,6 +18,7 @@
       <div style="display: flex;justify-content: center;margin-top: 10px">
         <el-button style="flex-grow: 1" @click="cancel">取消修改</el-button>
         <el-button style="flex-grow: 1" type="primary" @click="changeAdminData">确认修改</el-button>
+        <el-button style="flex-grow: 1" @click="()=>{this.$router.push('/login')}">切换账号</el-button>
       </div>
     </el-card>
   </div>
@@ -80,17 +81,19 @@ export default {
         changeData(temp).then((res)=>{
           if(res.data == '用户已存在'){
             alert('用户已存在')
+            location.reload()
           }
           else if(res.data){
             alert('修改成功')
             localStorage.adminName = temp.adminName
+            location.reload()
           }
           else {
             alert('修改失败')
+            location.reload()
           }
         })
       }
-      location.reload()
     }
   }
 }

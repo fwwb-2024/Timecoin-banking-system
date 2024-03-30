@@ -137,4 +137,18 @@ export default {
 	getLedgers (userID,offSet){
 		return http.get('/ledgers/userCenter/findLedgers',{userID:userID,offSet:offSet},true)
 	},
+	
+	// 查看新闻列表
+	 getnews (offSet){
+	    return http.get('/new/findNewsList',{offSet:offSet},true)
+	},
+	// 查看新闻详情
+	getnewsDetail (newID){
+	    return http.get('/new/findNewsDetail',{newID:newID},true)
+	},
+	
+	// 开始任务
+	startMission (data){
+	    return http.post('/tasks/taskCenter/userBeginTask',data,true)
+	},
 }

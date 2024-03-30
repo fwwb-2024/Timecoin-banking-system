@@ -43,6 +43,9 @@
 	.headerBackgroundColor {
 		padding: 70rpx 0 20rpx 0;
 		background: linear-gradient(90deg,#ff0000,#ff4d4d,#ff8533,#ff944d,#ff944d,#ffb380);
+		position: fixed!important;
+		top: 0px!important;
+		z-index: 2;
 	}
 	.body {
 		display: flex;

@@ -11,13 +11,14 @@ import viewAdmin from "@/views/register/viewAdmin";
 import personal from "@/views/personal/personal";
 import login from "@/views/login";
 import editor from "@/views/editor/editor";
+import manageEditor from "@/views/editor/manageEditor";
 
 Vue.use(VueRouter)
 
 const router=new VueRouter({
   //路由重定位到登录页面
   routes:  [
-    {path:'/',redirect:'/login'},
+    {path:'/',redirect:'/home'},
     {path:'/home', component:home,
     children:[
       {path:'/home/publishTaskAnalysis', component:publishTaskAnalysis,},
@@ -28,6 +29,7 @@ const router=new VueRouter({
       {path:'/home/taskCompleteReview', component:taskCompleteReview,},
       {path:'/home/viewAdmin', component:viewAdmin,},
       {path:'/home/personal', component:personal,},
+      {path:'/home/manageEditor', component:manageEditor,},
       {path:'/home/editor', component:editor,},
     ]},//主页面
     {path:'/login',component:login} //登录页面

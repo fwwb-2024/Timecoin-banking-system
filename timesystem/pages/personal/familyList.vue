@@ -139,7 +139,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 700rpx;
-		margin-top: 30rpx;
+		margin-top: 190rpx;
 		padding: 50rpx 0 20rpx 0;
 		background-color: white;
 		border-radius: 10px;

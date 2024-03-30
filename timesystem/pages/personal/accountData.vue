@@ -241,7 +241,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 700rpx;
-		margin-top: 30rpx;
+		margin-top: 180rpx;
 		padding: 30rpx 0 0 0;
 		background-color: white;
 		border-radius: 10px;
