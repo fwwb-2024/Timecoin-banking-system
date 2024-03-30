@@ -120,7 +120,8 @@ export default {
     noRemarkPass(){
       let tempRamark = '管理员审核不通过，原因为：'+ this.task.taskStatusRemark
       noPassRemark(this.task.taskID,tempRamark).then((res)=>{
-        if(res.data == '批改成功'){
+        console.log(res)
+        if(res.data == '批改完成'){
           alert('审核不通过成功')
         }
         else {

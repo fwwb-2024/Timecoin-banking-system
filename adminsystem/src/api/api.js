@@ -62,3 +62,28 @@ export const getCreateTask =(chooses)=>{
 export const getCompleteTask =(chooses)=>{
     return http.get('/admin/taskCenter/findSuccessedTask',{params:{chooses:chooses}})
 }
+
+// 发布资讯
+export const postnews =(data)=>{
+    return http.post('/new/register',data)
+}
+//上传图片
+export const upPic =(data)=>{
+    return http.post('/tasks/taskCenter/uploadimage',data)
+}
+// 查看新闻列表
+export const getnews =(offSet)=>{
+    return http.get('/new/findNewsList',{params:{offSet:offSet}})
+}
+// 查看新闻详情
+export const getnewsDetail =(newID)=>{
+    return http.get('/new/findNewsDetail',{params:{newID:newID}})
+}
+// 修改新闻
+export const changeNewsDetail =(data)=>{
+    return http.post('/new/changeNews',data)
+}
+// 删除新闻
+export const deleteNews =(newsID)=>{
+    return http.get('/new/deleteNews',{params:{newsID:newsID}})
+}

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="main">
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -11,80 +11,132 @@
 			</view>		
 		</view>
 		
-		<!--任务信息-->
-		<view class="mission-title">
-			<text>任务类别</text>
-			<text @click="changeLable">{{mission.taskLable}}</text>
-		</view>
-		
-		<view class="detail-text">
-			任务标题：
-			<input v-model="mission.taskName"></input>
-		</view>
-		
-		<view class="detail-text">
-			任务简介：
-			<input v-model="mission.taskBrief"></input>
-		</view>
-		
-		<view class="detail-text">
-			<text>任务详情：</text>
-			<editorl v-if="loading" :html="mission.taskDetail" @content="getcontent"></editorl>
-		</view>
-		
-		<view class="detail-text">
-			任务悬赏：
-			<input type="number" v-model="mission.taskTimeCoinBounty"></input>
-		</view>
-		
-		<view class="mission-time">
-			<text>任务时间</text>
-			<view class="mission-time-time">
-				<view class="mission-time-starttime">
+		<view class="body">
+			<view v-show="changeTaskShow">
+				<!--任务信息-->
+				<view class="detail">
+					<text class="detail-title">类别：</text>
+					<text class="detail-content" @click="changeLable">{{mission.taskLable}}</text>
+				</view>
+				
+				<view class="detail">
+					<text class="detail-title">标题：</text>
+					<input class="detail-content" v-model="mission.taskName"></input>
+				</view>
+				
+				<view class="detail">
+					<text class="detail-title">简介：</text>
+					<input class="detail-content" v-model="mission.taskBrief"></input>
+				</view>
+				
+				<view class="detail">
+					<text class="detail-title">详情：</text>
+					<textarea class="detail-content" v-model="mission.taskDetail"></textarea>
+				</view>
+				
+				<!-- 图片附件 -->
+				<view class="detail-image">
+					<text class="detail-image-title">图片：</text>
+					<view v-for="(item,index) in mission.taskPhoto">
+						<image id="deletepic" @click="deletePic(index)" src="/static/deletepic.png"></image>
+						<view class="detail-image-element">
+							<image :src="item"></image>
+						</view>
+					</view>
+					<view class="upPic-add" @click="upPic">
+						<image src="/static/addpic.png"></image>
+					</view>
+				</view>
+				
+				<view class="detail">
+					<text class="detail-title">悬赏：</text>
+					<input type="number" v-model="mission.taskTimeCoinBounty"></input>
+				</view>
+				
+				<view class="detail">
+					<text class="detail-time">开始时间：</text>
 					<picker mode="date" :value="mission.taskStartTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
-						<view class="uni-input">开始时间：{{mission.taskStartTime}}</view>
+						<view class="detail-content">{{mission.taskStartTime}}</view>
 					</picker>
 				</view>
-				<view class="mission-time-endtime">
+				<view class="detail">
+					<text class="detail-time">截止时间：</text>
 					<picker mode="date" :value="mission.taskEndTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
-						<view class="uni-input">截止时间：{{mission.taskEndTime}}</view>
+						<view class="detail-content">{{mission.taskEndTime}}</view>
 					</picker>
 				</view>
 				
-			</view>
-		</view>
-		
-		<!-- 图片附件 -->
-		<view class="upPic">
-			<view v-for="(item,index) in mission.taskPhoto">
-				<image id="deletepic" @click="deletePic(index)" src="../../static/add.png"></image>
-				<view class="upPic-list-element">
-					<image :src="item"></image>
+				<view class="detail">
+					<text class="detail-time">任务状态：</text>
+					<text class="detail-content">{{mission.taskStatus}}</text>
 				</view>
 			</view>
-			<view class="upPic-add" @click="upPic">
-				<image src="../../static/add.png"></image>
+			
+			<view v-show="taskDetail">
+				<!--任务信息-->
+				<view class="detail">
+					<text class="detail-title">类别：</text>
+					<text class="detail-content">{{mission.taskLable}}</text>
+				</view>
+				<view class="detail">
+					<text class="detail-title">标题：</text>
+					<text class="detail-content">{{mission.taskName}}</text>
+				</view>
+				<view class="detail">
+					<text class="detail-title">简介：</text>
+					<text class="detail-content">{{mission.taskBrief}}</text>
+				</view>
+				<view class="detail">
+					<text class="detail-title">详情：</text>
+					<text class="detail-content">{{mission.taskDetail}}</text>
+				</view>
+				<view class="detail-image" v-if="taskPhotoShow">
+					<text class="detail-image-title">图片：</text>
+					<view class="detail-image-element" v-for="(item,index) in mission.taskPhoto">
+						<image :src="item"></image>
+					</view>
+				</view>
+				<view class="detail">
+					<text class="detail-title">悬赏：</text>
+					<text class="detail-content">{{mission.taskTimeCoinBounty}}</text>
+				</view>
+				<view class="detail" v-show="statusShow">
+					<text class="detail-title">状态：</text>
+					<text class="detail-content">{{mission.taskStatus}}</text>
+				</view>
 			</view>
-		</view>
-		
-		<!-- 显示审核失败原因 -->
-		<view  class="detail-text" v-show="remarkShow">
-			<view>审核失败原因：{{mission.taskStatusRemark}}</view>
-		</view>
-		
-		<view class="detail-text">
-			<text>任务状态：{{mission.taskStatus}}</text>
-		</view>
-		
-		<view>
-			<button @click="changeTask">确认修改</button>
-		</view>
-		<view>
-			<button @click="deleteTask">删除任务</button>
-		</view>
-		<view v-if="confirmShow">
-			<button @click="agreeTask">确认任务完成</button>
-			<button @click="refuseTask">拒绝任务完成</button>
+			
+			<!-- 显示审核失败原因 -->
+			<view class="detail" v-show="remarkShow">
+				<text class="detail-time">审核失败：</text>
+				<view class="detail-content">{{mission.taskStatusRemark}}</view>
+			</view>
+			
+			<!-- 显示开始任务内容 -->
+			<view class="detail" v-if="taskDoingShow>0">
+				<view class="detail-start-title">
+					<text>志愿者已经开始任务</text>
+				</view>
+				<view class="detail-start-text" v-if="taskDoingShow==2 || taskDoingShow==4">
+					<text>{{mission.taskDoingText}}</text>
+				</view>
+				<view class="detail-start-image" v-if="taskDoingShow==3 || taskDoingShow==4">
+					<image :src="mission.taskDoingPhoto"></image>
+				</view>
+			</view>
+			
+			<!-- 切换查看修改按钮 -->
+			<button v-if="(!changeTaskShow) && changeTaskStatus" class="detail-button" @click="()=>{changeTaskShow = true;taskDetail=false}">修改任务</button>
+			<button v-if="(!changeTaskShow) && (!taskDetail)" class="detail-button" @click="()=>{changeTaskShow = false;taskDetail = true}">查看任务</button>
+			<button v-show="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">取消查看</button>
+			<button v-show="changeTaskShow" class="detail-button" @click="changeTask">确认修改</button>
+			<button v-show="changeTaskShow" class="detail-button" @click="()=>{changeTaskShow=false;taskDetail=true}">取消修改</button>
+			<button v-show="changeTaskShow" class="detail-button" @click="deleteTask">删除任务</button>
+			
+			<view v-if="confirmShow">
+				<button class="detail-button" @click="agreeTask">确认任务完成</button>
+				<button class="detail-button" @click="refuseTask">拒绝任务完成</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -111,6 +163,9 @@
 					taskStatus:null,
 					taskStatusRemark:null,
 					taskPhoto:[],
+					// 开始任务信息
+					taskDoingText:'',
+					taskDoingPhoto:'',
 				},
 				// 显示任务状态
 				statusShow:true,
@@ -120,11 +175,23 @@
 				loading:false,
 				// 显示确认完成任务按钮
 				confirmShow:false,
+				// 显示开始任务信息
+				taskDoingShow:0,
+				
+				// 显示图片
+				taskPhotoShow:false,
+				// 显示修改任务
+				changeTaskShow:false,
+				// 显示任务详情
+				taskDetail:false,
+				// 若未接取任务，则显示修改任务按钮
+				changeTaskStatus:true,
 			}
 		},
 		onLoad(options) {
 			this.missionId = options.id
 			this.$api.getTaskData(this.missionId).then((res)=>{
+				console.log(res);
 				switch(res.data.taskLable){
 					case 1:this.mission.taskLable = '其他';break;
 					case 2:this.mission.taskLable = '跑腿';break;
@@ -147,15 +214,35 @@
 					this.mission.taskStatusRemark = res.data.taskStatusRemark
 					this.remarkShow = true
 				}
-				this.mission.taskPhoto = res.data.taskPhoto
+				if(res.data.taskPhoto[0] != ''){
+					this.taskPhotoShow = true
+					this.mission.taskPhoto = res.data.taskPhoto
+				}
+				
 				switch(res.data.taskStatus){
-					case 1:this.mission.taskStatus = '未审核';break;
-					case 2:this.mission.taskStatus = '未完成';break;
-					case 3:this.mission.taskStatus = '已接取';break;
-					case 4:this.mission.taskStatus = '已处理';this.confirmShow=true;break;
-					case 5:this.mission.taskStatus = '已完成';break;
-					case 6:this.mission.taskStatus = '已完结';break;
+					case 1:this.mission.taskStatus = '未审核';this.taskDetail=true;break;
+					case 2:this.mission.taskStatus = '未完成';this.taskDetail=true;break;
+					case 3:this.mission.taskStatus = '已接取';this.changeTaskStatus=false;break;
+					case 4:this.mission.taskStatus = '已处理';this.changeTaskStatus=false;this.confirmShow=true;break;
+					case 5:this.mission.taskStatus = '已完成';this.taskDetail=true;this.changeTaskStatus=false;break;
+					case 6:this.mission.taskStatus = '已完结';this.changeTaskStatus=false;break;
+					case 7:this.mission.taskStatus = '进行中';this.changeTaskStatus=false;this.taskDoingShow=1;break;
 					default:break;
+				}
+				
+				if(res.data.taskDoingText != '' && res.data.taskDoingText != null){
+					this.mission.taskDoingText = res.data.taskDoingText
+					this.taskDoingShow = 2
+				}
+				if(res.data.taskDoingPhoto != '' && res.data.taskDoingPhoto != null){
+					this.mission.taskDoingPhoto = res.data.taskDoingPhoto
+					this.taskDoingShow = 3
+				}
+				if(res.data.taskDoingText != '' && res.data.taskDoingPhoto != '' && res.data.taskDoingText != null && res.data.taskDoingPhoto != null){
+					this.taskDoingShow = 4
+				}
+				if(res.data.taskDoingText == '' && res.data.taskDoingPhoto == ''){
+					this.taskDoingShow = 0
 				}
 			})
 		},
@@ -352,10 +439,27 @@
 			},
 			// 与时间计算相关方法
 			bindStartDateChange (e) {
-			    this.mission.taskStartTime = e.detail.value;
+			    this.mission.taskStartTime = e.detail.value.replace('-', '.').replace('-', '.');
 			},
 			bindEndDateChange (e) {
-			    this.mission.taskEndTime = e.detail.value;
+			    this.mission.taskEndTime = e.detail.value.replace('-', '.').replace('-', '.');
+			},
+			// 时间限制
+			getLimtDate(type) {
+				const date = new Date();
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+				
+				if(type == 'start') {
+				    year = year - 20;
+				}			
+				else if (type == 'end') {
+				    year = year + 20;
+				}
+				month = month > 9 ? month : '0' + month;
+				day = day > 9 ? day : '0' + day;
+				return `${year}-${month}-${day}`;
 			},
 			getDate(type) {
 				const date = new Date();
@@ -375,10 +479,10 @@
 		},
 		computed: {
 		    startDate() {
-		        return this.getDate('start');
+		        return this.getLimtDate('start');
 		    },
 		    endDate() {
-		        return this.getDate('end');
+		        return this.getLimtDate('end');
 		    }
 		},
 		components:{
@@ -388,6 +492,11 @@
 </script>
 
 <style>
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	.header-background {
 		display: flex;
 		align-items: center;
@@ -414,24 +523,61 @@
 		font-size: 38rpx;
 		color: white;
 	}
-	.detail-text {
-		display: flex;
-		width: 670rpx;
-		margin-top: 10rpx;
-		margin-left: 10rpx;
-		margin-right: 10rpx;
-		padding: 30rpx 30rpx 30rpx 30rpx;
-		background-color: rgba(204, 204, 204, 0.3);
+	
+	.body {
+		margin: 170rpx 0 50rpx 0;
+		padding: 50rpx 0 50rpx 0;
 		border-radius: 10px;
+		width: 700rpx;
+		background-color: white;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}
-	.detail-text text {
+	.detail {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		width: 650rpx;
+		flex-wrap: wrap;
+	}
+	.detail-title {
+		width: 120rpx;
 		font-size: 38rpx;
-		color: #000000
+		color: gray;
+		margin-bottom: 50rpx;
+	}
+	.detail-content {
+		font-size: 35rpx;
+		margin-bottom: 30rpx;
+	}
+	.detail-time {
+		width: 200rpx;
+		font-size: 38rpx;
+		color: gray;
+		margin-bottom: 50rpx;
+	}
+	.detail-image {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 650rpx;
+		margin: 30rpx 0 30rpx 0;
+	}
+	.detail-image-title {
+		width: 120rpx;
+		font-size: 38rpx;
+		color: gray;
+		margin-bottom: 50rpx;
+	}
+	.detail-image-element {
+		margin: 0 10rpx 10rpx 20rpx;
+	}
+	.detail-image-element image {
+		width: 600rpx;
 	}
 	.detail-button {
-		margin-top: 50rpx;
-		margin-left: 10rpx;
-		margin-right: 10rpx;
+		margin: 50rpx 10rpx 0 10rpx ;
+		width: 500rpx;
 		padding: 30rpx 30rpx 30rpx 30rpx;
 		background: rgba(255, 141, 26, 0.6);
 		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
@@ -453,23 +599,53 @@
 		width: 30rpx;
 		height: 30rpx;
 		position: relative;
-		left: 180rpx;
+		left: 600rpx;
 		top: 20rpx;
+		z-index: 1;
 	}
-	.upPic-list-element {
-		margin-right: 20rpx;
+	.detail-image {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 650rpx;
+		margin: 30rpx 0 30rpx 0;
 	}
-	.upPic-list-element image {
-		width: 200rpx;
-		height: 200rpx;
+	.detail-image-title {
+		width: 120rpx;
+		font-size: 38rpx;
+		color: gray;
+		margin-bottom: 50rpx;
+	}
+	.detail-image-element image {
+		width: 600rpx;
 	}
 	.upPic-add {
 		width: 200rpx;
 		height: 200rpx;
-		margin-top: 40rpx;
+		margin: 40rpx 0 0 20rpx;
 	}
 	.upPic-add image{
 		width: 200rpx;
 		height: 200rpx;
+	}
+	
+	.detail-start-title{
+		font-size: 38rpx;
+		width: 100%;
+		color: orange;
+	}
+	.detail-start-text{
+		margin-top: 30rpx;
+		font-size: 35rpx;
+		width: 100%;
+	}
+	.detail-start-image {
+		margin-top: 30rpx;
+		width: 100%;
+	}
+	.detail-start-image image {
+		width: 100%;
+		background-color: blue
 	}
 </style>

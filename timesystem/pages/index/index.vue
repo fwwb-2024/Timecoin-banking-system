@@ -246,7 +246,7 @@
 		flex-direction: column;
 		justify-content: center;
 		background-color: white;
-		margin: 20rpx 25rpx 20rpx 25rpx;
+		margin: 210rpx 25rpx 20rpx 25rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}
@@ -302,7 +302,5 @@
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		width: 700rpx;
 		margin-bottom: 15rpx;
-	}
-	.mission-list-element {
 	}
 </style>

@@ -48,7 +48,7 @@
 			<!-- 任务历史 -->
 			<view class="function-part line" @click="navTo('/pages/mymission/historyTask')">
 				<view>
-					<image src="/static/personal/familyList.png"></image>
+					<image src="/static/history.png"></image>
 				</view>
 				<view>
 					<text>任务历史</text>
@@ -64,7 +64,8 @@
 					<text>切换身份</text>
 				</view>
 				<view id="now-persoanl-status">
-					<text>当前身份: {{nowPersonlStatus}}</text>
+					<text style="color: green;" v-if="nowPersonlStatus=='志愿者'">当前身份: 志愿者</text>
+					<text style="color: orange;" v-if="nowPersonlStatus=='发布者'">当前身份: 发布者</text>
 				</view>
 			</view>
 		</view>
@@ -95,7 +96,7 @@
 				nowPersonlStatus:'志愿者',
 			}
 		},
-		created: function(){
+		created() {
 			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
 				this.headerImage = res.data.userPhoto
 				this.username = res.data.userName
@@ -172,7 +173,7 @@
 		align-items: center;
 		width: 700rpx;
 		background-color: white;
-		margin-top: 30rpx;
+		margin-top: 210rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		padding: 30rpx 0 30rpx 0;

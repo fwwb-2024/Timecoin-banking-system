@@ -216,7 +216,7 @@
 							});
 							setTimeout(function() {
 							    uni.reLaunch({
-							    	url:'/pages/index/index'
+							    	url:'/pages/news/news'
 							    })
 							}, 1000);
 						}
@@ -272,7 +272,8 @@
 		flex-direction: column;
 		align-items: center;
 		width: 750rpx;
-		padding: 50rpx 0 100rpx 0; 
+		padding: 50rpx 0 100rpx 0;
+		margin-top: 150rpx;
 	}
 	.login-account {
 		display: flex;

@@ -272,7 +272,7 @@
 		width: 700rpx;
 		flex-direction: column;
 		align-items: center;
-		margin-top: 30rpx;
+		margin-top: 190rpx;
 		padding: 50rpx 0 20rpx 0;
 		background-color: white;
 		border-radius: 10px;

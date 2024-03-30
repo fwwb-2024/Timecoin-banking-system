@@ -39,9 +39,10 @@
               <el-submenu index="3">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
-                  <span>编辑资讯</span>
+                  <span>资讯模块</span>
                 </div>
-                <el-menu-item index="/home/editor">编辑资讯</el-menu-item>
+                <el-menu-item index="/home/manageEditor">管理资讯</el-menu-item>
+                <el-menu-item index="/home/editor">新增资讯</el-menu-item>
               </el-submenu>
               <el-submenu index="4">
                 <div class="el-menu-title" slot="title">
@@ -173,5 +174,7 @@ export default {
 }
 .view {
   width: 100vw;
+  height: 595px;
+  overflow-y: auto;
 }
 </style>

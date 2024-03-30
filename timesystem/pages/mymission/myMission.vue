@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="main">
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 志愿者 -->
@@ -10,22 +10,24 @@
 		</view>
 				
 		<!-- 任务主体页面 -->
-		<!-- 志愿者 -->
-		<view v-show="position">
-			<!-- 任务列表 -->
-			<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-				<view class="mission-list-element" @click="navTo('/pages/mymission/nowmission?id='+item.taskID)">
-					<mission :missionData="item"></mission>
+		<view class="body">
+			<!-- 志愿者 -->
+			<view v-show="position">
+				<!-- 任务列表 -->
+				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/nowmission?id='+item.taskID)">
+						<mission :missionData="item"></mission>
+					</view>
 				</view>
 			</view>
-		</view>
-		
-		<!-- 发布者 -->
-		<view v-show="!position">
-			<!-- 任务列表 -->
-			<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
-				<view class="mission-list-element" @click="navTo('/pages/mymission/changemission?id='+item.taskID)">
-					<mission :missionData="item"></mission>
+			
+			<!-- 发布者 -->
+			<view v-show="!position">
+				<!-- 任务列表 -->
+				<view class="mission-list" v-for="(item,index) in missionDataList" :key="item.id">
+					<view class="mission-list-element" @click="navTo('/pages/mymission/changemission?id='+item.taskID)">
+						<mission :missionData="item"></mission>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -46,7 +48,7 @@
 				// 渲染的任务列表数据
 				missionDataList:[],
 				// 加载的任务页数
-				pages:0
+				pages:0,
 			}
 		},
 		created: function() {
@@ -148,6 +150,11 @@
 </script>
 
 <style>
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	.header-background {
 		display: flex;
 		justify-content: center;
@@ -163,15 +170,20 @@
 		font-size: 38rpx;
 		color: white;
 	}
+	.body {
+		margin: 160rpx 0 100rpx 0;
+	}
 	.mission-list {
 		background-color: white;
-	}
-	.mission-list-element {
-		box-shadow: 1px 1px 1px rgb(200, 200, 200);
+		border-radius: 15px;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
+		width: 700rpx;
+		margin-bottom: 15rpx;
+		padding-top: 5rpx;
 	}
 	.newMission {
 		position: fixed;
-		bottom: 99rpx;
+		bottom: 100rpx;
 		width: 100%;
 		box-shadow: 1px 1px 1px rgb(200, 200, 200);
 	}
