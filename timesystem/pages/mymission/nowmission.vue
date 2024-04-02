@@ -133,7 +133,7 @@
 					this.taskPhotoShow = true
 					this.mission.taskPhoto = res.data.taskPhoto
 				}
-				if(res.data.taskStatusRemark !== null){
+				if(res.data.taskStatusRemark !== null && res.data.taskStatusRemark !== ''){
 					this.mission.taskStatusRemark = res.data.taskStatusRemark
 					this.remarkShow = true
 				}
@@ -151,8 +151,8 @@
 		methods: {
 			//返回上一级页面
 			back() {
-				uni.navigateBack({
-					delta:1
+				uni.reLaunch({
+					url:'/pages/mymission/myMission'
 				})
 			},
 			// 开始任务
@@ -206,12 +206,12 @@
 			},
 			// 确认开始任务
 			start(){
+				let that = this
 				let temp = {
 					taskID:this.missionId,
 					taskDoingText: this.taskDoingText,
 					taskDoingPhoto: this.taskDoingPhoto,
 				}
-				console.log(temp);
 				this.$api.startMission(temp).then((res)=>{
 					if(res.data == '进行成功'){
 						uni.showToast({
@@ -219,10 +219,8 @@
 							duration: 1000
 						});
 						setTimeout(function() {
-						    uni.redirectTo({
-						    	url:'/pages/mymission/nowmission'
-						    })
-						}, 1000);
+							that.back()
+						},1000)
 					}
 					else {
 						uni.showToast({
@@ -236,8 +234,7 @@
 			completeMission(){
 				this.$api.completeTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
 					if(res.data == '完成成功'){
-					
-					uni.showToast({
+						uni.showToast({
 							title:'完成任务成功',
 							duration:1000
 						})
@@ -313,7 +310,7 @@
 	}
 	
 	.body {
-		margin-top: 160rpx;
+		margin-top: 200rpx;
 		border-radius: 10px;
 		width: 700rpx;
 		background-color: white;
@@ -367,7 +364,7 @@
 		margin: 10rpx 10rpx 50rpx 10rpx;
 		padding: 30rpx 30rpx 30rpx 30rpx;
 		width: 500rpx;
-		background: rgba(255, 141, 26, 0.6);
+		background-color: #80aaff;
 		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
 		color: rgba(255, 255, 255, 1);
 		text-align: center;

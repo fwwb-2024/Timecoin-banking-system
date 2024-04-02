@@ -35,7 +35,7 @@
 			</view>
 			
 			<!-- 短信登录 -->
-			<view v-if="!wayShow">
+			<!-- <view v-if="!wayShow">
 				<view class="login-account">
 					<view>
 						<text>手机号：</text>
@@ -56,7 +56,7 @@
 						<button>发送</button>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- 登录按钮 -->
 			<view class="button-login">
 				<button @click="login">登录</button>
@@ -68,26 +68,26 @@
 			</view>
 			
 			<!-- 切换登录方式 -->
-			<view class="login-change" @click="changeLoginWay">
+			<!-- <view class="login-change" @click="changeLoginWay">
 				<view>
 					<text>其他登录方式</text>
 				</view>
 				<view>
 					<image src="../static/uni.png"></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		
 		<!-- 注册页面 -->
 		<view  class="login" v-if="!loginShow">
-			<!-- 短信登录 -->
+			<!-- 短信注册 -->
 			<view>
 				<view class="login-account">
 					<view>
 						<text>账号：</text>
 					</view>
 					<view>
-						<input class="uni-input" focus type="text" focus placeholder="请输入账号" />
+						<input class="uni-input" focus type="text" focus placeholder="请输入账号" v-model="user.userName"/>
 					</view>
 				</view>
 				<view class="login-account">
@@ -95,7 +95,7 @@
 						<text>手机号：</text>
 					</view>
 					<view>
-						<input class="uni-input" type="number" placeholder="请输入手机号" />
+						<input class="uni-input" type="number" placeholder="请输入手机号" v-model="user.userPhoneNumber"/>
 					</view>
 				</view>
 				
@@ -105,20 +105,20 @@
 						<text>密码：</text>
 					</view>
 					<view>
-						<input class="uni-input" password placeholder="请输入密码" />
+						<input class="uni-input" password placeholder="请输入密码" v-model="user.userPassword"/>
 					</view>
 				</view>
 				<!-- 确认密码 -->
-				<view class="register-password">
+				<view class="register-password" style="margin-bottom: 50rpx;">
 					<view id="register-password-confirm">
 						<text>确认密码：</text>
 					</view>
 					<view>
-						<input class="uni-input" password placeholder="请再次输入密码" />
+						<input class="uni-input" password placeholder="请再次输入密码" v-model="user.userComfirmPassword"/>
 					</view>
 				</view>
 				<!-- 输入验证码 -->
-				<view class="idCode">
+				<!-- <view class="idCode">
 					<view>
 						<text>验证码：</text>
 					</view>
@@ -128,11 +128,11 @@
 					<view>
 						<button>发送</button>
 					</view>
-				</view>
+				</view> -->
 			</view>
-			<!-- 登录按钮 -->
+			<!-- 注册按钮 -->
 			<view class="button-login">
-				<button>确认注册</button>
+				<button @click="register">确认注册</button>
 			</view>
 			
 			<!-- 注册按钮 -->
@@ -156,7 +156,9 @@
 				// 用户信息
 				user:{
 					userName:'',
-					userPassword:''
+					userPassword:'',
+					userComfirmPassword:'',
+					userPhoneNumber:null,
 				}
 			}
 		},
@@ -235,6 +237,48 @@
 						userPassword:this.user.userPassword
 					}
 				}
+			},
+			register(){
+				if(this.user.userPassword != this.user.userComfirmPassword){
+					uni.showToast({
+						title: '密码不一致',
+						icon:'error',
+						duration: 1000
+					});
+				}
+				else{
+					let temp = {
+						userName:this.user.userName,
+						userPassword:this.user.userPassword,
+						userPhoneNumber:this.user.userPhoneNumber,
+					}
+					this.$api.register(temp).then((res)=>{
+						if(res.data == '用户已存在'){
+							uni.showToast({
+								title: '用户已存在',
+								icon:'error',
+								duration: 1000
+							});
+						}
+						else if(res.data == '电话号已被注册') {
+							uni.showToast({
+								title: '电话号已被注册',
+								icon:'error',
+								duration: 1000
+							});
+						}else {
+							uni.showToast({
+								title: '注册成功',
+								duration: 1000
+							});
+							setTimeout(function() {
+							    uni.reLaunch({
+							    	url:'/pages/login'
+							    })
+							}, 1000);
+						}
+					})
+				}
 			}
 		},
 	}
@@ -273,7 +317,7 @@
 		align-items: center;
 		width: 750rpx;
 		padding: 50rpx 0 100rpx 0;
-		margin-top: 150rpx;
+		margin-top: 170rpx;
 	}
 	.login-account {
 		display: flex;
@@ -344,7 +388,7 @@
 		padding-bottom: 20rpx;
 	}
 	.register-password text {
-		margin-right: 50rpx;
+		margin-right: 20rpx;
 		font-size: 30rpx;
 	}
 	.register-password input {

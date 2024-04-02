@@ -41,8 +41,8 @@
 		padding: 10px;
 	}
 	.headerBackgroundColor {
-		padding: 70rpx 0 20rpx 0;
-		background: linear-gradient(90deg,#ff0000,#ff4d4d,#ff8533,#ff944d,#ff944d,#ffb380);
+		padding: 70rpx 0 40rpx 0;
+		background: linear-gradient(90deg,#ac3cf6,#7d6cf9,#3ca5f6,#85c7fa);
 		position: fixed!important;
 		top: 0px!important;
 		z-index: 2;

@@ -127,10 +127,10 @@
 		color: white;
 	}
 	.news-list {
-		margin-top: 210rpx;
+		margin-top: 240rpx;
 	}
 	.news-list-element {
-		width: 700rpx;
+		width: 650rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		margin-bottom: 30rpx;
@@ -145,7 +145,7 @@
 	}
 	.news-list-element-image image {
 		border-radius: 10px;
-		width: 700rpx;
+		width: 650rpx;
 		height: 400rpx;
 	}
 	.news-list-element-text {

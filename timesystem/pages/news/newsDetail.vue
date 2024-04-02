@@ -77,7 +77,7 @@
 		border-radius: 10px;
 		background-color: white;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
-		margin: 180rpx;
+		margin-top: 220rpx;
 		padding: 10rpx 20rpx 20rpx 20rpx;
 	}
 </style>

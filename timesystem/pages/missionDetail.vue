@@ -177,7 +177,7 @@
 	}
 	
 	.body {
-		margin-top: 160rpx;
+		margin-top: 200rpx;
 		border-radius: 10px;
 		width: 700rpx;
 		background-color: white;
@@ -224,7 +224,7 @@
 		margin: 50rpx 10rpx 50rpx 10rpx;
 		padding: 30rpx 30rpx 30rpx 30rpx;
 		width: 500rpx;
-		background: rgba(255, 141, 26, 0.6);
+		background-color: #80aaff;
 		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
 		color: rgba(255, 255, 255, 1);
 		text-align: center;

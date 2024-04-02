@@ -50,14 +50,14 @@
 				</view>
 			</view>
 			<!-- 实名认证 -->
-			<view class="accountdata-account">
+			<!-- <view class="accountdata-account">
 				<view class="accountdata-account-front">
 					<text>实名认证</text>
 				</view>
 				<view class="accountdata-authentication-after">
 					<text>已完成</text>
 				</view>
-			</view>
+			</view> -->
 			<button style="width: 100%;" @click="changeUserData">确认修改</button>
 			<!-- 切换账号 -->
 			<button style="width: 100%;" @click="navTo('/pages/login')">切换账号</button>
@@ -241,7 +241,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 700rpx;
-		margin-top: 180rpx;
+		margin-top: 220rpx;
 		padding: 30rpx 0 0 0;
 		background-color: white;
 		border-radius: 10px;

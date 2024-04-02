@@ -139,7 +139,7 @@
 		flex-direction: column;
 		align-items: center;
 		width: 700rpx;
-		margin-top: 190rpx;
+		margin-top: 220rpx;
 		padding: 50rpx 0 20rpx 0;
 		background-color: white;
 		border-radius: 10px;
@@ -152,6 +152,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		margin-bottom: 40rpx;
+		padding-right: 30rpx;
 	}
 	.familyList-element-title {
 		font-size: 40rpx;

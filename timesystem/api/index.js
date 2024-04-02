@@ -151,4 +151,11 @@ export default {
 	startMission (data){
 	    return http.post('/tasks/taskCenter/userBeginTask',data,true)
 	},
+	// 搜索任务
+	searchByTitle(taskName,offSet,chooses){
+		return http.get('/tasks/taskCenter/tasksForTaskName',{taskName:taskName,offSet:offSet,chooses:chooses},true)
+	},
+	searchByUser(taskEmployer,offSet,chooses){
+		return http.get('/tasks/taskCenter/tasksForTaskEmployer',{taskEmployer:taskEmployer,offSet:offSet,chooses:chooses},true)
+	},
 }

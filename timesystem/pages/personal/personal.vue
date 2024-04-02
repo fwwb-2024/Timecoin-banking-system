@@ -173,7 +173,7 @@
 		align-items: center;
 		width: 700rpx;
 		background-color: white;
-		margin-top: 210rpx;
+		margin-top: 250rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		padding: 30rpx 0 30rpx 0;
