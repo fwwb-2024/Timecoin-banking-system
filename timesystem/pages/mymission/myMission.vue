@@ -89,7 +89,7 @@
 						const length = res.data.length
 						for(let i=0;i<length;i++) {
 							let dotShow = false
-							if(res.data[i].taskStatusRemark !== null){
+							if(res.data[i].taskStatusRemark !== null && res.data[i].taskStatusRemark !== ''){
 								dotShow = true
 							}
 							this.missionDataList.push({
@@ -116,7 +116,7 @@
 						const length = res.data.length
 						for(let i=0;i<length;i++) {
 							let dotShow = false
-							if(res.data[i].taskStatusRemark !== null){
+							if(res.data[i].taskStatusRemark !== null && res.data[i].taskStatusRemark !== ''){
 								dotShow = true
 							}
 							this.missionDataList.push({
@@ -171,7 +171,7 @@
 		color: white;
 	}
 	.body {
-		margin: 160rpx 0 100rpx 0;
+		margin: 200rpx 0 100rpx 0;
 	}
 	.mission-list {
 		background-color: white;

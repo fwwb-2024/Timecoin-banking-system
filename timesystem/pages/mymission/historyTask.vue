@@ -187,7 +187,7 @@
 	}
 	
 	.body {
-		margin-top: 160rpx;
+		margin-top: 200rpx;
 	}
 	.mission-list-element {
 		padding-top: 10rpx;

@@ -25,18 +25,18 @@
                 </div>
                 <el-menu-item index="/home/publishTaskAnalysis">发布任务数据</el-menu-item>
                 <el-menu-item index="/home/completeTaskAnalysis">完成任务数据</el-menu-item>
-                <el-menu-item index="/home/webUserAnalysis">网站用户数据</el-menu-item>
+<!--                <el-menu-item index="/home/webUserAnalysis">网站用户数据</el-menu-item>-->
               </el-submenu>
               <el-submenu index="2">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>审核模块</span>
                 </div>
-                <el-menu-item index="/home/customerReview">用户资质审核</el-menu-item>
+<!--                <el-menu-item index="/home/customerReview">用户资质审核</el-menu-item>-->
                 <el-menu-item index="/home/publishTaskReview">任务发布审核</el-menu-item>
                 <el-menu-item index="/home/taskCompleteReview">任务结算审核</el-menu-item>
               </el-submenu>
-              <el-submenu index="3">
+              <el-submenu index="3" v-if="isSuperAdmin">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>资讯模块</span>
@@ -44,7 +44,7 @@
                 <el-menu-item index="/home/manageEditor">管理资讯</el-menu-item>
                 <el-menu-item index="/home/editor">新增资讯</el-menu-item>
               </el-submenu>
-              <el-submenu index="4">
+              <el-submenu index="4" v-if="isSuperAdmin">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>任免管理</span>
@@ -71,16 +71,20 @@
 </template>
 
 <script>
+import {getAdminData} from "@/api/api";
+
 export default {
   name: "home",
   data() {
     return {
       adminName:localStorage.adminName,
-      daytime:''
+      daytime:'',
+      isSuperAdmin:false,
     }
   },
   created() {
     this.getTime()
+    this.getadminPreviliege()
   },
   methods:{
     // 获取当前问候时间
@@ -93,6 +97,15 @@ export default {
       } else {
         this.daytime = '晚上';
       }
+    },
+    getadminPreviliege(){
+      getAdminData(localStorage.adminName).then((res)=>{
+        switch (res.data.adminPreviliege){
+          case "1": this.isSuperAdmin = false;break;
+          case "2": this.isSuperAdmin = true;break;
+          default:break;
+        }
+      })
     }
   }
 }

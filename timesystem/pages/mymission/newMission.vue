@@ -89,6 +89,11 @@
 					<button @click="choosePayer(item.userID)">姓名：{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					余额为：{{item.coins}}</button>
 				</view>
+				
+				<view style="display: flex;flex-direction: row;justify-content: center;margin: 30rpx; 0 20rpx 0">
+					<button @click="()=>{$refs.popup.close();familyShow = true;}">取消支付</button>
+					<button style="margin-left: 100rpx;background-color: #80aaff;color: white;" @click="pay">确认支付</button>
+				</view>
 			</view>
 		</uni-popup>
 	</view>
@@ -110,6 +115,8 @@
 				coins:null,
 				taskPhoto:[],
 				
+				// 支付者ID
+				taskEmployerFamilyUserID:null,
 				// 本人支付信息
 				ownpay:{},
 				// 支付人列表
@@ -247,7 +254,11 @@
 			},
 			// 选择支付者并且支付
 			choosePayer(userID){
-				if(userID){
+				this.taskEmployerFamilyUserID = userID
+			},
+			// 支付
+			pay(){
+				if(this.taskEmployerFamilyUserID){
 					let taskLable = 1
 					switch(this.taskLable){
 						case '跑腿':taskLable = 2;break;
@@ -270,7 +281,7 @@
 							taskVisitedNumber: "0",
 							taskTimeCoinBounty: this.coins,
 							taskPhoto: this.taskPhoto,
-							taskEmployerFamilyUserID:userID
+							taskEmployerFamilyUserID:this.taskEmployerFamilyUserID
 					}
 					this.$api.postTask(temp).then((res)=>{
 						if(res.data == '新建成功') {
@@ -292,6 +303,13 @@
 							});
 						}
 					})
+				}
+				else{
+					uni.showToast({
+						title: '请选择支付者',
+						icon:'error',
+						duration: 1000
+					});
 				}
 			},
 			//弹出层关闭
@@ -368,7 +386,7 @@
 	}
 	
 	.body {
-		margin-top: 150rpx;
+		margin-top: 190rpx;
 	}
 	.mission {
 		display: flex;
@@ -383,6 +401,7 @@
 	}
 	.mission-title {
 		width: 650rpx;
+		margin-bottom: 30rpx;
 	}
 	.mission-title input {
 		height: 80rpx;
@@ -442,9 +461,10 @@
 	}
 	.postMission {
 		width: 650rpx;
-		background-color: orange;
+		background-color: #80aaff;
 		margin-top: 20rpx;
 		color: white;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}
 	.upPic {
 		width: 100%;

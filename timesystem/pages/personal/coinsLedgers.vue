@@ -123,7 +123,7 @@
 		width: 620rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
-		margin-top: 170rpx;
+		margin-top: 210rpx;
 		background-color: white;
 		padding: 40rpx 40rpx 10rpx 40rpx;
 		margin-bottom: 30rpx;

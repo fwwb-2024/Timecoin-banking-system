@@ -82,18 +82,6 @@ const beforeResponse = (response) => {
 		    })
 		}, 1000);
 	}
-	else {
-		uni.showToast({
-			title: '未登录',
-			icon:'error',
-			duration: 1000
-		});
-		setTimeout(function() {
-		    uni.reLaunch({
-		    	url:'/pages/login'
-		    })
-		}, 1000);
-	}
 	return response
 }
 //异常处理器

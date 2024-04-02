@@ -93,6 +93,14 @@
 				  "titleNView": false //禁用原生导航栏  
 				}  
 		}},{
+		//搜索注册
+		"path": "pages/index/searchList",
+		"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus": {
+				  "titleNView": false  //禁用原生导航栏 
+				}
+		}},{
 		//关于我们注册
 		"path": "pages/personal/aboutUs",
 		"style": {

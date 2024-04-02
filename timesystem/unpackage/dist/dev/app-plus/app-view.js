@@ -511,7 +511,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.news-list {\n\tmargin-top: 210rpx;\n}\n.news-list-element {\n\twidth: 700rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-bottom: 30rpx;\n}\n.news-list-element-time {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\tfont-size: 30rpx;\n\tcolor: gray;\n\tmargin: 20rpx 0 20rpx 0;\n}\n.news-list-element-image uni-image {\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\theight: 400rpx;\n}\n.news-list-element-text {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tpadding: 0 10rpx 0 30rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.news-list-element-text uni-text {\n\tfont-size: 35rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.news-list {\n\tmargin-top: 240rpx;\n}\n.news-list-element {\n\twidth: 650rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-bottom: 30rpx;\n}\n.news-list-element-time {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\tfont-size: 30rpx;\n\tcolor: gray;\n\tmargin: 20rpx 0 20rpx 0;\n}\n.news-list-element-image uni-image {\n\tborder-radius: 10px;\n\twidth: 650rpx;\n\theight: 400rpx;\n}\n.news-list-element-text {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tpadding: 0 10rpx 0 30rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.news-list-element-text uni-text {\n\tfont-size: 35rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1283,7 +1283,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.detail {\n\twidth: 650rpx;\n\tborder-radius: 10px;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin: 180rpx;\n\tpadding: 10rpx 20rpx 20rpx 20rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.detail {\n\twidth: 650rpx;\n\tborder-radius: 10px;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-top: 220rpx;\n\tpadding: 10rpx 20rpx 20rpx 20rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2111,7 +2111,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.header-searchbar-image {\n\torder:2;\n\t\n\tdisplay: flex;\n\tjustify-content: right;\n\talign-items: center;\n\tflex-basis: 120rpx;\n\tmargin-left: 50rpx;\n\tmargin-right: -50rpx;\n}\n.header-searchbar-image uni-image {\n\twidth: 300rpx;\n\theight: 60rpx;\n\tborder-radius: 50px;\n}\n.header-search-image {\n\torder:3;\n\t\n\tdisplay: flex;\n\tjustify-content: right;\n\tflex-basis: 120rpx;\n}\n.header-search-image uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n\tborder-radius: 50px;\n}\n.lable {\n\twidth: 700rpx;\n\theight: 300rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tbackground-color: white;\n\tmargin: 210rpx 25rpx 20rpx 25rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.lable-first {\n\twidth: 700rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.lable-second {\n\twidth: 700rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.lable-image {\n\tflex-grow: 1;\n\twidth: 70rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.lable-image uni-image{\n\twidth: 70rpx;\n\theight: 70rpx;\n}\n.header-select {\n\tdisplay: flex;\n\tflex-direction: row;\n\theight: 120rpx;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-bottom: 20rpx;\n\talign-items: center;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.header-select-button {\n\tmargin:20rpx 0 0 40rpx;\n}\n.header-select-button uni-text {\n\tfont-size: 32rpx;\n}\n.header-select-button uni-view {\n\tborder-bottom: orange solid 2px;\n}\n.mission-list {\n\tbackground-color: white;\n\tborder-radius: 15px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\twidth: 700rpx;\n\tmargin-bottom: 15rpx;\n}\n", ""]);
+exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.header-searchbar-image {\n\torder:2;\n\t\n\tdisplay: flex;\n\tjustify-content: right;\n\talign-items: center;\n\tflex-basis: 120rpx;\n\tmargin-left: 50rpx;\n\tmargin-right: -50rpx;\n}\n.header-searchbar-image uni-image {\n\twidth: 300rpx;\n\theight: 60rpx;\n\tborder-radius: 50px;\n}\n.header-search-image {\n\torder:3;\n\t\n\tdisplay: flex;\n\tjustify-content: right;\n\tflex-basis: 120rpx;\n}\n.header-search-image uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n\tborder-radius: 50px;\n}\n.lable {\n\twidth: 700rpx;\n\theight: 300rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\tbackground-color: white;\n\tmargin: 240rpx 25rpx 20rpx 25rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.lable-first {\n\twidth: 700rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.lable-second {\n\twidth: 700rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n.lable-image {\n\tflex-grow: 1;\n\twidth: 70rpx;\n\theight: 150rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tjustify-content: center;\n}\n.lable-image uni-image{\n\twidth: 70rpx;\n\theight: 70rpx;\n}\n.header-select {\n\tdisplay: flex;\n\tflex-direction: row;\n\theight: 120rpx;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-bottom: 20rpx;\n\talign-items: center;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.header-select-button {\n\tmargin:20rpx 0 0 40rpx;\n}\n.header-select-button uni-text {\n\tfont-size: 32rpx;\n}\n.header-select-button uni-view {\n\tborder-bottom: orange solid 2px;\n}\n.mission-list {\n\tbackground-color: white;\n\tborder-radius: 15px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\twidth: 700rpx;\n\tmargin-bottom: 15rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2440,7 +2440,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin: 160rpx 0 100rpx 0;\n}\n.mission-list {\n\tbackground-color: white;\n\tborder-radius: 15px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\twidth: 700rpx;\n\tmargin-bottom: 15rpx;\n\tpadding-top: 5rpx;\n}\n.newMission {\n\tposition: fixed;\n\tbottom: 100rpx;\n\twidth: 100%;\n\tbox-shadow: 1px 1px 1px rgb(200, 200, 200);\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin: 200rpx 0 100rpx 0;\n}\n.mission-list {\n\tbackground-color: white;\n\tborder-radius: 15px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\twidth: 700rpx;\n\tmargin-bottom: 15rpx;\n\tpadding-top: 5rpx;\n}\n.newMission {\n\tposition: fixed;\n\tbottom: 0;\n\twidth: 100%;\n\tbox-shadow: 1px 1px 1px rgb(200, 200, 200);\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2997,6 +2997,49 @@ var render = function () {
                     )
                   : _vm._e()
               }),
+              _c(
+                "uni-view",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    "flex-direction": "row",
+                    "justify-content": "center",
+                    margin: "30rpx",
+                  },
+                  attrs: { _i: 55 },
+                },
+                [
+                  _c(
+                    "v-uni-button",
+                    {
+                      attrs: { _i: 56 },
+                      on: {
+                        click: function ($event) {
+                          return _vm.$handleViewEvent($event)
+                        },
+                      },
+                    },
+                    [_vm._v("取消支付")]
+                  ),
+                  _c(
+                    "v-uni-button",
+                    {
+                      staticStyle: {
+                        "margin-left": "100rpx",
+                        "background-color": "#77c6ee",
+                      },
+                      attrs: { _i: 57 },
+                      on: {
+                        click: function ($event) {
+                          return _vm.$handleViewEvent($event)
+                        },
+                      },
+                    },
+                    [_vm._v("确认支付")]
+                  ),
+                ],
+                1
+              ),
             ],
             2
           ),
@@ -3528,7 +3571,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 150rpx;\n}\n.mission {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 30rpx 0 30rpx 0;\n\tfont-size: 19px;\n}\n.mission-title {\n\twidth: 650rpx;\n}\n.mission-title uni-input {\n\theight: 80rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-brief {\n\tmargin-top: 20rpx;\n\twidth: 650rpx;\n}\n.mission-brief uni-textarea {\n\twidth: 650rpx;\n\theight: 120rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-detail {\n\tmargin-top: 20rpx;\n\twidth: 650rpx;\n}\n.mission-detail uni-textarea {\n\twidth: 650rpx;\n\theight: 150rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-time {\n\twidth: 650rpx;\n}\n.mission-time-time {\n\tdisplay: flex;\n\twidth: 650rpx;\n\theight: 100rpx;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n}\n.mission-time-starttime {\n\tdisplay: flex;\n\tjustify-content: center;\n\twidth: 50%;\n\tfont-size:15px;\n}\n.mission-time-endtime {\n\tdisplay: flex;\n\tjustify-content: center;\n\twidth: 50%;\n\tfont-size:15px;\n}\n.mission-timeCoins {\n\twidth: 650rpx;\n}\n.mission-timeCoins uni-input {\n\theight: 80rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.postMission {\n\twidth: 650rpx;\n\tbackground-color: orange;\n\tmargin-top: 20rpx;\n\tcolor: white;\n}\n.upPic {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n\tmargin-top: 50rpx;\n\tpadding-left: 40rpx;\n}\n.upPic-title {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tmargin-left: 10rpx;\n}\n#deletepic {\n\twidth: 30rpx;\n\theight: 30rpx;\n\tposition: relative;\n\tleft: 180rpx;\n\ttop: 20rpx;\n\tz-index: 2;\n}\n.upPic-list-element {\n\tmargin-right: 20rpx;\n}\n.upPic-list-element uni-image {\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n.upPic-add {\n\twidth: 200rpx;\n\theight: 200rpx;\n\tmargin-top: 40rpx;\n}\n.upPic-add uni-image{\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n/* 支付弹出层样式 */\n.pay {\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.pay-element {\n\twidth: 100%;\n}\n.pay-element uni-button {\n\tbackground-color: #fff;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 190rpx;\n}\n.mission {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 30rpx 0 30rpx 0;\n\tfont-size: 19px;\n}\n.mission-title {\n\twidth: 650rpx;\n\tmargin-bottom: 30rpx;\n}\n.mission-title uni-input {\n\theight: 80rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-brief {\n\tmargin-top: 20rpx;\n\twidth: 650rpx;\n}\n.mission-brief uni-textarea {\n\twidth: 650rpx;\n\theight: 120rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-detail {\n\tmargin-top: 20rpx;\n\twidth: 650rpx;\n}\n.mission-detail uni-textarea {\n\twidth: 650rpx;\n\theight: 150rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.mission-time {\n\twidth: 650rpx;\n}\n.mission-time-time {\n\tdisplay: flex;\n\twidth: 650rpx;\n\theight: 100rpx;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n}\n.mission-time-starttime {\n\tdisplay: flex;\n\tjustify-content: center;\n\twidth: 50%;\n\tfont-size:15px;\n}\n.mission-time-endtime {\n\tdisplay: flex;\n\tjustify-content: center;\n\twidth: 50%;\n\tfont-size:15px;\n}\n.mission-timeCoins {\n\twidth: 650rpx;\n}\n.mission-timeCoins uni-input {\n\theight: 80rpx;\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n}\n.postMission {\n\twidth: 650rpx;\n\tbackground-color: orange;\n\tmargin-top: 20rpx;\n\tcolor: white;\n}\n.upPic {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n\tmargin-top: 50rpx;\n\tpadding-left: 40rpx;\n}\n.upPic-title {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tmargin-left: 10rpx;\n}\n#deletepic {\n\twidth: 30rpx;\n\theight: 30rpx;\n\tposition: relative;\n\tleft: 180rpx;\n\ttop: 20rpx;\n\tz-index: 2;\n}\n.upPic-list-element {\n\tmargin-right: 20rpx;\n}\n.upPic-list-element uni-image {\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n.upPic-add {\n\twidth: 200rpx;\n\theight: 200rpx;\n\tmargin-top: 40rpx;\n}\n.upPic-add uni-image{\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n/* 支付弹出层样式 */\n.pay {\n\tbackground-color: #fff;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.pay-element {\n\twidth: 100%;\n}\n.pay-element uni-button {\n\tbackground-color: #fff;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3774,7 +3817,7 @@ var render = function () {
                 { attrs: { _i: 23 } },
                 [
                   _c("v-uni-image", {
-                    attrs: { src: "/static/personal/familyList.png", _i: 24 },
+                    attrs: { src: "/static/history.png", _i: 24 },
                   }),
                 ],
                 1
@@ -3982,7 +4025,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.peronal-function {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 210rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 30rpx 0 30rpx 0;\n}\n.function-part {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\tmargin: 20rpx 0 20rpx 0;\n\tpadding-bottom: 20rpx;\n}\n.function-part uni-view {\n\tmargin: 10rpx 10rpx 10rpx 0;\n}\n.function-part uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n}\n.function-part uni-text {\n\tmargin-left: 20rpx;\n\tfont-size: 35rpx;\n}\n.line {\n\tborder-bottom: thin solid rgb(179, 179, 179);\n}\n#now-persoanl-status {\n\tmargin-left: 100rpx;\n}\n#now-persoanl-status uni-text {\n\tfont-size: 25rpx;\n\tfont-weight: bold;\n\tcolor: gray;\n}\n.about {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 20rpx 0 20rpx 0;\n}\n.about-us {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\tmargin: 0 10rpx 0 10rpx;\n}\n.about uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n}\n.about uni-text {\n\tmargin-left: 20rpx;\n\tfont-size: 35rpx;\n}\n", ""]);
+exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.header-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n}\n.header-image uni-image {\n\twidth: 80rpx;\n\theight: 80rpx;\n\tborder-radius: 50px;\n\tborder: 1px solid rgb(184, 184, 184)\n}\n.head-text {\n\torder:1;\n\t\n\tdisplay: flex;\n\tflex-basis: 200rpx;\n\theight: 60rpx;\n}\n.head-text uni-text {\n\talign-self: flex-end;\n\tfont-size: 35rpx;\n\tcolor: white;\n}\n.peronal-function {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 250rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 30rpx 0 30rpx 0;\n}\n.function-part {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\tmargin: 20rpx 0 20rpx 0;\n\tpadding-bottom: 20rpx;\n}\n.function-part uni-view {\n\tmargin: 10rpx 10rpx 10rpx 0;\n}\n.function-part uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n}\n.function-part uni-text {\n\tmargin-left: 20rpx;\n\tfont-size: 35rpx;\n}\n.line {\n\tborder-bottom: thin solid rgb(179, 179, 179);\n}\n#now-persoanl-status {\n\tmargin-left: 100rpx;\n}\n#now-persoanl-status uni-text {\n\tfont-size: 25rpx;\n\tfont-weight: bold;\n\tcolor: gray;\n}\n.about {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tpadding: 20rpx 0 20rpx 0;\n}\n.about-us {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\tmargin: 0 10rpx 0 10rpx;\n}\n.about uni-image {\n\twidth: 60rpx;\n\theight: 60rpx;\n}\n.about uni-text {\n\tmargin-left: 20rpx;\n\tfont-size: 35rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4302,7 +4345,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 160rpx;\n}\n.mission-list-element {\n\tpadding-top: 10rpx;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n", ""]);
+exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 200rpx;\n}\n.mission-list-element {\n\tpadding-top: 10rpx;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tmargin-top: 30rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5214,7 +5257,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.accountdata {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 180rpx;\n\tpadding: 30rpx 0 0 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.accountdata-headpic {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\theight: 200rpx;\n\tpadding: 0 0 0 10rpx;\n}\n.accountdata-headpic uni-text {\n\tfont-size: 38rpx;\n\tmargin-right: 340rpx;\n}\n.accountdata-headpic uni-image {\n\twidth: 120rpx;\n\theight: 120rpx;\n\tborder-radius: 50px;\n}\n.accountdata-account {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\theight: 150rpx;\n\tpadding: 0 0 0 10rpx;\n}\n.accountdata-account-front {\n\tfont-size: 38rpx;\n\tmargin-left: 0;\n\twidth: 300rpx;\n\tmargin-right: 100rpx;\n}\n.accountdata-account-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n}\n.accountdata-address-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 40rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.accountdata-phonenumber-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\tcolor: gray;\n}\n.accountdata-authentication-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n\tcolor: green;\n}\n.line {\n\tborder-bottom: thin solid rgb(179, 179, 179);\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.accountdata {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 220rpx;\n\tpadding: 30rpx 0 0 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.accountdata-headpic {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\theight: 200rpx;\n\tpadding: 0 0 0 10rpx;\n}\n.accountdata-headpic uni-text {\n\tfont-size: 38rpx;\n\tmargin-right: 340rpx;\n}\n.accountdata-headpic uni-image {\n\twidth: 120rpx;\n\theight: 120rpx;\n\tborder-radius: 50px;\n}\n.accountdata-account {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\twidth: 550rpx;\n\theight: 150rpx;\n\tpadding: 0 0 0 10rpx;\n}\n.accountdata-account-front {\n\tfont-size: 38rpx;\n\tmargin-left: 0;\n\twidth: 300rpx;\n\tmargin-right: 100rpx;\n}\n.accountdata-account-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n}\n.accountdata-address-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 40rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.accountdata-phonenumber-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\tcolor: gray;\n}\n.accountdata-authentication-after {\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\twidth: 250rpx;\n\tmargin-right: 50rpx;\n\tfont-size: 35rpx;\n\tfont-weight: bold;\n\tcolor: green;\n}\n.line {\n\tborder-bottom: thin solid rgb(179, 179, 179);\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5572,7 +5615,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.familyDetail {\n\tdisplay: flex;\n\twidth: 700rpx;\n\tflex-direction: column;\n\talign-items: center;\n\tmargin-top: 190rpx;\n\tpadding: 50rpx 0 20rpx 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.familyDetail-familyname {\n\tdisplay: flex;\n\twidth: 100%;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n\tfont-size: 40rpx;\n}\n.familyDetail-familyname uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n\tmargin-left: 20rpx;\n}\n.familyDetail-familylist {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tflex-warp:warp;\n\tpadding-left: 100rpx;\n}\n.familyDetail-familylist-familyMaster {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\twidth: 100%;\n\tmargin-bottom: 40rpx;\n}\n.familyDetail-familylist-familyMaster-text {\n\tfont-size: 40rpx;\n\twidth: 300rpx;\n\tmargin-right: 240rpx;\n}\n.familyDetail-familylist-familyMaster uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n\tmargin-right: 50rpx;\n}\n.familyDetail-familylist-element {\n\tdisplay: flex;\n\twidth: 690rpx;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n}\n.familyDetail-familylist-element-text {\n\twidth: 300rpx;\n\tfont-size: 40rpx;\n\tmargin-right: 245rpx;\n}\n.familyDetail-familylist-element uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n}\n.exit-family{\n\twidth: 700rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n\tmargin-top: 30rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.familyDetail {\n\tdisplay: flex;\n\twidth: 700rpx;\n\tflex-direction: column;\n\talign-items: center;\n\tmargin-top: 210rpx;\n\tpadding: 50rpx 0 20rpx 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.familyDetail-familyname {\n\tdisplay: flex;\n\twidth: 100%;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n\tfont-size: 40rpx;\n}\n.familyDetail-familyname uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n\tmargin-left: 20rpx;\n}\n.familyDetail-familylist {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tflex-warp:warp;\n\tpadding-left: 100rpx;\n}\n.familyDetail-familylist-familyMaster {\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\twidth: 100%;\n\tmargin-bottom: 40rpx;\n}\n.familyDetail-familylist-familyMaster-text {\n\tfont-size: 40rpx;\n\twidth: 300rpx;\n\tmargin-right: 240rpx;\n}\n.familyDetail-familylist-familyMaster uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n\tmargin-right: 50rpx;\n}\n.familyDetail-familylist-element {\n\tdisplay: flex;\n\twidth: 690rpx;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n}\n.familyDetail-familylist-element-text {\n\twidth: 300rpx;\n\tfont-size: 40rpx;\n\tmargin-right: 245rpx;\n}\n.familyDetail-familylist-element uni-image {\n\twidth: 45rpx;\n\theight: 45rpx;\n}\n.exit-family{\n\twidth: 700rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n\tmargin-top: 30rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5878,7 +5921,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.familyList {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 190rpx;\n\tpadding: 50rpx 0 20rpx 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.familyList-element {\n\tdisplay: flex;\n\twidth: 690rpx;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n}\n.familyList-element-title {\n\tfont-size: 40rpx;\n\twidth: 250rpx;\n\tmargin:0 20rpx 0 60rpx;\n}\n.familyList-element-familyName {\n\twidth: 400rpx;\n\tfont-size: 35rpx;\n\tmargin-right: 50rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.familyList-element-image {\n\tmargin-right: 0;\n}\n.familyList-element-image uni-image{\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 160rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.familyList {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 220rpx;\n\tpadding: 50rpx 0 20rpx 0;\n\tbackground-color: white;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.familyList-element {\n\tdisplay: flex;\n\twidth: 690rpx;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmargin-bottom: 40rpx;\n}\n.familyList-element-title {\n\tfont-size: 40rpx;\n\twidth: 250rpx;\n\tmargin:0 20rpx 0 60rpx;\n}\n.familyList-element-familyName {\n\twidth: 400rpx;\n\tfont-size: 35rpx;\n\tmargin-right: 50rpx;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n.familyList-element-image {\n\tmargin-right: 0;\n}\n.familyList-element-image uni-image{\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -6169,7 +6212,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 155rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.timeCoin {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 190rpx;\n\tpadding: 50rpx 0 50rpx 0;\n\tborder-radius: 10px;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.timeCoin-image uni-image{\n\twidth: 100rpx;\n\theight: 100rpx;\n}\n.timeCoin-wallet {\n\torder: 0;\n\t\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 350rpx;\n}\n.timeCoin-wallet-text {\n\tmargin-top: 30rpx;\n\tfont-size: 35rpx;\n\tcolor: orange;\n}\n.timeCoin-bill {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 350rpx;\n}\n.timeCoin-bill-text {\n\tmargin-top: 30rpx;\n\tfont-size: 35rpx;\n\tmargin-bottom: 10rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 155rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.timeCoin {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\twidth: 700rpx;\n\tmargin-top: 210rpx;\n\tpadding: 50rpx 0 50rpx 0;\n\tborder-radius: 10px;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.timeCoin-image uni-image{\n\twidth: 100rpx;\n\theight: 100rpx;\n}\n.timeCoin-wallet {\n\torder: 0;\n\t\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 350rpx;\n}\n.timeCoin-wallet-text {\n\tmargin-top: 30rpx;\n\tfont-size: 35rpx;\n\tcolor: orange;\n}\n.timeCoin-bill {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 350rpx;\n}\n.timeCoin-bill-text {\n\tmargin-top: 30rpx;\n\tfont-size: 35rpx;\n\tmargin-bottom: 10rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -6487,7 +6530,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.ledger {\n\twidth: 620rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-top: 170rpx;\n\tbackground-color: white;\n\tpadding: 40rpx 40rpx 10rpx 40rpx;\n\tmargin-bottom: 30rpx;\n}\n.ledger-element {\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tpadding-bottom: 20rpx;\n\tborder-bottom: #d9d9d9 solid 1px;\n\tmargin-bottom: 20rpx;\n}\n.ledger-element-end {\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 20rpx;\n}\n.ledger-element-name {\n\twidth: 30%;\n\tfont-size: 38rpx;\n}\n.ledger-element-ledgerTimeCoin {\n\twidth: 70%;\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\tcolor: black;\n}\n.ledger-element-brief {\n\twidth: 80%;\n\tmargin-top: 20rpx;\n\tfont-size: 32rpx;\n\tcolor: gray;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 175rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.ledger {\n\twidth: 620rpx;\n\tborder-radius: 10px;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-top: 210rpx;\n\tbackground-color: white;\n\tpadding: 40rpx 40rpx 10rpx 40rpx;\n\tmargin-bottom: 30rpx;\n}\n.ledger-element {\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tpadding-bottom: 20rpx;\n\tborder-bottom: #d9d9d9 solid 1px;\n\tmargin-bottom: 20rpx;\n}\n.ledger-element-end {\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 20rpx;\n}\n.ledger-element-name {\n\twidth: 30%;\n\tfont-size: 38rpx;\n}\n.ledger-element-ledgerTimeCoin {\n\twidth: 70%;\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\tfont-size: 35rpx;\n\tcolor: black;\n}\n.ledger-element-brief {\n\twidth: 80%;\n\tmargin-top: 20rpx;\n\tfont-size: 32rpx;\n\tcolor: gray;\n\toverflow:hidden;\n\ttext-overflow:ellipsis;\n\tdisplay:-webkit-box;\n\t-webkit-box-orient:vertical;\n\t-webkit-line-clamp:1;\t/*设置行数1行 */\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -7178,7 +7221,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.login {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 750rpx;\n\tpadding: 50rpx 0 100rpx 0;\n\tmargin-top: 150rpx;\n}\n.login-account {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 0rpx;\n}\n.login-account uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.login-account uni-input {\n\tfont-size: 30rpx;\n}\n.login-password {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 80rpx;\n}\n.login-password uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.login-password uni-input {\n\tfont-size: 30rpx;\n}\n.button-login {\n\twidth: 500rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n\tmargin-bottom: 30rpx;\n}\n.button-login uni-button {\n\tbackground-color: #ffb84d;\n}\n.button-register {\n\twidth: 500rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n}\n.login-change {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 500rpx;\n\tmargin-top: 50rpx;\n\tmargin-left: 550rpx;\n}\n.login-change uni-text {\n\twidth: 200rpx;\n\tcolor: orange;\n}\n.login-change uni-image {\n\twidth: 35rpx;\n\theight: 35rpx;\n\tmargin-left: 20rpx;\n}\n.register-password {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n}\n.register-password uni-text {\n\tmargin-right: 50rpx;\n\tfont-size: 30rpx;\n}\n.register-password uni-input {\n\tfont-size: 30rpx;\n}\n.idCode {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 80rpx;\n}\n.idCode uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.idCode uni-input {\n\twidth: 250rpx;\n\tfont-size: 30rpx;\n}\n.idCode uni-button {\n\twidth: 110rpx;\n\theight: 60rpx;\n\tfont-size: 25rpx;\n}\n#register-password-confirm {\n\twidth: 160rpx;\n}\n#register-password-confirm uni-text{\n\tmargin-right: 0;\n}\n", ""]);
+exports.push([module.i, "\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.header-background-text {\n\torder: 1;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.login {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\twidth: 750rpx;\n\tpadding: 50rpx 0 100rpx 0;\n\tmargin-top: 170rpx;\n}\n.login-account {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 0rpx;\n}\n.login-account uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.login-account uni-input {\n\tfont-size: 30rpx;\n}\n.login-password {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 80rpx;\n}\n.login-password uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.login-password uni-input {\n\tfont-size: 30rpx;\n}\n.button-login {\n\twidth: 500rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n\tmargin-bottom: 30rpx;\n}\n.button-login uni-button {\n\tbackground-color: #ffb84d;\n}\n.button-register {\n\twidth: 500rpx;\n\tbox-shadow: 1px 1px 10px rgb(200, 200, 200);\n}\n.login-change {\n\tdisplay: flex;\n\tflex-direction: row;\n\twidth: 500rpx;\n\tmargin-top: 50rpx;\n\tmargin-left: 550rpx;\n}\n.login-change uni-text {\n\twidth: 200rpx;\n\tcolor: orange;\n}\n.login-change uni-image {\n\twidth: 35rpx;\n\theight: 35rpx;\n\tmargin-left: 20rpx;\n}\n.register-password {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n}\n.register-password uni-text {\n\tmargin-right: 50rpx;\n\tfont-size: 30rpx;\n}\n.register-password uni-input {\n\tfont-size: 30rpx;\n}\n.idCode {\n\tdisplay: flex;\n\twidth: 500rpx;\n\theight: 130rpx;\n\talign-items: flex-end;\n\tborder-bottom: 1px solid rgb(200, 200, 200);\n\tpadding-bottom: 20rpx;\n\tmargin-bottom: 80rpx;\n}\n.idCode uni-text {\n\tmargin-right: 20rpx;\n\tfont-size: 30rpx;\n}\n.idCode uni-input {\n\twidth: 250rpx;\n\tfont-size: 30rpx;\n}\n.idCode uni-button {\n\twidth: 110rpx;\n\theight: 60rpx;\n\tfont-size: 25rpx;\n}\n#register-password-confirm {\n\twidth: 160rpx;\n}\n#register-password-confirm uni-text{\n\tmargin-right: 0;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -7570,7 +7613,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 160rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 50rpx 10rpx 50rpx 10rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\twidth: 500rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 200rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 50rpx 10rpx 50rpx 10rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\twidth: 500rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -8146,7 +8189,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 160rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-bottom: 50rpx;\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-time {\n\twidth: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 10rpx 10rpx 50rpx 10rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\twidth: 500rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n.start {\n\theight: 900rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tbackground-color: white;\n\tpadding: 20rpx 0 0 0;\n}\n.start-title {\n\tfont-size: 37rpx;\n}\n.start-text {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\theight: 100rpx;\n}\n.start-text uni-text {\n\tfont-size: 35rpx;\n}\n.start-text uni-input {\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n\theight: 70rpx;\n}\n.start-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n}\n.start-image uni-text {\n\tfont-size: 35rpx;\n\tmargin-left: 60rpx;\n}\n.start-image uni-image {\n\twidth: 600rpx;\n\theight: 500rpx;\n\tmargin-left: 75rpx;\n\tborder: 1px solid #e6e6e6;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 200rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n\tmargin-bottom: 50rpx;\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-time {\n\twidth: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 10rpx 10rpx 50rpx 10rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\twidth: 500rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n.start {\n\theight: 900rpx;\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n\tbackground-color: white;\n\tpadding: 20rpx 0 0 0;\n}\n.start-title {\n\tfont-size: 37rpx;\n}\n.start-text {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\theight: 100rpx;\n}\n.start-text uni-text {\n\tfont-size: 35rpx;\n}\n.start-text uni-input {\n\tborder-radius: 15px;\n\tborder: 1px solid #e6e6e6;\n\theight: 70rpx;\n}\n.start-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n}\n.start-image uni-text {\n\tfont-size: 35rpx;\n\tmargin-left: 60rpx;\n}\n.start-image uni-image {\n\twidth: 600rpx;\n\theight: 500rpx;\n\tmargin-left: 75rpx;\n\tborder: 1px solid #e6e6e6;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -8506,7 +8549,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 170rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin-top: 210rpx;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tpadding-top: 50rpx;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -8628,269 +8671,292 @@ var render = function () {
       ),
       _c(
         "uni-view",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm._$g(6, "v-show"),
-              expression: "_$g(6,'v-show')",
-            },
-          ],
-          staticClass: _vm._$g(6, "sc"),
-          attrs: { _i: 6 },
-        },
+        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
         [
           _c(
             "uni-view",
-            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
-                [_vm._v("类别：")]
-              ),
-              _c(
-                "v-uni-text",
+            {
+              directives: [
                 {
-                  staticClass: _vm._$g(9, "sc"),
-                  attrs: { _i: 9 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(7, "v-show"),
+                  expression: "_$g(7,'v-show')",
                 },
-                [_vm._v(_vm._$g(9, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+              ],
+              attrs: { _i: 7 },
+            },
             [
               _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
-                [_vm._v("标题：")]
-              ),
-              _c("v-uni-input", {
-                staticClass: _vm._$g(12, "sc"),
-                attrs: { _i: 12 },
-                model: {
-                  value: _vm._$g(12, "v-model"),
-                  callback: function ($$v) {
-                    _vm.$handleVModelEvent(12, $$v)
-                  },
-                  expression: "mission.taskName",
-                },
-              }),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
-                [_vm._v("简介：")]
-              ),
-              _c("v-uni-input", {
-                staticClass: _vm._$g(15, "sc"),
-                attrs: { _i: 15 },
-                model: {
-                  value: _vm._$g(15, "v-model"),
-                  callback: function ($$v) {
-                    _vm.$handleVModelEvent(15, $$v)
-                  },
-                  expression: "mission.taskBrief",
-                },
-              }),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
-                [_vm._v("详情：")]
-              ),
-              _c("v-uni-textarea", {
-                staticClass: _vm._$g(18, "sc"),
-                attrs: { _i: 18 },
-                model: {
-                  value: _vm._$g(18, "v-model"),
-                  callback: function ($$v) {
-                    _vm.$handleVModelEvent(18, $$v)
-                  },
-                  expression: "mission.taskDetail",
-                },
-              }),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
-                [_vm._v("图片：")]
-              ),
-              _vm._l(_vm._$g(21, "f"), function (item, index, $20, $30) {
-                return _c(
-                  "uni-view",
-                  { key: item, attrs: { _i: "21-" + $30 } },
-                  [
-                    _c("v-uni-image", {
-                      attrs: {
-                        id: "deletepic",
-                        src: "/static/deletepic.png",
-                        _i: "22-" + $30,
-                      },
+                "uni-view",
+                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                    [_vm._v("类别：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    {
+                      staticClass: _vm._$g(10, "sc"),
+                      attrs: { _i: 10 },
                       on: {
                         click: function ($event) {
                           return _vm.$handleViewEvent($event)
                         },
                       },
-                    }),
-                    _c(
-                      "uni-view",
-                      {
-                        staticClass: _vm._$g("23-" + $30, "sc"),
-                        attrs: { _i: "23-" + $30 },
-                      },
-                      [
-                        _c("v-uni-image", {
-                          attrs: {
-                            src: _vm._$g("24-" + $30, "a-src"),
-                            _i: "24-" + $30,
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                )
-              }),
-              _c(
-                "uni-view",
-                {
-                  staticClass: _vm._$g(25, "sc"),
-                  attrs: { _i: 25 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$handleViewEvent($event)
                     },
-                  },
-                },
-                [
-                  _c("v-uni-image", {
-                    attrs: { src: "/static/addpic.png", _i: 26 },
-                  }),
-                ],
-                1
-              ),
-            ],
-            2
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
-                [_vm._v("悬赏：")]
-              ),
-              _c("v-uni-input", {
-                attrs: { type: "number", _i: 29 },
-                model: {
-                  value: _vm._$g(29, "v-model"),
-                  callback: function ($$v) {
-                    _vm.$handleVModelEvent(29, $$v)
-                  },
-                  expression: "mission.taskTimeCoinBounty",
-                },
-              }),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
-                [_vm._v("开始时间：")]
-              ),
-              _c(
-                "v-uni-picker",
-                {
-                  attrs: {
-                    mode: "date",
-                    value: _vm._$g(32, "a-value"),
-                    start: _vm._$g(32, "a-start"),
-                    end: _vm._$g(32, "a-end"),
-                    _i: 32,
-                  },
-                  on: {
-                    change: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
-                },
-                [
-                  _c(
-                    "uni-view",
-                    { staticClass: _vm._$g(33, "sc"), attrs: { _i: 33 } },
-                    [_vm._v(_vm._$g(33, "t0-0"))]
+                    [_vm._v(_vm._$g(10, "t0-0"))]
                   ),
                 ],
                 1
               ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
-            [
               _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
-                [_vm._v("截止时间：")]
-              ),
-              _c(
-                "v-uni-picker",
-                {
-                  attrs: {
-                    mode: "date",
-                    value: _vm._$g(36, "a-value"),
-                    start: _vm._$g(36, "a-start"),
-                    end: _vm._$g(36, "a-end"),
-                    _i: 36,
-                  },
-                  on: {
-                    change: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
-                },
+                "uni-view",
+                { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
                 [
                   _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
+                    [_vm._v("标题：")]
+                  ),
+                  _c("v-uni-input", {
+                    staticClass: _vm._$g(13, "sc"),
+                    attrs: { _i: 13 },
+                    model: {
+                      value: _vm._$g(13, "v-model"),
+                      callback: function ($$v) {
+                        _vm.$handleVModelEvent(13, $$v)
+                      },
+                      expression: "mission.taskName",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
+                    [_vm._v("简介：")]
+                  ),
+                  _c("v-uni-input", {
+                    staticClass: _vm._$g(16, "sc"),
+                    attrs: { _i: 16 },
+                    model: {
+                      value: _vm._$g(16, "v-model"),
+                      callback: function ($$v) {
+                        _vm.$handleVModelEvent(16, $$v)
+                      },
+                      expression: "mission.taskBrief",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
+                    [_vm._v("详情：")]
+                  ),
+                  _c("v-uni-textarea", {
+                    staticClass: _vm._$g(19, "sc"),
+                    attrs: { _i: 19 },
+                    model: {
+                      value: _vm._$g(19, "v-model"),
+                      callback: function ($$v) {
+                        _vm.$handleVModelEvent(19, $$v)
+                      },
+                      expression: "mission.taskDetail",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
+                    [_vm._v("图片：")]
+                  ),
+                  _vm._l(_vm._$g(22, "f"), function (item, index, $20, $30) {
+                    return _c(
+                      "uni-view",
+                      { key: item, attrs: { _i: "22-" + $30 } },
+                      [
+                        _c("v-uni-image", {
+                          attrs: {
+                            id: "deletepic",
+                            src: "/static/deletepic.png",
+                            _i: "23-" + $30,
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.$handleViewEvent($event)
+                            },
+                          },
+                        }),
+                        _c(
+                          "uni-view",
+                          {
+                            staticClass: _vm._$g("24-" + $30, "sc"),
+                            attrs: { _i: "24-" + $30 },
+                          },
+                          [
+                            _c("v-uni-image", {
+                              attrs: {
+                                src: _vm._$g("25-" + $30, "a-src"),
+                                _i: "25-" + $30,
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    )
+                  }),
+                  _c(
                     "uni-view",
-                    { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
-                    [_vm._v(_vm._$g(37, "t0-0"))]
+                    {
+                      staticClass: _vm._$g(26, "sc"),
+                      attrs: { _i: 26 },
+                      on: {
+                        click: function ($event) {
+                          return _vm.$handleViewEvent($event)
+                        },
+                      },
+                    },
+                    [
+                      _c("v-uni-image", {
+                        attrs: { src: "/static/addpic.png", _i: 27 },
+                      }),
+                    ],
+                    1
+                  ),
+                ],
+                2
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(29, "sc"), attrs: { _i: 29 } },
+                    [_vm._v("悬赏：")]
+                  ),
+                  _c("v-uni-input", {
+                    attrs: { type: "number", _i: 30 },
+                    model: {
+                      value: _vm._$g(30, "v-model"),
+                      callback: function ($$v) {
+                        _vm.$handleVModelEvent(30, $$v)
+                      },
+                      expression: "mission.taskTimeCoinBounty",
+                    },
+                  }),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
+                    [_vm._v("开始时间：")]
+                  ),
+                  _c(
+                    "v-uni-picker",
+                    {
+                      attrs: {
+                        mode: "date",
+                        value: _vm._$g(33, "a-value"),
+                        start: _vm._$g(33, "a-start"),
+                        end: _vm._$g(33, "a-end"),
+                        _i: 33,
+                      },
+                      on: {
+                        change: function ($event) {
+                          return _vm.$handleViewEvent($event)
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "uni-view",
+                        { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
+                        [_vm._v(_vm._$g(34, "t0-0"))]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
+                    [_vm._v("截止时间：")]
+                  ),
+                  _c(
+                    "v-uni-picker",
+                    {
+                      attrs: {
+                        mode: "date",
+                        value: _vm._$g(37, "a-value"),
+                        start: _vm._$g(37, "a-start"),
+                        end: _vm._$g(37, "a-end"),
+                        _i: 37,
+                      },
+                      on: {
+                        change: function ($event) {
+                          return _vm.$handleViewEvent($event)
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "uni-view",
+                        { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
+                        [_vm._v(_vm._$g(38, "t0-0"))]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(40, "sc"), attrs: { _i: 40 } },
+                    [_vm._v("任务状态：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(41, "sc"), attrs: { _i: 41 } },
+                    [_vm._v(_vm._$g(41, "t0-0"))]
                   ),
                 ],
                 1
@@ -8905,287 +8971,242 @@ var render = function () {
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: _vm._$g(38, "v-show"),
-                  expression: "_$g(38,'v-show')",
+                  value: _vm._$g(42, "v-show"),
+                  expression: "_$g(42,'v-show')",
                 },
               ],
-              staticClass: _vm._$g(38, "sc"),
-              attrs: { _i: 38 },
+              attrs: { _i: 42 },
             },
             [
               _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
-                [_vm._v("审核失败：")]
-              ),
-              _c(
                 "uni-view",
-                { staticClass: _vm._$g(40, "sc"), attrs: { _i: 40 } },
-                [_vm._v(_vm._$g(40, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(41, "sc"), attrs: { _i: 41 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(42, "sc"), attrs: { _i: 42 } },
-                [_vm._v("任务状态：")]
-              ),
-              _c(
-                "v-uni-text",
                 { staticClass: _vm._$g(43, "sc"), attrs: { _i: 43 } },
-                [_vm._v(_vm._$g(43, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            {
-              staticStyle: {
-                display: "flex",
-                "flex-direction": "column",
-                "align-items": "center",
-              },
-              attrs: { _i: 44 },
-            },
-            [
-              _c(
-                "v-uni-button",
-                {
-                  staticClass: _vm._$g(45, "sc"),
-                  attrs: { _i: 45 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
-                },
-                [_vm._v("确认修改")]
-              ),
-              _c(
-                "v-uni-button",
-                {
-                  staticClass: _vm._$g(46, "sc"),
-                  attrs: { _i: 46 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
-                },
-                [_vm._v("取消修改")]
-              ),
-              _c(
-                "v-uni-button",
-                {
-                  staticClass: _vm._$g(47, "sc"),
-                  attrs: { _i: 47 },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$handleViewEvent($event)
-                    },
-                  },
-                },
-                [_vm._v("删除任务")]
-              ),
-            ],
-            1
-          ),
-        ],
-        1
-      ),
-      _c(
-        "uni-view",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm._$g(48, "v-show"),
-              expression: "_$g(48,'v-show')",
-            },
-          ],
-          staticClass: _vm._$g(48, "sc"),
-          attrs: { _i: 48 },
-        },
-        [
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(49, "sc"), attrs: { _i: 49 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(50, "sc"), attrs: { _i: 50 } },
-                [_vm._v("类别：")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(51, "sc"), attrs: { _i: 51 } },
-                [_vm._v(_vm._$g(51, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(52, "sc"), attrs: { _i: 52 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(53, "sc"), attrs: { _i: 53 } },
-                [_vm._v("标题：")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
-                [_vm._v(_vm._$g(54, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(55, "sc"), attrs: { _i: 55 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(56, "sc"), attrs: { _i: 56 } },
-                [_vm._v("简介：")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(57, "sc"), attrs: { _i: 57 } },
-                [_vm._v(_vm._$g(57, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticClass: _vm._$g(58, "sc"), attrs: { _i: 58 } },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(59, "sc"), attrs: { _i: 59 } },
-                [_vm._v("详情：")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
-                [_vm._v(_vm._$g(60, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _vm._$g(61, "i")
-            ? _c(
-                "uni-view",
-                { staticClass: _vm._$g(61, "sc"), attrs: { _i: 61 } },
                 [
                   _c(
                     "v-uni-text",
-                    { staticClass: _vm._$g(62, "sc"), attrs: { _i: 62 } },
-                    [_vm._v("图片：")]
+                    { staticClass: _vm._$g(44, "sc"), attrs: { _i: 44 } },
+                    [_vm._v("类别：")]
                   ),
-                  _vm._l(_vm._$g(63, "f"), function (item, index, $21, $31) {
-                    return _c(
-                      "uni-view",
-                      {
-                        key: item,
-                        staticClass: _vm._$g("63-" + $31, "sc"),
-                        attrs: { _i: "63-" + $31 },
-                      },
-                      [
-                        _c("v-uni-image", {
-                          attrs: {
-                            src: _vm._$g("64-" + $31, "a-src"),
-                            _i: "64-" + $31,
-                          },
-                        }),
-                      ],
-                      1
-                    )
-                  }),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(45, "sc"), attrs: { _i: 45 } },
+                    [_vm._v(_vm._$g(45, "t0-0"))]
+                  ),
                 ],
-                2
-              )
-            : _vm._e(),
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(46, "sc"), attrs: { _i: 46 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(47, "sc"), attrs: { _i: 47 } },
+                    [_vm._v("标题：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(48, "sc"), attrs: { _i: 48 } },
+                    [_vm._v(_vm._$g(48, "t0-0"))]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(49, "sc"), attrs: { _i: 49 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(50, "sc"), attrs: { _i: 50 } },
+                    [_vm._v("简介：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(51, "sc"), attrs: { _i: 51 } },
+                    [_vm._v(_vm._$g(51, "t0-0"))]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(52, "sc"), attrs: { _i: 52 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(53, "sc"), attrs: { _i: 53 } },
+                    [_vm._v("详情：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
+                    [_vm._v(_vm._$g(54, "t0-0"))]
+                  ),
+                ],
+                1
+              ),
+              _vm._$g(55, "i")
+                ? _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(55, "sc"), attrs: { _i: 55 } },
+                    [
+                      _c(
+                        "v-uni-text",
+                        { staticClass: _vm._$g(56, "sc"), attrs: { _i: 56 } },
+                        [_vm._v("图片：")]
+                      ),
+                      _vm._l(
+                        _vm._$g(57, "f"),
+                        function (item, index, $21, $31) {
+                          return _c(
+                            "uni-view",
+                            {
+                              key: item,
+                              staticClass: _vm._$g("57-" + $31, "sc"),
+                              attrs: { _i: "57-" + $31 },
+                            },
+                            [
+                              _c("v-uni-image", {
+                                attrs: {
+                                  src: _vm._$g("58-" + $31, "a-src"),
+                                  _i: "58-" + $31,
+                                },
+                              }),
+                            ],
+                            1
+                          )
+                        }
+                      ),
+                    ],
+                    2
+                  )
+                : _vm._e(),
+              _c(
+                "uni-view",
+                { staticClass: _vm._$g(59, "sc"), attrs: { _i: 59 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
+                    [_vm._v("悬赏：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(61, "sc"), attrs: { _i: 61 } },
+                    [_vm._v(_vm._$g(61, "t0-0"))]
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "uni-view",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm._$g(62, "v-show"),
+                      expression: "_$g(62,'v-show')",
+                    },
+                  ],
+                  staticClass: _vm._$g(62, "sc"),
+                  attrs: { _i: 62 },
+                },
+                [
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(63, "sc"), attrs: { _i: 63 } },
+                    [_vm._v("状态：")]
+                  ),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(64, "sc"), attrs: { _i: 64 } },
+                    [_vm._v(_vm._$g(64, "t0-0"))]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
           _c(
             "uni-view",
-            { staticClass: _vm._$g(65, "sc"), attrs: { _i: 65 } },
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(65, "v-show"),
+                  expression: "_$g(65,'v-show')",
+                },
+              ],
+              staticClass: _vm._$g(65, "sc"),
+              attrs: { _i: 65 },
+            },
             [
               _c(
                 "v-uni-text",
                 { staticClass: _vm._$g(66, "sc"), attrs: { _i: 66 } },
-                [_vm._v("悬赏：")]
+                [_vm._v("审核失败：")]
               ),
               _c(
-                "v-uni-text",
+                "uni-view",
                 { staticClass: _vm._$g(67, "sc"), attrs: { _i: 67 } },
                 [_vm._v(_vm._$g(67, "t0-0"))]
               ),
             ],
             1
           ),
-          _c(
-            "uni-view",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm._$g(68, "v-show"),
-                  expression: "_$g(68,'v-show')",
-                },
-              ],
-              staticClass: _vm._$g(68, "sc"),
-              attrs: { _i: 68 },
-            },
-            [
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(69, "sc"), attrs: { _i: 69 } },
-                [_vm._v("状态：")]
-              ),
-              _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
-                [_vm._v(_vm._$g(70, "t0-0"))]
-              ),
-            ],
-            1
-          ),
-          _c(
-            "v-uni-button",
-            {
-              staticClass: _vm._$g(71, "sc"),
-              attrs: { _i: 71 },
-              on: {
-                click: function ($event) {
-                  return _vm.$handleViewEvent($event)
-                },
-              },
-            },
-            [_vm._v("取消查看")]
-          ),
-        ],
-        1
-      ),
-      _c(
-        "uni-view",
-        { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
-        [
-          _vm._$g(73, "i")
+          _vm._$g(68, "i")
+            ? _c(
+                "uni-view",
+                { staticClass: _vm._$g(68, "sc"), attrs: { _i: 68 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(69, "sc"), attrs: { _i: 69 } },
+                    [
+                      _c("v-uni-text", { attrs: { _i: 70 } }, [
+                        _vm._v("志愿者已经开始任务"),
+                      ]),
+                    ],
+                    1
+                  ),
+                  _vm._$g(71, "i")
+                    ? _c(
+                        "uni-view",
+                        { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+                        [
+                          _c("v-uni-text", { attrs: { _i: 72 } }, [
+                            _vm._v(_vm._$g(72, "t0-0")),
+                          ]),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._$g(73, "i")
+                    ? _c(
+                        "uni-view",
+                        { staticClass: _vm._$g(73, "sc"), attrs: { _i: 73 } },
+                        [
+                          _c("v-uni-image", {
+                            attrs: { src: _vm._$g(74, "a-src"), _i: 74 },
+                          }),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._$g(75, "i")
             ? _c(
                 "v-uni-button",
                 {
-                  staticClass: _vm._$g(73, "sc"),
-                  attrs: { _i: 73 },
+                  staticClass: _vm._$g(75, "sc"),
+                  attrs: { _i: 75 },
                   on: {
                     click: function ($event) {
                       return _vm.$handleViewEvent($event)
@@ -9195,12 +9216,12 @@ var render = function () {
                 [_vm._v("修改任务")]
               )
             : _vm._e(),
-          _vm._$g(74, "i")
+          _vm._$g(76, "i")
             ? _c(
                 "v-uni-button",
                 {
-                  staticClass: _vm._$g(74, "sc"),
-                  attrs: { _i: 74 },
+                  staticClass: _vm._$g(76, "sc"),
+                  attrs: { _i: 76 },
                   on: {
                     click: function ($event) {
                       return _vm.$handleViewEvent($event)
@@ -9210,16 +9231,100 @@ var render = function () {
                 [_vm._v("查看任务")]
               )
             : _vm._e(),
-          _vm._$g(75, "i")
+          _c(
+            "v-uni-button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(77, "v-show"),
+                  expression: "_$g(77,'v-show')",
+                },
+              ],
+              staticClass: _vm._$g(77, "sc"),
+              attrs: { _i: 77 },
+              on: {
+                click: function ($event) {
+                  return _vm.$handleViewEvent($event)
+                },
+              },
+            },
+            [_vm._v("取消查看")]
+          ),
+          _c(
+            "v-uni-button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(78, "v-show"),
+                  expression: "_$g(78,'v-show')",
+                },
+              ],
+              staticClass: _vm._$g(78, "sc"),
+              attrs: { _i: 78 },
+              on: {
+                click: function ($event) {
+                  return _vm.$handleViewEvent($event)
+                },
+              },
+            },
+            [_vm._v("确认修改")]
+          ),
+          _c(
+            "v-uni-button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(79, "v-show"),
+                  expression: "_$g(79,'v-show')",
+                },
+              ],
+              staticClass: _vm._$g(79, "sc"),
+              attrs: { _i: 79 },
+              on: {
+                click: function ($event) {
+                  return _vm.$handleViewEvent($event)
+                },
+              },
+            },
+            [_vm._v("取消修改")]
+          ),
+          _c(
+            "v-uni-button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm._$g(80, "v-show"),
+                  expression: "_$g(80,'v-show')",
+                },
+              ],
+              staticClass: _vm._$g(80, "sc"),
+              attrs: { _i: 80 },
+              on: {
+                click: function ($event) {
+                  return _vm.$handleViewEvent($event)
+                },
+              },
+            },
+            [_vm._v("删除任务")]
+          ),
+          _vm._$g(81, "i")
             ? _c(
                 "uni-view",
-                { attrs: { _i: 75 } },
+                { attrs: { _i: 81 } },
                 [
                   _c(
                     "v-uni-button",
                     {
-                      staticClass: _vm._$g(76, "sc"),
-                      attrs: { _i: 76 },
+                      staticClass: _vm._$g(82, "sc"),
+                      attrs: { _i: 82 },
                       on: {
                         click: function ($event) {
                           return _vm.$handleViewEvent($event)
@@ -9231,8 +9336,8 @@ var render = function () {
                   _c(
                     "v-uni-button",
                     {
-                      staticClass: _vm._$g(77, "sc"),
-                      attrs: { _i: 77 },
+                      staticClass: _vm._$g(83, "sc"),
+                      attrs: { _i: 83 },
                       on: {
                         click: function ($event) {
                           return _vm.$handleViewEvent($event)
@@ -11030,7 +11135,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../HBuilderX/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin: 170rpx 0 50rpx 0;\n\tpadding: 50rpx 0 50rpx 0;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n\tmargin-bottom: 30rpx;\n}\n.detail-time {\n\twidth: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 50rpx 10rpx 0 10rpx ;\n\twidth: 500rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n.upPic {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n\tmargin-top: 50rpx;\n\tpadding-left: 40rpx;\n}\n#deletepic {\n\twidth: 30rpx;\n\theight: 30rpx;\n\tposition: relative;\n\tleft: 600rpx;\n\ttop: 20rpx;\n\tz-index: 1;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.upPic-add {\n\twidth: 200rpx;\n\theight: 200rpx;\n\tmargin: 40rpx 0 0 20rpx;\n}\n.upPic-add uni-image{\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n", ""]);
+exports.push([module.i, "\n.main {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: center;\n}\n.header-background {\n\tdisplay: flex;\n\talign-items: center;\n\twidth: 750rpx;\n}\n.back-image {\n\torder:0;\n\t\n\tdisplay: flex;\n\tjustify-content: center;\n\tflex-basis: 120rpx;\n\tmargin-right: 195rpx;\n}\n.back-image uni-image {\n\twidth: 50rpx;\n\theight: 50rpx;\n}\n.back-text {\n\torder: 1;\t\t\n\tjustify-content: center;\n}\n.back-text uni-text {\n\tflex-basis: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: white;\n}\n.body {\n\tmargin: 210rpx 0 50rpx 0;\n\tpadding: 50rpx 0 50rpx 0;\n\tborder-radius: 10px;\n\twidth: 700rpx;\n\tbackground-color: white;\n\tbox-shadow: 2px 4px 20px rgb(200, 200, 200);\n}\n.detail {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\twidth: 650rpx;\n\tflex-wrap: wrap;\n}\n.detail-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-content {\n\tfont-size: 35rpx;\n\tmargin-bottom: 30rpx;\n}\n.detail-time {\n\twidth: 200rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element {\n\tmargin: 0 10rpx 10rpx 20rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.detail-button {\n\tmargin: 50rpx 10rpx 0 10rpx ;\n\twidth: 500rpx;\n\tpadding: 30rpx 30rpx 30rpx 30rpx;\n\tbackground: rgba(255, 141, 26, 0.6);\n\tbox-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);\n\tcolor: rgba(255, 255, 255, 1);\n\ttext-align: center;\n\tfont-size: 38rpx;\n\tline-height: 38rpx;\n}\n.upPic {\n\twidth: 100%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tflex-wrap: wrap;\n\tjustify-content: flex-start;\n\tmargin-top: 50rpx;\n\tpadding-left: 40rpx;\n}\n#deletepic {\n\twidth: 30rpx;\n\theight: 30rpx;\n\tposition: relative;\n\tleft: 600rpx;\n\ttop: 20rpx;\n\tz-index: 1;\n}\n.detail-image {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\tflex-wrap: wrap;\n\twidth: 650rpx;\n\tmargin: 30rpx 0 30rpx 0;\n}\n.detail-image-title {\n\twidth: 120rpx;\n\tfont-size: 38rpx;\n\tcolor: gray;\n\tmargin-bottom: 50rpx;\n}\n.detail-image-element uni-image {\n\twidth: 600rpx;\n}\n.upPic-add {\n\twidth: 200rpx;\n\theight: 200rpx;\n\tmargin: 40rpx 0 0 20rpx;\n}\n.upPic-add uni-image{\n\twidth: 200rpx;\n\theight: 200rpx;\n}\n.detail-start-title{\n\tfont-size: 38rpx;\n\twidth: 100%;\n\tcolor: orange;\n}\n.detail-start-text{\n\tmargin-top: 30rpx;\n\tfont-size: 35rpx;\n\twidth: 100%;\n}\n.detail-start-image {\n\tmargin-top: 30rpx;\n\twidth: 100%;\n}\n.detail-start-image uni-image {\n\twidth: 100%;\n\tbackground-color: blue\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -11086,7 +11191,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! @/static/customicons
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/* 水平间距 */\n/* 水平间距 */\n/*每个页面公共css */\n/* 水平间距 */\n@font-face {\n  font-family: \"customicons\"; /* Project id 2878519 */\n  src:url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format('truetype');\n}\n.customicons {\n  font-family: \"customicons\" !important;\n}\n.youxi:before {\n  content: \"\\e60e\";\n}\n.wenjian:before {\n  content: \"\\e60f\";\n}\n.zhuanfa:before {\n  content: \"\\e610\";\n}\n.uni-border {\n  border: 1px #F0F0F0 solid;\n}\n.uni-primary {\n  color: #2979ff;\n}\n.uni-primary-bg {\n  background-color: #2979ff;\n}\n.uni-primary-disable {\n  color: #94bcff;\n}\n.uni-primary-disable-bg {\n  background-color: #94bcff;\n}\n.uni-primary-light {\n  color: #d4e4ff;\n}\n.uni-primary-light-bg {\n  background-color: #d4e4ff;\n}\n.uni-success {\n  color: #18bc37;\n}\n.uni-success-bg {\n  background-color: #18bc37;\n}\n.uni-success-disable {\n  color: #8cde9b;\n}\n.uni-success-disable-bg {\n  background-color: #8cde9b;\n}\n.uni-success-light {\n  color: #d1f2d7;\n}\n.uni-success-light-bg {\n  background-color: #d1f2d7;\n}\n.uni-warning {\n  color: #f3a73f;\n}\n.uni-warning-bg {\n  background-color: #f3a73f;\n}\n.uni-warning-disable {\n  color: #f9d39f;\n}\n.uni-warning-disable-bg {\n  background-color: #f9d39f;\n}\n.uni-warning-light {\n  color: #fdedd9;\n}\n.uni-warning-light-bg {\n  background-color: #fdedd9;\n}\n.uni-error {\n  color: #e43d33;\n}\n.uni-error-bg {\n  background-color: #e43d33;\n}\n.uni-error-disable {\n  color: #f29e99;\n}\n.uni-error-disable-bg {\n  background-color: #f29e99;\n}\n.uni-error-light {\n  color: #fad8d6;\n}\n.uni-error-light-bg {\n  background-color: #fad8d6;\n}\n.uni-info {\n  color: #8f939c;\n}\n.uni-info-bg {\n  background-color: #8f939c;\n}\n.uni-info-disable {\n  color: #c7c9ce;\n}\n.uni-info-disable-bg {\n  background-color: #c7c9ce;\n}\n.uni-info-light {\n  color: #e9e9eb;\n}\n.uni-info-light-bg {\n  background-color: #e9e9eb;\n}\n.uni-main-color {\n  color: #3a3a3a;\n}\n.uni-main-color-bg {\n  background-color: #3a3a3a;\n}\n.uni-base-color {\n  color: #6a6a6a;\n}\n.uni-base-color-bg {\n  background-color: #6a6a6a;\n}\n.uni-secondary-color {\n  color: #909399;\n}\n.uni-secondary-color-bg {\n  background-color: #909399;\n}\n.uni-extra-color {\n  color: #c7c7c7;\n}\n.uni-extra-color-bg {\n  background-color: #c7c7c7;\n}\n.uni-bg-color {\n  color: #f7f7f7;\n}\n.uni-bg-color-bg {\n  background-color: #f7f7f7;\n}\n.uni-border-1 {\n  color: #F0F0F0;\n}\n.uni-border-1-bg {\n  background-color: #F0F0F0;\n}\n.uni-border-2 {\n  color: #EDEDED;\n}\n.uni-border-2-bg {\n  background-color: #EDEDED;\n}\n.uni-border-3 {\n  color: #DCDCDC;\n}\n.uni-border-3-bg {\n  background-color: #DCDCDC;\n}\n.uni-border-4 {\n  color: #B9B9B9;\n}\n.uni-border-4-bg {\n  background-color: #B9B9B9;\n}\n.uni-black {\n  color: #000000;\n}\n.uni-black-bg {\n  background-color: #000000;\n}\n.uni-white {\n  color: #ffffff;\n}\n.uni-white-bg {\n  background-color: #ffffff;\n}\n.uni-transparent {\n  color: rgba(0, 0, 0, 0);\n}\n.uni-transparent-bg {\n  background-color: rgba(0, 0, 0, 0);\n}\n.uni-shadow-sm {\n  box-shadow: 0 0 5px rgba(216, 216, 216, 0.5);\n}\n.uni-shadow-base {\n  box-shadow: 0 1px 8px 1px rgba(165, 165, 165, 0.2);\n}\n.uni-shadow-lg {\n  box-shadow: 0px 1px 10px 2px rgba(165, 164, 164, 0.5);\n}\n.uni-mask {\n  background-color: rgba(0, 0, 0, 0.4);\n}\n.uni-mt-0 {\n  margin-top: 0px;\n}\n.uni-mt-n0 {\n  margin-top: 0px;\n}\n.uni-mr-0 {\n  margin-right: 0px;\n}\n.uni-mr-n0 {\n  margin-right: 0px;\n}\n.uni-mb-0 {\n  margin-bottom: 0px;\n}\n.uni-mb-n0 {\n  margin-bottom: 0px;\n}\n.uni-ml-0 {\n  margin-left: 0px;\n}\n.uni-ml-n0 {\n  margin-left: 0px;\n}\n.uni-mx-0 {\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.uni-mx-n0 {\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.uni-my-0 {\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.uni-my-n0 {\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.uni-ma-0 {\n  margin: 0px;\n}\n.uni-ma-n0 {\n  margin: 0px;\n}\n.uni-mt-1 {\n  margin-top: 2px;\n}\n.uni-mt-n1 {\n  margin-top: -2px;\n}\n.uni-mr-1 {\n  margin-right: 2px;\n}\n.uni-mr-n1 {\n  margin-right: -2px;\n}\n.uni-mb-1 {\n  margin-bottom: 2px;\n}\n.uni-mb-n1 {\n  margin-bottom: -2px;\n}\n.uni-ml-1 {\n  margin-left: 2px;\n}\n.uni-ml-n1 {\n  margin-left: -2px;\n}\n.uni-mx-1 {\n  margin-left: 2px;\n  margin-right: 2px;\n}\n.uni-mx-n1 {\n  margin-left: -2px;\n  margin-right: -2px;\n}\n.uni-my-1 {\n  margin-top: 2px;\n  margin-bottom: 2px;\n}\n.uni-my-n1 {\n  margin-top: -2px;\n  margin-bottom: -2px;\n}\n.uni-ma-1 {\n  margin: 2px;\n}\n.uni-ma-n1 {\n  margin: -2px;\n}\n.uni-mt-2 {\n  margin-top: 4px;\n}\n.uni-mt-n2 {\n  margin-top: -4px;\n}\n.uni-mr-2 {\n  margin-right: 4px;\n}\n.uni-mr-n2 {\n  margin-right: -4px;\n}\n.uni-mb-2 {\n  margin-bottom: 4px;\n}\n.uni-mb-n2 {\n  margin-bottom: -4px;\n}\n.uni-ml-2 {\n  margin-left: 4px;\n}\n.uni-ml-n2 {\n  margin-left: -4px;\n}\n.uni-mx-2 {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n.uni-mx-n2 {\n  margin-left: -4px;\n  margin-right: -4px;\n}\n.uni-my-2 {\n  margin-top: 4px;\n  margin-bottom: 4px;\n}\n.uni-my-n2 {\n  margin-top: -4px;\n  margin-bottom: -4px;\n}\n.uni-ma-2 {\n  margin: 4px;\n}\n.uni-ma-n2 {\n  margin: -4px;\n}\n.uni-mt-3 {\n  margin-top: 6px;\n}\n.uni-mt-n3 {\n  margin-top: -6px;\n}\n.uni-mr-3 {\n  margin-right: 6px;\n}\n.uni-mr-n3 {\n  margin-right: -6px;\n}\n.uni-mb-3 {\n  margin-bottom: 6px;\n}\n.uni-mb-n3 {\n  margin-bottom: -6px;\n}\n.uni-ml-3 {\n  margin-left: 6px;\n}\n.uni-ml-n3 {\n  margin-left: -6px;\n}\n.uni-mx-3 {\n  margin-left: 6px;\n  margin-right: 6px;\n}\n.uni-mx-n3 {\n  margin-left: -6px;\n  margin-right: -6px;\n}\n.uni-my-3 {\n  margin-top: 6px;\n  margin-bottom: 6px;\n}\n.uni-my-n3 {\n  margin-top: -6px;\n  margin-bottom: -6px;\n}\n.uni-ma-3 {\n  margin: 6px;\n}\n.uni-ma-n3 {\n  margin: -6px;\n}\n.uni-mt-4 {\n  margin-top: 8px;\n}\n.uni-mt-n4 {\n  margin-top: -8px;\n}\n.uni-mr-4 {\n  margin-right: 8px;\n}\n.uni-mr-n4 {\n  margin-right: -8px;\n}\n.uni-mb-4 {\n  margin-bottom: 8px;\n}\n.uni-mb-n4 {\n  margin-bottom: -8px;\n}\n.uni-ml-4 {\n  margin-left: 8px;\n}\n.uni-ml-n4 {\n  margin-left: -8px;\n}\n.uni-mx-4 {\n  margin-left: 8px;\n  margin-right: 8px;\n}\n.uni-mx-n4 {\n  margin-left: -8px;\n  margin-right: -8px;\n}\n.uni-my-4 {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.uni-my-n4 {\n  margin-top: -8px;\n  margin-bottom: -8px;\n}\n.uni-ma-4 {\n  margin: 8px;\n}\n.uni-ma-n4 {\n  margin: -8px;\n}\n.uni-mt-5 {\n  margin-top: 10px;\n}\n.uni-mt-n5 {\n  margin-top: -10px;\n}\n.uni-mr-5 {\n  margin-right: 10px;\n}\n.uni-mr-n5 {\n  margin-right: -10px;\n}\n.uni-mb-5 {\n  margin-bottom: 10px;\n}\n.uni-mb-n5 {\n  margin-bottom: -10px;\n}\n.uni-ml-5 {\n  margin-left: 10px;\n}\n.uni-ml-n5 {\n  margin-left: -10px;\n}\n.uni-mx-5 {\n  margin-left: 10px;\n  margin-right: 10px;\n}\n.uni-mx-n5 {\n  margin-left: -10px;\n  margin-right: -10px;\n}\n.uni-my-5 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.uni-my-n5 {\n  margin-top: -10px;\n  margin-bottom: -10px;\n}\n.uni-ma-5 {\n  margin: 10px;\n}\n.uni-ma-n5 {\n  margin: -10px;\n}\n.uni-mt-6 {\n  margin-top: 12px;\n}\n.uni-mt-n6 {\n  margin-top: -12px;\n}\n.uni-mr-6 {\n  margin-right: 12px;\n}\n.uni-mr-n6 {\n  margin-right: -12px;\n}\n.uni-mb-6 {\n  margin-bottom: 12px;\n}\n.uni-mb-n6 {\n  margin-bottom: -12px;\n}\n.uni-ml-6 {\n  margin-left: 12px;\n}\n.uni-ml-n6 {\n  margin-left: -12px;\n}\n.uni-mx-6 {\n  margin-left: 12px;\n  margin-right: 12px;\n}\n.uni-mx-n6 {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.uni-my-6 {\n  margin-top: 12px;\n  margin-bottom: 12px;\n}\n.uni-my-n6 {\n  margin-top: -12px;\n  margin-bottom: -12px;\n}\n.uni-ma-6 {\n  margin: 12px;\n}\n.uni-ma-n6 {\n  margin: -12px;\n}\n.uni-mt-7 {\n  margin-top: 14px;\n}\n.uni-mt-n7 {\n  margin-top: -14px;\n}\n.uni-mr-7 {\n  margin-right: 14px;\n}\n.uni-mr-n7 {\n  margin-right: -14px;\n}\n.uni-mb-7 {\n  margin-bottom: 14px;\n}\n.uni-mb-n7 {\n  margin-bottom: -14px;\n}\n.uni-ml-7 {\n  margin-left: 14px;\n}\n.uni-ml-n7 {\n  margin-left: -14px;\n}\n.uni-mx-7 {\n  margin-left: 14px;\n  margin-right: 14px;\n}\n.uni-mx-n7 {\n  margin-left: -14px;\n  margin-right: -14px;\n}\n.uni-my-7 {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.uni-my-n7 {\n  margin-top: -14px;\n  margin-bottom: -14px;\n}\n.uni-ma-7 {\n  margin: 14px;\n}\n.uni-ma-n7 {\n  margin: -14px;\n}\n.uni-mt-8 {\n  margin-top: 16px;\n}\n.uni-mt-n8 {\n  margin-top: -16px;\n}\n.uni-mr-8 {\n  margin-right: 16px;\n}\n.uni-mr-n8 {\n  margin-right: -16px;\n}\n.uni-mb-8 {\n  margin-bottom: 16px;\n}\n.uni-mb-n8 {\n  margin-bottom: -16px;\n}\n.uni-ml-8 {\n  margin-left: 16px;\n}\n.uni-ml-n8 {\n  margin-left: -16px;\n}\n.uni-mx-8 {\n  margin-left: 16px;\n  margin-right: 16px;\n}\n.uni-mx-n8 {\n  margin-left: -16px;\n  margin-right: -16px;\n}\n.uni-my-8 {\n  margin-top: 16px;\n  margin-bottom: 16px;\n}\n.uni-my-n8 {\n  margin-top: -16px;\n  margin-bottom: -16px;\n}\n.uni-ma-8 {\n  margin: 16px;\n}\n.uni-ma-n8 {\n  margin: -16px;\n}\n.uni-mt-9 {\n  margin-top: 18px;\n}\n.uni-mt-n9 {\n  margin-top: -18px;\n}\n.uni-mr-9 {\n  margin-right: 18px;\n}\n.uni-mr-n9 {\n  margin-right: -18px;\n}\n.uni-mb-9 {\n  margin-bottom: 18px;\n}\n.uni-mb-n9 {\n  margin-bottom: -18px;\n}\n.uni-ml-9 {\n  margin-left: 18px;\n}\n.uni-ml-n9 {\n  margin-left: -18px;\n}\n.uni-mx-9 {\n  margin-left: 18px;\n  margin-right: 18px;\n}\n.uni-mx-n9 {\n  margin-left: -18px;\n  margin-right: -18px;\n}\n.uni-my-9 {\n  margin-top: 18px;\n  margin-bottom: 18px;\n}\n.uni-my-n9 {\n  margin-top: -18px;\n  margin-bottom: -18px;\n}\n.uni-ma-9 {\n  margin: 18px;\n}\n.uni-ma-n9 {\n  margin: -18px;\n}\n.uni-mt-10 {\n  margin-top: 20px;\n}\n.uni-mt-n10 {\n  margin-top: -20px;\n}\n.uni-mr-10 {\n  margin-right: 20px;\n}\n.uni-mr-n10 {\n  margin-right: -20px;\n}\n.uni-mb-10 {\n  margin-bottom: 20px;\n}\n.uni-mb-n10 {\n  margin-bottom: -20px;\n}\n.uni-ml-10 {\n  margin-left: 20px;\n}\n.uni-ml-n10 {\n  margin-left: -20px;\n}\n.uni-mx-10 {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n.uni-mx-n10 {\n  margin-left: -20px;\n  margin-right: -20px;\n}\n.uni-my-10 {\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.uni-my-n10 {\n  margin-top: -20px;\n  margin-bottom: -20px;\n}\n.uni-ma-10 {\n  margin: 20px;\n}\n.uni-ma-n10 {\n  margin: -20px;\n}\n.uni-mt-11 {\n  margin-top: 22px;\n}\n.uni-mt-n11 {\n  margin-top: -22px;\n}\n.uni-mr-11 {\n  margin-right: 22px;\n}\n.uni-mr-n11 {\n  margin-right: -22px;\n}\n.uni-mb-11 {\n  margin-bottom: 22px;\n}\n.uni-mb-n11 {\n  margin-bottom: -22px;\n}\n.uni-ml-11 {\n  margin-left: 22px;\n}\n.uni-ml-n11 {\n  margin-left: -22px;\n}\n.uni-mx-11 {\n  margin-left: 22px;\n  margin-right: 22px;\n}\n.uni-mx-n11 {\n  margin-left: -22px;\n  margin-right: -22px;\n}\n.uni-my-11 {\n  margin-top: 22px;\n  margin-bottom: 22px;\n}\n.uni-my-n11 {\n  margin-top: -22px;\n  margin-bottom: -22px;\n}\n.uni-ma-11 {\n  margin: 22px;\n}\n.uni-ma-n11 {\n  margin: -22px;\n}\n.uni-mt-12 {\n  margin-top: 24px;\n}\n.uni-mt-n12 {\n  margin-top: -24px;\n}\n.uni-mr-12 {\n  margin-right: 24px;\n}\n.uni-mr-n12 {\n  margin-right: -24px;\n}\n.uni-mb-12 {\n  margin-bottom: 24px;\n}\n.uni-mb-n12 {\n  margin-bottom: -24px;\n}\n.uni-ml-12 {\n  margin-left: 24px;\n}\n.uni-ml-n12 {\n  margin-left: -24px;\n}\n.uni-mx-12 {\n  margin-left: 24px;\n  margin-right: 24px;\n}\n.uni-mx-n12 {\n  margin-left: -24px;\n  margin-right: -24px;\n}\n.uni-my-12 {\n  margin-top: 24px;\n  margin-bottom: 24px;\n}\n.uni-my-n12 {\n  margin-top: -24px;\n  margin-bottom: -24px;\n}\n.uni-ma-12 {\n  margin: 24px;\n}\n.uni-ma-n12 {\n  margin: -24px;\n}\n.uni-mt-13 {\n  margin-top: 26px;\n}\n.uni-mt-n13 {\n  margin-top: -26px;\n}\n.uni-mr-13 {\n  margin-right: 26px;\n}\n.uni-mr-n13 {\n  margin-right: -26px;\n}\n.uni-mb-13 {\n  margin-bottom: 26px;\n}\n.uni-mb-n13 {\n  margin-bottom: -26px;\n}\n.uni-ml-13 {\n  margin-left: 26px;\n}\n.uni-ml-n13 {\n  margin-left: -26px;\n}\n.uni-mx-13 {\n  margin-left: 26px;\n  margin-right: 26px;\n}\n.uni-mx-n13 {\n  margin-left: -26px;\n  margin-right: -26px;\n}\n.uni-my-13 {\n  margin-top: 26px;\n  margin-bottom: 26px;\n}\n.uni-my-n13 {\n  margin-top: -26px;\n  margin-bottom: -26px;\n}\n.uni-ma-13 {\n  margin: 26px;\n}\n.uni-ma-n13 {\n  margin: -26px;\n}\n.uni-mt-14 {\n  margin-top: 28px;\n}\n.uni-mt-n14 {\n  margin-top: -28px;\n}\n.uni-mr-14 {\n  margin-right: 28px;\n}\n.uni-mr-n14 {\n  margin-right: -28px;\n}\n.uni-mb-14 {\n  margin-bottom: 28px;\n}\n.uni-mb-n14 {\n  margin-bottom: -28px;\n}\n.uni-ml-14 {\n  margin-left: 28px;\n}\n.uni-ml-n14 {\n  margin-left: -28px;\n}\n.uni-mx-14 {\n  margin-left: 28px;\n  margin-right: 28px;\n}\n.uni-mx-n14 {\n  margin-left: -28px;\n  margin-right: -28px;\n}\n.uni-my-14 {\n  margin-top: 28px;\n  margin-bottom: 28px;\n}\n.uni-my-n14 {\n  margin-top: -28px;\n  margin-bottom: -28px;\n}\n.uni-ma-14 {\n  margin: 28px;\n}\n.uni-ma-n14 {\n  margin: -28px;\n}\n.uni-mt-15 {\n  margin-top: 30px;\n}\n.uni-mt-n15 {\n  margin-top: -30px;\n}\n.uni-mr-15 {\n  margin-right: 30px;\n}\n.uni-mr-n15 {\n  margin-right: -30px;\n}\n.uni-mb-15 {\n  margin-bottom: 30px;\n}\n.uni-mb-n15 {\n  margin-bottom: -30px;\n}\n.uni-ml-15 {\n  margin-left: 30px;\n}\n.uni-ml-n15 {\n  margin-left: -30px;\n}\n.uni-mx-15 {\n  margin-left: 30px;\n  margin-right: 30px;\n}\n.uni-mx-n15 {\n  margin-left: -30px;\n  margin-right: -30px;\n}\n.uni-my-15 {\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.uni-my-n15 {\n  margin-top: -30px;\n  margin-bottom: -30px;\n}\n.uni-ma-15 {\n  margin: 30px;\n}\n.uni-ma-n15 {\n  margin: -30px;\n}\n.uni-mt-16 {\n  margin-top: 32px;\n}\n.uni-mt-n16 {\n  margin-top: -32px;\n}\n.uni-mr-16 {\n  margin-right: 32px;\n}\n.uni-mr-n16 {\n  margin-right: -32px;\n}\n.uni-mb-16 {\n  margin-bottom: 32px;\n}\n.uni-mb-n16 {\n  margin-bottom: -32px;\n}\n.uni-ml-16 {\n  margin-left: 32px;\n}\n.uni-ml-n16 {\n  margin-left: -32px;\n}\n.uni-mx-16 {\n  margin-left: 32px;\n  margin-right: 32px;\n}\n.uni-mx-n16 {\n  margin-left: -32px;\n  margin-right: -32px;\n}\n.uni-my-16 {\n  margin-top: 32px;\n  margin-bottom: 32px;\n}\n.uni-my-n16 {\n  margin-top: -32px;\n  margin-bottom: -32px;\n}\n.uni-ma-16 {\n  margin: 32px;\n}\n.uni-ma-n16 {\n  margin: -32px;\n}\n.uni-pt-0 {\n  padding-top: 0px;\n}\n.uni-pt-n0 {\n  padding-top: 0px;\n}\n.uni-pr-0 {\n  padding-right: 0px;\n}\n.uni-pr-n0 {\n  padding-right: 0px;\n}\n.uni-pb-0 {\n  padding-bottom: 0px;\n}\n.uni-pb-n0 {\n  padding-bottom: 0px;\n}\n.uni-pl-0 {\n  padding-left: 0px;\n}\n.uni-pl-n0 {\n  padding-left: 0px;\n}\n.uni-px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.uni-px-n0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.uni-py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.uni-py-n0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.uni-pa-0 {\n  padding: 0px;\n}\n.uni-pa-n0 {\n  padding: 0px;\n}\n.uni-pt-1 {\n  padding-top: 2px;\n}\n.uni-pt-n1 {\n  padding-top: -2px;\n}\n.uni-pr-1 {\n  padding-right: 2px;\n}\n.uni-pr-n1 {\n  padding-right: -2px;\n}\n.uni-pb-1 {\n  padding-bottom: 2px;\n}\n.uni-pb-n1 {\n  padding-bottom: -2px;\n}\n.uni-pl-1 {\n  padding-left: 2px;\n}\n.uni-pl-n1 {\n  padding-left: -2px;\n}\n.uni-px-1 {\n  padding-left: 2px;\n  padding-right: 2px;\n}\n.uni-px-n1 {\n  padding-left: -2px;\n  padding-right: -2px;\n}\n.uni-py-1 {\n  padding-top: 2px;\n  padding-bottom: 2px;\n}\n.uni-py-n1 {\n  padding-top: -2px;\n  padding-bottom: -2px;\n}\n.uni-pa-1 {\n  padding: 2px;\n}\n.uni-pa-n1 {\n  padding: -2px;\n}\n.uni-pt-2 {\n  padding-top: 4px;\n}\n.uni-pt-n2 {\n  padding-top: -4px;\n}\n.uni-pr-2 {\n  padding-right: 4px;\n}\n.uni-pr-n2 {\n  padding-right: -4px;\n}\n.uni-pb-2 {\n  padding-bottom: 4px;\n}\n.uni-pb-n2 {\n  padding-bottom: -4px;\n}\n.uni-pl-2 {\n  padding-left: 4px;\n}\n.uni-pl-n2 {\n  padding-left: -4px;\n}\n.uni-px-2 {\n  padding-left: 4px;\n  padding-right: 4px;\n}\n.uni-px-n2 {\n  padding-left: -4px;\n  padding-right: -4px;\n}\n.uni-py-2 {\n  padding-top: 4px;\n  padding-bottom: 4px;\n}\n.uni-py-n2 {\n  padding-top: -4px;\n  padding-bottom: -4px;\n}\n.uni-pa-2 {\n  padding: 4px;\n}\n.uni-pa-n2 {\n  padding: -4px;\n}\n.uni-pt-3 {\n  padding-top: 6px;\n}\n.uni-pt-n3 {\n  padding-top: -6px;\n}\n.uni-pr-3 {\n  padding-right: 6px;\n}\n.uni-pr-n3 {\n  padding-right: -6px;\n}\n.uni-pb-3 {\n  padding-bottom: 6px;\n}\n.uni-pb-n3 {\n  padding-bottom: -6px;\n}\n.uni-pl-3 {\n  padding-left: 6px;\n}\n.uni-pl-n3 {\n  padding-left: -6px;\n}\n.uni-px-3 {\n  padding-left: 6px;\n  padding-right: 6px;\n}\n.uni-px-n3 {\n  padding-left: -6px;\n  padding-right: -6px;\n}\n.uni-py-3 {\n  padding-top: 6px;\n  padding-bottom: 6px;\n}\n.uni-py-n3 {\n  padding-top: -6px;\n  padding-bottom: -6px;\n}\n.uni-pa-3 {\n  padding: 6px;\n}\n.uni-pa-n3 {\n  padding: -6px;\n}\n.uni-pt-4 {\n  padding-top: 8px;\n}\n.uni-pt-n4 {\n  padding-top: -8px;\n}\n.uni-pr-4 {\n  padding-right: 8px;\n}\n.uni-pr-n4 {\n  padding-right: -8px;\n}\n.uni-pb-4 {\n  padding-bottom: 8px;\n}\n.uni-pb-n4 {\n  padding-bottom: -8px;\n}\n.uni-pl-4 {\n  padding-left: 8px;\n}\n.uni-pl-n4 {\n  padding-left: -8px;\n}\n.uni-px-4 {\n  padding-left: 8px;\n  padding-right: 8px;\n}\n.uni-px-n4 {\n  padding-left: -8px;\n  padding-right: -8px;\n}\n.uni-py-4 {\n  padding-top: 8px;\n  padding-bottom: 8px;\n}\n.uni-py-n4 {\n  padding-top: -8px;\n  padding-bottom: -8px;\n}\n.uni-pa-4 {\n  padding: 8px;\n}\n.uni-pa-n4 {\n  padding: -8px;\n}\n.uni-pt-5 {\n  padding-top: 10px;\n}\n.uni-pt-n5 {\n  padding-top: -10px;\n}\n.uni-pr-5 {\n  padding-right: 10px;\n}\n.uni-pr-n5 {\n  padding-right: -10px;\n}\n.uni-pb-5 {\n  padding-bottom: 10px;\n}\n.uni-pb-n5 {\n  padding-bottom: -10px;\n}\n.uni-pl-5 {\n  padding-left: 10px;\n}\n.uni-pl-n5 {\n  padding-left: -10px;\n}\n.uni-px-5 {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.uni-px-n5 {\n  padding-left: -10px;\n  padding-right: -10px;\n}\n.uni-py-5 {\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.uni-py-n5 {\n  padding-top: -10px;\n  padding-bottom: -10px;\n}\n.uni-pa-5 {\n  padding: 10px;\n}\n.uni-pa-n5 {\n  padding: -10px;\n}\n.uni-pt-6 {\n  padding-top: 12px;\n}\n.uni-pt-n6 {\n  padding-top: -12px;\n}\n.uni-pr-6 {\n  padding-right: 12px;\n}\n.uni-pr-n6 {\n  padding-right: -12px;\n}\n.uni-pb-6 {\n  padding-bottom: 12px;\n}\n.uni-pb-n6 {\n  padding-bottom: -12px;\n}\n.uni-pl-6 {\n  padding-left: 12px;\n}\n.uni-pl-n6 {\n  padding-left: -12px;\n}\n.uni-px-6 {\n  padding-left: 12px;\n  padding-right: 12px;\n}\n.uni-px-n6 {\n  padding-left: -12px;\n  padding-right: -12px;\n}\n.uni-py-6 {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.uni-py-n6 {\n  padding-top: -12px;\n  padding-bottom: -12px;\n}\n.uni-pa-6 {\n  padding: 12px;\n}\n.uni-pa-n6 {\n  padding: -12px;\n}\n.uni-pt-7 {\n  padding-top: 14px;\n}\n.uni-pt-n7 {\n  padding-top: -14px;\n}\n.uni-pr-7 {\n  padding-right: 14px;\n}\n.uni-pr-n7 {\n  padding-right: -14px;\n}\n.uni-pb-7 {\n  padding-bottom: 14px;\n}\n.uni-pb-n7 {\n  padding-bottom: -14px;\n}\n.uni-pl-7 {\n  padding-left: 14px;\n}\n.uni-pl-n7 {\n  padding-left: -14px;\n}\n.uni-px-7 {\n  padding-left: 14px;\n  padding-right: 14px;\n}\n.uni-px-n7 {\n  padding-left: -14px;\n  padding-right: -14px;\n}\n.uni-py-7 {\n  padding-top: 14px;\n  padding-bottom: 14px;\n}\n.uni-py-n7 {\n  padding-top: -14px;\n  padding-bottom: -14px;\n}\n.uni-pa-7 {\n  padding: 14px;\n}\n.uni-pa-n7 {\n  padding: -14px;\n}\n.uni-pt-8 {\n  padding-top: 16px;\n}\n.uni-pt-n8 {\n  padding-top: -16px;\n}\n.uni-pr-8 {\n  padding-right: 16px;\n}\n.uni-pr-n8 {\n  padding-right: -16px;\n}\n.uni-pb-8 {\n  padding-bottom: 16px;\n}\n.uni-pb-n8 {\n  padding-bottom: -16px;\n}\n.uni-pl-8 {\n  padding-left: 16px;\n}\n.uni-pl-n8 {\n  padding-left: -16px;\n}\n.uni-px-8 {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n.uni-px-n8 {\n  padding-left: -16px;\n  padding-right: -16px;\n}\n.uni-py-8 {\n  padding-top: 16px;\n  padding-bottom: 16px;\n}\n.uni-py-n8 {\n  padding-top: -16px;\n  padding-bottom: -16px;\n}\n.uni-pa-8 {\n  padding: 16px;\n}\n.uni-pa-n8 {\n  padding: -16px;\n}\n.uni-pt-9 {\n  padding-top: 18px;\n}\n.uni-pt-n9 {\n  padding-top: -18px;\n}\n.uni-pr-9 {\n  padding-right: 18px;\n}\n.uni-pr-n9 {\n  padding-right: -18px;\n}\n.uni-pb-9 {\n  padding-bottom: 18px;\n}\n.uni-pb-n9 {\n  padding-bottom: -18px;\n}\n.uni-pl-9 {\n  padding-left: 18px;\n}\n.uni-pl-n9 {\n  padding-left: -18px;\n}\n.uni-px-9 {\n  padding-left: 18px;\n  padding-right: 18px;\n}\n.uni-px-n9 {\n  padding-left: -18px;\n  padding-right: -18px;\n}\n.uni-py-9 {\n  padding-top: 18px;\n  padding-bottom: 18px;\n}\n.uni-py-n9 {\n  padding-top: -18px;\n  padding-bottom: -18px;\n}\n.uni-pa-9 {\n  padding: 18px;\n}\n.uni-pa-n9 {\n  padding: -18px;\n}\n.uni-pt-10 {\n  padding-top: 20px;\n}\n.uni-pt-n10 {\n  padding-top: -20px;\n}\n.uni-pr-10 {\n  padding-right: 20px;\n}\n.uni-pr-n10 {\n  padding-right: -20px;\n}\n.uni-pb-10 {\n  padding-bottom: 20px;\n}\n.uni-pb-n10 {\n  padding-bottom: -20px;\n}\n.uni-pl-10 {\n  padding-left: 20px;\n}\n.uni-pl-n10 {\n  padding-left: -20px;\n}\n.uni-px-10 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.uni-px-n10 {\n  padding-left: -20px;\n  padding-right: -20px;\n}\n.uni-py-10 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.uni-py-n10 {\n  padding-top: -20px;\n  padding-bottom: -20px;\n}\n.uni-pa-10 {\n  padding: 20px;\n}\n.uni-pa-n10 {\n  padding: -20px;\n}\n.uni-pt-11 {\n  padding-top: 22px;\n}\n.uni-pt-n11 {\n  padding-top: -22px;\n}\n.uni-pr-11 {\n  padding-right: 22px;\n}\n.uni-pr-n11 {\n  padding-right: -22px;\n}\n.uni-pb-11 {\n  padding-bottom: 22px;\n}\n.uni-pb-n11 {\n  padding-bottom: -22px;\n}\n.uni-pl-11 {\n  padding-left: 22px;\n}\n.uni-pl-n11 {\n  padding-left: -22px;\n}\n.uni-px-11 {\n  padding-left: 22px;\n  padding-right: 22px;\n}\n.uni-px-n11 {\n  padding-left: -22px;\n  padding-right: -22px;\n}\n.uni-py-11 {\n  padding-top: 22px;\n  padding-bottom: 22px;\n}\n.uni-py-n11 {\n  padding-top: -22px;\n  padding-bottom: -22px;\n}\n.uni-pa-11 {\n  padding: 22px;\n}\n.uni-pa-n11 {\n  padding: -22px;\n}\n.uni-pt-12 {\n  padding-top: 24px;\n}\n.uni-pt-n12 {\n  padding-top: -24px;\n}\n.uni-pr-12 {\n  padding-right: 24px;\n}\n.uni-pr-n12 {\n  padding-right: -24px;\n}\n.uni-pb-12 {\n  padding-bottom: 24px;\n}\n.uni-pb-n12 {\n  padding-bottom: -24px;\n}\n.uni-pl-12 {\n  padding-left: 24px;\n}\n.uni-pl-n12 {\n  padding-left: -24px;\n}\n.uni-px-12 {\n  padding-left: 24px;\n  padding-right: 24px;\n}\n.uni-px-n12 {\n  padding-left: -24px;\n  padding-right: -24px;\n}\n.uni-py-12 {\n  padding-top: 24px;\n  padding-bottom: 24px;\n}\n.uni-py-n12 {\n  padding-top: -24px;\n  padding-bottom: -24px;\n}\n.uni-pa-12 {\n  padding: 24px;\n}\n.uni-pa-n12 {\n  padding: -24px;\n}\n.uni-pt-13 {\n  padding-top: 26px;\n}\n.uni-pt-n13 {\n  padding-top: -26px;\n}\n.uni-pr-13 {\n  padding-right: 26px;\n}\n.uni-pr-n13 {\n  padding-right: -26px;\n}\n.uni-pb-13 {\n  padding-bottom: 26px;\n}\n.uni-pb-n13 {\n  padding-bottom: -26px;\n}\n.uni-pl-13 {\n  padding-left: 26px;\n}\n.uni-pl-n13 {\n  padding-left: -26px;\n}\n.uni-px-13 {\n  padding-left: 26px;\n  padding-right: 26px;\n}\n.uni-px-n13 {\n  padding-left: -26px;\n  padding-right: -26px;\n}\n.uni-py-13 {\n  padding-top: 26px;\n  padding-bottom: 26px;\n}\n.uni-py-n13 {\n  padding-top: -26px;\n  padding-bottom: -26px;\n}\n.uni-pa-13 {\n  padding: 26px;\n}\n.uni-pa-n13 {\n  padding: -26px;\n}\n.uni-pt-14 {\n  padding-top: 28px;\n}\n.uni-pt-n14 {\n  padding-top: -28px;\n}\n.uni-pr-14 {\n  padding-right: 28px;\n}\n.uni-pr-n14 {\n  padding-right: -28px;\n}\n.uni-pb-14 {\n  padding-bottom: 28px;\n}\n.uni-pb-n14 {\n  padding-bottom: -28px;\n}\n.uni-pl-14 {\n  padding-left: 28px;\n}\n.uni-pl-n14 {\n  padding-left: -28px;\n}\n.uni-px-14 {\n  padding-left: 28px;\n  padding-right: 28px;\n}\n.uni-px-n14 {\n  padding-left: -28px;\n  padding-right: -28px;\n}\n.uni-py-14 {\n  padding-top: 28px;\n  padding-bottom: 28px;\n}\n.uni-py-n14 {\n  padding-top: -28px;\n  padding-bottom: -28px;\n}\n.uni-pa-14 {\n  padding: 28px;\n}\n.uni-pa-n14 {\n  padding: -28px;\n}\n.uni-pt-15 {\n  padding-top: 30px;\n}\n.uni-pt-n15 {\n  padding-top: -30px;\n}\n.uni-pr-15 {\n  padding-right: 30px;\n}\n.uni-pr-n15 {\n  padding-right: -30px;\n}\n.uni-pb-15 {\n  padding-bottom: 30px;\n}\n.uni-pb-n15 {\n  padding-bottom: -30px;\n}\n.uni-pl-15 {\n  padding-left: 30px;\n}\n.uni-pl-n15 {\n  padding-left: -30px;\n}\n.uni-px-15 {\n  padding-left: 30px;\n  padding-right: 30px;\n}\n.uni-px-n15 {\n  padding-left: -30px;\n  padding-right: -30px;\n}\n.uni-py-15 {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n.uni-py-n15 {\n  padding-top: -30px;\n  padding-bottom: -30px;\n}\n.uni-pa-15 {\n  padding: 30px;\n}\n.uni-pa-n15 {\n  padding: -30px;\n}\n.uni-pt-16 {\n  padding-top: 32px;\n}\n.uni-pt-n16 {\n  padding-top: -32px;\n}\n.uni-pr-16 {\n  padding-right: 32px;\n}\n.uni-pr-n16 {\n  padding-right: -32px;\n}\n.uni-pb-16 {\n  padding-bottom: 32px;\n}\n.uni-pb-n16 {\n  padding-bottom: -32px;\n}\n.uni-pl-16 {\n  padding-left: 32px;\n}\n.uni-pl-n16 {\n  padding-left: -32px;\n}\n.uni-px-16 {\n  padding-left: 32px;\n  padding-right: 32px;\n}\n.uni-px-n16 {\n  padding-left: -32px;\n  padding-right: -32px;\n}\n.uni-py-16 {\n  padding-top: 32px;\n  padding-bottom: 32px;\n}\n.uni-py-n16 {\n  padding-top: -32px;\n  padding-bottom: -32px;\n}\n.uni-pa-16 {\n  padding: 32px;\n}\n.uni-pa-n16 {\n  padding: -32px;\n}\n.uni-radius-0 {\n  border-radius: 0;\n}\n.uni-radius {\n  border-radius: 5px;\n}\n.uni-radius-lg {\n  border-radius: 10px;\n}\n.uni-radius-xl {\n  border-radius: 30px;\n}\n.uni-radius-pill {\n  border-radius: 9999px;\n}\n.uni-radius-circle {\n  border-radius: 50%;\n}\n.uni-radius-t-0 {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.uni-radius-t {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n}\n.uni-radius-t-lg {\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n}\n.uni-radius-t-xl {\n  border-top-left-radius: 30px;\n  border-top-right-radius: 30px;\n}\n.uni-radius-t-pill {\n  border-top-left-radius: 9999px;\n  border-top-right-radius: 9999px;\n}\n.uni-radius-t-circle {\n  border-top-left-radius: 50%;\n  border-top-right-radius: 50%;\n}\n.uni-radius-r-0 {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.uni-radius-r {\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-r-lg {\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-r-xl {\n  border-top-right-radius: 30px;\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-r-pill {\n  border-top-right-radius: 9999px;\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-r-circle {\n  border-top-right-radius: 50%;\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-b-0 {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.uni-radius-b {\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-b-lg {\n  border-bottom-left-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-b-xl {\n  border-bottom-left-radius: 30px;\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-b-pill {\n  border-bottom-left-radius: 9999px;\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-b-circle {\n  border-bottom-left-radius: 50%;\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-l-0 {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.uni-radius-l {\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.uni-radius-l-lg {\n  border-top-left-radius: 10px;\n  border-bottom-left-radius: 10px;\n}\n.uni-radius-l-xl {\n  border-top-left-radius: 30px;\n  border-bottom-left-radius: 30px;\n}\n.uni-radius-l-pill {\n  border-top-left-radius: 9999px;\n  border-bottom-left-radius: 9999px;\n}\n.uni-radius-l-circle {\n  border-top-left-radius: 50%;\n  border-bottom-left-radius: 50%;\n}\n.uni-radius-tl-0 {\n  border-top-left-radius: 0;\n}\n.uni-radius-tl {\n  border-top-left-radius: 5px;\n}\n.uni-radius-tl-lg {\n  border-top-left-radius: 10px;\n}\n.uni-radius-tl-xl {\n  border-top-left-radius: 30px;\n}\n.uni-radius-tl-pill {\n  border-top-left-radius: 9999px;\n}\n.uni-radius-tl-circle {\n  border-top-left-radius: 50%;\n}\n.uni-radius-tr-0 {\n  border-top-right-radius: 0;\n}\n.uni-radius-tr {\n  border-top-right-radius: 5px;\n}\n.uni-radius-tr-lg {\n  border-top-right-radius: 10px;\n}\n.uni-radius-tr-xl {\n  border-top-right-radius: 30px;\n}\n.uni-radius-tr-pill {\n  border-top-right-radius: 9999px;\n}\n.uni-radius-tr-circle {\n  border-top-right-radius: 50%;\n}\n.uni-radius-br-0 {\n  border-bottom-right-radius: 0;\n}\n.uni-radius-br {\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-br-lg {\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-br-xl {\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-br-pill {\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-br-circle {\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-bl-0 {\n  border-bottom-left-radius: 0;\n}\n.uni-radius-bl {\n  border-bottom-left-radius: 5px;\n}\n.uni-radius-bl-lg {\n  border-bottom-left-radius: 10px;\n}\n.uni-radius-bl-xl {\n  border-bottom-left-radius: 30px;\n}\n.uni-radius-bl-pill {\n  border-bottom-left-radius: 9999px;\n}\n.uni-radius-bl-circle {\n  border-bottom-left-radius: 50%;\n}\n.uni-h1 {\n  font-size: 32px;\n  font-weight: 300;\n  line-height: 50px;\n}\n.uni-h2 {\n  font-size: 28px;\n  font-weight: 300;\n  line-height: 40px;\n}\n.uni-h3 {\n  font-size: 24px;\n  font-weight: 400;\n  line-height: 32px;\n}\n.uni-h4 {\n  font-size: 20px;\n  font-weight: 400;\n  line-height: 30px;\n}\n.uni-h5 {\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n}\n.uni-h6 {\n  font-size: 14px;\n  font-weight: 500;\n  line-height: 18px;\n}\n.uni-subtitle {\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n}\n.uni-body {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 22px;\n}\n.uni-caption {\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n}\n.uni-btn {\n  margin: 5px;\n  color: #393939;\n  border: 1px solid #ccc;\n  font-size: 16px;\n  font-weight: 200;\n  background-color: #F9F9F9;\n  overflow: visible;\n}\n.uni-btn::after {\n  border: none;\n}\n.uni-btn:not([type]), .uni-btn[type=default] {\n  color: #999;\n}\n.uni-btn:not([type])[loading], .uni-btn[type=default][loading] {\n  background: none;\n}\n.uni-btn:not([type])[loading]::before, .uni-btn[type=default][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn:not([type])[disabled], .uni-btn[type=default][disabled] {\n  color: #d6d6d6;\n}\n.uni-btn:not([type])[disabled], .uni-btn:not([type])[disabled][loading], .uni-btn:not([type])[disabled]:active, .uni-btn[type=default][disabled], .uni-btn[type=default][disabled][loading], .uni-btn[type=default][disabled]:active {\n  color: #d6d6d6;\n  background-color: #fafafa;\n  border-color: #f0f0f0;\n}\n.uni-btn:not([type])[plain], .uni-btn[type=default][plain] {\n  color: #999;\n  background: none;\n  border-color: #F0F0F0;\n}\n.uni-btn:not([type])[plain]:not([hover-class]):active, .uni-btn[type=default][plain]:not([hover-class]):active {\n  background: none;\n  color: #cccccc;\n  border-color: #e6e6e6;\n  outline: none;\n}\n.uni-btn:not([type])[plain][disabled], .uni-btn:not([type])[plain][disabled][loading], .uni-btn:not([type])[plain][disabled]:active, .uni-btn[type=default][plain][disabled], .uni-btn[type=default][plain][disabled][loading], .uni-btn[type=default][plain][disabled]:active {\n  background: none;\n  color: #d6d6d6;\n  border-color: #f0f0f0;\n}\n.uni-btn:not([hover-class]):active {\n  color: gray;\n}\n.uni-btn[size=mini] {\n  font-size: 16px;\n  font-weight: 200;\n  border-radius: 8px;\n}\n.uni-btn.uni-btn-small {\n  font-size: 14px;\n}\n.uni-btn.uni-btn-mini {\n  font-size: 12px;\n}\n.uni-btn.uni-btn-radius {\n  border-radius: 999px;\n}\n.uni-btn[type=primary] {\n  color: #fff;\n  background-color: #2979ff;\n  border-color: #266feb;\n}\n.uni-btn[type=primary]:not([hover-class]):active {\n  background: #256de6;\n  border-color: #2161cc;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=primary][loading] {\n  color: #fff;\n  background-color: #2979ff;\n  border-color: #266feb;\n}\n.uni-btn[type=primary][loading]:not([hover-class]):active {\n  background: #256de6;\n  border-color: #2161cc;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=primary][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=primary][disabled], .uni-btn[type=primary][disabled][loading], .uni-btn[type=primary][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #80adfa;\n  background-color: #94bcff;\n}\n.uni-btn[type=primary][plain] {\n  color: #2979ff;\n  background-color: #eaf2ff;\n  border-color: #bfd7ff;\n}\n.uni-btn[type=primary][plain]:not([hover-class]):active {\n  background: #d4e4ff;\n  color: #2979ff;\n  outline: none;\n  border-color: #94bcff;\n}\n.uni-btn[type=primary][plain][loading] {\n  color: #2979ff;\n  background-color: #eaf2ff;\n  border-color: #bfd7ff;\n}\n.uni-btn[type=primary][plain][loading]:not([hover-class]):active {\n  background: #d4e4ff;\n  color: #2979ff;\n  outline: none;\n  border-color: #94bcff;\n}\n.uni-btn[type=primary][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=primary][plain][disabled], .uni-btn[type=primary][plain][disabled]:active {\n  color: #7fafff;\n  background-color: #eaf2ff;\n  border-color: #d4e4ff;\n}\n.uni-btn[type=success] {\n  color: #fff;\n  background-color: #18bc37;\n  border-color: #16ad33;\n}\n.uni-btn[type=success]:not([hover-class]):active {\n  background: #16a932;\n  border-color: #13962c;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=success][loading] {\n  color: #fff;\n  background-color: #18bc37;\n  border-color: #16ad33;\n}\n.uni-btn[type=success][loading]:not([hover-class]):active {\n  background: #16a932;\n  border-color: #13962c;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=success][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=success][disabled], .uni-btn[type=success][disabled][loading], .uni-btn[type=success][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #89c794;\n  background-color: #8cde9b;\n}\n.uni-btn[type=success][plain] {\n  color: #18bc37;\n  background-color: #e8f8eb;\n  border-color: #baebc3;\n}\n.uni-btn[type=success][plain]:not([hover-class]):active {\n  background: #d1f2d7;\n  color: #18bc37;\n  outline: none;\n  border-color: #8cde9b;\n}\n.uni-btn[type=success][plain][loading] {\n  color: #18bc37;\n  background-color: #e8f8eb;\n  border-color: #baebc3;\n}\n.uni-btn[type=success][plain][loading]:not([hover-class]):active {\n  background: #d1f2d7;\n  color: #18bc37;\n  outline: none;\n  border-color: #8cde9b;\n}\n.uni-btn[type=success][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=success][plain][disabled], .uni-btn[type=success][plain][disabled]:active {\n  color: #74d787;\n  background-color: #e8f8eb;\n  border-color: #d1f2d7;\n}\n.uni-btn[type=error] {\n  color: #fff;\n  background-color: #e43d33;\n  border-color: #d2382f;\n}\n.uni-btn[type=error]:not([hover-class]):active {\n  background: #cd372e;\n  border-color: #b63129;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=error][loading] {\n  color: #fff;\n  background-color: #e43d33;\n  border-color: #d2382f;\n}\n.uni-btn[type=error][loading]:not([hover-class]):active {\n  background: #cd372e;\n  border-color: #b63129;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=error][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=error][disabled], .uni-btn[type=error][disabled][loading], .uni-btn[type=error][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #e4928d;\n  background-color: #f29e99;\n}\n.uni-btn[type=error][plain] {\n  color: #e43d33;\n  background-color: #fceceb;\n  border-color: #f7c5c2;\n}\n.uni-btn[type=error][plain]:not([hover-class]):active {\n  background: #fad8d6;\n  color: #e43d33;\n  outline: none;\n  border-color: #f29e99;\n}\n.uni-btn[type=error][plain][loading] {\n  color: #e43d33;\n  background-color: #fceceb;\n  border-color: #f7c5c2;\n}\n.uni-btn[type=error][plain][loading]:not([hover-class]):active {\n  background: #fad8d6;\n  color: #e43d33;\n  outline: none;\n  border-color: #f29e99;\n}\n.uni-btn[type=error][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=error][plain][disabled], .uni-btn[type=error][plain][disabled]:active {\n  color: #ef8b85;\n  background-color: #fceceb;\n  border-color: #fad8d6;\n}\n.uni-btn[type=warning] {\n  color: #fff;\n  background-color: #f3a73f;\n  border-color: #e09a3a;\n}\n.uni-btn[type=warning]:not([hover-class]):active {\n  background: #db9639;\n  border-color: #c28632;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=warning][loading] {\n  color: #fff;\n  background-color: #f3a73f;\n  border-color: #e09a3a;\n}\n.uni-btn[type=warning][loading]:not([hover-class]):active {\n  background: #db9639;\n  border-color: #c28632;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=warning][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=warning][disabled], .uni-btn[type=warning][disabled][loading], .uni-btn[type=warning][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #f8c887;\n  background-color: #f9d39f;\n}\n.uni-btn[type=warning][plain] {\n  color: #f3a73f;\n  background-color: #fef6ec;\n  border-color: #fbe5c5;\n}\n.uni-btn[type=warning][plain]:not([hover-class]):active {\n  background: #fdedd9;\n  color: #f3a73f;\n  outline: none;\n  border-color: #f9d39f;\n}\n.uni-btn[type=warning][plain][loading] {\n  color: #f3a73f;\n  background-color: #fef6ec;\n  border-color: #fbe5c5;\n}\n.uni-btn[type=warning][plain][loading]:not([hover-class]):active {\n  background: #fdedd9;\n  color: #f3a73f;\n  outline: none;\n  border-color: #f9d39f;\n}\n.uni-btn[type=warning][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=warning][plain][disabled], .uni-btn[type=warning][plain][disabled]:active {\n  color: #f8ca8c;\n  background-color: #fef6ec;\n  border-color: #fdedd9;\n}\n.uni-btn[type=info] {\n  color: #fff;\n  background-color: #8f939c;\n  border-color: #848790;\n}\n.uni-btn[type=info]:not([hover-class]):active {\n  background: #81848c;\n  border-color: #72767d;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=info][loading] {\n  color: #fff;\n  background-color: #8f939c;\n  border-color: #848790;\n}\n.uni-btn[type=info][loading]:not([hover-class]):active {\n  background: #81848c;\n  border-color: #72767d;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=info][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=info][disabled], .uni-btn[type=info][disabled][loading], .uni-btn[type=info][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #babcc1;\n  background-color: #c7c9ce;\n}\n.uni-btn[type=info][plain] {\n  color: #8f939c;\n  background-color: #f4f4f5;\n  border-color: #dddfe1;\n}\n.uni-btn[type=info][plain]:not([hover-class]):active {\n  background: #e9e9eb;\n  color: #8f939c;\n  outline: none;\n  border-color: #c7c9ce;\n}\n.uni-btn[type=info][plain][loading] {\n  color: #8f939c;\n  background-color: #f4f4f5;\n  border-color: #dddfe1;\n}\n.uni-btn[type=info][plain][loading]:not([hover-class]):active {\n  background: #e9e9eb;\n  color: #8f939c;\n  outline: none;\n  border-color: #c7c9ce;\n}\n.uni-btn[type=info][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=info][plain][disabled], .uni-btn[type=info][plain][disabled]:active {\n  color: #bcbec4;\n  background-color: #f4f4f5;\n  border-color: #e9e9eb;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.example-info {\n  font-size: 14px;\n  color: #333;\n  padding: 10px;\n}\n.headerBackgroundColor {\n  padding: 70rpx 0 20rpx 0;\n  background: linear-gradient(90deg, #ff0000, #ff4d4d, #ff8533, #ff944d, #ff944d, #ffb380);\n  position: fixed !important;\n  top: 0px !important;\n  z-index: 2;\n}\n.body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/* 水平间距 */\n/* 水平间距 */\n/*每个页面公共css */\n/* 水平间距 */\n@font-face {\n  font-family: \"customicons\"; /* Project id 2878519 */\n  src:url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") format('truetype');\n}\n.customicons {\n  font-family: \"customicons\" !important;\n}\n.youxi:before {\n  content: \"\\e60e\";\n}\n.wenjian:before {\n  content: \"\\e60f\";\n}\n.zhuanfa:before {\n  content: \"\\e610\";\n}\n.uni-border {\n  border: 1px #F0F0F0 solid;\n}\n.uni-primary {\n  color: #2979ff;\n}\n.uni-primary-bg {\n  background-color: #2979ff;\n}\n.uni-primary-disable {\n  color: #94bcff;\n}\n.uni-primary-disable-bg {\n  background-color: #94bcff;\n}\n.uni-primary-light {\n  color: #d4e4ff;\n}\n.uni-primary-light-bg {\n  background-color: #d4e4ff;\n}\n.uni-success {\n  color: #18bc37;\n}\n.uni-success-bg {\n  background-color: #18bc37;\n}\n.uni-success-disable {\n  color: #8cde9b;\n}\n.uni-success-disable-bg {\n  background-color: #8cde9b;\n}\n.uni-success-light {\n  color: #d1f2d7;\n}\n.uni-success-light-bg {\n  background-color: #d1f2d7;\n}\n.uni-warning {\n  color: #f3a73f;\n}\n.uni-warning-bg {\n  background-color: #f3a73f;\n}\n.uni-warning-disable {\n  color: #f9d39f;\n}\n.uni-warning-disable-bg {\n  background-color: #f9d39f;\n}\n.uni-warning-light {\n  color: #fdedd9;\n}\n.uni-warning-light-bg {\n  background-color: #fdedd9;\n}\n.uni-error {\n  color: #e43d33;\n}\n.uni-error-bg {\n  background-color: #e43d33;\n}\n.uni-error-disable {\n  color: #f29e99;\n}\n.uni-error-disable-bg {\n  background-color: #f29e99;\n}\n.uni-error-light {\n  color: #fad8d6;\n}\n.uni-error-light-bg {\n  background-color: #fad8d6;\n}\n.uni-info {\n  color: #8f939c;\n}\n.uni-info-bg {\n  background-color: #8f939c;\n}\n.uni-info-disable {\n  color: #c7c9ce;\n}\n.uni-info-disable-bg {\n  background-color: #c7c9ce;\n}\n.uni-info-light {\n  color: #e9e9eb;\n}\n.uni-info-light-bg {\n  background-color: #e9e9eb;\n}\n.uni-main-color {\n  color: #3a3a3a;\n}\n.uni-main-color-bg {\n  background-color: #3a3a3a;\n}\n.uni-base-color {\n  color: #6a6a6a;\n}\n.uni-base-color-bg {\n  background-color: #6a6a6a;\n}\n.uni-secondary-color {\n  color: #909399;\n}\n.uni-secondary-color-bg {\n  background-color: #909399;\n}\n.uni-extra-color {\n  color: #c7c7c7;\n}\n.uni-extra-color-bg {\n  background-color: #c7c7c7;\n}\n.uni-bg-color {\n  color: #f7f7f7;\n}\n.uni-bg-color-bg {\n  background-color: #f7f7f7;\n}\n.uni-border-1 {\n  color: #F0F0F0;\n}\n.uni-border-1-bg {\n  background-color: #F0F0F0;\n}\n.uni-border-2 {\n  color: #EDEDED;\n}\n.uni-border-2-bg {\n  background-color: #EDEDED;\n}\n.uni-border-3 {\n  color: #DCDCDC;\n}\n.uni-border-3-bg {\n  background-color: #DCDCDC;\n}\n.uni-border-4 {\n  color: #B9B9B9;\n}\n.uni-border-4-bg {\n  background-color: #B9B9B9;\n}\n.uni-black {\n  color: #000000;\n}\n.uni-black-bg {\n  background-color: #000000;\n}\n.uni-white {\n  color: #ffffff;\n}\n.uni-white-bg {\n  background-color: #ffffff;\n}\n.uni-transparent {\n  color: rgba(0, 0, 0, 0);\n}\n.uni-transparent-bg {\n  background-color: rgba(0, 0, 0, 0);\n}\n.uni-shadow-sm {\n  box-shadow: 0 0 5px rgba(216, 216, 216, 0.5);\n}\n.uni-shadow-base {\n  box-shadow: 0 1px 8px 1px rgba(165, 165, 165, 0.2);\n}\n.uni-shadow-lg {\n  box-shadow: 0px 1px 10px 2px rgba(165, 164, 164, 0.5);\n}\n.uni-mask {\n  background-color: rgba(0, 0, 0, 0.4);\n}\n.uni-mt-0 {\n  margin-top: 0px;\n}\n.uni-mt-n0 {\n  margin-top: 0px;\n}\n.uni-mr-0 {\n  margin-right: 0px;\n}\n.uni-mr-n0 {\n  margin-right: 0px;\n}\n.uni-mb-0 {\n  margin-bottom: 0px;\n}\n.uni-mb-n0 {\n  margin-bottom: 0px;\n}\n.uni-ml-0 {\n  margin-left: 0px;\n}\n.uni-ml-n0 {\n  margin-left: 0px;\n}\n.uni-mx-0 {\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.uni-mx-n0 {\n  margin-left: 0px;\n  margin-right: 0px;\n}\n.uni-my-0 {\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.uni-my-n0 {\n  margin-top: 0px;\n  margin-bottom: 0px;\n}\n.uni-ma-0 {\n  margin: 0px;\n}\n.uni-ma-n0 {\n  margin: 0px;\n}\n.uni-mt-1 {\n  margin-top: 2px;\n}\n.uni-mt-n1 {\n  margin-top: -2px;\n}\n.uni-mr-1 {\n  margin-right: 2px;\n}\n.uni-mr-n1 {\n  margin-right: -2px;\n}\n.uni-mb-1 {\n  margin-bottom: 2px;\n}\n.uni-mb-n1 {\n  margin-bottom: -2px;\n}\n.uni-ml-1 {\n  margin-left: 2px;\n}\n.uni-ml-n1 {\n  margin-left: -2px;\n}\n.uni-mx-1 {\n  margin-left: 2px;\n  margin-right: 2px;\n}\n.uni-mx-n1 {\n  margin-left: -2px;\n  margin-right: -2px;\n}\n.uni-my-1 {\n  margin-top: 2px;\n  margin-bottom: 2px;\n}\n.uni-my-n1 {\n  margin-top: -2px;\n  margin-bottom: -2px;\n}\n.uni-ma-1 {\n  margin: 2px;\n}\n.uni-ma-n1 {\n  margin: -2px;\n}\n.uni-mt-2 {\n  margin-top: 4px;\n}\n.uni-mt-n2 {\n  margin-top: -4px;\n}\n.uni-mr-2 {\n  margin-right: 4px;\n}\n.uni-mr-n2 {\n  margin-right: -4px;\n}\n.uni-mb-2 {\n  margin-bottom: 4px;\n}\n.uni-mb-n2 {\n  margin-bottom: -4px;\n}\n.uni-ml-2 {\n  margin-left: 4px;\n}\n.uni-ml-n2 {\n  margin-left: -4px;\n}\n.uni-mx-2 {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n.uni-mx-n2 {\n  margin-left: -4px;\n  margin-right: -4px;\n}\n.uni-my-2 {\n  margin-top: 4px;\n  margin-bottom: 4px;\n}\n.uni-my-n2 {\n  margin-top: -4px;\n  margin-bottom: -4px;\n}\n.uni-ma-2 {\n  margin: 4px;\n}\n.uni-ma-n2 {\n  margin: -4px;\n}\n.uni-mt-3 {\n  margin-top: 6px;\n}\n.uni-mt-n3 {\n  margin-top: -6px;\n}\n.uni-mr-3 {\n  margin-right: 6px;\n}\n.uni-mr-n3 {\n  margin-right: -6px;\n}\n.uni-mb-3 {\n  margin-bottom: 6px;\n}\n.uni-mb-n3 {\n  margin-bottom: -6px;\n}\n.uni-ml-3 {\n  margin-left: 6px;\n}\n.uni-ml-n3 {\n  margin-left: -6px;\n}\n.uni-mx-3 {\n  margin-left: 6px;\n  margin-right: 6px;\n}\n.uni-mx-n3 {\n  margin-left: -6px;\n  margin-right: -6px;\n}\n.uni-my-3 {\n  margin-top: 6px;\n  margin-bottom: 6px;\n}\n.uni-my-n3 {\n  margin-top: -6px;\n  margin-bottom: -6px;\n}\n.uni-ma-3 {\n  margin: 6px;\n}\n.uni-ma-n3 {\n  margin: -6px;\n}\n.uni-mt-4 {\n  margin-top: 8px;\n}\n.uni-mt-n4 {\n  margin-top: -8px;\n}\n.uni-mr-4 {\n  margin-right: 8px;\n}\n.uni-mr-n4 {\n  margin-right: -8px;\n}\n.uni-mb-4 {\n  margin-bottom: 8px;\n}\n.uni-mb-n4 {\n  margin-bottom: -8px;\n}\n.uni-ml-4 {\n  margin-left: 8px;\n}\n.uni-ml-n4 {\n  margin-left: -8px;\n}\n.uni-mx-4 {\n  margin-left: 8px;\n  margin-right: 8px;\n}\n.uni-mx-n4 {\n  margin-left: -8px;\n  margin-right: -8px;\n}\n.uni-my-4 {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.uni-my-n4 {\n  margin-top: -8px;\n  margin-bottom: -8px;\n}\n.uni-ma-4 {\n  margin: 8px;\n}\n.uni-ma-n4 {\n  margin: -8px;\n}\n.uni-mt-5 {\n  margin-top: 10px;\n}\n.uni-mt-n5 {\n  margin-top: -10px;\n}\n.uni-mr-5 {\n  margin-right: 10px;\n}\n.uni-mr-n5 {\n  margin-right: -10px;\n}\n.uni-mb-5 {\n  margin-bottom: 10px;\n}\n.uni-mb-n5 {\n  margin-bottom: -10px;\n}\n.uni-ml-5 {\n  margin-left: 10px;\n}\n.uni-ml-n5 {\n  margin-left: -10px;\n}\n.uni-mx-5 {\n  margin-left: 10px;\n  margin-right: 10px;\n}\n.uni-mx-n5 {\n  margin-left: -10px;\n  margin-right: -10px;\n}\n.uni-my-5 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.uni-my-n5 {\n  margin-top: -10px;\n  margin-bottom: -10px;\n}\n.uni-ma-5 {\n  margin: 10px;\n}\n.uni-ma-n5 {\n  margin: -10px;\n}\n.uni-mt-6 {\n  margin-top: 12px;\n}\n.uni-mt-n6 {\n  margin-top: -12px;\n}\n.uni-mr-6 {\n  margin-right: 12px;\n}\n.uni-mr-n6 {\n  margin-right: -12px;\n}\n.uni-mb-6 {\n  margin-bottom: 12px;\n}\n.uni-mb-n6 {\n  margin-bottom: -12px;\n}\n.uni-ml-6 {\n  margin-left: 12px;\n}\n.uni-ml-n6 {\n  margin-left: -12px;\n}\n.uni-mx-6 {\n  margin-left: 12px;\n  margin-right: 12px;\n}\n.uni-mx-n6 {\n  margin-left: -12px;\n  margin-right: -12px;\n}\n.uni-my-6 {\n  margin-top: 12px;\n  margin-bottom: 12px;\n}\n.uni-my-n6 {\n  margin-top: -12px;\n  margin-bottom: -12px;\n}\n.uni-ma-6 {\n  margin: 12px;\n}\n.uni-ma-n6 {\n  margin: -12px;\n}\n.uni-mt-7 {\n  margin-top: 14px;\n}\n.uni-mt-n7 {\n  margin-top: -14px;\n}\n.uni-mr-7 {\n  margin-right: 14px;\n}\n.uni-mr-n7 {\n  margin-right: -14px;\n}\n.uni-mb-7 {\n  margin-bottom: 14px;\n}\n.uni-mb-n7 {\n  margin-bottom: -14px;\n}\n.uni-ml-7 {\n  margin-left: 14px;\n}\n.uni-ml-n7 {\n  margin-left: -14px;\n}\n.uni-mx-7 {\n  margin-left: 14px;\n  margin-right: 14px;\n}\n.uni-mx-n7 {\n  margin-left: -14px;\n  margin-right: -14px;\n}\n.uni-my-7 {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.uni-my-n7 {\n  margin-top: -14px;\n  margin-bottom: -14px;\n}\n.uni-ma-7 {\n  margin: 14px;\n}\n.uni-ma-n7 {\n  margin: -14px;\n}\n.uni-mt-8 {\n  margin-top: 16px;\n}\n.uni-mt-n8 {\n  margin-top: -16px;\n}\n.uni-mr-8 {\n  margin-right: 16px;\n}\n.uni-mr-n8 {\n  margin-right: -16px;\n}\n.uni-mb-8 {\n  margin-bottom: 16px;\n}\n.uni-mb-n8 {\n  margin-bottom: -16px;\n}\n.uni-ml-8 {\n  margin-left: 16px;\n}\n.uni-ml-n8 {\n  margin-left: -16px;\n}\n.uni-mx-8 {\n  margin-left: 16px;\n  margin-right: 16px;\n}\n.uni-mx-n8 {\n  margin-left: -16px;\n  margin-right: -16px;\n}\n.uni-my-8 {\n  margin-top: 16px;\n  margin-bottom: 16px;\n}\n.uni-my-n8 {\n  margin-top: -16px;\n  margin-bottom: -16px;\n}\n.uni-ma-8 {\n  margin: 16px;\n}\n.uni-ma-n8 {\n  margin: -16px;\n}\n.uni-mt-9 {\n  margin-top: 18px;\n}\n.uni-mt-n9 {\n  margin-top: -18px;\n}\n.uni-mr-9 {\n  margin-right: 18px;\n}\n.uni-mr-n9 {\n  margin-right: -18px;\n}\n.uni-mb-9 {\n  margin-bottom: 18px;\n}\n.uni-mb-n9 {\n  margin-bottom: -18px;\n}\n.uni-ml-9 {\n  margin-left: 18px;\n}\n.uni-ml-n9 {\n  margin-left: -18px;\n}\n.uni-mx-9 {\n  margin-left: 18px;\n  margin-right: 18px;\n}\n.uni-mx-n9 {\n  margin-left: -18px;\n  margin-right: -18px;\n}\n.uni-my-9 {\n  margin-top: 18px;\n  margin-bottom: 18px;\n}\n.uni-my-n9 {\n  margin-top: -18px;\n  margin-bottom: -18px;\n}\n.uni-ma-9 {\n  margin: 18px;\n}\n.uni-ma-n9 {\n  margin: -18px;\n}\n.uni-mt-10 {\n  margin-top: 20px;\n}\n.uni-mt-n10 {\n  margin-top: -20px;\n}\n.uni-mr-10 {\n  margin-right: 20px;\n}\n.uni-mr-n10 {\n  margin-right: -20px;\n}\n.uni-mb-10 {\n  margin-bottom: 20px;\n}\n.uni-mb-n10 {\n  margin-bottom: -20px;\n}\n.uni-ml-10 {\n  margin-left: 20px;\n}\n.uni-ml-n10 {\n  margin-left: -20px;\n}\n.uni-mx-10 {\n  margin-left: 20px;\n  margin-right: 20px;\n}\n.uni-mx-n10 {\n  margin-left: -20px;\n  margin-right: -20px;\n}\n.uni-my-10 {\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.uni-my-n10 {\n  margin-top: -20px;\n  margin-bottom: -20px;\n}\n.uni-ma-10 {\n  margin: 20px;\n}\n.uni-ma-n10 {\n  margin: -20px;\n}\n.uni-mt-11 {\n  margin-top: 22px;\n}\n.uni-mt-n11 {\n  margin-top: -22px;\n}\n.uni-mr-11 {\n  margin-right: 22px;\n}\n.uni-mr-n11 {\n  margin-right: -22px;\n}\n.uni-mb-11 {\n  margin-bottom: 22px;\n}\n.uni-mb-n11 {\n  margin-bottom: -22px;\n}\n.uni-ml-11 {\n  margin-left: 22px;\n}\n.uni-ml-n11 {\n  margin-left: -22px;\n}\n.uni-mx-11 {\n  margin-left: 22px;\n  margin-right: 22px;\n}\n.uni-mx-n11 {\n  margin-left: -22px;\n  margin-right: -22px;\n}\n.uni-my-11 {\n  margin-top: 22px;\n  margin-bottom: 22px;\n}\n.uni-my-n11 {\n  margin-top: -22px;\n  margin-bottom: -22px;\n}\n.uni-ma-11 {\n  margin: 22px;\n}\n.uni-ma-n11 {\n  margin: -22px;\n}\n.uni-mt-12 {\n  margin-top: 24px;\n}\n.uni-mt-n12 {\n  margin-top: -24px;\n}\n.uni-mr-12 {\n  margin-right: 24px;\n}\n.uni-mr-n12 {\n  margin-right: -24px;\n}\n.uni-mb-12 {\n  margin-bottom: 24px;\n}\n.uni-mb-n12 {\n  margin-bottom: -24px;\n}\n.uni-ml-12 {\n  margin-left: 24px;\n}\n.uni-ml-n12 {\n  margin-left: -24px;\n}\n.uni-mx-12 {\n  margin-left: 24px;\n  margin-right: 24px;\n}\n.uni-mx-n12 {\n  margin-left: -24px;\n  margin-right: -24px;\n}\n.uni-my-12 {\n  margin-top: 24px;\n  margin-bottom: 24px;\n}\n.uni-my-n12 {\n  margin-top: -24px;\n  margin-bottom: -24px;\n}\n.uni-ma-12 {\n  margin: 24px;\n}\n.uni-ma-n12 {\n  margin: -24px;\n}\n.uni-mt-13 {\n  margin-top: 26px;\n}\n.uni-mt-n13 {\n  margin-top: -26px;\n}\n.uni-mr-13 {\n  margin-right: 26px;\n}\n.uni-mr-n13 {\n  margin-right: -26px;\n}\n.uni-mb-13 {\n  margin-bottom: 26px;\n}\n.uni-mb-n13 {\n  margin-bottom: -26px;\n}\n.uni-ml-13 {\n  margin-left: 26px;\n}\n.uni-ml-n13 {\n  margin-left: -26px;\n}\n.uni-mx-13 {\n  margin-left: 26px;\n  margin-right: 26px;\n}\n.uni-mx-n13 {\n  margin-left: -26px;\n  margin-right: -26px;\n}\n.uni-my-13 {\n  margin-top: 26px;\n  margin-bottom: 26px;\n}\n.uni-my-n13 {\n  margin-top: -26px;\n  margin-bottom: -26px;\n}\n.uni-ma-13 {\n  margin: 26px;\n}\n.uni-ma-n13 {\n  margin: -26px;\n}\n.uni-mt-14 {\n  margin-top: 28px;\n}\n.uni-mt-n14 {\n  margin-top: -28px;\n}\n.uni-mr-14 {\n  margin-right: 28px;\n}\n.uni-mr-n14 {\n  margin-right: -28px;\n}\n.uni-mb-14 {\n  margin-bottom: 28px;\n}\n.uni-mb-n14 {\n  margin-bottom: -28px;\n}\n.uni-ml-14 {\n  margin-left: 28px;\n}\n.uni-ml-n14 {\n  margin-left: -28px;\n}\n.uni-mx-14 {\n  margin-left: 28px;\n  margin-right: 28px;\n}\n.uni-mx-n14 {\n  margin-left: -28px;\n  margin-right: -28px;\n}\n.uni-my-14 {\n  margin-top: 28px;\n  margin-bottom: 28px;\n}\n.uni-my-n14 {\n  margin-top: -28px;\n  margin-bottom: -28px;\n}\n.uni-ma-14 {\n  margin: 28px;\n}\n.uni-ma-n14 {\n  margin: -28px;\n}\n.uni-mt-15 {\n  margin-top: 30px;\n}\n.uni-mt-n15 {\n  margin-top: -30px;\n}\n.uni-mr-15 {\n  margin-right: 30px;\n}\n.uni-mr-n15 {\n  margin-right: -30px;\n}\n.uni-mb-15 {\n  margin-bottom: 30px;\n}\n.uni-mb-n15 {\n  margin-bottom: -30px;\n}\n.uni-ml-15 {\n  margin-left: 30px;\n}\n.uni-ml-n15 {\n  margin-left: -30px;\n}\n.uni-mx-15 {\n  margin-left: 30px;\n  margin-right: 30px;\n}\n.uni-mx-n15 {\n  margin-left: -30px;\n  margin-right: -30px;\n}\n.uni-my-15 {\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n.uni-my-n15 {\n  margin-top: -30px;\n  margin-bottom: -30px;\n}\n.uni-ma-15 {\n  margin: 30px;\n}\n.uni-ma-n15 {\n  margin: -30px;\n}\n.uni-mt-16 {\n  margin-top: 32px;\n}\n.uni-mt-n16 {\n  margin-top: -32px;\n}\n.uni-mr-16 {\n  margin-right: 32px;\n}\n.uni-mr-n16 {\n  margin-right: -32px;\n}\n.uni-mb-16 {\n  margin-bottom: 32px;\n}\n.uni-mb-n16 {\n  margin-bottom: -32px;\n}\n.uni-ml-16 {\n  margin-left: 32px;\n}\n.uni-ml-n16 {\n  margin-left: -32px;\n}\n.uni-mx-16 {\n  margin-left: 32px;\n  margin-right: 32px;\n}\n.uni-mx-n16 {\n  margin-left: -32px;\n  margin-right: -32px;\n}\n.uni-my-16 {\n  margin-top: 32px;\n  margin-bottom: 32px;\n}\n.uni-my-n16 {\n  margin-top: -32px;\n  margin-bottom: -32px;\n}\n.uni-ma-16 {\n  margin: 32px;\n}\n.uni-ma-n16 {\n  margin: -32px;\n}\n.uni-pt-0 {\n  padding-top: 0px;\n}\n.uni-pt-n0 {\n  padding-top: 0px;\n}\n.uni-pr-0 {\n  padding-right: 0px;\n}\n.uni-pr-n0 {\n  padding-right: 0px;\n}\n.uni-pb-0 {\n  padding-bottom: 0px;\n}\n.uni-pb-n0 {\n  padding-bottom: 0px;\n}\n.uni-pl-0 {\n  padding-left: 0px;\n}\n.uni-pl-n0 {\n  padding-left: 0px;\n}\n.uni-px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.uni-px-n0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.uni-py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.uni-py-n0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.uni-pa-0 {\n  padding: 0px;\n}\n.uni-pa-n0 {\n  padding: 0px;\n}\n.uni-pt-1 {\n  padding-top: 2px;\n}\n.uni-pt-n1 {\n  padding-top: -2px;\n}\n.uni-pr-1 {\n  padding-right: 2px;\n}\n.uni-pr-n1 {\n  padding-right: -2px;\n}\n.uni-pb-1 {\n  padding-bottom: 2px;\n}\n.uni-pb-n1 {\n  padding-bottom: -2px;\n}\n.uni-pl-1 {\n  padding-left: 2px;\n}\n.uni-pl-n1 {\n  padding-left: -2px;\n}\n.uni-px-1 {\n  padding-left: 2px;\n  padding-right: 2px;\n}\n.uni-px-n1 {\n  padding-left: -2px;\n  padding-right: -2px;\n}\n.uni-py-1 {\n  padding-top: 2px;\n  padding-bottom: 2px;\n}\n.uni-py-n1 {\n  padding-top: -2px;\n  padding-bottom: -2px;\n}\n.uni-pa-1 {\n  padding: 2px;\n}\n.uni-pa-n1 {\n  padding: -2px;\n}\n.uni-pt-2 {\n  padding-top: 4px;\n}\n.uni-pt-n2 {\n  padding-top: -4px;\n}\n.uni-pr-2 {\n  padding-right: 4px;\n}\n.uni-pr-n2 {\n  padding-right: -4px;\n}\n.uni-pb-2 {\n  padding-bottom: 4px;\n}\n.uni-pb-n2 {\n  padding-bottom: -4px;\n}\n.uni-pl-2 {\n  padding-left: 4px;\n}\n.uni-pl-n2 {\n  padding-left: -4px;\n}\n.uni-px-2 {\n  padding-left: 4px;\n  padding-right: 4px;\n}\n.uni-px-n2 {\n  padding-left: -4px;\n  padding-right: -4px;\n}\n.uni-py-2 {\n  padding-top: 4px;\n  padding-bottom: 4px;\n}\n.uni-py-n2 {\n  padding-top: -4px;\n  padding-bottom: -4px;\n}\n.uni-pa-2 {\n  padding: 4px;\n}\n.uni-pa-n2 {\n  padding: -4px;\n}\n.uni-pt-3 {\n  padding-top: 6px;\n}\n.uni-pt-n3 {\n  padding-top: -6px;\n}\n.uni-pr-3 {\n  padding-right: 6px;\n}\n.uni-pr-n3 {\n  padding-right: -6px;\n}\n.uni-pb-3 {\n  padding-bottom: 6px;\n}\n.uni-pb-n3 {\n  padding-bottom: -6px;\n}\n.uni-pl-3 {\n  padding-left: 6px;\n}\n.uni-pl-n3 {\n  padding-left: -6px;\n}\n.uni-px-3 {\n  padding-left: 6px;\n  padding-right: 6px;\n}\n.uni-px-n3 {\n  padding-left: -6px;\n  padding-right: -6px;\n}\n.uni-py-3 {\n  padding-top: 6px;\n  padding-bottom: 6px;\n}\n.uni-py-n3 {\n  padding-top: -6px;\n  padding-bottom: -6px;\n}\n.uni-pa-3 {\n  padding: 6px;\n}\n.uni-pa-n3 {\n  padding: -6px;\n}\n.uni-pt-4 {\n  padding-top: 8px;\n}\n.uni-pt-n4 {\n  padding-top: -8px;\n}\n.uni-pr-4 {\n  padding-right: 8px;\n}\n.uni-pr-n4 {\n  padding-right: -8px;\n}\n.uni-pb-4 {\n  padding-bottom: 8px;\n}\n.uni-pb-n4 {\n  padding-bottom: -8px;\n}\n.uni-pl-4 {\n  padding-left: 8px;\n}\n.uni-pl-n4 {\n  padding-left: -8px;\n}\n.uni-px-4 {\n  padding-left: 8px;\n  padding-right: 8px;\n}\n.uni-px-n4 {\n  padding-left: -8px;\n  padding-right: -8px;\n}\n.uni-py-4 {\n  padding-top: 8px;\n  padding-bottom: 8px;\n}\n.uni-py-n4 {\n  padding-top: -8px;\n  padding-bottom: -8px;\n}\n.uni-pa-4 {\n  padding: 8px;\n}\n.uni-pa-n4 {\n  padding: -8px;\n}\n.uni-pt-5 {\n  padding-top: 10px;\n}\n.uni-pt-n5 {\n  padding-top: -10px;\n}\n.uni-pr-5 {\n  padding-right: 10px;\n}\n.uni-pr-n5 {\n  padding-right: -10px;\n}\n.uni-pb-5 {\n  padding-bottom: 10px;\n}\n.uni-pb-n5 {\n  padding-bottom: -10px;\n}\n.uni-pl-5 {\n  padding-left: 10px;\n}\n.uni-pl-n5 {\n  padding-left: -10px;\n}\n.uni-px-5 {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.uni-px-n5 {\n  padding-left: -10px;\n  padding-right: -10px;\n}\n.uni-py-5 {\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.uni-py-n5 {\n  padding-top: -10px;\n  padding-bottom: -10px;\n}\n.uni-pa-5 {\n  padding: 10px;\n}\n.uni-pa-n5 {\n  padding: -10px;\n}\n.uni-pt-6 {\n  padding-top: 12px;\n}\n.uni-pt-n6 {\n  padding-top: -12px;\n}\n.uni-pr-6 {\n  padding-right: 12px;\n}\n.uni-pr-n6 {\n  padding-right: -12px;\n}\n.uni-pb-6 {\n  padding-bottom: 12px;\n}\n.uni-pb-n6 {\n  padding-bottom: -12px;\n}\n.uni-pl-6 {\n  padding-left: 12px;\n}\n.uni-pl-n6 {\n  padding-left: -12px;\n}\n.uni-px-6 {\n  padding-left: 12px;\n  padding-right: 12px;\n}\n.uni-px-n6 {\n  padding-left: -12px;\n  padding-right: -12px;\n}\n.uni-py-6 {\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.uni-py-n6 {\n  padding-top: -12px;\n  padding-bottom: -12px;\n}\n.uni-pa-6 {\n  padding: 12px;\n}\n.uni-pa-n6 {\n  padding: -12px;\n}\n.uni-pt-7 {\n  padding-top: 14px;\n}\n.uni-pt-n7 {\n  padding-top: -14px;\n}\n.uni-pr-7 {\n  padding-right: 14px;\n}\n.uni-pr-n7 {\n  padding-right: -14px;\n}\n.uni-pb-7 {\n  padding-bottom: 14px;\n}\n.uni-pb-n7 {\n  padding-bottom: -14px;\n}\n.uni-pl-7 {\n  padding-left: 14px;\n}\n.uni-pl-n7 {\n  padding-left: -14px;\n}\n.uni-px-7 {\n  padding-left: 14px;\n  padding-right: 14px;\n}\n.uni-px-n7 {\n  padding-left: -14px;\n  padding-right: -14px;\n}\n.uni-py-7 {\n  padding-top: 14px;\n  padding-bottom: 14px;\n}\n.uni-py-n7 {\n  padding-top: -14px;\n  padding-bottom: -14px;\n}\n.uni-pa-7 {\n  padding: 14px;\n}\n.uni-pa-n7 {\n  padding: -14px;\n}\n.uni-pt-8 {\n  padding-top: 16px;\n}\n.uni-pt-n8 {\n  padding-top: -16px;\n}\n.uni-pr-8 {\n  padding-right: 16px;\n}\n.uni-pr-n8 {\n  padding-right: -16px;\n}\n.uni-pb-8 {\n  padding-bottom: 16px;\n}\n.uni-pb-n8 {\n  padding-bottom: -16px;\n}\n.uni-pl-8 {\n  padding-left: 16px;\n}\n.uni-pl-n8 {\n  padding-left: -16px;\n}\n.uni-px-8 {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n.uni-px-n8 {\n  padding-left: -16px;\n  padding-right: -16px;\n}\n.uni-py-8 {\n  padding-top: 16px;\n  padding-bottom: 16px;\n}\n.uni-py-n8 {\n  padding-top: -16px;\n  padding-bottom: -16px;\n}\n.uni-pa-8 {\n  padding: 16px;\n}\n.uni-pa-n8 {\n  padding: -16px;\n}\n.uni-pt-9 {\n  padding-top: 18px;\n}\n.uni-pt-n9 {\n  padding-top: -18px;\n}\n.uni-pr-9 {\n  padding-right: 18px;\n}\n.uni-pr-n9 {\n  padding-right: -18px;\n}\n.uni-pb-9 {\n  padding-bottom: 18px;\n}\n.uni-pb-n9 {\n  padding-bottom: -18px;\n}\n.uni-pl-9 {\n  padding-left: 18px;\n}\n.uni-pl-n9 {\n  padding-left: -18px;\n}\n.uni-px-9 {\n  padding-left: 18px;\n  padding-right: 18px;\n}\n.uni-px-n9 {\n  padding-left: -18px;\n  padding-right: -18px;\n}\n.uni-py-9 {\n  padding-top: 18px;\n  padding-bottom: 18px;\n}\n.uni-py-n9 {\n  padding-top: -18px;\n  padding-bottom: -18px;\n}\n.uni-pa-9 {\n  padding: 18px;\n}\n.uni-pa-n9 {\n  padding: -18px;\n}\n.uni-pt-10 {\n  padding-top: 20px;\n}\n.uni-pt-n10 {\n  padding-top: -20px;\n}\n.uni-pr-10 {\n  padding-right: 20px;\n}\n.uni-pr-n10 {\n  padding-right: -20px;\n}\n.uni-pb-10 {\n  padding-bottom: 20px;\n}\n.uni-pb-n10 {\n  padding-bottom: -20px;\n}\n.uni-pl-10 {\n  padding-left: 20px;\n}\n.uni-pl-n10 {\n  padding-left: -20px;\n}\n.uni-px-10 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.uni-px-n10 {\n  padding-left: -20px;\n  padding-right: -20px;\n}\n.uni-py-10 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.uni-py-n10 {\n  padding-top: -20px;\n  padding-bottom: -20px;\n}\n.uni-pa-10 {\n  padding: 20px;\n}\n.uni-pa-n10 {\n  padding: -20px;\n}\n.uni-pt-11 {\n  padding-top: 22px;\n}\n.uni-pt-n11 {\n  padding-top: -22px;\n}\n.uni-pr-11 {\n  padding-right: 22px;\n}\n.uni-pr-n11 {\n  padding-right: -22px;\n}\n.uni-pb-11 {\n  padding-bottom: 22px;\n}\n.uni-pb-n11 {\n  padding-bottom: -22px;\n}\n.uni-pl-11 {\n  padding-left: 22px;\n}\n.uni-pl-n11 {\n  padding-left: -22px;\n}\n.uni-px-11 {\n  padding-left: 22px;\n  padding-right: 22px;\n}\n.uni-px-n11 {\n  padding-left: -22px;\n  padding-right: -22px;\n}\n.uni-py-11 {\n  padding-top: 22px;\n  padding-bottom: 22px;\n}\n.uni-py-n11 {\n  padding-top: -22px;\n  padding-bottom: -22px;\n}\n.uni-pa-11 {\n  padding: 22px;\n}\n.uni-pa-n11 {\n  padding: -22px;\n}\n.uni-pt-12 {\n  padding-top: 24px;\n}\n.uni-pt-n12 {\n  padding-top: -24px;\n}\n.uni-pr-12 {\n  padding-right: 24px;\n}\n.uni-pr-n12 {\n  padding-right: -24px;\n}\n.uni-pb-12 {\n  padding-bottom: 24px;\n}\n.uni-pb-n12 {\n  padding-bottom: -24px;\n}\n.uni-pl-12 {\n  padding-left: 24px;\n}\n.uni-pl-n12 {\n  padding-left: -24px;\n}\n.uni-px-12 {\n  padding-left: 24px;\n  padding-right: 24px;\n}\n.uni-px-n12 {\n  padding-left: -24px;\n  padding-right: -24px;\n}\n.uni-py-12 {\n  padding-top: 24px;\n  padding-bottom: 24px;\n}\n.uni-py-n12 {\n  padding-top: -24px;\n  padding-bottom: -24px;\n}\n.uni-pa-12 {\n  padding: 24px;\n}\n.uni-pa-n12 {\n  padding: -24px;\n}\n.uni-pt-13 {\n  padding-top: 26px;\n}\n.uni-pt-n13 {\n  padding-top: -26px;\n}\n.uni-pr-13 {\n  padding-right: 26px;\n}\n.uni-pr-n13 {\n  padding-right: -26px;\n}\n.uni-pb-13 {\n  padding-bottom: 26px;\n}\n.uni-pb-n13 {\n  padding-bottom: -26px;\n}\n.uni-pl-13 {\n  padding-left: 26px;\n}\n.uni-pl-n13 {\n  padding-left: -26px;\n}\n.uni-px-13 {\n  padding-left: 26px;\n  padding-right: 26px;\n}\n.uni-px-n13 {\n  padding-left: -26px;\n  padding-right: -26px;\n}\n.uni-py-13 {\n  padding-top: 26px;\n  padding-bottom: 26px;\n}\n.uni-py-n13 {\n  padding-top: -26px;\n  padding-bottom: -26px;\n}\n.uni-pa-13 {\n  padding: 26px;\n}\n.uni-pa-n13 {\n  padding: -26px;\n}\n.uni-pt-14 {\n  padding-top: 28px;\n}\n.uni-pt-n14 {\n  padding-top: -28px;\n}\n.uni-pr-14 {\n  padding-right: 28px;\n}\n.uni-pr-n14 {\n  padding-right: -28px;\n}\n.uni-pb-14 {\n  padding-bottom: 28px;\n}\n.uni-pb-n14 {\n  padding-bottom: -28px;\n}\n.uni-pl-14 {\n  padding-left: 28px;\n}\n.uni-pl-n14 {\n  padding-left: -28px;\n}\n.uni-px-14 {\n  padding-left: 28px;\n  padding-right: 28px;\n}\n.uni-px-n14 {\n  padding-left: -28px;\n  padding-right: -28px;\n}\n.uni-py-14 {\n  padding-top: 28px;\n  padding-bottom: 28px;\n}\n.uni-py-n14 {\n  padding-top: -28px;\n  padding-bottom: -28px;\n}\n.uni-pa-14 {\n  padding: 28px;\n}\n.uni-pa-n14 {\n  padding: -28px;\n}\n.uni-pt-15 {\n  padding-top: 30px;\n}\n.uni-pt-n15 {\n  padding-top: -30px;\n}\n.uni-pr-15 {\n  padding-right: 30px;\n}\n.uni-pr-n15 {\n  padding-right: -30px;\n}\n.uni-pb-15 {\n  padding-bottom: 30px;\n}\n.uni-pb-n15 {\n  padding-bottom: -30px;\n}\n.uni-pl-15 {\n  padding-left: 30px;\n}\n.uni-pl-n15 {\n  padding-left: -30px;\n}\n.uni-px-15 {\n  padding-left: 30px;\n  padding-right: 30px;\n}\n.uni-px-n15 {\n  padding-left: -30px;\n  padding-right: -30px;\n}\n.uni-py-15 {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n.uni-py-n15 {\n  padding-top: -30px;\n  padding-bottom: -30px;\n}\n.uni-pa-15 {\n  padding: 30px;\n}\n.uni-pa-n15 {\n  padding: -30px;\n}\n.uni-pt-16 {\n  padding-top: 32px;\n}\n.uni-pt-n16 {\n  padding-top: -32px;\n}\n.uni-pr-16 {\n  padding-right: 32px;\n}\n.uni-pr-n16 {\n  padding-right: -32px;\n}\n.uni-pb-16 {\n  padding-bottom: 32px;\n}\n.uni-pb-n16 {\n  padding-bottom: -32px;\n}\n.uni-pl-16 {\n  padding-left: 32px;\n}\n.uni-pl-n16 {\n  padding-left: -32px;\n}\n.uni-px-16 {\n  padding-left: 32px;\n  padding-right: 32px;\n}\n.uni-px-n16 {\n  padding-left: -32px;\n  padding-right: -32px;\n}\n.uni-py-16 {\n  padding-top: 32px;\n  padding-bottom: 32px;\n}\n.uni-py-n16 {\n  padding-top: -32px;\n  padding-bottom: -32px;\n}\n.uni-pa-16 {\n  padding: 32px;\n}\n.uni-pa-n16 {\n  padding: -32px;\n}\n.uni-radius-0 {\n  border-radius: 0;\n}\n.uni-radius {\n  border-radius: 5px;\n}\n.uni-radius-lg {\n  border-radius: 10px;\n}\n.uni-radius-xl {\n  border-radius: 30px;\n}\n.uni-radius-pill {\n  border-radius: 9999px;\n}\n.uni-radius-circle {\n  border-radius: 50%;\n}\n.uni-radius-t-0 {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.uni-radius-t {\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n}\n.uni-radius-t-lg {\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px;\n}\n.uni-radius-t-xl {\n  border-top-left-radius: 30px;\n  border-top-right-radius: 30px;\n}\n.uni-radius-t-pill {\n  border-top-left-radius: 9999px;\n  border-top-right-radius: 9999px;\n}\n.uni-radius-t-circle {\n  border-top-left-radius: 50%;\n  border-top-right-radius: 50%;\n}\n.uni-radius-r-0 {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.uni-radius-r {\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-r-lg {\n  border-top-right-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-r-xl {\n  border-top-right-radius: 30px;\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-r-pill {\n  border-top-right-radius: 9999px;\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-r-circle {\n  border-top-right-radius: 50%;\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-b-0 {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.uni-radius-b {\n  border-bottom-left-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-b-lg {\n  border-bottom-left-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-b-xl {\n  border-bottom-left-radius: 30px;\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-b-pill {\n  border-bottom-left-radius: 9999px;\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-b-circle {\n  border-bottom-left-radius: 50%;\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-l-0 {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.uni-radius-l {\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.uni-radius-l-lg {\n  border-top-left-radius: 10px;\n  border-bottom-left-radius: 10px;\n}\n.uni-radius-l-xl {\n  border-top-left-radius: 30px;\n  border-bottom-left-radius: 30px;\n}\n.uni-radius-l-pill {\n  border-top-left-radius: 9999px;\n  border-bottom-left-radius: 9999px;\n}\n.uni-radius-l-circle {\n  border-top-left-radius: 50%;\n  border-bottom-left-radius: 50%;\n}\n.uni-radius-tl-0 {\n  border-top-left-radius: 0;\n}\n.uni-radius-tl {\n  border-top-left-radius: 5px;\n}\n.uni-radius-tl-lg {\n  border-top-left-radius: 10px;\n}\n.uni-radius-tl-xl {\n  border-top-left-radius: 30px;\n}\n.uni-radius-tl-pill {\n  border-top-left-radius: 9999px;\n}\n.uni-radius-tl-circle {\n  border-top-left-radius: 50%;\n}\n.uni-radius-tr-0 {\n  border-top-right-radius: 0;\n}\n.uni-radius-tr {\n  border-top-right-radius: 5px;\n}\n.uni-radius-tr-lg {\n  border-top-right-radius: 10px;\n}\n.uni-radius-tr-xl {\n  border-top-right-radius: 30px;\n}\n.uni-radius-tr-pill {\n  border-top-right-radius: 9999px;\n}\n.uni-radius-tr-circle {\n  border-top-right-radius: 50%;\n}\n.uni-radius-br-0 {\n  border-bottom-right-radius: 0;\n}\n.uni-radius-br {\n  border-bottom-right-radius: 5px;\n}\n.uni-radius-br-lg {\n  border-bottom-right-radius: 10px;\n}\n.uni-radius-br-xl {\n  border-bottom-right-radius: 30px;\n}\n.uni-radius-br-pill {\n  border-bottom-right-radius: 9999px;\n}\n.uni-radius-br-circle {\n  border-bottom-right-radius: 50%;\n}\n.uni-radius-bl-0 {\n  border-bottom-left-radius: 0;\n}\n.uni-radius-bl {\n  border-bottom-left-radius: 5px;\n}\n.uni-radius-bl-lg {\n  border-bottom-left-radius: 10px;\n}\n.uni-radius-bl-xl {\n  border-bottom-left-radius: 30px;\n}\n.uni-radius-bl-pill {\n  border-bottom-left-radius: 9999px;\n}\n.uni-radius-bl-circle {\n  border-bottom-left-radius: 50%;\n}\n.uni-h1 {\n  font-size: 32px;\n  font-weight: 300;\n  line-height: 50px;\n}\n.uni-h2 {\n  font-size: 28px;\n  font-weight: 300;\n  line-height: 40px;\n}\n.uni-h3 {\n  font-size: 24px;\n  font-weight: 400;\n  line-height: 32px;\n}\n.uni-h4 {\n  font-size: 20px;\n  font-weight: 400;\n  line-height: 30px;\n}\n.uni-h5 {\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n}\n.uni-h6 {\n  font-size: 14px;\n  font-weight: 500;\n  line-height: 18px;\n}\n.uni-subtitle {\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n}\n.uni-body {\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 22px;\n}\n.uni-caption {\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 20px;\n}\n.uni-btn {\n  margin: 5px;\n  color: #393939;\n  border: 1px solid #ccc;\n  font-size: 16px;\n  font-weight: 200;\n  background-color: #F9F9F9;\n  overflow: visible;\n}\n.uni-btn::after {\n  border: none;\n}\n.uni-btn:not([type]), .uni-btn[type=default] {\n  color: #999;\n}\n.uni-btn:not([type])[loading], .uni-btn[type=default][loading] {\n  background: none;\n}\n.uni-btn:not([type])[loading]::before, .uni-btn[type=default][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn:not([type])[disabled], .uni-btn[type=default][disabled] {\n  color: #d6d6d6;\n}\n.uni-btn:not([type])[disabled], .uni-btn:not([type])[disabled][loading], .uni-btn:not([type])[disabled]:active, .uni-btn[type=default][disabled], .uni-btn[type=default][disabled][loading], .uni-btn[type=default][disabled]:active {\n  color: #d6d6d6;\n  background-color: #fafafa;\n  border-color: #f0f0f0;\n}\n.uni-btn:not([type])[plain], .uni-btn[type=default][plain] {\n  color: #999;\n  background: none;\n  border-color: #F0F0F0;\n}\n.uni-btn:not([type])[plain]:not([hover-class]):active, .uni-btn[type=default][plain]:not([hover-class]):active {\n  background: none;\n  color: #cccccc;\n  border-color: #e6e6e6;\n  outline: none;\n}\n.uni-btn:not([type])[plain][disabled], .uni-btn:not([type])[plain][disabled][loading], .uni-btn:not([type])[plain][disabled]:active, .uni-btn[type=default][plain][disabled], .uni-btn[type=default][plain][disabled][loading], .uni-btn[type=default][plain][disabled]:active {\n  background: none;\n  color: #d6d6d6;\n  border-color: #f0f0f0;\n}\n.uni-btn:not([hover-class]):active {\n  color: gray;\n}\n.uni-btn[size=mini] {\n  font-size: 16px;\n  font-weight: 200;\n  border-radius: 8px;\n}\n.uni-btn.uni-btn-small {\n  font-size: 14px;\n}\n.uni-btn.uni-btn-mini {\n  font-size: 12px;\n}\n.uni-btn.uni-btn-radius {\n  border-radius: 999px;\n}\n.uni-btn[type=primary] {\n  color: #fff;\n  background-color: #2979ff;\n  border-color: #266feb;\n}\n.uni-btn[type=primary]:not([hover-class]):active {\n  background: #256de6;\n  border-color: #2161cc;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=primary][loading] {\n  color: #fff;\n  background-color: #2979ff;\n  border-color: #266feb;\n}\n.uni-btn[type=primary][loading]:not([hover-class]):active {\n  background: #256de6;\n  border-color: #2161cc;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=primary][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=primary][disabled], .uni-btn[type=primary][disabled][loading], .uni-btn[type=primary][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #80adfa;\n  background-color: #94bcff;\n}\n.uni-btn[type=primary][plain] {\n  color: #2979ff;\n  background-color: #eaf2ff;\n  border-color: #bfd7ff;\n}\n.uni-btn[type=primary][plain]:not([hover-class]):active {\n  background: #d4e4ff;\n  color: #2979ff;\n  outline: none;\n  border-color: #94bcff;\n}\n.uni-btn[type=primary][plain][loading] {\n  color: #2979ff;\n  background-color: #eaf2ff;\n  border-color: #bfd7ff;\n}\n.uni-btn[type=primary][plain][loading]:not([hover-class]):active {\n  background: #d4e4ff;\n  color: #2979ff;\n  outline: none;\n  border-color: #94bcff;\n}\n.uni-btn[type=primary][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=primary][plain][disabled], .uni-btn[type=primary][plain][disabled]:active {\n  color: #7fafff;\n  background-color: #eaf2ff;\n  border-color: #d4e4ff;\n}\n.uni-btn[type=success] {\n  color: #fff;\n  background-color: #18bc37;\n  border-color: #16ad33;\n}\n.uni-btn[type=success]:not([hover-class]):active {\n  background: #16a932;\n  border-color: #13962c;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=success][loading] {\n  color: #fff;\n  background-color: #18bc37;\n  border-color: #16ad33;\n}\n.uni-btn[type=success][loading]:not([hover-class]):active {\n  background: #16a932;\n  border-color: #13962c;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=success][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=success][disabled], .uni-btn[type=success][disabled][loading], .uni-btn[type=success][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #89c794;\n  background-color: #8cde9b;\n}\n.uni-btn[type=success][plain] {\n  color: #18bc37;\n  background-color: #e8f8eb;\n  border-color: #baebc3;\n}\n.uni-btn[type=success][plain]:not([hover-class]):active {\n  background: #d1f2d7;\n  color: #18bc37;\n  outline: none;\n  border-color: #8cde9b;\n}\n.uni-btn[type=success][plain][loading] {\n  color: #18bc37;\n  background-color: #e8f8eb;\n  border-color: #baebc3;\n}\n.uni-btn[type=success][plain][loading]:not([hover-class]):active {\n  background: #d1f2d7;\n  color: #18bc37;\n  outline: none;\n  border-color: #8cde9b;\n}\n.uni-btn[type=success][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=success][plain][disabled], .uni-btn[type=success][plain][disabled]:active {\n  color: #74d787;\n  background-color: #e8f8eb;\n  border-color: #d1f2d7;\n}\n.uni-btn[type=error] {\n  color: #fff;\n  background-color: #e43d33;\n  border-color: #d2382f;\n}\n.uni-btn[type=error]:not([hover-class]):active {\n  background: #cd372e;\n  border-color: #b63129;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=error][loading] {\n  color: #fff;\n  background-color: #e43d33;\n  border-color: #d2382f;\n}\n.uni-btn[type=error][loading]:not([hover-class]):active {\n  background: #cd372e;\n  border-color: #b63129;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=error][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=error][disabled], .uni-btn[type=error][disabled][loading], .uni-btn[type=error][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #e4928d;\n  background-color: #f29e99;\n}\n.uni-btn[type=error][plain] {\n  color: #e43d33;\n  background-color: #fceceb;\n  border-color: #f7c5c2;\n}\n.uni-btn[type=error][plain]:not([hover-class]):active {\n  background: #fad8d6;\n  color: #e43d33;\n  outline: none;\n  border-color: #f29e99;\n}\n.uni-btn[type=error][plain][loading] {\n  color: #e43d33;\n  background-color: #fceceb;\n  border-color: #f7c5c2;\n}\n.uni-btn[type=error][plain][loading]:not([hover-class]):active {\n  background: #fad8d6;\n  color: #e43d33;\n  outline: none;\n  border-color: #f29e99;\n}\n.uni-btn[type=error][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=error][plain][disabled], .uni-btn[type=error][plain][disabled]:active {\n  color: #ef8b85;\n  background-color: #fceceb;\n  border-color: #fad8d6;\n}\n.uni-btn[type=warning] {\n  color: #fff;\n  background-color: #f3a73f;\n  border-color: #e09a3a;\n}\n.uni-btn[type=warning]:not([hover-class]):active {\n  background: #db9639;\n  border-color: #c28632;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=warning][loading] {\n  color: #fff;\n  background-color: #f3a73f;\n  border-color: #e09a3a;\n}\n.uni-btn[type=warning][loading]:not([hover-class]):active {\n  background: #db9639;\n  border-color: #c28632;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=warning][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=warning][disabled], .uni-btn[type=warning][disabled][loading], .uni-btn[type=warning][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #f8c887;\n  background-color: #f9d39f;\n}\n.uni-btn[type=warning][plain] {\n  color: #f3a73f;\n  background-color: #fef6ec;\n  border-color: #fbe5c5;\n}\n.uni-btn[type=warning][plain]:not([hover-class]):active {\n  background: #fdedd9;\n  color: #f3a73f;\n  outline: none;\n  border-color: #f9d39f;\n}\n.uni-btn[type=warning][plain][loading] {\n  color: #f3a73f;\n  background-color: #fef6ec;\n  border-color: #fbe5c5;\n}\n.uni-btn[type=warning][plain][loading]:not([hover-class]):active {\n  background: #fdedd9;\n  color: #f3a73f;\n  outline: none;\n  border-color: #f9d39f;\n}\n.uni-btn[type=warning][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=warning][plain][disabled], .uni-btn[type=warning][plain][disabled]:active {\n  color: #f8ca8c;\n  background-color: #fef6ec;\n  border-color: #fdedd9;\n}\n.uni-btn[type=info] {\n  color: #fff;\n  background-color: #8f939c;\n  border-color: #848790;\n}\n.uni-btn[type=info]:not([hover-class]):active {\n  background: #81848c;\n  border-color: #72767d;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=info][loading] {\n  color: #fff;\n  background-color: #8f939c;\n  border-color: #848790;\n}\n.uni-btn[type=info][loading]:not([hover-class]):active {\n  background: #81848c;\n  border-color: #72767d;\n  color: #fff;\n  outline: none;\n}\n.uni-btn[type=info][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=info][disabled], .uni-btn[type=info][disabled][loading], .uni-btn[type=info][disabled]:not([hover-class]):active {\n  color: #fff;\n  border-color: #babcc1;\n  background-color: #c7c9ce;\n}\n.uni-btn[type=info][plain] {\n  color: #8f939c;\n  background-color: #f4f4f5;\n  border-color: #dddfe1;\n}\n.uni-btn[type=info][plain]:not([hover-class]):active {\n  background: #e9e9eb;\n  color: #8f939c;\n  outline: none;\n  border-color: #c7c9ce;\n}\n.uni-btn[type=info][plain][loading] {\n  color: #8f939c;\n  background-color: #f4f4f5;\n  border-color: #dddfe1;\n}\n.uni-btn[type=info][plain][loading]:not([hover-class]):active {\n  background: #e9e9eb;\n  color: #8f939c;\n  outline: none;\n  border-color: #c7c9ce;\n}\n.uni-btn[type=info][plain][loading]::before {\n  margin-right: 5px;\n}\n.uni-btn[type=info][plain][disabled], .uni-btn[type=info][plain][disabled]:active {\n  color: #bcbec4;\n  background-color: #f4f4f5;\n  border-color: #e9e9eb;\n}\nbody {\n  background-color: #f5f5f5;\n}\n.example-info {\n  font-size: 14px;\n  color: #333;\n  padding: 10px;\n}\n.headerBackgroundColor {\n  padding: 70rpx 0 40rpx 0;\n  background: linear-gradient(90deg, #ac3cf6, #7d6cf9, #3ca5f6, #85c7fa);\n  position: fixed !important;\n  top: 0px !important;\n  z-index: 2;\n}\n.body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -11,7 +11,7 @@
 			</view>		
 		</view>
 		
-		<view class="body">
+		<view class="body" v-if="loading">
 			<view v-show="changeTaskShow">
 				<!--任务信息-->
 				<view class="detail">
@@ -131,7 +131,7 @@
 			<button v-show="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">取消查看</button>
 			<button v-show="changeTaskShow" class="detail-button" @click="changeTask">确认修改</button>
 			<button v-show="changeTaskShow" class="detail-button" @click="()=>{changeTaskShow=false;taskDetail=true}">取消修改</button>
-			<button v-show="changeTaskShow" class="detail-button" @click="deleteTask">删除任务</button>
+			<button v-show="changeTaskStatus" class="detail-button" @click="deleteTask">删除任务</button>
 			
 			<view v-if="confirmShow">
 				<button class="detail-button" @click="agreeTask">确认任务完成</button>
@@ -149,6 +149,9 @@
 			    format: true
 			})
 			return {
+				// 页面加载显示
+				loading:false,
+				
 				missionId:null,
 				mission:{
 					taskID:null,
@@ -191,7 +194,6 @@
 		onLoad(options) {
 			this.missionId = options.id
 			this.$api.getTaskData(this.missionId).then((res)=>{
-				console.log(res);
 				switch(res.data.taskLable){
 					case 1:this.mission.taskLable = '其他';break;
 					case 2:this.mission.taskLable = '跑腿';break;
@@ -210,7 +212,7 @@
 				this.mission.taskAddress = res.data.taskAddress
 				this.mission.taskBeginTime = res.data.taskBeginTime
 				this.mission.taskEndTime = res.data.taskEndTime
-				if(res.data.taskStatusRemark !== null){
+				if(res.data.taskStatusRemark !== null && res.data.taskStatusRemark !== ''){
 					this.mission.taskStatusRemark = res.data.taskStatusRemark
 					this.remarkShow = true
 				}
@@ -222,7 +224,7 @@
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';this.taskDetail=true;break;
 					case 2:this.mission.taskStatus = '未完成';this.taskDetail=true;break;
-					case 3:this.mission.taskStatus = '已接取';this.changeTaskStatus=false;break;
+					case 3:this.mission.taskStatus = '已接取';this.taskDetail=true;this.changeTaskStatus=false;break;
 					case 4:this.mission.taskStatus = '已处理';this.changeTaskStatus=false;this.confirmShow=true;break;
 					case 5:this.mission.taskStatus = '已完成';this.taskDetail=true;this.changeTaskStatus=false;break;
 					case 6:this.mission.taskStatus = '已完结';this.changeTaskStatus=false;break;
@@ -244,6 +246,8 @@
 				if(res.data.taskDoingText == '' && res.data.taskDoingPhoto == ''){
 					this.taskDoingShow = 0
 				}
+				
+				this.loading = true
 			})
 		},
 		methods: {
@@ -525,7 +529,7 @@
 	}
 	
 	.body {
-		margin: 170rpx 0 50rpx 0;
+		margin: 210rpx 0 50rpx 0;
 		padding: 50rpx 0 50rpx 0;
 		border-radius: 10px;
 		width: 700rpx;
@@ -579,7 +583,7 @@
 		margin: 50rpx 10rpx 0 10rpx ;
 		width: 500rpx;
 		padding: 30rpx 30rpx 30rpx 30rpx;
-		background: rgba(255, 141, 26, 0.6);
+		background-color: #80aaff;
 		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
 		color: rgba(255, 255, 255, 1);
 		text-align: center;

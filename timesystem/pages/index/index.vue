@@ -246,7 +246,7 @@
 		flex-direction: column;
 		justify-content: center;
 		background-color: white;
-		margin: 210rpx 25rpx 20rpx 25rpx;
+		margin: 240rpx 25rpx 20rpx 25rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}

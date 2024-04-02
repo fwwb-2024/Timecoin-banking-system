@@ -147,7 +147,7 @@
 	}
 	
 	.body {
-		margin-top: 170rpx;
+		margin-top: 210rpx;
 		border-radius: 10px;
 		width: 700rpx;
 		background-color: white;

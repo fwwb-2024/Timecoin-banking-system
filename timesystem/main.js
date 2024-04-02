@@ -5,6 +5,7 @@ import App from './App'
 
 import api from '@/api/index.js'
 
+
 //设置api为全局属性
 Vue.prototype.$api = api
 Vue.config.productionTip = false
@@ -15,6 +16,7 @@ const app = new Vue({
     ...App
 })
 app.$mount()
+
 // #endif
 
 // #ifdef VUE3
