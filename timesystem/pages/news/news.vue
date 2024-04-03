@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 头像图片 -->
@@ -9,6 +10,39 @@
 			<!-- 用户名 -->
 			<view class="head-text" @click="navTo('/pages/accountData')">
 				<text>{{username}}</text>
+			</view>
+		</view>
+		
+		<!-- 分类选择 -->
+		<view class="lable">
+			<view class="lable-first">
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=2')">
+					<image src="/static/index/index1.png"></image>
+					<text>跑腿</text>
+				</view>
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=3')">
+					<image src="/static/index/index2.png"></image>
+					<text>带货</text>
+				</view>
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=4')">
+					<image src="/static/index/index3.png"></image>
+					<text>打理</text>
+				</view>
+			</view>
+			
+			<view class="lable-second">
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=5')">
+					<image src="/static/index/index4.png"></image>
+					<text>陪伴</text>
+				</view>
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=6')">
+					<image src="/static/index/index5.png"></image>
+					<text>线上</text>
+				</view>
+				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=1')">
+					<image src="/static/index/index6.png"></image>
+					<text>其他</text>
+				</view>
 			</view>
 		</view>
 		
@@ -33,16 +67,18 @@
 	export default {
 		data(){
 			return {
-				headerImage:'',
-				username:'',
+				headerImage:'/static/headpic.jpg',
+				username:'登录/注册',
 				
 				// 懒加载数据
 				pages:0,
 				
 				newlist:[],
+				size:""
 			}
 		},
 		created() {
+			this.size = uni.getStorageSync("size")
 			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
 				this.headerImage = res.data.userPhoto
 				this.username = res.data.userName
@@ -56,6 +92,7 @@
 			this.reload()
 		},
 		methods:{
+			// 页面跳转
 			navTo(url){
 				uni.navigateTo({
 					url,
@@ -118,7 +155,7 @@
 		order:1;
 		
 		display: flex;
-		flex-basis: 200rpx;
+		flex-basis: 250rpx;
 		height: 60rpx;
 	}
 	.head-text text {
@@ -126,8 +163,49 @@
 		font-size: 35rpx;
 		color: white;
 	}
+	.lable {
+		width: 700rpx;
+		height: 300rpx;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: white;
+		margin: 240rpx 25rpx 20rpx 25rpx;
+		border-radius: 10px;
+		box-shadow: 2px 4px 20px rgb(200, 200, 200);
+	}
+	.lable-first {
+		width: 700rpx;
+		height: 150rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.lable-second {
+		width: 700rpx;
+		height: 150rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.lable-image {
+		flex-grow: 1;
+		width: 70rpx;
+		height: 150rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.lable-image image{
+		width: 70rpx;
+		height: 70rpx;
+	}
 	.news-list {
-		margin-top: 240rpx;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	.news-list-element {
 		width: 650rpx;

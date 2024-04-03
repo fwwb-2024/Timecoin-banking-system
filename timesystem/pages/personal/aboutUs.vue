@@ -42,7 +42,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 175rpx;
+		margin-right: 140rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -53,7 +53,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 160rpx;
+		flex-basis: 250rpx;
 		font-size: 38rpx;
 		color: white;
 	}

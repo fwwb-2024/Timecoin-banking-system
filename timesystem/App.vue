@@ -1,6 +1,10 @@
 <script>
 	export default {
 		onLaunch: function() {
+			uni.setStorageSync("size","3.5px")
+			if(!(uni.getStorageSync("size"))){
+				uni.setStorageSync("size","3.5px")
+			}
 			try {
 				const value = uni.getStorageSync('position');
 				if (!value) {

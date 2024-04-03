@@ -1,6 +1,6 @@
 <template>
 	<view class="body">
-		
+        <page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 头像图片 -->
@@ -21,39 +21,6 @@
 			</view>
 		</view>
 		
-		<!-- 分类选择 -->
-		<view class="lable">
-			<view class="lable-first">
-				<view class="lable-image" @click="changeLable(2)">
-					<image src="/static/index/index1.png"></image>
-					<text>跑腿</text>
-				</view>
-				<view class="lable-image" @click="changeLable(3)">
-					<image src="/static/index/index2.png"></image>
-					<text>带货</text>
-				</view>
-				<view class="lable-image" @click="changeLable(4)">
-					<image src="/static/index/index3.png"></image>
-					<text>打理</text>
-				</view>
-			</view>
-			
-			<view class="lable-second">
-				<view class="lable-image" @click="changeLable(5)">
-					<image src="/static/index/index4.png"></image>
-					<text>陪伴</text>
-				</view>
-				<view class="lable-image" @click="changeLable(6)">
-					<image src="/static/index/index5.png"></image>
-					<text>线上</text>
-				</view>
-				<view class="lable-image" @click="changeLable(1)">
-					<image src="/static/index/index6.png"></image>
-					<text>其他</text>
-				</view>
-			</view>
-		</view>
-		
 		<!-- 选择栏 -->
 		<view class="header-select">
 			<view class="header-select-button">
@@ -61,14 +28,9 @@
 				<view v-if="select==9"></view>
 			</view>
 			<view class="header-select-button">
-				<text @click="changeSort(13)">最热</text>
-				<view v-if="select==13"></view>
-			</view>
-			<view class="header-select-button">
 				<text @click="changeSort(11)">悬赏最高</text>
 				<view v-if="select==11"></view>
 			</view>
-			
 		</view>
 		
 		<!--任务列表-->
@@ -87,8 +49,6 @@
 	export default {
 		data() {
 			return {
-				// 任务类别
-				lable:0,
 				// 头像图片
 				headerImage:'/static/headpic.jpg',
 				// 用户名
@@ -98,11 +58,15 @@
 				// 加载的任务页数
 				pages:0,
 				// 显示选中
-				select:9
+				select:9,
+				
+				// 显示字体大小
+				size:""
 			}
 		},
 		// 创建页面时的事件
 		created:function(){
+			this.size = uni.getStorageSync("size")
 			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
 				this.headerImage = res.data.userPhoto
 				this.username = res.data.userName
@@ -138,9 +102,6 @@
 				this.$api.getTasklist(this.pages,this.select).then((res)=>{
 					const length = res.data.length
 					for(let i=0;i<length;i++) {
-						if(this.lable != 0 && res.data[i].taskLable != this.lable){
-							continue
-						}
 						this.missionDataList.push({
 							taskLable: res.data[i].taskLable,
 							taskID: res.data[i].taskID,
@@ -157,13 +118,6 @@
 						})
 					}
 				})
-			},
-			// 切换类别
-			changeLable(lable){
-				this.lable=lable
-				this.missionDataList=[]
-				this.pages=0
-				this.reload()
 			},
 			// 切换排序方式
 			changeSort(select){
@@ -202,7 +156,7 @@
 		order:1;
 		
 		display: flex;
-		flex-basis: 200rpx;
+		flex-basis: 250rpx;
 		height: 60rpx;
 	}
 	.head-text text {
@@ -239,50 +193,13 @@
 		border-radius: 50px;
 		
 	}
-	.lable {
-		width: 700rpx;
-		height: 300rpx;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		background-color: white;
-		margin: 240rpx 25rpx 20rpx 25rpx;
-		border-radius: 10px;
-		box-shadow: 2px 4px 20px rgb(200, 200, 200);
-	}
-	.lable-first {
-		width: 700rpx;
-		height: 150rpx;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.lable-second {
-		width: 700rpx;
-		height: 150rpx;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	.lable-image {
-		flex-grow: 1;
-		width: 70rpx;
-		height: 150rpx;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-	.lable-image image{
-		width: 70rpx;
-		height: 70rpx;
-	}
 	.header-select {
 		display: flex;
 		flex-direction: row;
 		height: 120rpx;
 		width: 700rpx;
 		background-color: white;
+		margin-top: 240rpx;
 		margin-bottom: 20rpx;
 		align-items: center;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);

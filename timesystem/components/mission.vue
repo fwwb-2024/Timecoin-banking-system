@@ -114,7 +114,7 @@
 	}
 	.mission-status {
 		width: 100%;
-		margin-left: 85%;
+		margin-left: 75%;
 		color: orange;
 		font-size: 25rpx;
 		font-weight: bold;

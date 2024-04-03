@@ -82,7 +82,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 155rpx;
+		margin-right: 130rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -93,7 +93,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 200rpx;
+		flex-basis: 270rpx;
 		font-size: 38rpx;
 		color: white;
 	}
@@ -124,6 +124,7 @@
 		margin-top: 30rpx;
 		font-size: 35rpx;
 		color: orange;
+		margin-left: 30rpx;
 	}
 	.timeCoin-bill {
 		order: 1;
