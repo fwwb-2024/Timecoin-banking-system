@@ -55,7 +55,7 @@
 			<!--完成任务按钮-->
 			<button v-if="startMissionShow==2" class="detail-button" @click="completeMission">完成任务</button>
 			<!--取消任务按钮-->
-			<button class="detail-button" @click="canelMission">取消任务</button>
+			<button v-if="cancelMissionShow" class="detail-button" @click="canelMission">取消任务</button>
 			
 			<!-- 开始任务弹出层 -->
 			<uni-popup ref="popup" type="bottom" border-radius="15px 15px 0 0" @maskClick="popClose">
@@ -71,8 +71,8 @@
 					</view>
 					
 					<view style="display: flex;flex-direction: row;justify-content: center;">
-						<button @click="cancel" style="margin:20rpx 100rpx 0 0;background-color: wheat;">取消开始</button>
-						<button @click="start" style="margin:20rpx 0 0 0;background-color: orange;">确认开始</button>
+						<button @click="cancel" style="margin:20rpx 100rpx 0 0;background-color: wheat;">取消</button>
+						<button @click="start" style="margin:20rpx 0 0 0;background-color: orange;">确认</button>
 					</view>
 				</view>
 			</uni-popup>
@@ -108,6 +108,8 @@
 				taskPhotoShow:false,
 				// 显示开始任务
 				startMissionShow:0,
+				// 显示取消任务
+				cancelMissionShow:false
 			}
 		},
 		onLoad(options) {
@@ -140,11 +142,11 @@
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核';break;
 					case 2:this.mission.taskStatus = '未完成';break;
-					case 3:this.mission.taskStatus = '已接取';this.startMissionShow=1;break;
-					case 4:this.mission.taskStatus = '已处理';break;
-					case 5:this.mission.taskStatus = '已完成';break;
+					case 3:this.mission.taskStatus = '已接取';this.cancelMissionShow=true;this.startMissionShow=1;break;
+					case 4:this.mission.taskStatus = '已处理(请等待发布者同意)';break;
+					case 5:this.mission.taskStatus = '已完成(请等待管理员审核)';break;
 					case 6:this.mission.taskStatus = '已完结';break;
-					case 7:this.mission.taskStatus = '进行中';this.startMissionShow=2;break;
+					case 7:this.mission.taskStatus = '进行中';this.cancelMissionShow=true;this.startMissionShow=2;break;
 				}
 			})
 		},
@@ -235,7 +237,7 @@
 				this.$api.completeTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
 					if(res.data == '完成成功'){
 						uni.showToast({
-							title:'完成任务成功',
+							title:'任务已完成',
 							duration:1000
 						})
 						setTimeout(function() {
@@ -244,7 +246,7 @@
 					}
 					else{
 						uni.showToast({
-							title:'完成任务失败',
+							title:'任务未完成',
 							icon:'error',
 							duration:1000
 						})
@@ -253,22 +255,40 @@
 			},
 			// 取消任务
 			canelMission(){
-				this.$api.canelTask(this.missionId,uni.getStorageSync('userID')).then((res)=>{
-					if(res.data == '取消成功'){
-					uni.showToast({
-							title:'取消成功',
-							duration:1000
-						})
-						setTimeout(function() {
-							uni.reLaunch({url: '/pages/mymission/myMission'});
-						},1000)
-					}
-					else{
-						uni.showToast({
-							title:'取消失败',
-							icon:'error',
-							duration:1000
-						})
+				let that = this
+				uni.showModal({
+					title: '提示',
+					// 提示文字
+					content: '确认取消该任务吗？',
+					// 取消按钮的文字自定义
+					cancelText: "取消",
+					// 确认按钮的文字自定义
+					confirmText: "确认",
+					//确认字体的颜色
+					confirmColor:'red',
+					//取消字体的颜色
+					cancelColor:'#000000',
+					success: function(res) {
+						if (res.confirm) {
+							that.$api.canelTask(that.missionId,uni.getStorageSync('userID')).then((res)=>{
+								if(res.data == '取消成功'){
+								uni.showToast({
+										title:'取消成功',
+										duration:1000
+									})
+									setTimeout(function() {
+										uni.reLaunch({url: '/pages/mymission/myMission'});
+									},1000)
+								}
+								else{
+									uni.showToast({
+										title:'取消失败',
+										icon:'error',
+										duration:1000
+									})
+								}
+							})
+						}
 					}
 				})
 			}

@@ -68,16 +68,16 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 160rpx;
+		flex-basis: 200rpx;
 		font-size: 38rpx;
 		color: white;
 	}
 	.detail {
-		width: 650rpx;
+		width: 600rpx;
 		border-radius: 10px;
 		background-color: white;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		margin-top: 220rpx;
-		padding: 10rpx 20rpx 20rpx 20rpx;
+		padding: 50rpx 50rpx 50rpx 50rpx;
 	}
 </style>

@@ -183,7 +183,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 160rpx;
+		flex-basis: 200rpx;
 		font-size: 38rpx;
 		color: white;
 	}

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -159,8 +160,14 @@
 					userPassword:'',
 					userComfirmPassword:'',
 					userPhoneNumber:null,
-				}
+				},
+				
+				// 显示字体大小
+				size:""
 			}
+		},
+		onLoad() {
+			this.size = uni.getStorageSync("size")
 		},
 		methods: {
 			//返回上一级页面

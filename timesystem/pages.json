@@ -9,7 +9,7 @@
 				  "titleNView": false, //禁用原生导航栏 
 				  "pullToRefresh":{
 				  	"color":"#e6e6e6",
-					"offset": "100px",
+					"offset": "295px",
 					"height":"50px",
 					"range": "100px"
 				  }
@@ -23,6 +23,21 @@
 				"app-plus": {
 				  "titleNView": false //禁用原生导航栏 
 				}
+		}},{
+		//分类任务列表注册
+		"path": "pages/news/missionList",
+		"style": {
+				"navigationBarTitleText": "分类任务列表",
+				"app-plus": {
+				  "titleNView": false, //禁用原生导航栏 
+				  "pullToRefresh":{
+				  	"color":"#e6e6e6",
+					"offset": "295px",
+					"height":"50px",
+					"range": "100px"
+				  }
+				},
+				"enablePullDownRefresh": true
 		}},{
 		//主页注册
 		"path": "pages/index/index",

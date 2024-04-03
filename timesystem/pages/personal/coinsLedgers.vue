@@ -104,7 +104,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 175rpx;
+		margin-right: 120rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -115,7 +115,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 200rpx;
+		flex-basis: 280rpx;
 		font-size: 38rpx;
 		color: white;
 	}

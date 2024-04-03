@@ -11,6 +11,7 @@
 			</view>		
 		</view>
 		
+		// 修改任务页面
 		<view class="body" v-if="loading">
 			<view v-show="changeTaskShow">
 				<!--任务信息-->
@@ -21,17 +22,17 @@
 				
 				<view class="detail">
 					<text class="detail-title">标题：</text>
-					<input class="detail-content" v-model="mission.taskName"></input>
+					<input class="detail-content" style="width: 600rpx;" v-model="mission.taskName"></input>
 				</view>
 				
 				<view class="detail">
-					<text class="detail-title">简介：</text>
-					<input class="detail-content" v-model="mission.taskBrief"></input>
+					<text class="detail-title">简介(不超过50字)：</text>
+					<textarea class="detail-content" maxlength="50" style="height: 140rpx;" v-model="mission.taskBrief"></textarea>
 				</view>
 				
 				<view class="detail">
-					<text class="detail-title">详情：</text>
-					<textarea class="detail-content" v-model="mission.taskDetail"></textarea>
+					<text class="detail-title">详情(不超过500字)：</text>
+					<textarea class="detail-content" @input="inputDetail" maxlength="500" :style="{'height':detailHeight}" v-model="mission.taskDetail"></textarea>
 				</view>
 				
 				<!-- 图片附件 -->
@@ -48,8 +49,8 @@
 					</view>
 				</view>
 				
-				<view class="detail">
-					<text class="detail-title">悬赏：</text>
+				<view class="detail" style="flex-wrap: nowrap;padding-bottom: 0;">
+					<text class="detail-title" style="width: auto;">悬赏：</text>
 					<input type="number" v-model="mission.taskTimeCoinBounty"></input>
 				</view>
 				
@@ -72,8 +73,8 @@
 				</view>
 			</view>
 			
+			<!--任务详情页面-->
 			<view v-show="taskDetail">
-				<!--任务信息-->
 				<view class="detail">
 					<text class="detail-title">类别：</text>
 					<text class="detail-content">{{mission.taskLable}}</text>
@@ -84,11 +85,11 @@
 				</view>
 				<view class="detail">
 					<text class="detail-title">简介：</text>
-					<text class="detail-content">{{mission.taskBrief}}</text>
+					<text class="detail-content" style="height: 140rpx;">{{mission.taskBrief}}</text>
 				</view>
 				<view class="detail">
 					<text class="detail-title">详情：</text>
-					<text class="detail-content">{{mission.taskDetail}}</text>
+					<text class="detail-content" :style="{'height':detailHeight}">{{mission.taskDetail}}</text>
 				</view>
 				<view class="detail-image" v-if="taskPhotoShow">
 					<text class="detail-image-title">图片：</text>
@@ -96,8 +97,8 @@
 						<image :src="item"></image>
 					</view>
 				</view>
-				<view class="detail">
-					<text class="detail-title">悬赏：</text>
+				<view class="detail" style="flex-wrap: nowrap;padding-bottom: 0;">
+					<text class="detail-title" style="width: auto;">悬赏：</text>
 					<text class="detail-content">{{mission.taskTimeCoinBounty}}</text>
 				</view>
 				<view class="detail" v-show="statusShow">
@@ -127,14 +128,19 @@
 			
 			<!-- 切换查看修改按钮 -->
 			<button v-if="(!changeTaskShow) && changeTaskStatus" class="detail-button" @click="()=>{changeTaskShow = true;taskDetail=false}">修改任务</button>
-			<button v-if="(!changeTaskShow) && (!taskDetail)" class="detail-button" @click="()=>{changeTaskShow = false;taskDetail = true}">查看任务</button>
-			<button v-show="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">取消查看</button>
-			<button v-show="changeTaskShow" class="detail-button" @click="changeTask">确认修改</button>
-			<button v-show="changeTaskShow" class="detail-button" @click="()=>{changeTaskShow=false;taskDetail=true}">取消修改</button>
-			<button v-show="changeTaskStatus" class="detail-button" @click="deleteTask">删除任务</button>
+			<button v-if="(!changeTaskShow) && (!taskDetail)" class="detail-button" @click="()=>{changeTaskShow = false;taskDetail = true}">查看详情</button>
+			<button v-if="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">隐藏详情</button>
+			<!-- 修改任务按钮 -->
+			<view v-if="changeTaskShow" style="display: flex;flex-direction: row;justify-content: center;width: 80%;">
+				<button style="flex-grow: 1;margin-right: 50rpx;" @click="()=>{changeTaskShow=false;taskDetail=true}">取消</button>
+				<button style="flex-grow: 1;background-color: #ff6666;color: white;" @click="changeTask">确认</button>
+			</view>
+			
+			<button v-if="changeTaskStatus && (!changeTaskShow)" class="detail-button" @click="deleteTask">删除任务</button>
 			
 			<view v-if="confirmShow">
 				<button class="detail-button" @click="agreeTask">确认任务完成</button>
+				<button class="detail-button" @click="">申请官方介入</button>
 				<button class="detail-button" @click="refuseTask">拒绝任务完成</button>
 			</view>
 		</view>
@@ -189,6 +195,8 @@
 				taskDetail:false,
 				// 若未接取任务，则显示修改任务按钮
 				changeTaskStatus:true,
+				
+				detailHeight:'380rpx',
 			}
 		},
 		onLoad(options) {
@@ -207,6 +215,9 @@
 				this.mission.taskName = res.data.taskName
 				this.mission.taskBrief = res.data.taskBrief
 				this.mission.taskDetail = res.data.taskDetail
+				if(res.data.taskDetail.length > 140){
+					this.detailHeight = 'auto'
+				}
 				this.loading = true
 				this.mission.taskTimeCoinBounty = res.data.taskTimeCoinBounty
 				this.mission.taskAddress = res.data.taskAddress
@@ -222,13 +233,13 @@
 				}
 				
 				switch(res.data.taskStatus){
-					case 1:this.mission.taskStatus = '未审核';this.taskDetail=true;break;
-					case 2:this.mission.taskStatus = '未完成';this.taskDetail=true;break;
+					case 1:this.mission.taskStatus = '未审核(请等待管理员审核)';this.taskDetail=true;break;
+					case 2:this.mission.taskStatus = '未完成(请等待志愿者接取)';this.taskDetail=true;break;
 					case 3:this.mission.taskStatus = '已接取';this.taskDetail=true;this.changeTaskStatus=false;break;
 					case 4:this.mission.taskStatus = '已处理';this.changeTaskStatus=false;this.confirmShow=true;break;
-					case 5:this.mission.taskStatus = '已完成';this.taskDetail=true;this.changeTaskStatus=false;break;
+					case 5:this.mission.taskStatus = '已完成(请等待管理员审核)';this.taskDetail=true;this.changeTaskStatus=false;break;
 					case 6:this.mission.taskStatus = '已完结';this.changeTaskStatus=false;break;
-					case 7:this.mission.taskStatus = '进行中';this.changeTaskStatus=false;this.taskDoingShow=1;break;
+					case 7:this.mission.taskStatus = '进行中(请等待志愿者完成任务)';this.changeTaskStatus=false;this.taskDoingShow=1;break;
 					default:break;
 				}
 				
@@ -251,6 +262,12 @@
 			})
 		},
 		methods: {
+			// 输入详情
+			inputDetail(value) {
+				if(value.detail.cursor >= 140){
+					this.detailHeight = 'auto'
+				}
+			},
 			//返回上一级页面
 			back() {
 				uni.navigateBack({
@@ -359,34 +376,52 @@
 			},
 			// 删除任务
 			deleteTask(){
-				if(this.mission.taskStatus == '已接取' || this.mission.taskStatus == '已处理' || this.mission.taskStatus == '已完成'){
-					uni.showToast({
-						title:'不能删除已被接取的任务',
-						icon:'error',
-						duration:1000
-					})
-				}
-				else{
-					this.$api.deleteTask(this.mission.taskID,uni.getStorageSync('userID'),this.mission.taskTimeCoinBounty).then((res)=>{
-						if(res.data == '删除成功'){
-							uni.showToast({
-								title:'删除成功',
-								icon:'success',
-								duration:1000
-							})
-							setTimeout(function() {
-								uni.reLaunch({url: '/pages/mymission/myMission'});
-							},1000)
+				let that = this
+				uni.showModal({
+						title: '提示',
+						// 提示文字
+						content: '确认删除该任务吗？',
+						// 取消按钮的文字自定义
+						cancelText: "取消",
+						// 确认按钮的文字自定义
+						confirmText: "删除",
+						//删除字体的颜色
+						confirmColor:'red',
+						//取消字体的颜色
+						cancelColor:'#000000',
+						success: function(res) {
+						if (res.confirm) {
+							if(that.mission.taskStatus == '已接取' || that.mission.taskStatus == '已处理' || that.mission.taskStatus == '已完成'){
+								uni.showToast({
+									title:'不能删除已被接取的任务',
+									icon:'error',
+									duration:1000
+								})
+							}
+							else{
+								that.$api.deleteTask(that.mission.taskID,uni.getStorageSync('userID'),that.mission.taskTimeCoinBounty).then((res)=>{
+									if(res.data == '删除成功'){
+										uni.showToast({
+											title:'删除成功',
+											icon:'success',
+											duration:1000
+										})
+										setTimeout(function() {
+											uni.reLaunch({url: '/pages/mymission/myMission'});
+										},1000)
+									}
+									else{
+										uni.showToast({
+											title:'删除失败',
+											icon:'error',
+											duration:1000
+										})
+									}
+								})
+							}
 						}
-						else{
-							uni.showToast({
-								title:'删除失败',
-								icon:'error',
-								duration:1000
-							})
-						}
-					})
-				}
+					},
+				})
 			},
 			// 确认同意任务
 			agreeTask(){
@@ -418,26 +453,28 @@
 				    title: '输入不同意原因',
 					editable: true,
 				    success: function (response) {
-						let tempRamark = '发布者不同意完成，原因为：'+ response.content
-						that.$api.refuseTask(that.mission.taskID,tempRamark).then((res)=>{
-							if(res.data == '批改成功'){
-								uni.showToast({
-									title:'拒绝成功',
-									icon:'success',
-									duration:1000
-								})
-								setTimeout(function() {
-									uni.reLaunch({url: '/pages/mymission/myMission'});
-								},1000)
-							}
-							else {
-								uni.showToast({
-									title:'拒绝失败',
-									icon:'error',
-									duration:1000
-								})
-							}
-						})
+						if(response.content) {
+							let tempRamark = '发布者不同意完成，原因为：'+ response.content
+							that.$api.refuseTask(that.mission.taskID,tempRamark).then((res)=>{
+								if(res.data == '批改成功'){
+									uni.showToast({
+										title:'拒绝成功',
+										icon:'success',
+										duration:1000
+									})
+									setTimeout(function() {
+										uni.reLaunch({url: '/pages/mymission/myMission'});
+									},1000)
+								}
+								else {
+									uni.showToast({
+										title:'拒绝失败',
+										icon:'error',
+										duration:1000
+									})
+								}
+							})
+						}
 					},
 				})
 			},
@@ -512,7 +549,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 195rpx;
+		margin-right: 170rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -529,12 +566,9 @@
 	}
 	
 	.body {
-		margin: 210rpx 0 50rpx 0;
-		padding: 50rpx 0 50rpx 0;
-		border-radius: 10px;
-		width: 700rpx;
+		padding: 190rpx 0 50rpx 0;
+		width: 750rpx;
 		background-color: white;
-		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}
 	.detail {
 		display: flex;
@@ -542,9 +576,13 @@
 		justify-content: flex-start;
 		width: 650rpx;
 		flex-wrap: wrap;
+		background-color: #f2f2f2;
+		border-radius: 15px;
+		margin-bottom: 30rpx;
+		padding: 20rpx 0 10rpx 20rpx;
 	}
 	.detail-title {
-		width: 120rpx;
+		width: 700rpx;
 		font-size: 38rpx;
 		color: gray;
 		margin-bottom: 50rpx;
@@ -566,6 +604,9 @@
 		flex-wrap: wrap;
 		width: 650rpx;
 		margin: 30rpx 0 30rpx 0;
+		background-color: #f2f2f2;
+		border-radius: 15px;
+		padding: 20rpx 0 10rpx 20rpx;
 	}
 	.detail-image-title {
 		width: 120rpx;

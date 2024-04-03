@@ -210,25 +210,43 @@
 				}
 			},
 			deleteFamily(){
-				this.$api.deleteFamily(this.familyID).then((res)=>{
-					if(res.data == '删除成功'){
-						uni.showToast({
-							title:'解散成功',
-							duration:1000
-						})
-						setTimeout(function() {
-							uni.redirectTo({
-							    url: '/pages/personal/familyList'
+				let that = this
+				uni.showModal({
+					title: '提示',
+					// 提示文字
+					content: '确认解散家庭吗？',
+					// 取消按钮的文字自定义
+					cancelText: "取消",
+					// 确认按钮的文字自定义
+					confirmText: "确认",
+					//确认字体的颜色
+					confirmColor:'red',
+					//取消字体的颜色
+					cancelColor:'#000000',
+					success: function(res) {
+						if (res.confirm) {
+							that.$api.deleteFamily(that.familyID).then((res)=>{
+								if(res.data == '删除成功'){
+									uni.showToast({
+										title:'解散成功',
+										duration:1000
+									})
+									setTimeout(function() {
+										uni.redirectTo({
+										    url: '/pages/personal/familyList'
+										})
+									},1000)
+								}
+								else {
+									uni.showToast({
+										title:'解散失败',
+										icon:'error',
+										duration:1000
+									})
+								}
 							})
-						},1000)
-					}
-					else {
-						uni.showToast({
-							title:'解散失败',
-							icon:'error',
-							duration:1000
-						})
-					}
+						}
+					},
 				})
 			}
 		},
@@ -252,7 +270,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 175rpx;
+		margin-right: 140rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -263,7 +281,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 160rpx;
+		flex-basis: 250rpx;
 		font-size: 38rpx;
 		color: white;
 	}

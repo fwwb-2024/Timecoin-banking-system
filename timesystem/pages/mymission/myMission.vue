@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 志愿者 -->
@@ -49,9 +50,13 @@
 				missionDataList:[],
 				// 加载的任务页数
 				pages:0,
+				
+				// 显示字体大小
+				size:""
 			}
 		},
 		created: function() {
+			this.size = uni.getStorageSync("size")
 			// 获取身份并对页面展示选择渲染
 			const value = uni.getStorageSync('position');
 			if (value == '志愿者') {
@@ -166,7 +171,7 @@
 		
 		display: flex;
 		justify-content: center;
-		flex-basis: 160rpx;
+		flex-basis: 250rpx;
 		font-size: 38rpx;
 		color: white;
 	}

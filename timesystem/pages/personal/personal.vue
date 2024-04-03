@@ -1,5 +1,6 @@
 <template>
 	<view class="body">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 头像图片 -->
@@ -55,6 +56,19 @@
 				</view>
 			</view>
 			
+			<!-- 老人模式 -->
+			<view class="function-part line" @click="setSize">
+				<view>
+					<image src="/static/personal/old.png"></image>
+				</view>
+				<view v-if="sizeShow">
+					<text>老人模式</text>
+				</view>
+				<view v-else>
+					<text>退出老人模式</text>
+				</view>
+			</view>
+			
 			<!-- 切换身份 -->
 			<view class="function-part" @click="changePosition">
 				<view>
@@ -94,9 +108,19 @@
 				username:'登录/注册',
 				// 当前身份
 				nowPersonlStatus:'志愿者',
+				size:"",
+				sizeShow:true
 			}
 		},
 		created() {
+			this.size = uni.getStorageSync("size")
+			if(this.size == "3.5px"){
+				this.sizeShow = true
+			}
+			else {
+				this.sizeShow = false
+			}
+			
 			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
 				this.headerImage = res.data.userPhoto
 				this.username = res.data.userName
@@ -108,6 +132,19 @@
 			}
 		},
 		methods: {
+			// 老人模式
+			setSize(){
+				if(this.size == "3.5px"){
+					uni.setStorageSync("size","5px");
+				    this.size = "5px";
+					this.sizeShow = false
+				}
+				else {
+					uni.setStorageSync("size","3.5px");
+					this.size = "3.5px";
+					this.sizeShow = true
+				}
+			},
 			// 页面跳转
 			navTo(url){
 				uni.navigateTo({
@@ -158,7 +195,7 @@
 		order:1;
 		
 		display: flex;
-		flex-basis: 200rpx;
+		flex-basis: 250rpx;
 		height: 60rpx;
 	}
 	.head-text text {
@@ -202,7 +239,7 @@
 		border-bottom: thin solid rgb(179, 179, 179);
 	}
 	#now-persoanl-status {
-		margin-left: 100rpx;
+		margin-left: 10rpx;
 	}
 	#now-persoanl-status text {
 		font-size: 25rpx;
@@ -217,6 +254,7 @@
 		width: 700rpx;
 		background-color: white;
 		margin-top: 30rpx;
+		margin-bottom: 50rpx;
 		border-radius: 10px;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		padding: 20rpx 0 20rpx 0;

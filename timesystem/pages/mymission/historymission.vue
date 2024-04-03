@@ -7,7 +7,7 @@
 				<image src="/static/backpic.png"></image>
 			</view>
 			<view class="back-text">
-				<text>任务详情</text>
+				<text>历史任务详情</text>
 			</view>		
 		</view>
 		
@@ -130,7 +130,7 @@
 		display: flex;
 		justify-content: center;
 		flex-basis: 120rpx;
-		margin-right: 195rpx;
+		margin-right: 140rpx;
 	}
 	.back-image image {
 		width: 50rpx;
@@ -139,6 +139,7 @@
 	.back-text {
 		order: 1;		
 		justify-content: center;
+		width: 350rpx;
 	}
 	.back-text text {
 		flex-basis: 120rpx;
