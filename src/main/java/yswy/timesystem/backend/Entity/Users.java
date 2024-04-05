@@ -18,7 +18,7 @@ public class Users {
     private String userStatusRemark;
     private String userSex;
     private String token;
-
+    private String userRegistTime;
 
 }
 

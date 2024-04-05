@@ -3,15 +3,13 @@ package yswy.timesystem.backend.Controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.multipart.MultipartFile;
-import yswy.timesystem.backend.Entity.Ledgers;
-import yswy.timesystem.backend.Entity.Tasksmulti;
+import yswy.timesystem.backend.Entity.*;
 import yswy.timesystem.backend.Mapper.LedgersMapper;
 import yswy.timesystem.backend.Mapper.TaskhistorysMapper;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 import yswy.timesystem.backend.Service.FabricServiceImpl;
 import yswy.timesystem.backend.Util.DailyTaskUtil;
 import yswy.timesystem.backend.Util.TokenUtil;
-import yswy.timesystem.backend.Entity.Tasks;
 import yswy.timesystem.backend.Mapper.TasksMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -59,7 +58,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/tasksAdmin")//查看任务列表
     public List<Tasks> taskCenterTasksAdmin(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         int taskStatus=1;
         if(chooses>20){
@@ -266,7 +265,7 @@ public class TasksController {
     public List<Tasks> taskCenterTasks(@RequestParam int offSet,@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception{
 
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         List<Tasks> tasksList;
         switch (chooses) {
@@ -449,11 +448,11 @@ public class TasksController {
     }
 
     @Operation(summary = "新建任务接口", description = "返回201，\"新建成功\"\"余额不足\"")
-    @Parameter(name = "task", description = "taskEmployerFamilyUserID taskID,taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID tasklable taskPhoto数组", example = "对象")
+    @Parameter(name = "task", description = "taskEmployerFamilyUserID taskName`,`taskEmployer`,`taskAddress`,`taskDetail`,`taskBrief`,`taskBeginTime`,`taskEndTime`,`taskTimeCoinBounty taskEmployerID taskLable taskPhoto数组", example = "对象")
     @PostMapping("/tasks/taskCenter/register")//新建任务
     public String registerTask(@RequestBody Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
-        TokenUtil.tokenServiceTwo(request,responce);
+        //TokenUtil.tokenServiceTwo(request,responce);
 
         int a=usersMapper.selectForUserTimeCoinByUserID(tasks.getTaskEmployerFamilyUserID());
         int b=tasks.getTaskTimeCoinBounty();
@@ -493,6 +492,7 @@ public class TasksController {
 
         a=a+b-c;
         usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerID(),a);
+        tasksMapper.updateTaskStatusRemarkByTaskID(tasks.getTaskID(),null);
         return "修改成功";
     }
 
@@ -519,7 +519,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/findTask")//查看任务详情
     public Object taskCenterFindTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
 
         Tasks tasks=new Tasks();
@@ -565,7 +565,7 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/checkTaskNot")//审核不通过任务
     public String taskCenterCheckTaskNot(@RequestParam int taskID,@RequestParam String taskStatusRemark,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         tasksMapper.updateTaskStatusRemarkByTaskID(taskID,taskStatusRemark);
         return  "批改完成";
@@ -592,15 +592,15 @@ public class TasksController {
     }
 
     @Operation(summary = "志愿者开始进行任务接口", description = "返回201，\"进行成功\"")
-    @Parameter(name = "taskID", description = "id", example = "123")
-    @GetMapping("/tasks/taskCenter/userBeginTask")//志愿者进行任务
-    public String taskCenterUserBeginTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
+    @Parameter(name = "taskID taskDoingText taskDoingPhoto", description = "对象", example = "对象")
+    @PostMapping("/tasks/taskCenter/userBeginTask")//志愿者进行任务
+    public String taskCenterUserBeginTask(@RequestBody Tasks tasks, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
-        tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
-        tasksMapper.updateTaskStatusSevenByTaskID(taskID);
-        tasksMapper.updateTaskHistoryStatusSevenByTaskID(taskID);
+        tasksMapper.updateTaskStatusRemarkByTaskID(tasks.getTaskID(), "");
+        tasksMapper.updateTaskStatusSevenByTaskID(tasks);
+        tasksMapper.updateTaskHistoryStatusSevenByTaskID(tasks.getTaskID());
         return "进行成功";
     }
 
@@ -628,6 +628,11 @@ public class TasksController {
         tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
         tasksMapper.updateTaskStatusTwoUpdateUserIDByTaskID(taskID);
         tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
+        Tasks tasks=new Tasks();
+        tasks.setTaskID(taskID);
+        tasks.setTaskDoingPhoto("");
+        tasks.setTaskDoingText("");
+        tasksMapper.updateTaskDoingsByTaskID(tasks);
         return "取消成功";
     }
 
@@ -636,7 +641,13 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/taskEmployerSuccessTask")//雇主完成任务
     public String taskCenterTaskEmployerSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        Tasks tasks=new Tasks();
+        tasks.setTaskID(taskID);
+        tasks.setTaskDoingPhoto("");
+        tasks.setTaskDoingText("");
+        tasksMapper.updateTaskDoingsByTaskID(tasks);
 
         tasksMapper.updateTaskStatusFiveByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusFiveByTaskID(taskID);
@@ -654,6 +665,11 @@ public class TasksController {
         tasksMapper.updateTaskStatusRemarkByTaskID(taskID,taskStatusRemark);
         tasksMapper.updateTaskStatusThreeByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusThreeByTaskID(taskID);
+        Tasks tasks=new Tasks();
+        tasks.setTaskID(taskID);
+        tasks.setTaskDoingPhoto("");
+        tasks.setTaskDoingText("");
+        tasksMapper.updateTaskDoingsByTaskID(tasks);
         return "批改成功";
     }
 
@@ -662,7 +678,13 @@ public class TasksController {
     @GetMapping("/tasks/taskCenter/adminSuccessTask")//管理员审核任务
     public String taskCenterAdminSuccessTask(@RequestParam int taskID,HttpServletRequest request,HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        Tasks tasks=new Tasks();
+        tasks.setTaskID(taskID);
+        tasks.setTaskDoingPhoto("");
+        tasks.setTaskDoingText("");
+        tasksMapper.updateTaskDoingsByTaskID(tasks);
 
         tasksMapper.updateTaskStatusSixByTaskID(taskID);
         tasksMapper.updateTaskHistoryStatusSixByTaskID(taskID);
@@ -730,10 +752,10 @@ public class TasksController {
     @Operation(summary = "管理员查看任务发布总量接口", description = "返回201，根据季度月星期长度的数组")
     @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
     @GetMapping("/admin/taskCenter/findCreatedTask")//管理员审核任务
-    public List<Tasksmulti> taskCenterFindCreatedTask(@RequestParam int chooses)throws Exception {
+    public List<Tasksmulti> taskCenterFindCreatedTask(@RequestParam int chooses,HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
 
-//        TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         if(chooses==1){
             List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskCounts(7);
@@ -756,10 +778,10 @@ public class TasksController {
 
     @Operation(summary = "管理员查看任务完成总量接口", description = "返回201，根据季度月星期长度的数组")
     @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
-    @GetMapping("/admin/taskCenter/findSuccessedTask")//管理员审核任务
+    @GetMapping("/admin/taskCenter/findSuccessedTask")//
     public List<Tasksmulti> taskCenterFindSuccessedTask(@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception {
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         if(chooses==1){
             List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskSuccessCounts(7);
@@ -779,4 +801,46 @@ public class TasksController {
         List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
         return result;
     }
+
+    @Operation(summary = "管理员查看时间币流水总量接口", description = "返回201，根据季度月星期长度的数组")
+    @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
+    @GetMapping("/admin/taskCenter/findTaskTimeCoinBounty")//
+    public List<Tasksmulti> taskCenterFindTaskTimeCoinBounty(@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        if(chooses==1){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskTimeCoinBounty(7);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+            return result;
+        } else if (chooses==2) {
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskTimeCoinBounty(30);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,30);
+            return result;
+        }else if (chooses==3){
+            List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskTimeCoinBounty(90);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,90);
+            return result;
+        }
+
+        List<Tasksmulti> taskCounts=tasksMapper.getRecentTaskTimeCoinBounty(7);
+        List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+        return result;
+    }
+
+    @Operation(summary = "管理员查看各任务类别总量接口", description = "返回201，类别长度的数组对象")
+    @GetMapping("/admin/taskCenter/findTaskLableTaskCounts")//
+    public List<TaskLableTaskCounts> taskCenterFindTaskLableTaskCounts(HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+
+        List<TaskLableTaskCounts> result = new ArrayList<>();
+        for (int i = 1; i <= 6; i++) {
+            TaskLableTaskCounts counts = tasksMapper.getTaskLableTaskCounts(i);
+            result.add(counts);
+        }
+        return result;
+    }
+
 }

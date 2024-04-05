@@ -20,7 +20,7 @@ public interface NewsMapper {
     void deleteNews(int newsID);
 
     //修改新闻,id
-    @Update("update `news` set `news_title` = #{newsTitle},`news_author_id` =#{newsAuthorID},`news_author_name` =#{newsAuthorName},`news_time` =#{newsTime},`news_detail` ={newsDetail},`news_photo` =#{newsPhoto} where `admin_id` = #{adminID};")
+    @Update("update `news` set `news_title` = #{newsTitle},`news_author_id` =#{newsAuthorID},`news_author_name` =#{newsAuthorName},`news_time` =#{newsTime},`news_detail` =#{newsDetail},`news_photo` =#{newsPhoto} where `news_id` = #{newsID};")
     @Transactional
     void updateNewsByNewsID(News news);
 

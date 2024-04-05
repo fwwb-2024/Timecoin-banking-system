@@ -23,5 +23,7 @@ public class Tasks {
     private String taskPhotoPath;
     private String[] taskPhoto;
     private Integer taskEmployerFamilyUserID;
+    private String taskDoingText;
+    private String taskDoingPhoto;
 }
 

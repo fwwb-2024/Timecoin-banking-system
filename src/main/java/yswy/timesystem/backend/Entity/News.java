@@ -11,5 +11,5 @@ public class News {
     private String newsAuthorName;
     private String newsTime;
     private String newsDetail;
-
+    private String newsPhoto;
 }

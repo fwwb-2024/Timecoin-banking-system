@@ -9,9 +9,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
+import yswy.timesystem.backend.Entity.Tasks;
+import yswy.timesystem.backend.Entity.Tasksmulti;
 import yswy.timesystem.backend.Mapper.UsersMapper;
 
 import yswy.timesystem.backend.Service.FabricServiceImpl;
+import yswy.timesystem.backend.Util.DailyTaskUtil;
 import yswy.timesystem.backend.Util.TokenUtil;
 
 
@@ -27,6 +30,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -45,6 +51,17 @@ public class UserController {
     private static String USER_PHOTO_STATIC_PATH="static\\userphoto\\";
     private static String USER_STATIC="http://10.195.28.44:9090/";
 
+    @Operation(summary = "用户区块链刷新接口", description = "返回\"注册成功\"")
+    @Parameter(name = "userID", description = "int", example = "123")
+    @Parameter(name = "userName", description = "String", example = "string")
+    @Parameter(name = "userTimeCoin", description = "int", example = "123")
+    @PostMapping("/user/flashUser")//
+    public String flashUser(@RequestBody Users users){
+        int userID=users.getUserID();
+        String s=fabricService.AddUser(String.valueOf(userID),users.getUserName(),users.getUserTimeCoin());
+        return "注册成功";
+    }
+
     @Operation(summary = "用户注册接口", description = "返回\"用户已存在\"\"电话号已被注册\"\"注册成功\"")
     @Parameter(name = "userName", description = "账号", example = "string")
     @Parameter(name = "userPassword", description = "密码", example = "string")
@@ -61,6 +78,13 @@ public class UserController {
         if(count!=0){
             return "电话号已被注册";
         }
+        // 获取当前日期
+        LocalDate currentDate = LocalDate.now();
+        // 定义日期时间格式化器
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        // 格式化当前日期为指定格式的字符串
+        String formattedDate = currentDate.format(formatter);
+        users.setUserRegistTime(formattedDate);
 
         usersMapper.insertRegister(users);
         int userID=usersMapper.selectForUserIDByUserName(users.getUserName());//此处代码应该在审核成正常用户后
@@ -87,6 +111,7 @@ public class UserController {
         Users userReturn=new Users();
         userReturn.setUserName(users.getUserName());
         userReturn.setUserID(usersMapper.selectForUserIDByUserName(userReturn.getUserName()));
+        userReturn.setUserStatus(usersMapper.selectForUserStatusByUserID(userReturn.getUserID()));
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
         return userReturn;
     }
@@ -109,6 +134,7 @@ public class UserController {
         Users userReturn=new Users();
         userReturn.setUserName(usersMapper.selectForUserNameByUserPhoneNumber(users.getUserPhoneNumber()));
         userReturn.setUserID(usersMapper.selectForUserIDByUserName(userReturn.getUserName()));
+        userReturn.setUserStatus(usersMapper.selectForUserStatusByUserID(userReturn.getUserID()));
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
         return userReturn;
     }
@@ -131,6 +157,7 @@ public class UserController {
         Users userReturn=new Users();
         userReturn.setUserName(usersMapper.selectForUserNameByUserIDNumber(users.getUserIDNumber()));
         userReturn.setUserID(usersMapper.selectForUserIDByUserName(userReturn.getUserName()));
+        userReturn.setUserStatus(usersMapper.selectForUserStatusByUserID(userReturn.getUserID()));
         userReturn.setToken(TokenUtil.tokenServiceOne(userReturn.getUserName()));
         return userReturn;
     }
@@ -296,5 +323,106 @@ public class UserController {
         TokenUtil.tokenServiceTwo(request,responce);
 
         usersMapper.deleteUsers(userID);
+    }
+
+    @Operation(summary = "用户申请，从游客到未审核，或从未通过到未审核接口", description = "返回201，\"申请成功\"")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @GetMapping("/user/userCenter/userAccessUserNormal")//
+    public String userCenterUserAccessUserNormal(@RequestParam int userID){
+
+        usersMapper.updateUserStatusOneByUserID(userID,"");
+        return "申请成功";
+    }
+
+
+    @Operation(summary = "管理员审核用户，从未审核到正常,从冻结到正常接口", description = "返回201，\"审核成功\"")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @GetMapping("/user/userCenter/adminAccessUserNormal")//
+    public String userCenterAdminAccessUserNormal(@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        usersMapper.updateUserStatusTwoByUserID(userID,"");
+        return "审核成功";
+    }
+
+    @Operation(summary = "管理员审核用户不通过，从未审核到未通过接口", description = "返回201，\"审核成功\"")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @Parameter(name = "userStatusRemark", description = "String", example = "String")
+    @GetMapping("/user/userCenter/adminNotAccessUserNormal")//
+    public String userCenterAdminNotAccessUserNormal(@RequestParam int userID,@RequestParam String userStatusRemark,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        usersMapper.updateUserStatusThreeByUserID(userID,userStatusRemark);
+        return "审核成功";
+    }
+
+    @Operation(summary = "管理员将用户设为冻结接口", description = "返回201，\"冻结成功\"")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @Parameter(name = "userStatusRemark", description = "String", example = "String")
+    @GetMapping("/user/userCenter/adminCloseUserNormal")//
+    public String userCenterAdminCloseUserNormal(@RequestParam int userID,@RequestParam String userStatusRemark,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        usersMapper.updateUserStatusFourByUserID(userID,userStatusRemark);
+        return "冻结成功";
+    }
+
+    @Operation(summary = "管理员将用户设为官方号接口", description = "返回201，\"审核成功\"")
+    @Parameter(name = "userID", description = "id", example = "123")
+    @GetMapping("/user/userCenter/adminAccessUserSpecial")//
+    public String userCenterAdminAccessUserSpecial(@RequestParam int userID,HttpServletRequest request, HttpServletResponse responce) throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        usersMapper.updateUserStatusFiveByUserID(userID,"");
+        return "冻结成功";
+    }
+
+    @Operation(summary = "管理员查看未审核用户接口", description = "返回201，一串tasks对象")
+    @Parameter(name = "offSet", description = "从第几页开始查找，从0开始，0,10,20,30.。。", example = "0")
+    @GetMapping("/admins/userCenter/findUnAccessUserAdmin")//
+    public List<Users> userCenterFindUnAccessUserAdmin(@RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce)throws Exception{
+
+        //TokenUtil.tokenServiceTwo(request,responce);
+
+        int userStatus=1;
+
+
+        List<Users> usersList;
+
+        usersList = usersMapper.selectUnAccessByUserIDAscAdmin(offSet,userStatus);
+
+
+        return usersList;
+    }
+
+
+    @Operation(summary = "管理员查看用户注册总量接口", description = "返回201，根据季度月星期长度的数组")
+    @Parameter(name = "chooses", description = "int", example = "1星期,2月,3季度")
+    @GetMapping("/admin/userCenter/findRecentRegisterUsers")//
+    public List<Tasksmulti> userCenterFindRecentRegisterUsers(@RequestParam int chooses, HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        if(chooses==1){
+            List<Tasksmulti> taskCounts=usersMapper.getRecentRegisterUsers(7);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+            return result;
+        } else if (chooses==2) {
+            List<Tasksmulti> taskCounts=usersMapper.getRecentRegisterUsers(30);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,30);
+            return result;
+        }else if (chooses==3){
+            List<Tasksmulti> taskCounts=usersMapper.getRecentRegisterUsers(90);
+            List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,90);
+            return result;
+        }
+
+        List<Tasksmulti> taskCounts=usersMapper.getRecentRegisterUsers(7);
+        List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+        return result;
     }
 }

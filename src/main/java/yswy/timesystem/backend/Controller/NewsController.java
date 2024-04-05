@@ -43,13 +43,14 @@ public class NewsController {
     }
 
     @Operation(summary = "修改新闻接口", description = "token错就返回201，\"修改成功\"")
-    @Parameter(name = "newsTitle`,`newsAuthorID`,`newsAuthorName`,`newsTime`,`newsDetail newsPhoto", description = "对象", example = "对象")
-    @PostMapping("/new/changeNews")//删除新闻接口
+    @Parameter(name = "newsID newsTitle`,`newsAuthorID`,`newsAuthorName`,`newsTime`,`newsDetail newsPhoto", description = "对象", example = "对象")
+    @PostMapping("/new/changeNews")//修改新闻接口
     public String changeNews(@RequestBody News news, HttpServletRequest request, HttpServletResponse responce) throws Exception {
 
         TokenUtil.tokenServiceTwo(request,responce);
 
         newsMapper.updateNewsByNewsID(news);
+
         return "修改成功";
     }
 
