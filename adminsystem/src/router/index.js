@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '@/views/home'
-import completeTaskAnalysis from "@/views/analysis/completeTaskAnalysis";
-import publishTaskAnalysis from "@/views/analysis/publishTaskAnalysis";
+import taskAnalysis from "@/views/analysis/taskAnalysis";
+import lableAnalysis from "@/views/analysis/lableAnalysis";
 import webUserAnalysis from "@/views/analysis/webUserAnalysis";
 import customerReview from "@/views/review/customerReview";
 import publishTaskReview from "@/views/review/publishTaskReview";
@@ -12,18 +12,22 @@ import personal from "@/views/personal/personal";
 import login from "@/views/login";
 import editor from "@/views/editor/editor";
 import manageEditor from "@/views/editor/manageEditor";
+import timeCoinsAnalysis from "@/views/analysis/timeCoinsAnalysis";
+import analysis from "@/views/analysis/analysis";
 
 Vue.use(VueRouter)
 
 const router=new VueRouter({
   //路由重定位到登录页面
   routes:  [
-    {path:'/',redirect:'/home'},
+    {path:'/',redirect:'/home/analysis'},
     {path:'/home', component:home,
     children:[
-      {path:'/home/publishTaskAnalysis', component:publishTaskAnalysis,},
-      {path:'/home/completeTaskAnalysis', component:completeTaskAnalysis,},
+      {path:'/home/analysis', component:analysis,},
+      {path:'/home/lableAnalysis', component:lableAnalysis,},
+      {path:'/home/taskAnalysis', component:taskAnalysis,},
       {path:'/home/webUserAnalysis', component:webUserAnalysis,},
+      {path:'/home/timeCoinsAnalysis', component:timeCoinsAnalysis,},
       {path:'/home/customerReview', component:customerReview,},
       {path:'/home/publishTaskReview', component:publishTaskReview,},
       {path:'/home/taskCompleteReview', component:taskCompleteReview,},

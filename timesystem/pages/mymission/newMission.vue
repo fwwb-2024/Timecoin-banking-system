@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -13,50 +14,47 @@
 		
 		<view class="body"></view>
 		<!-- 编辑内容 -->
-		<view class="mission">
-			<view class="mission-title">
-				<text class="detail-title">类别:</text>
-				<text @click="changeLable">{{taskLable}}</text>
+		<view class="detail-head">
+			<view class="change-lable">
+				<text class="change-lable-title">类别：</text>
+				<text class="change-lable-content" @click="changeLable">{{taskLable}}</text>
 			</view>
-			<view class="mission-title">
-				<text class="detail-title">标题:</text>
-				<input type="text" v-model="title"></input>
+			
+			<view class="change-title">
+				<text class="change-title-title">标题：</text>
+				<input class="change-title-content" v-model="title" @input="autoSelect"></input>
 			</view>
-			<view class="mission-brief">
-				<text class="detail-title">简介:</text>
-				<textarea v-model="brief"></textarea>
-			</view>
-			<view class="mission-detail">
-				<text class="detail-title">详情:</text>
-				<textarea v-model="detail"></textarea>
-			</view>
-			<view class="mission-time">
-				<text class="detail-title">时间:</text>
-				<view class="mission-time-time">
-					<view class="mission-time-starttime">
-						<picker mode="date" :value="startTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
-							<view class="uni-input">开始时间：{{startTime}}</view>
-						</picker>
-					</view>
-					<view class="mission-time-endtime">
-						<picker mode="date" :value="endTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
-							<view class="uni-input">截止时间：{{endTime}}</view>
-						</picker>
-					</view>
+			
+			<!-- 模板显示区域 -->
+			<view class="example change-title-content" v-show="exampleShow" v-for="(item,index) in nowexampleName" :key="index">
+				<view @click="chooseExample(item)">
+					<text>{{item}}</text>
 				</view>
 			</view>
-			<view class="mission-timeCoins">
-				<text class="detail-title">悬赏</text>
-				<input type="number" placeholder="0" v-model="coins"></input>
+			
+			<view class="change-coins">
+				<text class="change-coins-title">悬赏：</text>
+				<input class="change-coins-content" type="number" placeholder="0" v-model="coins"></input>
+				<text class="change-coins-unit">时间币/时</text>
 			</view>
-			<!-- 上传图片 -->
-			<view class="upPic">
-				<view class="upPic-title">
-					<text>上传图片</text>
+
+			<view class="change-brief">
+				<text class="change-brief-title">简介(不超过50字)：</text>
+				<textarea class="change-brief-content" maxlength="50" style="height: 140rpx;" v-model="brief"></textarea>
+			</view>
+			
+			<view class="change-detail">
+				<text class="change-detail-title">详情(不超过500字)：</text>
+				<view  class="change-detail-content" :style="{'height': detailHeight}">
+					<textarea @input="inputDetail" maxlength="500" style="width: 630rpx;" auto-height="true" v-model="detail"></textarea>
 				</view>
+			</view>
+			
+			<!-- 图片附件 -->
+			<view class="change-image">
 				<view v-for="(item,index) in taskPhoto">
 					<image id="deletepic" @click="deletePic(index)" src="/static/deletepic.png"></image>
-					<view class="upPic-list-element">
+					<view class="change-image-element">
 						<image :src="item"></image>
 					</view>
 				</view>
@@ -64,10 +62,24 @@
 					<image src="/static/addpic.png"></image>
 				</view>
 			</view>
-			<view>
-				<button class="postMission" @click="postMission">发布</button>
+			
+			<view class="change-time">
+				<text class="change-time-title">开始时间：</text>
+				<picker mode="date" :value="startTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
+					<view class="change-time-content">{{startTime}}</view>
+				</picker>
+			</view>
+			<view class="change-time">
+				<text class="change-time-title">截止时间：</text>
+				<picker mode="date" :value="endTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
+					<view class="change-time-content">{{endTime}}</view>
+				</picker>
 			</view>
 		</view>
+			
+		<button class="postMission" @click="postMission">发布</button>
+			
+		<!-- </view> -->
 		
 		<!-- 支付弹出层 -->
 		<uni-popup ref="popup" type="bottom" border-radius="15px 15px 0 0" @maskClick="popClose">
@@ -128,9 +140,22 @@
 				familyShow:true,
 				// 显示哪个家庭成员
 				familyIDshow:null,
+				
+				detailHeight:'380rpx',
+				size:'',
+				
+				// 发布任务的模板
+				exampleShow:false,
+				example:[
+					{lable:'跑腿',coins:10,title:'帮我寄快递',brief:'代寄快递到XX快递点，需在明日前寄送。快递已打包好，轻便易携。',detail:'需要将一件预先打包好的快递送达XX快递点，用XX快递寄送。取件地址位于XX，接单者需在明日前完成送达任务。任务报酬为10时间币，额外产生的交通费用不予报销。联系方式为手机号XX，如有疑问或延迟，请及时电话联系沟通。'},
+					{lable:'跑腿',coins:10,title:'帮我拿快递',brief:'代取快递至XX，需要今天内取件并送至指定地址',detail:'要求接单者前往XX快递站点，帮XX代取回一件快递，并将其安全送达至XX。请在今日前完成取件并送达。报酬为10时间币，不包含额外的交通费用。如遇问题或需延迟，请提前通过电话（手机号：XX）联系通知。'},
+				],
+				// 现在显示的模板名称
+				nowexampleName:[],
 			}
 		},
 		created() {
+			this.size = uni.getStorageSync("size")
 			this.$api.getCoins(uni.getStorageSync('userName')).then((res)=>{
 				this.ownpay.name=uni.getStorageSync('userName')
 				this.ownpay.userID=uni.getStorageSync('userID')
@@ -155,6 +180,53 @@
 			})
 		},
 		methods:{
+			// 输入详情
+			inputDetail(value) {
+				if(value.detail.cursor >= 160){
+					this.detailHeight = 'auto'
+				}
+				else {
+					this.detailHeight = '380rpx'
+				}
+			},
+			// 任务模板匹配
+			autoSelect() {
+				if(this.title != ''){
+					let temp = []
+					for(let i=0;i<this.example.length;i++){
+						if(this.example[i].title.indexOf(this.title) !== -1){
+							temp.push(this.example[i].title)
+						}
+					}
+					if(temp != []){
+						this.nowexampleName = temp
+						this.exampleShow = true
+					}
+					else {
+						this.nowexampleName = []
+						this.exampleShow = false
+					}
+				}
+				else {
+					this.nowexampleName = []
+					this.exampleShow = false
+				}
+			},
+			// 选中任务模板
+			chooseExample(title) {
+				for(let i=0;i<this.example.length;i++){
+					if(title == this.example[i].title){
+						this.taskLable = this.example[i].lable
+						this.title = this.example[i].title
+						this.brief = this.example[i].brief
+						this.detail = this.example[i].detail
+						this.coins = this.example[i].coins
+						
+						this.nowexampleName = []
+						this.exampleShow = false
+					}
+				}
+			},			
 			//返回上一级页面
 			back() {
 				uni.navigateBack({
@@ -195,9 +267,9 @@
 				day = day > 9 ? day : '0' + day;
 				return `${year}-${month}-${day}`;
 			},
-			// 更改图片类别
+			// 更改任务类别
 			changeLable(){
-				let temp = ['跑腿','带货','打理','陪伴','线上','其他']
+				let temp = ['跑腿','代购','打理','陪伴','线上','其他']
 				let that = this
 				uni.showActionSheet({
 					title:'请选择任务类别',
@@ -209,7 +281,7 @@
 				    },
 				});
 			},
-			// 上传图片
+			//尺寸约为30cm20 上传图片
 			upPic(){
 				let that = this
 				// 选择图片并且上传
@@ -262,7 +334,7 @@
 					let taskLable = 1
 					switch(this.taskLable){
 						case '跑腿':taskLable = 2;break;
-						case '带货':taskLable = 3;break;
+						case '代购':taskLable = 3;break;
 						case '打理':taskLable = 4;break;
 						case '陪伴':taskLable = 5;break;
 						case '线上':taskLable = 6;break;
@@ -388,81 +460,156 @@
 	.body {
 		margin-top: 190rpx;
 	}
-	.mission {
+	/* 任务首部 */
+	.detail-head {
+		width: 680rpx;
+		border-radius: 15px;
+		background-color: white;
+		padding: 50rpx 0 30rpx 20rpx;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		width: 700rpx;
-		margin-top: 30rpx;
-		border-radius: 10px;
-		box-shadow: 2px 4px 20px rgb(200, 200, 200);
-		padding: 30rpx 0 30rpx 0;
-		font-size: 19px;
+		align-items: flex-start;
+		margin-bottom: 50rpx;
 	}
-	.mission-title {
-		width: 650rpx;
-		margin-bottom: 30rpx;
-	}
-	.mission-title input {
-		height: 80rpx;
-		border-radius: 15px;
-		border: 1px solid #e6e6e6;
-	}
-	.mission-brief {
-		margin-top: 20rpx;
-		width: 650rpx;
-	}
-	.mission-brief textarea {
-		width: 650rpx;
-		height: 120rpx;
-		border-radius: 15px;
-		border: 1px solid #e6e6e6;
-	}
-	.mission-detail {
-		margin-top: 20rpx;
-		width: 650rpx;
-	}
-	.mission-detail textarea {
-		width: 650rpx;
-		height: 150rpx;
-		border-radius: 15px;
-		border: 1px solid #e6e6e6;
-	}
-	.mission-time {
-		width: 650rpx;
-	}
-	.mission-time-time {
+	/* 修改类别 */
+	.change-lable {
 		display: flex;
-		width: 650rpx;
-		height: 100rpx;
 		flex-direction: row;
-		justify-content: center;
-		align-items: center;
+		margin-bottom: 10rpx;
 	}
-	.mission-time-starttime {
+	.change-lable-title {
+		font-size: 38rpx;
+		font-weight: 600;
+	}
+	.change-lable-content {
+		font-size: 35rpx;
+	}
+	
+	/* 修改标题*/
+	.change-title {
 		display: flex;
-		justify-content: center;
-		width: 50%;
-		font-size:15px;
+		flex-direction: row;
+		margin-bottom: 10rpx;
 	}
-	.mission-time-endtime {
-		display: flex;
-		justify-content: center;
-		width: 50%;
-		font-size:15px;
+	.change-title-title {
+		font-size: 38rpx;
+		font-weight: 600;
 	}
-	.mission-timeCoins {
-		width: 650rpx;
-	}
-	.mission-timeCoins input {
-		height: 80rpx;
-		border-radius: 15px;
+	.change-title-content {
+		font-size: 35rpx;
+		width: 530rpx;
 		border: 1px solid #e6e6e6;
+	}
+	
+	/* 任务模板 */
+	.example {
+		background-color: #f2f2f2;
+		width: 530rpx;
+		border: #e6e6e6 solid 1px;
+		margin-left: 105rpx;
+		padding: 5rpx 0 5rpx 3rpx;
+	}
+	
+	/* 修改简介 */
+	.change-brief {
+		margin-bottom: 10rpx;
+	}
+	.change-brief-title {
+		font-size: 38rpx;
+		font-weight: 600;
+		margin-bottom: 10rpx;
+	}
+	.change-brief-content {
+		font-size: 35rpx;
+		width: 630rpx;
+		padding: 5rpx 5rpx 5rpx 5rpx;
+		border: 1px solid #e6e6e6;
+	}
+	/* 修改详情 */
+	.change-detail {
+		margin-bottom: 10rpx;
+	}
+	.change-detail-title {
+		font-size: 38rpx;
+		font-weight: 600;
+		margin-bottom: 10rpx;
+	}
+	.change-detail-content {
+		font-size: 35rpx;
+		width: 630rpx;
+		flex-wrap: wrap;
+		padding: 5rpx 5rpx 5rpx 5rpx;
+		border: 1px solid #e6e6e6;
+	}
+	/* 修改悬赏 */
+	.change-coins {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10rpx;
+	}
+	.change-coins-title {
+		font-size: 38rpx;
+		font-weight: 600;
+	}
+	.change-coins-content {
+		font-size: 35rpx;
+		width: 70rpx;
+	}
+	.change-coins-unit {
+		font-size: 35rpx;
+	}
+	/* 修改时间 */
+	.change-time {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10rpx;
+	}
+	.change-time-title {
+		font-size: 38rpx;
+		font-weight: 600;
+	}
+	.change-time-content {
+		font-size: 35rpx;
+	}
+	/* 修改图片 */
+	.change-image {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 650rpx;
+		margin: 0 0 30rpx 0;
+		border-radius: 15px;
+		padding: 0 0 10rpx 20rpx;
+	}
+	.change-image-title {
+		width: 120rpx;
+		font-size: 38rpx;
+		color: gray;
+		margin-bottom: 50rpx;
+	}
+	.change-image-element {
+		margin: 0 10rpx 10rpx 20rpx;
+	}
+	.change-image-element image {
+		width: 600rpx;
+	}
+	.detail-button {
+		margin: 20rpx 0 0 0 ;
+		width: 80%;
+		height: 80rpx;
+		background-color: #80aaff;
+		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
+		color: rgba(255, 255, 255, 1);
+		text-align: center;
+		font-size: 38rpx;
+		line-height: 80rpx;
 	}
 	.postMission {
 		width: 650rpx;
 		background-color: #80aaff;
 		margin-top: 20rpx;
+		margin-bottom: 20rpx;
 		color: white;
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 	}

@@ -17,26 +17,31 @@
       <div class="menu">
         <el-row>
           <el-col :span="12">
-            <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="white" active-text-color="#ffd04b" default-active="/home/publishTaskAnalysis" router="router">
-              <el-submenu index="1">
+            <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="white" active-text-color="#ffd04b" router="router">
+              <el-menu-item index="/home/analysis">
+                <i class="el-icon-menu"></i>
+                <span slot="title" style="font-weight: bold;color: white;font-size: 16px">首页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </el-menu-item>
+              <el-submenu index="2">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>数据分析</span>
                 </div>
-                <el-menu-item index="/home/publishTaskAnalysis">发布任务数据</el-menu-item>
-                <el-menu-item index="/home/completeTaskAnalysis">完成任务数据</el-menu-item>
-<!--                <el-menu-item index="/home/webUserAnalysis">网站用户数据</el-menu-item>-->
+                <el-menu-item index="/home/webUserAnalysis">网站用户数据</el-menu-item>
+                <el-menu-item index="/home/taskAnalysis">发布完成数据</el-menu-item>
+                <el-menu-item index="/home/lableAnalysis">任务类别数据</el-menu-item>
+                <el-menu-item index="/home/timeCoinsAnalysis">交易流水数据</el-menu-item>
               </el-submenu>
-              <el-submenu index="2">
+              <el-submenu index="3">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>审核模块</span>
                 </div>
-<!--                <el-menu-item index="/home/customerReview">用户资质审核</el-menu-item>-->
+                <el-menu-item index="/home/customerReview">用户资质审核</el-menu-item>
                 <el-menu-item index="/home/publishTaskReview">任务发布审核</el-menu-item>
                 <el-menu-item index="/home/taskCompleteReview">任务结算审核</el-menu-item>
               </el-submenu>
-              <el-submenu index="3" v-if="isSuperAdmin">
+              <el-submenu index="4" v-if="isSuperAdmin">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>资讯模块</span>
@@ -44,14 +49,14 @@
                 <el-menu-item index="/home/manageEditor">管理资讯</el-menu-item>
                 <el-menu-item index="/home/editor">新增资讯</el-menu-item>
               </el-submenu>
-              <el-submenu index="4" v-if="isSuperAdmin">
+              <el-submenu index="5" v-if="isSuperAdmin">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>任免管理</span>
                 </div>
                 <el-menu-item index="/home/viewAdmin">查看管理员</el-menu-item>
               </el-submenu>
-              <el-submenu index="5">
+              <el-submenu index="6">
                 <div class="el-menu-title" slot="title">
                   <i class="el-icon-menu"></i>
                   <span>个人中心</span>

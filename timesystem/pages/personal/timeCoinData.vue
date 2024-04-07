@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -41,9 +42,12 @@
 			return {
 				// 时间币余额
 				userTimeCoin:null,
+				
+				size:'',
 			}
 		},
 		created: function(){
+			this.size = uni.getStorageSync("size")
 			this.$api.getCoins(uni.getStorageSync('userName')).then((res)=>{
 				this.userTimeCoin = res.data.userTimeCoin
 			})

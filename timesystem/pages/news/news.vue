@@ -22,7 +22,7 @@
 				</view>
 				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=3')">
 					<image src="/static/index/index2.png"></image>
-					<text>带货</text>
+					<text>代购</text>
 				</view>
 				<view class="lable-image" @click="navTo('/pages/news/missionList?lable=4')">
 					<image src="/static/index/index3.png"></image>
@@ -74,7 +74,7 @@
 				pages:0,
 				
 				newlist:[],
-				size:""
+				size:"",
 			}
 		},
 		created() {

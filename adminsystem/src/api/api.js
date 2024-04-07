@@ -29,6 +29,20 @@ export const deleteAdmin =(adminID)=>{
     return http.get('/admin/adminCenter/deleteAdmins',{params:{adminID:adminID}})
 }
 
+// 管理员查看未审核用户
+export const getNoAuditedAccount =(offSet)=>{
+    return http.get('/admins/userCenter/findUnAccessUserAdmin',{params:{offSet:offSet}})
+}
+// 管理员审核账号通过
+export const passAccountRemark =(userID)=>{
+    return http.get('/user/userCenter/adminAccessUserNormal',{params:{userID:userID}})
+}
+// 管理员审核账号不通过
+export const noPassAccountRemark =(userID,userStatusRemark)=>{
+    return http.get('/user/userCenter/adminNotAccessUserNormal',{params:{userID:userID,userStatusRemark:userStatusRemark}})
+}
+
+
 // 管理员查看未审核任务
 export const getTask =(offSet,chooses)=>{
     return http.get('/tasks/taskCenter/tasksAdmin',{params:{offSet:offSet,chooses:chooses}})
@@ -54,13 +68,38 @@ export const noCompleteRemark =(taskID,taskStatusRemark)=>{
     return http.get('/tasks/taskCenter/successTaskNot',{params:{taskID:taskID,taskStatusRemark:taskStatusRemark}})
 }
 
-// 查看任务发布总量
+
+// 查看用户总量
+export const getUserNum =()=>{
+    return http.get('/admin/userCenter/findAllUserNumber')
+}
+// 查看时间币流水总量
+export const getCoinNum =()=>{
+    return http.get('/admin/taskCenter/findAllTaskTimeCoinNumber')
+}
+// 查看任务总量
+export const getTaskNum =()=>{
+    return http.get('/admin/taskCenter/findAllTaskNumber')
+}
+// 查看注册用户数量
+export const getCreateUser =(chooses)=>{
+    return http.get('/admin/userCenter/findRecentRegisterUsers',{params:{chooses:chooses}})
+}
+// 查看时间币流水
+export const getCoinsPaper =(chooses)=>{
+    return http.get('/admin/taskCenter/findTaskTimeCoinBounty',{params:{chooses:chooses}})
+}
+// 查看任务发布数量
 export const getCreateTask =(chooses)=>{
     return http.get('/admin/taskCenter/findCreatedTask',{params:{chooses:chooses}})
 }
-// 查看任务完成总量
+// 查看任务完成数量
 export const getCompleteTask =(chooses)=>{
     return http.get('/admin/taskCenter/findSuccessedTask',{params:{chooses:chooses}})
+}
+// 查看各类别任务总量
+export const getLabelTask =()=>{
+    return http.get('/admin/taskCenter/findTaskLableTaskCounts')
 }
 
 // 发布资讯

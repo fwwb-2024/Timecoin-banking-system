@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -46,9 +47,12 @@
 				// 显示最后一个元素
 				endShow:false,
 				pages:0,
+				
+				size:'',
 			}
 		},
 		created() {
+			this.size = uni.getStorageSync("size")
 			this.reload()
 		},
 		methods:{

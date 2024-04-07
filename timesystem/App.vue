@@ -5,6 +5,13 @@
 			if(!(uni.getStorageSync("size"))){
 				uni.setStorageSync("size","3.5px")
 			}
+			
+			// 账号状态
+			if(uni.getStorageSync('userStatus')){
+				uni.setStorageSync("userStatus",0)
+			}
+			
+			
 			try {
 				const value = uni.getStorageSync('position');
 				if (!value) {

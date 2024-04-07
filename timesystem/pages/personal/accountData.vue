@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -49,6 +50,15 @@
 					<input v-model="phoneNumber"></input>
 				</view>
 			</view>
+			<!-- 账号状态 -->
+			<view class="accountdata-account">
+				<view class="accountdata-account-front">
+					<text>账号状态</text>
+				</view>
+				<view class="accountdata-phonenumber-after">
+					<text>{{userStatus}}</text>
+				</view>
+			</view>
 			<!-- 实名认证 -->
 			<!-- <view class="accountdata-account">
 				<view class="accountdata-account-front">
@@ -74,14 +84,27 @@
 				userName:'',
 				userEmail:'',
 				phoneNumber:'',
+				userStatus:'',
+				
+				size:'',
 			}
 		},
 		created:function(){
+			this.size = uni.getStorageSync("size")
 			this.$api.getUserData(uni.getStorageSync('userName')).then((res)=>{
 				this.headerImage = res.data.userPhoto
 				this.userName = res.data.userName
 				this.userEmail = res.data.userEmail
-				this.phoneNumber = res.data.userPhoneNumber
+				this.phoneNumber = res.data.userPhoneNumber 
+				switch(res.data.userStatus) {
+					case 0: this.userStatus = '游客';break;
+					case 1: this.userStatus = '未审核';break;
+					case 2: this.userStatus = '正常';break;
+					case 3: this.userStatus = '未通过';break;
+					case 4: this.userStatus = '已冻结';break;
+					case 5: this.userStatus = '官方号';break;
+				}
+				uni.setStorage('userStatus',res.data.userStatus)
 			})
 		},
 		methods: {

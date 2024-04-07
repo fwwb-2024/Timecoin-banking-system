@@ -16,7 +16,7 @@
 		<!-- 个人中心功能 -->
 		<view class="peronal-function">
 			<!-- 账号信息 -->
-			<view class="function-part line" @click="navTo('/pages/personal/accountData')">
+			<view v-if="sizeShow" class="function-part line" @click="navTo('/pages/personal/accountData')">
 				<view>
 					<image src="/static/personal/accountData.png"></image>
 				</view>
@@ -27,7 +27,7 @@
 			
 			
 			<!-- 时间币管理 -->
-			<view class="function-part line" @click="navTo('/pages/personal/timeCoinData')">
+			<view v-if="sizeShow" class="function-part line" @click="navTo('/pages/personal/timeCoinData')">
 				<view>
 					<image src="/static/personal/timeCoinData.png"></image>
 				</view>
@@ -37,7 +37,7 @@
 			</view>
 			
 			<!-- 家庭管理 -->
-			<view class="function-part line" @click="navTo('/pages/personal/familyList')">
+			<view v-if="sizeShow" class="function-part line" @click="navTo('/pages/personal/familyList')">
 				<view>
 					<image src="/static/personal/familyList.png"></image>
 				</view>
@@ -78,14 +78,14 @@
 					<text>切换身份</text>
 				</view>
 				<view id="now-persoanl-status">
-					<text style="color: green;" v-if="nowPersonlStatus=='志愿者'">当前身份: 志愿者</text>
-					<text style="color: orange;" v-if="nowPersonlStatus=='发布者'">当前身份: 发布者</text>
+					<text style="color: green;" v-if="nowPersonlStatus=='志愿者'">当前: 志愿者</text>
+					<text style="color: orange;" v-if="nowPersonlStatus=='发布者'">当前: 发布者</text>
 				</view>
 			</view>
 		</view>
 		
 		<!-- 关于开发者信息 -->
-		<view class="about">
+		<view v-if="sizeShow" class="about">
 			<view class="about-us" @click="navTo('/pages/personal/aboutUs')">
 				<view>
 					<image src="/static/personal/aboutUs.png"></image>
@@ -108,6 +108,7 @@
 				username:'登录/注册',
 				// 当前身份
 				nowPersonlStatus:'志愿者',
+				
 				size:"",
 				sizeShow:true
 			}
@@ -144,6 +145,9 @@
 					this.size = "3.5px";
 					this.sizeShow = true
 				}
+				uni.reLaunch({
+					url:'/pages/personal/personal'
+				})
 			},
 			// 页面跳转
 			navTo(url){

@@ -47,13 +47,17 @@ const beforeRequest = (config) => {
 			uni.showToast({
 				title: '未登录',
 				icon:'error',
-				duration: 1000
+				duration: 500
 			});
 			setTimeout(function() {
-			    uni.reLaunch({
-			    	url:'/pages/login'
-			    })
-			}, 1000);
+				let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+				let curRoute = routes[routes.length - 1].route // 获取当前页面路由，也就是最后一个打开的页面路由
+				if(curRoute != '/pages/login'){
+					uni.reLaunch({
+						url:'/pages/login'
+					})
+				}
+			}, 500);
 		}
 	}
 	return config
