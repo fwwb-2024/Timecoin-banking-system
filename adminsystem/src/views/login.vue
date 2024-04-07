@@ -38,7 +38,7 @@ export default {
           localStorage.adminID = res.data.adminID
           localStorage.adminName = res.data.adminName
           localStorage.token = res.data.token
-          router.push('/home/completeTaskAnalysis')
+          router.push('/home/analysis')
         }
         else if(res.data == '该管理员不存在') {
           alert('该管理员不存在')

@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -37,10 +38,13 @@
 		data() {
 			return {
 				familyList:[],
-				reload:true
+				reload:true,
+				
+				size:'',
 			}
 		},
 		created:function (){
+			this.size = uni.getStorageSync("size")
 			this.$api.getFamilyList(uni.getStorageSync('userID')).then((res)=>{
 				for(let i=0;i<res.data.length;i++){
 					this.familyList.push({familyName:res.data[i].familyName,familyID:res.data[i].familyID})
@@ -77,7 +81,7 @@
 							that.$api.newFamily(temp).then((res)=>{
 								if(res.data){
 									uni.showToast({
-										title:'创建家庭成功',
+										title:'家庭已创建',
 										duration:1000
 									})
 									setTimeout(function() {

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!--搜索框-->
@@ -54,8 +55,12 @@
 		data() {
 			return {
 				searchContent:'',
-				searchChoose:0
+				searchChoose:0,
+				size:'',
 			}
+		},
+		created() {
+			this.size = uni.getStorageSync("size")
 		},
 		methods: {
 			//返回上一级页面

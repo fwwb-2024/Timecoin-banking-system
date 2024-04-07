@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -49,10 +50,13 @@
 				// 渲染的历史任务列表数据
 				historyMissionDataList:[],
 				// 加载的任务页数
-				pages:0
+				pages:0,
+				
+				size:'',
 			}
 		},
 		created: function(){
+			this.size = uni.getStorageSync("size")
 			// 判断身份
 			const value = uni.getStorageSync('position');
 			if (value == '志愿者') {
@@ -79,14 +83,6 @@
 			onReachBottom(){
 				this.pages+=10
 				this.reload()
-				if(this.historyMissionDataList.length <= this.pages) {
-					this.pages-=10
-					uni.showToast({
-						title:'已经没有了~',
-						icon: "none",
-						duration:1000
-					})
-				}
 			},
 			// 加载数据
 			reload(){
@@ -113,6 +109,14 @@
 								status: res.data[i].taskHistoryStatus,
 								statusShow:true,
 								dotShow:dotShow,
+							})
+						}
+						if(this.historyMissionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
 							})
 						}
 					})

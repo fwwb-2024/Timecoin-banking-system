@@ -4,6 +4,10 @@ export default {
 	register (data){
 	    return http.post('/user/register',data,false)
 	},
+	// 提交审核接口
+	examine (userID){
+		return http.get('/user/userCenter/userAccessUserNormal',{userID:userID},false)
+	},
 	// 账号密码登录
 	accountLogin (data){
 	    return http.post('/user/login/byUserName',data,false)

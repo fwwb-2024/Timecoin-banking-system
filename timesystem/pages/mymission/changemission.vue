@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -11,110 +12,111 @@
 			</view>		
 		</view>
 		
-		// 修改任务页面
+		
 		<view class="body" v-if="loading">
+			<!--修改任务页面-->
 			<view v-show="changeTaskShow">
-				<!--任务信息-->
-				<view class="detail">
-					<text class="detail-title">类别：</text>
-					<text class="detail-content" @click="changeLable">{{mission.taskLable}}</text>
+				<view class="detail-head">
+					<view class="change-lable">
+						<text class="change-lable-title">类别：</text>
+						<text class="change-lable-content" @click="changeLable">{{mission.taskLable}}</text>
+					</view>
+					
+					<view class="change-title">
+						<text class="change-title-title">标题：</text>
+						<input class="change-title-content" v-model="mission.taskName"></input>
+					</view>
+					
+					<view class="change-coins">
+						<text class="change-coins-title">悬赏：</text>
+						<input class="change-coins-content" type="number" v-model="mission.taskTimeCoinBounty"></input>
+						<text class="change-coins-unit">时间币/时</text>
+					</view>
 				</view>
 				
-				<view class="detail">
-					<text class="detail-title">标题：</text>
-					<input class="detail-content" style="width: 600rpx;" v-model="mission.taskName"></input>
-				</view>
-				
-				<view class="detail">
-					<text class="detail-title">简介(不超过50字)：</text>
-					<textarea class="detail-content" maxlength="50" style="height: 140rpx;" v-model="mission.taskBrief"></textarea>
-				</view>
-				
-				<view class="detail">
-					<text class="detail-title">详情(不超过500字)：</text>
-					<textarea class="detail-content" @input="inputDetail" maxlength="500" :style="{'height':detailHeight}" v-model="mission.taskDetail"></textarea>
-				</view>
-				
-				<!-- 图片附件 -->
-				<view class="detail-image">
-					<text class="detail-image-title">图片：</text>
-					<view v-for="(item,index) in mission.taskPhoto">
-						<image id="deletepic" @click="deletePic(index)" src="/static/deletepic.png"></image>
-						<view class="detail-image-element">
-							<image :src="item"></image>
+				<view class="detail-body">
+					<view class="change-brief">
+						<text class="change-brief-title">简介(不超过50字)：</text>
+						<textarea class="change-brief-content" maxlength="50" style="height: 140rpx;" v-model="mission.taskBrief"></textarea>
+					</view>
+					
+					<view class="change-detail">
+						<text class="change-detail-title">详情(不超过500字)：</text>
+						<textarea class="change-detail-content" @input="inputDetail" maxlength="500" :style="{'height':detailHeight}" v-model="mission.taskDetail"></textarea>
+					</view>
+					
+					<!-- 图片附件 -->
+					<view class="change-image">
+						<view v-for="(item,index) in mission.taskPhoto">
+							<image id="deletepic" @click="deletePic(index)" src="/static/deletepic.png"></image>
+							<view class="change-image-element">
+								<image :src="item"></image>
+							</view>
+						</view>
+						<view class="upPic-add" @click="upPic">
+							<image src="/static/addpic.png"></image>
 						</view>
 					</view>
-					<view class="upPic-add" @click="upPic">
-						<image src="/static/addpic.png"></image>
+					
+					<view class="change-time">
+						<text class="change-time-title">开始时间：</text>
+						<picker mode="date" :value="mission.taskStartTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
+							<view class="change-time-content">{{mission.taskStartTime}}</view>
+						</picker>
 					</view>
-				</view>
-				
-				<view class="detail" style="flex-wrap: nowrap;padding-bottom: 0;">
-					<text class="detail-title" style="width: auto;">悬赏：</text>
-					<input type="number" v-model="mission.taskTimeCoinBounty"></input>
-				</view>
-				
-				<view class="detail">
-					<text class="detail-time">开始时间：</text>
-					<picker mode="date" :value="mission.taskStartTime" :start="startDate" :end="endDate" @change="bindStartDateChange">
-						<view class="detail-content">{{mission.taskStartTime}}</view>
-					</picker>
-				</view>
-				<view class="detail">
-					<text class="detail-time">截止时间：</text>
-					<picker mode="date" :value="mission.taskEndTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
-						<view class="detail-content">{{mission.taskEndTime}}</view>
-					</picker>
-				</view>
-				
-				<view class="detail">
-					<text class="detail-time">任务状态：</text>
-					<text class="detail-content">{{mission.taskStatus}}</text>
+					<view class="change-time">
+						<text class="change-time-title">截止时间：</text>
+						<picker mode="date" :value="mission.taskEndTime" :start="startDate" :end="endDate" @change="bindEndDateChange">
+							<view class="change-time-content">{{mission.taskEndTime}}</view>
+						</picker>
+					</view>
 				</view>
 			</view>
 			
 			<!--任务详情页面-->
-			<view v-show="taskDetail">
-				<view class="detail">
-					<text class="detail-title">类别：</text>
-					<text class="detail-content">{{mission.taskLable}}</text>
+			<!-- <view class="detail-head"> -->
+			<view class="detail-head" v-show="taskDetail">
+				<view class="detail-title">
+					<text>{{mission.taskName}}</text>
 				</view>
-				<view class="detail">
-					<text class="detail-title">标题：</text>
-					<text class="detail-content">{{mission.taskName}}</text>
+				
+				<text class="detail-coins">{{mission.taskTimeCoinBounty}}时间币/时</text>
+				<view class="detail-lable">
+					<text class="detail-lable-title">类别：</text>
+					<text class="detail-lable-content">{{mission.taskLable}}</text>
 				</view>
-				<view class="detail">
-					<text class="detail-title">简介：</text>
-					<text class="detail-content" style="height: 140rpx;">{{mission.taskBrief}}</text>
+			</view>
+			
+			<!-- <view class="detail-body"> -->
+			<view class="detail-body"  v-show="taskDetail">
+				<view class="detail-status" v-show="statusShow">
+					<text class="detail-status-title">状态：</text>
+					<text class="detail-status-content">{{mission.taskStatus}}</text>
 				</view>
-				<view class="detail">
-					<text class="detail-title">详情：</text>
-					<text class="detail-content" :style="{'height':detailHeight}">{{mission.taskDetail}}</text>
-				</view>
+				
+				<text class="detail-breif-title">任务简介：</text>
+				<text class="detail-breif-content">{{mission.taskBrief}}</text>
+				
+				<text class="detail-detail-title">任务详情：</text>
+				<text class="detail-detail-content">{{mission.taskDetail}}</text>
 				<view class="detail-image" v-if="taskPhotoShow">
-					<text class="detail-image-title">图片：</text>
 					<view class="detail-image-element" v-for="(item,index) in mission.taskPhoto">
 						<image :src="item"></image>
 					</view>
 				</view>
-				<view class="detail" style="flex-wrap: nowrap;padding-bottom: 0;">
-					<text class="detail-title" style="width: auto;">悬赏：</text>
-					<text class="detail-content">{{mission.taskTimeCoinBounty}}</text>
+				
+				<view class="detail-time">
+					<text class="detail-time-title">截止时间：</text>
+					<text class="detail-time-content">{{mission.taskEndTime}}</text>
 				</view>
-				<view class="detail" v-show="statusShow">
-					<text class="detail-title">状态：</text>
-					<text class="detail-content">{{mission.taskStatus}}</text>
-				</view>
-			</view>
-			
-			<!-- 显示审核失败原因 -->
-			<view class="detail" v-show="remarkShow">
-				<text class="detail-time">审核失败：</text>
-				<view class="detail-content">{{mission.taskStatusRemark}}</view>
+				
+				<!-- 显示审核失败原因 -->
+				<text class="detail-fail-title" v-show="remarkShow">审核失败：</text>
+				<view class="detail-fail-content" v-show="remarkShow">{{mission.taskStatusRemark}}</view>
 			</view>
 			
 			<!-- 显示开始任务内容 -->
-			<view class="detail" v-if="taskDoingShow>0">
+			<!-- <view class="detail" v-if="taskDoingShow>0">
 				<view class="detail-start-title">
 					<text>志愿者已经开始任务</text>
 				</view>
@@ -124,25 +126,27 @@
 				<view class="detail-start-image" v-if="taskDoingShow==3 || taskDoingShow==4">
 					<image :src="mission.taskDoingPhoto"></image>
 				</view>
-			</view>
+			</view> -->
 			
 			<!-- 切换查看修改按钮 -->
-			<button v-if="(!changeTaskShow) && changeTaskStatus" class="detail-button" @click="()=>{changeTaskShow = true;taskDetail=false}">修改任务</button>
-			<button v-if="(!changeTaskShow) && (!taskDetail)" class="detail-button" @click="()=>{changeTaskShow = false;taskDetail = true}">查看详情</button>
-			<button v-if="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">隐藏详情</button>
+			<!-- <button v-if="(!changeTaskShow) && (!taskDetail)" class="detail-button" @click="()=>{changeTaskShow = false;taskDetail = true}">查看详情</button> -->
+			<!-- <button v-if="taskDetail" class="detail-button" @click="()=>{taskDetail=false}">隐藏</button> -->
+			<view style="display: flex;flex-direction: row;justify-content: center;width: 80%;">
+				<button style="flex-grow: 1;margin-right: 50rpx; background-color: white;color: black;" v-if="(!changeTaskShow) && changeTaskStatus" class="detail-button" @click="()=>{changeTaskShow = true;taskDetail=false}">修改</button>
+				<button style="flex-grow: 1;background-color: #ff6666;" v-if="changeTaskStatus && (!changeTaskShow)" class="detail-button" @click="deleteTask">删除</button>
+			</view>
+						
 			<!-- 修改任务按钮 -->
 			<view v-if="changeTaskShow" style="display: flex;flex-direction: row;justify-content: center;width: 80%;">
 				<button style="flex-grow: 1;margin-right: 50rpx;" @click="()=>{changeTaskShow=false;taskDetail=true}">取消</button>
-				<button style="flex-grow: 1;background-color: #ff6666;color: white;" @click="changeTask">确认</button>
+				<button style="flex-grow: 1;background-color: skyblue;color: white;" @click="changeTask">确认</button>
 			</view>
 			
-			<button v-if="changeTaskStatus && (!changeTaskShow)" class="detail-button" @click="deleteTask">删除任务</button>
-			
-			<view v-if="confirmShow">
-				<button class="detail-button" @click="agreeTask">确认任务完成</button>
-				<button class="detail-button" @click="">申请官方介入</button>
-				<button class="detail-button" @click="refuseTask">拒绝任务完成</button>
+			<view v-if="confirmShow" style="display: flex;flex-direction: row;justify-content: center;width: 80%;">
+				<button style="flex-grow: 1;margin-right: 50rpx;background-color: #ff6666;" class="detail-button" @click="refuseTask">拒绝</button>
+				<button style="flex-grow: 1;" class="detail-button" @click="agreeTask">确认</button>
 			</view>
+			<button v-if="confirmShow" style="background-color: orange;width: 80%;" class="detail-button" @click="">有疑问？申请官方介入</button>
 		</view>
 	</view>
 </template>
@@ -192,20 +196,23 @@
 				// 显示修改任务
 				changeTaskShow:false,
 				// 显示任务详情
-				taskDetail:false,
+				taskDetail:true,
 				// 若未接取任务，则显示修改任务按钮
 				changeTaskStatus:true,
 				
 				detailHeight:'380rpx',
+				
+				sizze:'',
 			}
 		},
 		onLoad(options) {
+			this.size = uni.getStorageSync("size")
 			this.missionId = options.id
 			this.$api.getTaskData(this.missionId).then((res)=>{
 				switch(res.data.taskLable){
 					case 1:this.mission.taskLable = '其他';break;
 					case 2:this.mission.taskLable = '跑腿';break;
-					case 3:this.mission.taskLable = '带货';break;
+					case 3:this.mission.taskLable = '代购';break;
 					case 4:this.mission.taskLable = '打理';break;
 					case 5:this.mission.taskLable = '陪伴';break;
 					case 6:this.mission.taskLable = '线上';break;
@@ -227,7 +234,7 @@
 					this.mission.taskStatusRemark = res.data.taskStatusRemark
 					this.remarkShow = true
 				}
-				if(res.data.taskPhoto[0] != ''){
+				if(res.data.taskPhoto != null && res.data.taskPhoto != '' && res.data.taskPhoto[0] != '' && res.data.taskPhoto[0] != null){
 					this.taskPhotoShow = true
 					this.mission.taskPhoto = res.data.taskPhoto
 				}
@@ -235,9 +242,9 @@
 				switch(res.data.taskStatus){
 					case 1:this.mission.taskStatus = '未审核(请等待管理员审核)';this.taskDetail=true;break;
 					case 2:this.mission.taskStatus = '未完成(请等待志愿者接取)';this.taskDetail=true;break;
-					case 3:this.mission.taskStatus = '已接取';this.taskDetail=true;this.changeTaskStatus=false;break;
+					case 3:this.mission.taskStatus = '已接取';this.changeTaskStatus=false;break;
 					case 4:this.mission.taskStatus = '已处理';this.changeTaskStatus=false;this.confirmShow=true;break;
-					case 5:this.mission.taskStatus = '已完成(请等待管理员审核)';this.taskDetail=true;this.changeTaskStatus=false;break;
+					case 5:this.mission.taskStatus = '已完成(请等待管理员审核)';this.changeTaskStatus=false;break;
 					case 6:this.mission.taskStatus = '已完结';this.changeTaskStatus=false;break;
 					case 7:this.mission.taskStatus = '进行中(请等待志愿者完成任务)';this.changeTaskStatus=false;this.taskDoingShow=1;break;
 					default:break;
@@ -280,7 +287,7 @@
 			},
 			// 更改图片类别
 			changeLable(){
-				let temp = ['跑腿','带货','打理','陪伴','线上','其他']
+				let temp = ['跑腿','代购','打理','陪伴','线上','其他']
 				let that = this
 				uni.showActionSheet({
 					title:'请选择任务类别',
@@ -402,7 +409,7 @@
 								that.$api.deleteTask(that.mission.taskID,uni.getStorageSync('userID'),that.mission.taskTimeCoinBounty).then((res)=>{
 									if(res.data == '删除成功'){
 										uni.showToast({
-											title:'删除成功',
+											title:'已删除',
 											icon:'success',
 											duration:1000
 										})
@@ -428,7 +435,7 @@
 				this.$api.agreeTask(this.mission.taskID).then((res)=>{
 					if(res.data == '完成成功'){
 						uni.showToast({
-							title:'确认成功',
+							title:'已确认',
 							icon:'success',
 							duration:1000
 						})
@@ -458,7 +465,7 @@
 							that.$api.refuseTask(that.mission.taskID,tempRamark).then((res)=>{
 								if(res.data == '批改成功'){
 									uni.showToast({
-										title:'拒绝成功',
+										title:'已拒绝',
 										icon:'success',
 										duration:1000
 									})
@@ -526,9 +533,6 @@
 		        return this.getLimtDate('end');
 		    }
 		},
-		components:{
-			editorl,
-		}
 	}
 </script>
 
@@ -568,68 +572,128 @@
 	.body {
 		padding: 190rpx 0 50rpx 0;
 		width: 750rpx;
-		background-color: white;
 	}
-	.detail {
+	
+	/* 修改类别 */
+	.change-lable {
 		display: flex;
 		flex-direction: row;
-		justify-content: flex-start;
-		width: 650rpx;
-		flex-wrap: wrap;
-		background-color: #f2f2f2;
-		border-radius: 15px;
-		margin-bottom: 30rpx;
-		padding: 20rpx 0 10rpx 20rpx;
+		margin-bottom: 10rpx;
 	}
-	.detail-title {
-		width: 700rpx;
+	.change-lable-title {
 		font-size: 38rpx;
-		color: gray;
-		margin-bottom: 50rpx;
+		font-weight: 600;
 	}
-	.detail-content {
+	.change-lable-content {
 		font-size: 35rpx;
-		margin-bottom: 30rpx;
 	}
-	.detail-time {
-		width: 200rpx;
+	
+	/* 修改标题*/
+	.change-title {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10rpx;
+	}
+	.change-title-title {
 		font-size: 38rpx;
-		color: gray;
-		margin-bottom: 50rpx;
+		font-weight: 600;
 	}
-	.detail-image {
+	.change-title-content {
+		font-size: 35rpx;
+		width: 530rpx;
+	}
+	
+	/* 修改简介 */
+	.change-brief {
+		margin-bottom: 10rpx;
+	}
+	.change-brief-title {
+		font-size: 38rpx;
+		font-weight: 600;
+		margin-bottom: 10rpx;
+	}
+	.change-brief-content {
+		font-size: 35rpx;
+		width: 630rpx;
+		padding: 5rpx 5rpx 5rpx 5rpx;
+	}
+	/* 修改详情 */
+	.change-detail {
+		margin-bottom: 10rpx;
+	}
+	.change-detail-title {
+		font-size: 38rpx;
+		font-weight: 600;
+		margin-bottom: 10rpx;
+	}
+	.change-detail-content {
+		font-size: 35rpx;
+		width: 630rpx;
+		padding: 5rpx 5rpx 5rpx 5rpx;
+	}
+	/* 修改悬赏 */
+	.change-coins {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10rpx;
+	}
+	.change-coins-title {
+		font-size: 38rpx;
+		font-weight: 600;
+	}
+	.change-coins-content {
+		font-size: 35rpx;
+		width: 70rpx;
+	}
+	.change-coins-unit {
+		font-size: 35rpx;
+	}
+	/* 修改时间 */
+	.change-time {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10rpx;
+	}
+	.change-time-title {
+		font-size: 38rpx;
+		font-weight: 600;
+	}
+	.change-time-content {
+		font-size: 35rpx;
+	}
+	/* 修改图片 */
+	.change-image {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		flex-wrap: wrap;
 		width: 650rpx;
-		margin: 30rpx 0 30rpx 0;
-		background-color: #f2f2f2;
+		margin: 0 0 30rpx 0;
 		border-radius: 15px;
-		padding: 20rpx 0 10rpx 20rpx;
+		padding: 0 0 10rpx 20rpx;
 	}
-	.detail-image-title {
+	.change-image-title {
 		width: 120rpx;
 		font-size: 38rpx;
 		color: gray;
 		margin-bottom: 50rpx;
 	}
-	.detail-image-element {
+	.change-image-element {
 		margin: 0 10rpx 10rpx 20rpx;
 	}
-	.detail-image-element image {
+	.change-image-element image {
 		width: 600rpx;
 	}
 	.detail-button {
-		margin: 50rpx 10rpx 0 10rpx ;
-		width: 500rpx;
-		padding: 30rpx 30rpx 30rpx 30rpx;
+		margin: 20rpx 0 0 0 ;
+		width: 80%;
+		height: 80rpx;
 		background-color: #80aaff;
 		box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25);
 		color: rgba(255, 255, 255, 1);
 		text-align: center;
 		font-size: 38rpx;
-		line-height: 38rpx;
+		line-height: 80rpx;
 	}
 	.upPic {
 		width: 100%;
@@ -648,23 +712,6 @@
 		top: 20rpx;
 		z-index: 1;
 	}
-	.detail-image {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		width: 650rpx;
-		margin: 30rpx 0 30rpx 0;
-	}
-	.detail-image-title {
-		width: 120rpx;
-		font-size: 38rpx;
-		color: gray;
-		margin-bottom: 50rpx;
-	}
-	.detail-image-element image {
-		width: 600rpx;
-	}
 	.upPic-add {
 		width: 200rpx;
 		height: 200rpx;
@@ -675,6 +722,7 @@
 		height: 200rpx;
 	}
 	
+	/* 开始任务信息显示 */
 	.detail-start-title{
 		font-size: 38rpx;
 		width: 100%;
@@ -692,5 +740,139 @@
 	.detail-start-image image {
 		width: 100%;
 		background-color: blue
+	}
+	
+	/* 任务首部 */
+	.detail-head {
+		width: 680rpx;
+		border-radius: 15px;
+		background-color: white;
+		padding: 50rpx 0 30rpx 20rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 50rpx;
+	}
+	/* 任务标题 */
+	.detail-title {
+		width: 100%;
+		font-size: 38rpx;
+		font-weight: bold;
+		margin-bottom: 10rpx;
+	}
+	/* 时间币悬赏 */
+	.detail-coins {
+		width: 650rpx;
+		font-size: 36rpx;
+		color: orange;
+		padding-bottom: 40rpx;
+		border-bottom: #e6e6e6 solid 1px;
+	}
+	
+	/* 类别详情 */
+	.detail-lable {
+		margin-top: 20rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+	.detail-lable-title {
+		font-size: 30rpx;
+		color: gray;
+	}
+	.detail-lable-content {
+		font-size: 30rpx;
+	}
+	
+	/* 任务主体 */
+	.detail-body {
+		width: 660rpx;
+		border-radius: 15px;
+		background-color: white;
+		padding: 20rpx 20rpx 30rpx 20rpx;
+		margin-bottom: 50rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	/* 任务状态 */
+	.detail-status {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 20rpx;
+	}
+	.detail-status-title {
+		font-size: 35rpx;
+		font-weight: 600;
+	}
+	.detail-status-content {
+		margin-top: 10rpx;
+		font-size: 33rpx;
+		margin-bottom: 5rpx;
+	}
+	
+	/* 任务简介 */
+	.detail-breif-title {
+		font-size: 35rpx;
+		font-weight: 600;
+	}
+	.detail-breif-content {
+		margin-top: 10rpx;
+		font-size: 33rpx;
+		margin-bottom: 20rpx;
+	}
+	/* 任务详情 */
+	.detail-detail-title {
+		font-size: 35rpx;
+		font-weight: 600;
+	}
+	.detail-detail-content {
+		margin-top: 10rpx;
+		font-size: 33rpx;
+	}
+	/* 任务图片 */
+	.detail-image {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 650rpx;
+		margin: 30rpx 0 30rpx 0;
+		padding: 20rpx 0 10rpx 20rpx;
+	}
+	.detail-image-element {
+		margin: 0 10rpx 10rpx 20rpx;
+	}
+	.detail-image-element image {
+		width: 600rpx;
+	}
+	
+	/* 截止时间 */
+	.detail-time {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 10rpx;
+	}
+	.detail-time-title {
+		font-size: 35rpx;
+		font-weight: 600;
+	}
+	.detail-time-content {
+		margin-top: 10rpx;
+		font-size: 33rpx;
+		margin-bottom: 5rpx;
+	}
+	
+	/* 审核失败原因 */
+	.detail-fail-title {
+		font-size: 35rpx;
+		font-weight: 600;
+	}
+	.detail-fail-content {
+		margin-top: 10rpx;
+		font-size: 33rpx;
 	}
 </style>

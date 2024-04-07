@@ -47,7 +47,7 @@
 				  "titleNView": false, //禁用原生导航栏 
 				  "pullToRefresh":{
 				  	"color":"#e6e6e6",
-					"offset": "320px",
+					"offset": "180px",
 					"height":"50px",
 					"range": "100px"
 				  }

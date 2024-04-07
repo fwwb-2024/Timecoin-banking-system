@@ -34,7 +34,7 @@
 		</view>
 		
 		<view class="newMission">
-			<button @click="navTo('/pages/mymission/newMission')" v-show="!position">发布任务</button>
+			<button @click="navTo('/pages/mymission/newMission')" v-show="!position">发布</button>
 		</view>
 	</view>
 </template>
@@ -76,14 +76,6 @@
 		onReachBottom(){
 			this.pages+=10
 			this.reload()
-			if(this.missionDataList.length <= this.pages) {
-				this.pages-=10
-				uni.showToast({
-					title:'已经没有了~',
-					icon: "none",
-					duration:1000
-				})
-			}
 		},
 		methods: {
 			reload() {
@@ -110,6 +102,14 @@
 								status: res.data[i].taskStatus,
 								statusShow:true,
 								dotShow:dotShow,
+							})
+						}
+						if(this.missionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
 							})
 						}
 					})

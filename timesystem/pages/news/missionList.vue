@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -36,9 +37,12 @@
 				// 任务类别
 				lable:0,
 				labelName:'跑腿',
+				
+				size:'',
 			}
 		},
 		onLoad(option) {
+			this.size = uni.getStorageSync("size")
 			this.lable = option.lable
 			this.reload()
 		},
@@ -46,14 +50,6 @@
 		onReachBottom(){
 			this.pages+=10
 			this.reload()
-			if(this.missionDataList.length <= this.pages) {
-				this.pages-=10
-				uni.showToast({
-					title:'已经没有了~',
-					icon: "none",
-					duration:1000
-				})
-			}
 		},
 		methods:{
 			//返回上一级页面
@@ -89,6 +85,14 @@
 							endTime: res.data[i].taskEndTime,
 							status: res.data[i].taskStatus,
 							statusShow:false
+						})
+					}
+					if(this.missionDataList.length <= this.pages) {
+						this.pages-=10
+						uni.showToast({
+							title:'已经没有了~',
+							icon: "none",
+							duration:1000
 						})
 					}
 				})

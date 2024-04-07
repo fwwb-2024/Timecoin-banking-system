@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -34,9 +35,11 @@
 				searchChoose:0,
 				pages:0,
 				missionDataList:[],
+				size:'',
 			}
 		},
 		onLoad(option) {
+			this.size = uni.getStorageSync("size")
 			this.searchChoose = option.searchChoose
 			this.searchContent = option.searchContent
 			this.reload()
@@ -45,14 +48,6 @@
 		onReachBottom(){
 			this.pages+=10
 			this.reload()
-			if(this.missionDataList.length <= this.pages) {
-				this.pages-=10
-				uni.showToast({
-					title:'已经没有了~',
-					icon: "none",
-					duration:1000
-				})
-			}
 		},
 		methods:{
 			//返回上一级页面
@@ -89,6 +84,14 @@
 								statusShow:false
 							})
 						}
+						if(this.missionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
+							})
+						}
 					});
 					this.$api.searchByTitle(this.searchContent,this.pages,9).then((res)=>{
 						const length = res.data.length
@@ -106,6 +109,14 @@
 								endTime: res.data[i].taskEndTime,
 								status: res.data[i].taskStatus,
 								statusShow:false
+							})
+						}
+						if(this.missionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
 							})
 						}
 					});
@@ -129,6 +140,14 @@
 								statusShow:false
 							})
 						}
+						if(this.missionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
+							})
+						}
 					});break;
 					case '2':
 					this.$api.searchByTitle(this.searchContent,this.pages,9).then((res)=>{
@@ -147,6 +166,14 @@
 								endTime: res.data[i].taskEndTime,
 								status: res.data[i].taskStatus,
 								statusShow:false
+							})
+						}
+						if(this.missionDataList.length <= this.pages) {
+							this.pages-=10
+							uni.showToast({
+								title:'已经没有了~',
+								icon: "none",
+								duration:1000
 							})
 						}
 					});break;

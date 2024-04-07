@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -55,9 +56,12 @@
 				familyMaster:'',
 				// 是否是家主
 				addview:false,
+				
+				size:'',
 			}
 		},
 		onLoad(options) {
+			this.size = uni.getStorageSync("size")
 			this.familyID = options.familyID
 			this.$api.getFamilyMember(this.familyID).then((res)=>{
 				this.familyName = res.data[0].familyName
@@ -130,7 +134,7 @@
 				this.$api.deleteFamilyMember(this.familyID,userID).then((res)=>{
 					if(res.data == '删除成功'){
 						uni.showToast({
-							title:'删除成功',
+							title:'已删除',
 							duration:1000
 						})
 						setTimeout(function() {
@@ -190,7 +194,7 @@
 					this.$api.deleteFamilyMember(this.familyID,uni.getStorageSync('userID')).then((res)=>{
 						if(res.data == '删除成功'){
 							uni.showToast({
-								title:'退出成功',
+								title:'已退出',
 								duration:1000
 							})
 							setTimeout(function() {
@@ -228,7 +232,7 @@
 							that.$api.deleteFamily(that.familyID).then((res)=>{
 								if(res.data == '删除成功'){
 									uni.showToast({
-										title:'解散成功',
+										title:'已解散',
 										duration:1000
 									})
 									setTimeout(function() {

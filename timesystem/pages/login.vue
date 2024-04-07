@@ -170,7 +170,7 @@
 			this.size = uni.getStorageSync("size")
 		},
 		methods: {
-			//返回上一级页面
+			// 返回上一级页面
 			back() {
 				uni.navigateBack({
 					delta:1
@@ -211,10 +211,6 @@
 							});
 						}
 						else if(res.statusCode == 200) {
-							uni.showToast({
-								title: '登录成功',
-								duration: 1000
-							});
 							uni.setStorage({
 								key: 'userID',
 								data: res.data.userID,
@@ -222,6 +218,17 @@
 							uni.setStorage({
 								key: 'userName',
 								data: res.data.userName,
+							});
+							if(uni.getStorageSync('userStatus') == 0){
+								this.$api.examine(res.data.userID).then((response)=>{
+									if(response.data == '申请成功'){
+										uni.setStorage('userStatus',1)
+									}
+								})
+							}
+							uni.showToast({
+								title: '登录成功',
+								duration: 1000
 							});
 							setTimeout(function() {
 							    uni.reLaunch({

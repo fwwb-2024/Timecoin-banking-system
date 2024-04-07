@@ -70,22 +70,37 @@ export default {
         taskTimeCoinBounty:null,
         taskStatusRemark:''
       },
+      pages:0,
     }
   },
   created() {
-    getTask(0,1).then((res)=>{
-      for(let i=0;i<res.data.length;i++){
-        this.tableData.push({
-          taskID:res.data[i].taskID,
-          taskName:res.data[i].taskName,
-          taskBrief:res.data[i].taskBrief,
-          taskEmployer:res.data[i].taskEmployer,
-          taskTimeCoinBounty:res.data[i].taskTimeCoinBounty,
-        })
-      }
-    })
+    this.reload()
   },
   methods:{
+    reload(){
+      getTask(this.pages,1).then((res)=>{
+        for(let i=0;i<res.data.length;i++){
+          if(res.data[i].taskStatusRemark != null && res.data[i].taskStatusRemark != ''){
+            continue;
+          }
+          this.tableData.push({
+            taskID:res.data[i].taskID,
+            taskName:res.data[i].taskName,
+            taskBrief:res.data[i].taskBrief,
+            taskEmployer:res.data[i].taskEmployer,
+            taskTimeCoinBounty:res.data[i].taskTimeCoinBounty,
+          })
+        }
+        // 加载全部数据
+        if((this.pages+10) == this.tableData.length){
+          this.pages += 10
+          this.reload()
+        }
+        else {
+          this.pages -= 10
+        }
+      })
+    },
     // 展示任务详情
     remarkTask(taskID){
       getTaskDetail(taskID).then((res)=>{

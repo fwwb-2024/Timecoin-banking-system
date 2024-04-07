@@ -13,7 +13,7 @@
 					<image src="/static/coins.png"></image>
 				</view>
 				<view>
-					<text>{{missionData.timeCoins}}</text>
+					<text>{{missionData.timeCoins}}/时</text>
 				</view>
 			</view>
 			<!-- 任务简介 -->
@@ -89,23 +89,21 @@
 		flex-wrap:wrap;
 	}
 	.mission-title {
-		width: 80%;
+		width: 70%;
 		height: 50rpx;
-	}
-	.mission-title {
 		font-size: 30rpx;
 	}
 	.mission-introduction {
 		display: flex;
 		align-items: center;
-		width: 100%;
+		width: 95%;
 		height: 100rpx;
 		margin: 5rpx 0 0 10rpx;
 	}
 	.mission-introduction text {
-		font-size: 20rpx;
+		font-size: 30rpx;
 		color: gray;
-		line-height: 35rpx;	//设置行高
+		line-height: 50rpx;	//设置行高
 		overflow:hidden;
 		text-overflow:ellipsis;
 		display:-webkit-box;
@@ -120,7 +118,7 @@
 		font-weight: bold;
 	}
 	.mission-coins {
-		width: 20%;
+		width: 30%;
 		display:flex;
 		justify-content: flex-start;
 		align-items: center;
@@ -169,7 +167,7 @@
 	}
 	.red-dot {
 		position: absolute;
-		right: 17px;
+		right: 23px;
 	    width: 10px; /* 小红点的大小 */
 	    height: 10px; /* 小红点的大小 */
 	    background-color: red; /* 小红点的颜色 */

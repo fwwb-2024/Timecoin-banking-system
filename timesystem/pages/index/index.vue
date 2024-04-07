@@ -81,14 +81,6 @@
 		onReachBottom(){
 			this.pages+=10
 			this.reload()
-			if(this.missionDataList.length <= this.pages) {
-				this.pages-=10
-				uni.showToast({
-					title:'已经没有了~',
-					icon: "none",
-					duration:1000
-				})
-			}
 		},
 		methods: {
 			// 页面跳转
@@ -115,6 +107,14 @@
 							endTime: res.data[i].taskEndTime,
 							status: res.data[i].taskStatus,
 							statusShow:false
+						})
+					}
+					if(this.missionDataList.length <= this.pages) {
+						this.pages-=10
+						uni.showToast({
+							title:'已经没有了~',
+							icon: "none",
+							duration:1000
 						})
 					}
 				})

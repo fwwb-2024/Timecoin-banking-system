@@ -1,5 +1,6 @@
 <template>
 	<view class="main">
+		<page-meta :root-font-size="size"></page-meta>
 		<!-- 顶部栏 -->
 		<view class="headerBackgroundColor header-background">
 			<!-- 返回上一级图片 -->
@@ -22,9 +23,12 @@
 		data(){
 			return {
 				content:'',
+				
+				size:'',
 			}
 		},
 		onLoad(options){
+			this.size = uni.getStorageSync("size")
 			this.$api.getnewsDetail(options.id).then((res)=>{
 				this.content = res.data.newsDetail
 			})
