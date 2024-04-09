@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfigurerUtil implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers( ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("file:C:/Users/Administrator/Desktop/fwwb/clone/Timecoin-banking-system/src/main/resources/static/userphoto");
+        registry.addResourceHandler("/static/**").addResourceLocations("file:static/userphoto/");
     }
 
 }

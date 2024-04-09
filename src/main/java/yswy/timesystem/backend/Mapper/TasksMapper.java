@@ -566,4 +566,12 @@ public interface TasksMapper {
             "from tasks " +
             "where task_lable= #{taskLable} ")
     TaskLableTaskCounts getTaskLableTaskCounts(int taskLable);
+
+    @Select("select count(*) as counts " +
+            "from tasks  ")
+    int getAllTaskNumber();
+
+    @Select("select sum(task_time_coin_bounty) as counts " +
+            "from tasks where task_status=6 ")
+    int getAllTaskTimeCoinNumber();
 }

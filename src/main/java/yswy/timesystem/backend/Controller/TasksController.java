@@ -19,16 +19,10 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * @author : hutaosama
- * @date: 2024-03-12 - 03 - 12 - 23:07
- * @Description: com.example.backend.controller
- * @version: 1.0
- */
+
 
 
 @RestController
@@ -46,11 +40,11 @@ public class TasksController {
     @Resource
     private FabricServiceImpl fabricService;
 
-    private static String TASK_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
-    private static String TASK_PHOTO_STATIC_PATH="static\\userphoto\\";
-    private static String TASK_STATIC="http://10.195.28.44:9090/";
+    private static String TASK_PHOTO_PATH = "/root/static/userphoto/";
+    private static String TASK_PHOTO_STATIC_PATH="root/static/userphoto/";
+    private static String TASK_STATIC="http://123.249.5.46:9090/";
 
-    private static String USER_STATIC="http://10.195.28.44:9090/";
+    private static String USER_STATIC="http://123.249.5.46:9090/";
 
     @Operation(summary = "管理员查看任务列表接口", description = "返回201，一串tasks对象")
     @Parameter(name = "chooses", description = "选择哪种排序方式，从1到11，id顺序，用户名顺，用户名逆，雇主顺，雇主逆，开始结束时间悬赏", example = "1")
@@ -469,6 +463,16 @@ public class TasksController {
         tasksMapper.insertRegisterTaskHistory(taskID,usersMapper.selectForUserIDByUserName(tasks.getTaskEmployer()));
         a=a-b;
         usersMapper.updateUserTimeCoinByID(tasks.getTaskEmployerFamilyUserID(),a);
+        if(tasks.getTaskTimeCoinBounty()<20){
+            tasksMapper.updateTaskStatusTwoByTaskID(taskID);
+            tasksMapper.updateTaskHistoryStatusTwoByTaskID(taskID);
+            tasksMapper.updateTaskStatusRemarkByTaskID(taskID,null);
+            Ledgers ledgers=new Ledgers();
+            ledgers.setTaskID(taskID);
+            ledgers.setUserID(usersMapper.selectForUserIDByUserName(tasksMapper.selectTaskEmployerByTaskID(taskID)));
+            ledgers.setLedgerTimeCoin(0-tasksMapper.selectTaskTimeCoinBountyByTaskID(taskID));
+            ledgersMapper.insertRegister(ledgers);
+        }
         return "新建成功";
     }
 
@@ -840,6 +844,28 @@ public class TasksController {
             TaskLableTaskCounts counts = tasksMapper.getTaskLableTaskCounts(i);
             result.add(counts);
         }
+        return result;
+    }
+
+    @Operation(summary = "管理员查看任务总量接口", description = "返回201,int")
+    @GetMapping("/admin/taskCenter/findAllTaskNumber")//
+    public int taskCenterFindAllTaskNumber(HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+
+        int result=tasksMapper.getAllTaskNumber();
+        return result;
+    }
+
+    @Operation(summary = "管理员查看时间币流水总量接口", description = "返回201,int")
+    @GetMapping("/admin/taskCenter/findAllTaskTimeCoinNumber")//
+    public int taskCenterFindAllTaskTimeCoinNumber(HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+
+        int result=tasksMapper.getAllTaskTimeCoinNumber();
         return result;
     }
 

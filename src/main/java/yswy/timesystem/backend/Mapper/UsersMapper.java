@@ -164,5 +164,8 @@ public interface UsersMapper {
             "order by date(user_regist_time) asc")
     List<Tasksmulti> getRecentRegisterUsers(int days);
 
+    @Select("select count(*) as counts " +
+            "from users " )
+    int getAllUserNumber();
 
 }

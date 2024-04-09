@@ -47,9 +47,12 @@ public class UserController {
 
 //接口
 
-    private static String USER_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
-    private static String USER_PHOTO_STATIC_PATH="static\\userphoto\\";
-    private static String USER_STATIC="http://10.195.28.44:9090/";
+    //private static String USER_PHOTO_PATH = "C:\\Users\\Administrator\\Desktop\\fwwb\\clone\\Timecoin-banking-system\\src\\main\\resources\\static\\userphoto\\";
+    //private static String USER_PHOTO_STATIC_PATH="static\\userphoto\\";
+    //private static String USER_STATIC="http://10.195.28.44:9090/";
+    private static String USER_PHOTO_PATH = "/root/static/userphoto/";
+    private static String USER_PHOTO_STATIC_PATH="root/static/userphoto/";
+    private static String USER_STATIC="http://123.249.5.46:9090/";
 
     @Operation(summary = "用户区块链刷新接口", description = "返回\"注册成功\"")
     @Parameter(name = "userID", description = "int", example = "123")
@@ -423,6 +426,17 @@ public class UserController {
 
         List<Tasksmulti> taskCounts=usersMapper.getRecentRegisterUsers(7);
         List<Tasksmulti> result= DailyTaskUtil.convertToArray(taskCounts,7);
+        return result;
+    }
+
+    @Operation(summary = "管理员查看用户总量接口", description = "返回201，counts")
+    @GetMapping("/admin/userCenter/findAllUserNumber")//
+    public int userCenterFindAllUserNumber(HttpServletRequest request, HttpServletResponse responce)throws Exception {
+
+        TokenUtil.tokenServiceTwo(request,responce);
+
+        int result=usersMapper.getAllUserNumber();
+
         return result;
     }
 }
