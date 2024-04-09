@@ -12,7 +12,7 @@
         "nvueStyleCompiler" : "uni-app",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
-            "waiting" : true,
+            "waiting" : false,
             "autoclose" : true,
             "delay" : 0
         },
@@ -56,7 +56,8 @@
                     "xxhdpi" : "static/timebankpic.9.png",
                     "xhdpi" : "static/timebankpic.9.png"
                 },
-                "useOriginalMsgbox" : false
+                "useOriginalMsgbox" : false,
+                "iosStyle" : "common"
             },
             "icons" : {
                 "android" : {

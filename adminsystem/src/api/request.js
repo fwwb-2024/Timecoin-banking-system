@@ -16,12 +16,16 @@ http.interceptors.request.use(config=>{
 //响应拦截器
 http.interceptors.response.use(res=>{
     // 响应处理
-    if(res.status == 201){
-        alert('登录已过期')
-        router.push('/login');
-    }
-    else if(res.data.token){
-        localStorage.token = res.data.token
+    let url = location.href
+    let route = (url).substring((url).lastIndexOf("/")+1)
+    if(route != 'login'){
+        if(res.status == 201){
+            alert('登录已过期')
+            router.push('/login');
+        }
+        else if(res.data.token){
+            localStorage.token = res.data.token
+        }
     }
     return res
 })
