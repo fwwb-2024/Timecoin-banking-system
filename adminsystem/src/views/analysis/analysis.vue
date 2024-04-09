@@ -4,17 +4,17 @@
         <el-card class="head-user">
           <img src="../../../public/userIndex.png">
           <span class="head-title">用户数量</span>
-          <div class="head-content">{{num[0]}}</div>
+          <div class="head-content">{{usercount}}</div>
         </el-card>
         <el-card class="head-coins">
           <img src="../../../public/coinIndex.png">
           <span class="head-title">交易金额</span>
-          <div class="head-content">{{num[1]}}</div>
+          <div class="head-content">{{coincount}}</div>
         </el-card>
         <el-card class="head-task">
           <img src="../../../public/taskIndex.png">
           <span class="head-title">任务数量</span>
-          <div class="head-content">{{num[2]}}</div>
+          <div class="head-content">{{taskcount}}</div>
         </el-card>
       </div>
 
@@ -46,18 +46,20 @@ export default {
     return {
       show:'show',
 
-      num:[],
+      usercount:0,
+      coincount:0,
+      taskcount:0,
     }
   },
   created() {
     getUserNum().then((res1)=>{
-      this.num.push(res1.data)
-      getCoinNum().then((res2)=>{
-        this.num.push(res2.data)
-        getTaskNum().then((res3)=>{
-          this.num.push(res3.data)
-        })
-      })
+      this.usercount = res1.data
+    })
+    getCoinNum().then((res2)=>{
+      this.coincount = res2.data
+    })
+    getTaskNum().then((res3)=>{
+      this.taskcount = res3.data
     })
   },
   components:{
@@ -82,6 +84,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 30px;
+  user-select: none;
 }
 .head-user {
   height: 100px;
