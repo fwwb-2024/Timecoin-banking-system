@@ -219,6 +219,7 @@
 								key: 'userName',
 								data: res.data.userName,
 							});
+							uni.setStorageSync('userStatus',res.data.userStatus);
 							if(uni.getStorageSync('userStatus') == 0){
 								this.$api.examine(res.data.userID).then((response)=>{
 									if(response.data == '申请成功'){

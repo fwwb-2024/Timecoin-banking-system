@@ -1,5 +1,5 @@
 const http = {
-	baseurl: "http://10.195.28.44:9090",
+	baseurl: "http://123.249.5.46:9090",
 	//请求方法
 	request(config) {
 		config = beforeRequest(config)

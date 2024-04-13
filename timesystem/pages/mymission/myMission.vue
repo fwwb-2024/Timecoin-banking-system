@@ -188,7 +188,7 @@
 	}
 	.newMission {
 		position: fixed;
-		bottom: 100rpx;
+		bottom: 0;
 		width: 100%;
 		box-shadow: 1px 1px 1px rgb(200, 200, 200);
 	}

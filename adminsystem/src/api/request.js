@@ -1,8 +1,9 @@
 import axios from "axios";
 import router from "@/router";
+import { Message } from 'element-ui';
 
 const http = axios.create({
-    baseURL: 'http://10.195.28.44:9090', //服务器后端地址
+    baseURL: 'http://123.249.5.46:9090', //服务器后端地址
     timeout:10000,  //超时时间
 })
 //请求拦截器
@@ -20,7 +21,10 @@ http.interceptors.response.use(res=>{
     let route = (url).substring((url).lastIndexOf("/")+1)
     if(route != 'login'){
         if(res.status == 201){
-            alert('登录已过期')
+            Message({
+                message: '登录已过期',
+                type: 'warning'
+            });
             router.push('/login');
         }
         else if(res.data.token){

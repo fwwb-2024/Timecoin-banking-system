@@ -39,9 +39,9 @@
 		
 		<!-- 退出家庭按钮 -->
 		<view>
-			<button class="exit-family"  @click="exitFamily">退出家庭</button>
+			<button class="exit-family"  @click="exitFamily">退出群组</button>
 			<button v-if="addview" class="exit-family" @click="changeMaster">修改家主</button>
-			<button v-if="addview" class="exit-family" @click="deleteFamily">解散家庭</button>
+			<button v-if="addview" class="exit-family" @click="deleteFamily">解散群组</button>
 		</view>
 	</view>
 </template>
@@ -218,7 +218,7 @@
 				uni.showModal({
 					title: '提示',
 					// 提示文字
-					content: '确认解散家庭吗？',
+					content: '确认解散群组吗？',
 					// 取消按钮的文字自定义
 					cancelText: "取消",
 					// 确认按钮的文字自定义

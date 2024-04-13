@@ -52,9 +52,9 @@
             "splashscreen" : {
                 "androidStyle" : "common",
                 "android" : {
-                    "hdpi" : "static/timebankpic.9.png",
-                    "xxhdpi" : "static/timebankpic.9.png",
-                    "xhdpi" : "static/timebankpic.9.png"
+                    "hdpi" : "unpackage/res/IMG_20240412_143445.9.png",
+                    "xxhdpi" : "unpackage/res/IMG_20240412_143445.9.png",
+                    "xhdpi" : "unpackage/res/IMG_20240412_143445.9.png"
                 },
                 "useOriginalMsgbox" : false,
                 "iosStyle" : "common"

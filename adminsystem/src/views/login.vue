@@ -41,13 +41,22 @@ export default {
           router.push('/home/analysis')
         }
         else if(res.data == '该管理员不存在') {
-          alert('该管理员不存在')
+          this.$message({
+            message: '该管理员不存在',
+            type: 'warning'
+          });
         }
         else if(res.data == '密码错误') {
-          alert('密码错误')
+          this.$message({
+            message: '密码错误',
+            type: 'warning'
+          });
         }
         else{
-          alert('登录失败')
+          this.$message({
+            message: '登录失败',
+            type: 'warning'
+          });
         }
       })
     }

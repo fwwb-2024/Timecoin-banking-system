@@ -309,9 +309,9 @@
 					sourceType: ['album','camera'], 
 					success: (chooseImageRes)=>{
 						// 如果图片过大
-						if(chooseImageRes.tempFiles[0].size > 1048576){
+						if(chooseImageRes.tempFiles[0].size > 10485760){
 							uni.showToast({
-								title: '图片大于1M!',
+								title: '图片大于10M!',
 								icon:'error',
 								duration: 1000
 							});
@@ -319,7 +319,7 @@
 						else {
 							// 上传图片
 							uni.uploadFile({
-							  url: 'http://10.195.28.44:9090/tasks/taskCenter/uploadimage', 
+							  url: 'http://123.249.5.46:9090/tasks/taskCenter/uploadimage', 
 							  filePath: chooseImageRes.tempFilePaths[0],
 							  name: 'file', 
 							  header: {
