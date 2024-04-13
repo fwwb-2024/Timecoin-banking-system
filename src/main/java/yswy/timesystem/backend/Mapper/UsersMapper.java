@@ -1,14 +1,18 @@
 package yswy.timesystem.backend.Mapper;
 
+import yswy.timesystem.backend.Entity.Tasks;
+import yswy.timesystem.backend.Entity.Tasksmulti;
 import yswy.timesystem.backend.Entity.Users;
 import org.apache.ibatis.annotations.*;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Mapper
 public interface UsersMapper {
 
     //注册新用户(只有账号、密码、手机号)
-    @Insert("insert into `users` (`user_name`,`user_password`,`user_phone_number`) values(#{userName},#{userPassword},#{userPhoneNumber});")
+    @Insert("insert into `users` (`user_name`,`user_password`,`user_phone_number`,`user_regist_time`) values(#{userName},#{userPassword},#{userPhoneNumber},#{userRegistTime});")
     @Transactional
     void insertRegister(Users users);
 
@@ -41,6 +45,31 @@ public interface UsersMapper {
     @Update("update `users` set `user_photo` = #{userPhoto} where `user_id` = #{userID};")
     @Transactional
     void updateTheUserPhotoByID(int userID,String userPhoto);
+
+    //用户申请，状态变为未审核
+    @Update("update `users` set `user_status` = 1,`user_status_remark` = #{userStatusRemark} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserStatusOneByUserID(int userID,String userStatusRemark);
+
+    //管理员审核用户状态为正常
+    @Update("update `users` set `user_status` = 2,`user_status_remark` = #{userStatusRemark} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserStatusTwoByUserID(int userID,String userStatusRemark);
+
+    //管理员审核用户状态为未通过
+    @Update("update `users` set `user_status` = 3,`user_status_remark` = #{userStatusRemark} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserStatusThreeByUserID(int userID,String userStatusRemark);
+
+    //管理员冻结用户状态
+    @Update("update `users` set `user_status` = 4,`user_status_remark` = #{userStatusRemark} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserStatusFourByUserID(int userID,String userStatusRemark);
+
+    //管理员设置用户状态为官方号
+    @Update("update `users` set `user_status` = 5,`user_status_remark` = #{userStatusRemark} where `user_id` = #{userID};")
+    @Transactional
+    void updateUserStatusFiveByUserID(int userID,String userStatusRemark);
 
     //查找用户id，通过用户名查找
     @Select("select `user_id` from `users` where `user_name` = #{userName};")
@@ -92,6 +121,11 @@ public interface UsersMapper {
     @Transactional
     int selectUserIDNumberSame(String userIDNumber);
 
+    //查找用户状态，通过用户id查找
+    @Select("select `user_status` from `users` where `user_id` = #{userID};")
+    @Transactional
+    int selectForUserStatusByUserID(int userID);
+
     //查找用户时间币余额，通过用户名查找
     @Select("select `user_time_coin` from `users` where `user_name` = #{userName};")
     @Transactional
@@ -117,7 +151,21 @@ public interface UsersMapper {
     @Transactional
     Users selectForUsersByUserName(String userName);
 
+    //查找未审核用户列表，根据id顺序排序,一次查10个，查第offSet后面的10个
+    @Select("select `user_id` as userID,`user_name` as userName,`user_phone_number` as userPhoneNumber,`user_email` as userEmail,`user_id_number` as userIDNumber,`user_id_name` as userIDName,`user_age` as userAge,`user_status_remark` as userStatusRemark from `users` where `user_status` = #{userStatus} order by user_id desc limit 10 offset #{offSet};")
+    @Transactional
+    List<Users> selectUnAccessByUserIDAscAdmin(int offSet, int userStatus);
 
+    //查找最近用户注册量
+    @Select("select date(user_regist_time) as taskBeginTime, count(*) as counts " +
+            "from users " +
+            "where date(user_regist_time) >= date_sub(curdate(), interval #{days} day) " +
+            "group by date(user_regist_time) " +
+            "order by date(user_regist_time) asc")
+    List<Tasksmulti> getRecentRegisterUsers(int days);
 
+    @Select("select count(*) as counts " +
+            "from users " )
+    int getAllUserNumber();
 
 }

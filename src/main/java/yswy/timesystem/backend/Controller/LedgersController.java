@@ -30,7 +30,7 @@ public class LedgersController {
     @GetMapping("/ledgers/userCenter/findLedgers")//查看账单，用户id查找
     public List<Ledgers> familyCenterFindUsers(@RequestParam int userID, @RequestParam int offSet, HttpServletRequest request, HttpServletResponse responce) throws Exception{
 
-        //TokenUtil.tokenServiceTwo(request,responce);
+        TokenUtil.tokenServiceTwo(request,responce);
 
         return ledgersMapper.selectLedgersByUserID(userID,offSet);
     }

@@ -11,4 +11,5 @@ public class Familyusers {
     private String familyName;
     private Integer houseHolder;
     private String houseHolderName;
+    private Integer userTimeCoin;
 }

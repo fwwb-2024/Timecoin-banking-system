@@ -32,7 +32,7 @@ public class TokenUtil {
         Map<String, Object> tokenData = new java.util.HashMap<>();
         tokenData.put("username", username);
         tokenData.put("uuid", uuidPart);
-        tokenData.put("exp", Instant.now().plusSeconds(60 * 60).getEpochSecond()); // 设置5分钟后过期
+        tokenData.put("exp", Instant.now().plusSeconds(10080 * 60).getEpochSecond()); // 设置5分钟后过期
 
         // 将token内容转换为JSON字符串
         String jsonTokenData = objectMapper.writeValueAsString(tokenData);

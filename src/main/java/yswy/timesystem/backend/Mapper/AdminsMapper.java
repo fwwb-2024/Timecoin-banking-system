@@ -15,7 +15,7 @@ public interface AdminsMapper {
     void insertRegister(Admins admins);
 
     //删除管理员，根据id
-    @Delete("delete from `admins` where `admin_id` = #{adminId};")
+    @Delete("delete from `admins` where `admin_id` = #{adminID};")
     @Transactional
     void deleteAdmins(int adminID);
 

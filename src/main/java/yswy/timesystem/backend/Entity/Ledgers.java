@@ -8,5 +8,6 @@ public class Ledgers {
     private Integer userID;
     private Integer taskID;
     private int ledgerTimeCoin;
-
+    private String taskName;
+    private String taskBrief;
 }

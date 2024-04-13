@@ -25,7 +25,7 @@ public class TaskhistoryController {
     @Resource
     private TaskhistorysMapper taskhistorysMapper;
 
-    private static String USER_STATIC="http://10.195.28.44:9090/";
+    private static String USER_STATIC="http://123.249.5.46:9090/";
 
     @Operation(summary = "志愿者查看任务历史接口", description = "返回201，一串taskhistorys对象")
     @Parameter(name = "userID", description = "id", example = "123")
