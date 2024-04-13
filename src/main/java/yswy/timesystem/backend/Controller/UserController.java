@@ -231,7 +231,7 @@ public class UserController {
         TokenUtil.tokenServiceTwo(request,responce);
 
         // 设置文件大小限制，例如1MB
-        long maxFileSize = 1024 * 1024; // 1MB in bytes
+        long maxFileSize = 10240 * 1024; // 1MB in bytes
 
         if (file.isEmpty()) {
             return "文件为空";
