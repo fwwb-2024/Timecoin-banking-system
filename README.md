@@ -1,4 +1,2 @@
-# Welcome to your organization's demo respository
-This code repository (or "repo") is designed to demonstrate the best GitHub has to offer with the least amount of noise.
-
-The repo includes an `index.html` file (so it can render a web page), two GitHub Actions workflows, and a CSS stylesheet dependency.
+# 2401918—易时无忧—【A22】基于区块链的时间银行管理系统【云象网络】
+main分支为前端app与后端springboot核心代码
