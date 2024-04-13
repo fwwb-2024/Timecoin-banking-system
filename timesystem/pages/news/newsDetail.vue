@@ -83,5 +83,6 @@
 		box-shadow: 2px 4px 20px rgb(200, 200, 200);
 		margin-top: 220rpx;
 		padding: 50rpx 50rpx 50rpx 50rpx;
+		font-size: 30rpx;
 	}
 </style>

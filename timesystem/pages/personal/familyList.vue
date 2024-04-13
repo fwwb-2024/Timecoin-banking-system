@@ -17,7 +17,7 @@
 			<view v-for="(item,index) in familyList" :key="item.id">
 				<view class="familyList-element" @click="navTo('/pages/personal/familyDetail?familyID='+item.familyID)">
 					<view class="familyList-element-title">
-						<text>家庭名称:</text>
+						<text>群组名称:</text>
 					</view>
 					<view class="familyList-element-familyName">
 						<text>{{item.familyName}}</text>
@@ -29,7 +29,7 @@
 			</view>
 			
 		</view>
-		<button style="width: 90%; margin-top: 30rpx;box-shadow: 2px 4px 20px rgb(200, 200, 200);" @click="newFamily">新建家庭</button>
+		<button style="width: 90%; margin-top: 30rpx;box-shadow: 2px 4px 20px rgb(200, 200, 200);" @click="newFamily">新建群组</button>
 	</view>
 </template>
 
@@ -81,7 +81,7 @@
 							that.$api.newFamily(temp).then((res)=>{
 								if(res.data){
 									uni.showToast({
-										title:'家庭已创建',
+										title:'群组已创建',
 										duration:1000
 									})
 									setTimeout(function() {
@@ -92,7 +92,7 @@
 								}
 								else{
 									uni.showToast({
-										title:'创建家庭失败',
+										title:'创建群组失败',
 										icon:'error',
 										duration:1000
 									})

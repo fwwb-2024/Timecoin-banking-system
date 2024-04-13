@@ -3,7 +3,7 @@
 <!--    顶部栏-->
     <div class="title">
       <div class="title-img">
-        <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.U4pMYgfegCYAmre18Z-0FwAAAA?rs=1&pid=ImgDetMain"></img>
+        <img src="../../public/timesystem.jpg"></img>
       </div>
       <div class="title-txt">
         <span>时间银行管理系统</span>

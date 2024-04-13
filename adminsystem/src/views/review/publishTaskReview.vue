@@ -15,17 +15,20 @@
     </div>
 
     <el-dialog title="审核任务" width="400px" :visible.sync="dialogTableVisible">
-      <div style="margin: 0 50px 0 50px">
-        <p class="font-title">任务名称:</p>
-        <div class="font-content">{{this.task.taskName}}</div>
+      <div style="margin: 0 50px 0 50px;display:flex;flex-direction: column;align-items: flex-start">
+        <span class="font-title">任务名称:
+          <span class="font-content">{{this.task.taskName}}</span>
+        </span>
         <p class="font-title">任务简介:</p>
         <div class="font-content">{{this.task.taskBrief}}</div>
         <p class="font-title">任务详情:</p>
         <div class="font-content" v-html="this.task.taskDetail"></div>
-        <p class="font-title">发布者:</p>
-        <div class="font-content">{{this.task.taskEmployer}}</div>
-        <p class="font-title">时间币悬赏:</p>
-        <div class="font-content">{{this.task.taskTimeCoinBounty}}</div>
+        <span class="font-title">发布者:
+          <span class="font-content">{{this.task.taskEmployer}}</span>
+        </span>
+        <span class="font-title">时间币悬赏:
+          <span class="font-content">{{this.task.taskTimeCoinBounty}}</span>
+        </span>
       </div>
       <div style="display: flex;justify-content: center;margin-top: 10px">
         <span style="flex-grow: 1">
@@ -120,13 +123,22 @@ export default {
     remarkPass(){
       passRemark(this.task.taskID).then((res)=>{
         if(res.data == '审核成功'){
-          alert('审核通过成功')
+          this.$message({
+            message: '审核通过',
+            type: 'success'
+          });
         }
         else if(res.data == '任务已被其他管理员审核通过'){
-          alert('任务已被其他管理员审核通过')
+          this.$message({
+            message: '该任务已被其他管理员审核通过',
+            type: 'warning'
+          });
         }
         else{
-          alert('网络错误')
+          this.$message({
+            message: '网络错误',
+            type: 'warning'
+          });
         }
         location.reload()
       })
@@ -137,10 +149,16 @@ export default {
       noPassRemark(this.task.taskID,tempRamark).then((res)=>{
         console.log(res)
         if(res.data == '批改完成'){
-          alert('审核不通过成功')
+          this.$message({
+            message: '已拒绝',
+            type: 'success'
+          });
         }
         else {
-          alert('网络错误')
+          this.$message({
+            message: '网络错误',
+            type: 'warning'
+          });
         }
         location.reload()
       })

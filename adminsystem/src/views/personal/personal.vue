@@ -65,13 +65,19 @@ export default {
         }
         changePassword(temp).then((res)=>{
           if(res.data != "修改成功"){
-            alert("修改失败")
+            this.$message({
+              message: '修改失败',
+              type: 'warning'
+            });
           }
         })
       }
       // 修改名字
       if(this.adminData.adminName == ''){
-        alert('用户名不能为空')
+        this.$message({
+          message: '用户名不能为空',
+          type: 'warning'
+        });
       }
       else {
         let temp = {
@@ -80,16 +86,25 @@ export default {
         }
         changeData(temp).then((res)=>{
           if(res.data == '用户已存在'){
-            alert('用户已存在')
+            this.$message({
+              message: '用户已存在',
+              type: 'warning'
+            });
             location.reload()
           }
           else if(res.data){
-            alert('修改成功')
+            this.$message({
+              message: '修改成功',
+              type: 'success'
+            });
             localStorage.adminName = temp.adminName
             location.reload()
           }
           else {
-            alert('修改失败')
+            this.$message({
+              message: '修改失败',
+              type: 'warning'
+            });
             location.reload()
           }
         })

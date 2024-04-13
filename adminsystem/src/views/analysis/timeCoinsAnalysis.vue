@@ -54,12 +54,7 @@ export default {
           this.y2Data = []
           for (let i = 0; i < res.data.length; i++) {
             this.xAxisData.push(res.data[i].taskBeginTime)
-            if(res.data[i].counts == 0){
-              this.y1Data.push(1)
-            }
-            else{
-              this.y1Data.push(res.data[i].counts)
-            }
+            this.y1Data.push(res.data[i].counts+1)
           }
           // 计算时间币增长率
           this.y2Data.push(0)

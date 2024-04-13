@@ -54,12 +54,7 @@ export default {
           this.y1Data = []
           for(let i=0;i<res.data.length;i++){
             this.xAxisData.push(res.data[i].taskBeginTime)
-            if(res.data[i].counts == 0){
-              this.y1Data.push(1)
-            }
-            else {
-              this.y1Data.push(res.data[i].counts)
-            }
+            this.y1Data.push(res.data[i].counts+1)
           }
           getCompleteTask(temp).then((res)=>{
             this.y2Data = []

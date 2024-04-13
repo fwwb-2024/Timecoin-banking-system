@@ -174,8 +174,11 @@ export default {
     },
     // 上传头图
     changeUpload(file, fileList) {
-      if (file.size > 1048576) {
-        this.$message.error('图片超出1M!')
+      if (file.size > 10485760) {
+        this.$message({
+          message: '图片超出10M!',
+          type: 'warning'
+        });
         return false
       }
       this.fileName = file.name
@@ -200,8 +203,11 @@ export default {
     },
     // 上传富文本图片
     addImg(name, $file){
-      if($file.size > 1048576){
-        alert('图片超出1M!')
+      if($file.size > 10485760){
+        this.$message({
+          message: '图片超出10M!',
+          type: 'warning'
+        });
       }
       else {
         let formData = new FormData()
@@ -244,10 +250,16 @@ export default {
           }
           changeNewsDetail(temp).then((res)=>{
             if(res.data == '修改成功'){
-              alert('修改成功')
+              this.$message({
+                message: '修改成功',
+                type: 'success'
+              });
             }
             else {
-              alert('发布失败')
+              this.$message({
+                message: '发布失败',
+                type: 'warning'
+              });
             }
             this.dialogTableVisible = false
 
@@ -257,17 +269,26 @@ export default {
           })
         }
         else {
-          alert('标题和内容不能为空')
+          this.$message({
+            message: '标题和内容不能为空',
+            type: 'warning'
+          });
         }
       }, 300)
     },
     deleteNews(newsID){
       deleteNews(newsID).then((res)=>{
         if(res.data == '删除成功'){
-          alert('删除成功')
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
         }
         else {
-          alert('删除失败')
+          this.$message({
+            message: '删除失败',
+            type: 'warning'
+          });
         }
 
         this.tableData=[]

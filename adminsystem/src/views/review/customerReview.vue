@@ -68,7 +68,10 @@ export default {
     passAccount(nowuserID){
       passAccountRemark(nowuserID).then((res)=>{
         if(res.data == "审核成功"){
-          alert("审核成功")
+          this.$message({
+            message: '审核通过',
+            type: 'success'
+          });
         }
         this.tableData=[]
         this.pages=0
@@ -83,7 +86,10 @@ export default {
     noPass(){
       noPassAccountRemark(this.nowuserID,this.userStatusRemark).then((res)=>{
         if(res.data == '审核成功'){
-          alert('已审核不通过')
+          this.$message({
+            message: '已拒绝',
+            type: 'success'
+          });
           this.tableData=[]
           this.pages=0
           this.reload()

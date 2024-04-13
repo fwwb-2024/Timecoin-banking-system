@@ -67,36 +67,57 @@ export default {
       }
       changePassword(temp).then((res)=>{
         if(res.data == "修改成功"){
-          alert("重置成功")
+          this.$message({
+            message: '重置成功',
+            type: 'success'
+          });
         }
       })
     },
     deleteAdmin(row){
       deleteAdmin(row.adminID).then((res)=>{
         if(res.data == '注销成功'){
-          alert('注销成功')
+          this.$message({
+            message: '注销成功',
+            type: 'success'
+          });
           location.reload()
         }
         else{
-          alert('注销失败')
+          this.$message({
+            message: '注销失败',
+            type: 'warning'
+          });
         }
       })
     },
     addAdmin(){
       if(this.newAdmin.adminName == '' || this.newAdmin.adminPassword == ''){
-        alert('新增管理员账号密码不能为空')
+        this.$message({
+          message: '新增管理员账号密码不能为空',
+          type: 'warning'
+        });
       }
       else {
         registerAdmin(this.newAdmin).then((res)=>{
           if(res.data == "注册成功"){
-            alert("注册成功")
+            this.$message({
+              message: '新增成功',
+              type: 'success'
+            });
             location.reload()
           }
           else if(res.data == "管理员已存在"){
-            alert("管理员已存在")
+            this.$message({
+              message: '管理员已存在',
+              type: 'warning'
+            });
           }
           else{
-            alert("注册失败")
+            this.$message({
+              message: '新增失败',
+              type: 'warning'
+            });
           }
         })
       }

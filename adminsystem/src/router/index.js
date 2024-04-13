@@ -15,6 +15,7 @@ import manageEditor from "@/views/editor/manageEditor";
 import timeCoinsAnalysis from "@/views/analysis/timeCoinsAnalysis";
 import analysis from "@/views/analysis/analysis";
 
+import { Message } from 'element-ui';
 Vue.use(VueRouter)
 
 function beforeEnter(to, from, next) {
@@ -22,8 +23,12 @@ function beforeEnter(to, from, next) {
     next()
   }
   else{
-    alert('请登录后访问')
+
     next({path:'/login'})
+    Message({
+      message: '请登录后访问',
+      type: 'warning'
+    });
   }
 }
 

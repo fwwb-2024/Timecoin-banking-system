@@ -127,7 +127,7 @@
 					sourceType: ['album','camera'], 
 					success: (chooseImageRes)=>{
 						// 如果图片过大
-						if(chooseImageRes.tempFiles[0].size > 1048576){
+						if(chooseImageRes.tempFiles[0].size > 10485760){
 							uni.showToast({
 								title: '图片过大',
 								icon:'error',
@@ -139,7 +139,7 @@
 							this.headerImage = tempFilePaths
 							//上传头像图片
 							uni.uploadFile({
-							  url: 'http://10.195.28.44:9090/user/userCenter/changeUserPhoto', 
+							  url: 'http://123.249.5.46:9090/user/userCenter/changeUserPhoto', 
 							  filePath: tempFilePaths,
 							  name: 'file', 
 							  formData: {
